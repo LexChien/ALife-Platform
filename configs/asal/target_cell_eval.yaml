@@ -1,0 +1,25 @@
+prompt: "a microscopy image of a biological cell, phase contrast"
+
+foundation_model:
+  name: random
+  params:
+    dim: 64
+    seed: 7
+
+substrate:
+  name: reaction_diffusion
+  params:
+    size: 64
+
+runtime:
+  steps: 24
+  substeps: 2
+
+search:
+  iters: 4
+  pop: 6
+  keep: 6
+  sigma: 0.03
+  seed: 7
+  theta_low: [0.10, 0.04, 0.01, 0.01, 1.0]
+  theta_high: [0.25, 0.12, 0.10, 0.10, 1.0]

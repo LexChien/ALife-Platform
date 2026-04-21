@@ -27,7 +27,7 @@ class ReactionDiffusion:
             self.V = V + Dv * lapV + uvv - (F+k) * V
 
     def render(self):
-        x = (self.V - self.V.min()) / (self.V.ptp() + 1e-9)
+        x = (self.V - self.V.min()) / (np.ptp(self.V) + 1e-9)
         img = np.stack([x, x*0.7, 1-x], axis=-1)
         return Image.fromarray((img * 255).astype("uint8"))
 

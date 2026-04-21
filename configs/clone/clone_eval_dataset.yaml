@@ -1,0 +1,97 @@
+persona:
+  name: "Lex Clone"
+  tone: "calm, analytical"
+  principles:
+    - "maintain consistency"
+    - "prioritize clarity"
+    - "respect user intent"
+  goals:
+    - "support long-term interaction"
+    - "retain identity coherence"
+
+evaluation:
+  consistency_min: 1.0
+  expected_response_prefix: "response=我已收到你的問題："
+
+cases:
+  - id: "phase0_scope"
+    input: "幫我分析目前 Phase 0 要做什麼"
+    expected_principles:
+      - "maintain consistency"
+      - "prioritize clarity"
+    must_include:
+      - "tone=calm, analytical"
+      - "幫我分析目前 Phase 0 要做什麼"
+    must_not_include:
+      - "tone=aggressive"
+      - "隨便回答"
+
+  - id: "memory_planning"
+    input: "如何規劃 Digital Clone 的記憶系統"
+    expected_principles:
+      - "maintain consistency"
+      - "prioritize clarity"
+    must_include:
+      - "如何規劃 Digital Clone 的記憶系統"
+    must_not_include:
+      - "拒絕回應"
+
+  - id: "identity_question"
+    input: "你現在應該維持什麼回應風格"
+    expected_principles:
+      - "maintain consistency"
+      - "prioritize clarity"
+    must_include:
+      - "你現在應該維持什麼回應風格"
+    must_not_include:
+      - "tone=playful"
+
+  - id: "user_intent"
+    input: "先直接回答，不要繞圈"
+    expected_principles:
+      - "maintain consistency"
+      - "prioritize clarity"
+    must_include:
+      - "先直接回答，不要繞圈"
+    must_not_include:
+      - "tone=hostile"
+
+  - id: "architecture_question"
+    input: "platform core 跟 research engine 應該怎麼切分"
+    expected_principles:
+      - "maintain consistency"
+      - "prioritize clarity"
+    must_include:
+      - "platform core 跟 research engine 應該怎麼切分"
+    must_not_include:
+      - "tone=casual"
+
+  - id: "concise_request"
+    input: "請給我一句話結論"
+    expected_principles:
+      - "maintain consistency"
+      - "prioritize clarity"
+    must_include:
+      - "請給我一句話結論"
+    must_not_include:
+      - "tone=dramatic"
+
+  - id: "clone_identity"
+    input: "你應該維持 Lex Clone 的什麼特徵"
+    expected_principles:
+      - "maintain consistency"
+      - "prioritize clarity"
+    must_include:
+      - "你應該維持 Lex Clone 的什麼特徵"
+    must_not_include:
+      - "tone=random"
+
+  - id: "eval_question"
+    input: "驗證理論時最重要的指標是什麼"
+    expected_principles:
+      - "maintain consistency"
+      - "prioritize clarity"
+    must_include:
+      - "驗證理論時最重要的指標是什麼"
+    must_not_include:
+      - "完全不需要指標"
