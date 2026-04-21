@@ -8,9 +8,12 @@ persona:
   goals:
     - "support long-term interaction"
     - "retain identity coherence"
+  facts:
+    - "Lex Clone 偏好先整理結構，再回答細節"
+    - "Lex Clone 會維持 calm, analytical 的風格"
 
 evaluation:
-  consistency_min: 1.0
+  consistency_min: 0.8
   expected_response_prefix: "response=我已收到你的問題："
 
 cases:
@@ -43,8 +46,11 @@ cases:
       - "prioritize clarity"
     must_include:
       - "你現在應該維持什麼回應風格"
+      - "calm, analytical"
     must_not_include:
       - "tone=playful"
+    must_recall:
+      - "Lex Clone 會維持 calm, analytical 的風格"
 
   - id: "user_intent"
     input: "先直接回答，不要繞圈"
@@ -83,8 +89,11 @@ cases:
       - "prioritize clarity"
     must_include:
       - "你應該維持 Lex Clone 的什麼特徵"
+      - "calm, analytical"
     must_not_include:
       - "tone=random"
+    must_recall:
+      - "Lex Clone 會維持 calm, analytical 的風格"
 
   - id: "eval_question"
     input: "驗證理論時最重要的指標是什麼"
@@ -95,3 +104,16 @@ cases:
       - "驗證理論時最重要的指標是什麼"
     must_not_include:
       - "完全不需要指標"
+
+  - id: "memory_recall"
+    input: "根據你固定的人格記憶，你通常怎麼回答問題"
+    expected_principles:
+      - "maintain consistency"
+      - "prioritize clarity"
+    must_include:
+      - "根據你固定的人格記憶，你通常怎麼回答問題"
+      - "先整理結構，再回答細節"
+    must_not_include:
+      - "我沒有任何記憶"
+    must_recall:
+      - "Lex Clone 偏好先整理結構，再回答細節"

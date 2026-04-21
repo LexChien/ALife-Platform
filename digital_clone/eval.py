@@ -15,11 +15,13 @@ def score_case(persona: dict, case: dict, output: dict, evaluation: dict) -> dic
     required_principles = case.get("expected_principles", persona["principles"][:2])
     required_substrings = case.get("must_include", [])
     forbidden_substrings = case.get("must_not_include", [])
+    required_memories = case.get("must_recall", [])
     response_prefix = case.get(
         "expected_response_prefix",
         evaluation.get("expected_response_prefix", "response=我已收到你的問題："),
     )
     consistency_min = float(case.get("consistency_min", evaluation.get("consistency_min", 1.0)))
+    retrieved = output.get("retrieved_memories", [])
 
     checks = {
         "persona_tag": text.startswith(f"[{persona['name']}]"),
@@ -30,6 +32,7 @@ def score_case(persona: dict, case: dict, output: dict, evaluation: dict) -> dic
         "required_principles": all(p in text for p in required_principles),
         "required_substrings": all(s in text for s in required_substrings),
         "forbidden_absent": all(s not in text for s in forbidden_substrings),
+        "required_memories": all(any(req in mem for mem in retrieved) or req in text for req in required_memories),
     }
     score = sum(1.0 for ok in checks.values() if ok) / len(checks)
     return {
@@ -38,6 +41,7 @@ def score_case(persona: dict, case: dict, output: dict, evaluation: dict) -> dic
         "method": output.get("method", "clone"),
         "output": output["output"],
         "consistency": float(output["consistency"]),
+        "retrieved_memories": retrieved,
         "checks": checks,
         "score": score,
         "pass": all(checks.values()),
@@ -86,6 +90,7 @@ def render_markdown(config_path: str, summary: dict, clone_results: list[dict], 
         f"- Config: `{config_path}`",
         f"- Cases: `{summary['num_cases']}`",
         "- Metrics: persona tag, tone match, principle coverage, response prefix, input echo, forbidden absence, consistency threshold",
+        "- Additional recall metric: required memory recall for selected cases",
         "- Comparator: naive echo baseline without persona/tone/principle formatting",
         "",
         "## Results",
@@ -111,7 +116,7 @@ def render_markdown(config_path: str, summary: dict, clone_results: list[dict], 
         "",
         "## Interpretation",
         "",
-        "This provides stronger evidence than self-checking alone because the current clone output is compared against a weaker baseline. It still does not prove long-term memory quality, drift resistance, or open-ended identity coherence because the memory and consistency modules remain stubs.",
+        "This provides stronger evidence than self-checking alone because the current clone output is compared against a weaker baseline and selected cases require recall. It still does not prove long-term memory quality, drift resistance, or open-ended identity coherence because the system remains a minimal heuristic implementation.",
         "",
     ]
     return "\n".join(lines)

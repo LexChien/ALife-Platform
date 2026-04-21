@@ -13,8 +13,10 @@ class DigitalCloneEngine:
             tone=p["tone"],
             principles=p["principles"],
             goals=p["goals"],
+            facts=p.get("facts", []),
         )
         self.memory = MemoryStore()
+        self.memory.add_profile_facts(self.persona.facts)
         self.consistency = ConsistencyEvaluator()
         self.policy = DecisionPolicy()
 
@@ -24,7 +26,19 @@ class DigitalCloneEngine:
             self.memory.add("user", text)
             plan = self.policy.select(self.persona, self.memory, text)
             reply = f"[{self.persona.name}] tone={plan['tone']} principles={', '.join(plan['principles'])} response={plan['reply']}"
-            score = self.consistency.score(self.persona, reply)
+            score = self.consistency.score(
+                self.persona,
+                reply,
+                user_text=text,
+                retrieved_memories=plan.get("retrieved_memories", []),
+            )
             self.memory.add("assistant", reply)
-            outputs.append({"input": text, "output": reply, "consistency": score})
+            outputs.append(
+                {
+                    "input": text,
+                    "output": reply,
+                    "consistency": score,
+                    "retrieved_memories": plan.get("retrieved_memories", []),
+                }
+            )
         return outputs
