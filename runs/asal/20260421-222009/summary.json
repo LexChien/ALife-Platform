@@ -1,0 +1,14 @@
+{
+  "mode": "asal_target",
+  "prompt": "a microscopy image of a biological cell, phase contrast",
+  "best_score": 0.02626905462693263,
+  "best_theta": [
+    0.15683704255065345,
+    0.09836710851155259,
+    0.067470836085724,
+    0.019461162870823306,
+    1.0
+  ],
+  "gif": "best.gif",
+  "mp4": null
+}

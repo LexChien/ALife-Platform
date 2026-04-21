@@ -15,7 +15,7 @@ def main():
     ap.add_argument("--config", required=True)
     args = ap.parse_args()
     cfg = load_config(args.config)
-    run_dir = make_run_dir("runs")
+    run_dir = make_run_dir("runs/asal")
     ASALEngine(cfg, run_dir).run()
     print("Done. Artifacts:", run_dir)
 
