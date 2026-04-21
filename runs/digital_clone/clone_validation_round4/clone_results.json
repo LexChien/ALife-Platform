@@ -1,0 +1,226 @@
+[
+  {
+    "id": "phase0_scope",
+    "input": "幫我分析目前 Phase 0 要做什麼",
+    "method": "clone",
+    "output": "[Lex Clone] tone=calm, analytical principles=maintain consistency, prioritize clarity response=我已收到你的問題：幫我分析目前 Phase 0 要做什麼",
+    "consistency": 0.8,
+    "retrieved_memories": [
+      "Lex Clone 會維持 calm, analytical 的風格",
+      "Lex Clone 偏好先整理結構，再回答細節"
+    ],
+    "checks": {
+      "persona_tag": true,
+      "tone_match": true,
+      "response_prefix": true,
+      "echo_input": true,
+      "consistency_threshold": true,
+      "required_principles": true,
+      "required_substrings": true,
+      "forbidden_absent": true,
+      "required_memories": true
+    },
+    "score": 1.0,
+    "pass": true
+  },
+  {
+    "id": "memory_planning",
+    "input": "如何規劃 Digital Clone 的記憶系統",
+    "method": "clone",
+    "output": "[Lex Clone] tone=calm, analytical principles=maintain consistency, prioritize clarity response=我已收到你的問題：如何規劃 Digital Clone 的記憶系統；我目前可用的相關記憶是：Lex Clone 偏好先整理結構，再回答細節 | Lex Clone 會維持 calm, analytical 的風格 | [Lex Clone] tone=calm, analytical principles=maintain consistency, prioritize clarity response=我已收到你的問題：幫我分析目前 Phase 0 要做什麼",
+    "consistency": 1.0,
+    "retrieved_memories": [
+      "Lex Clone 偏好先整理結構，再回答細節",
+      "Lex Clone 會維持 calm, analytical 的風格",
+      "[Lex Clone] tone=calm, analytical principles=maintain consistency, prioritize clarity response=我已收到你的問題：幫我分析目前 Phase 0 要做什麼"
+    ],
+    "checks": {
+      "persona_tag": true,
+      "tone_match": true,
+      "response_prefix": true,
+      "echo_input": true,
+      "consistency_threshold": true,
+      "required_principles": true,
+      "required_substrings": true,
+      "forbidden_absent": true,
+      "required_memories": true
+    },
+    "score": 1.0,
+    "pass": true
+  },
+  {
+    "id": "identity_question",
+    "input": "你現在應該維持什麼回應風格",
+    "method": "clone",
+    "output": "[Lex Clone] tone=calm, analytical principles=maintain consistency, prioritize clarity response=我已收到你的問題：你現在應該維持什麼回應風格；我會維持 calm, analytical 的風格，並遵守 maintain consistency, prioritize clarity",
+    "consistency": 0.8333333333333334,
+    "retrieved_memories": [
+      "Lex Clone 會維持 calm, analytical 的風格",
+      "Lex Clone 偏好先整理結構，再回答細節",
+      "[Lex Clone] tone=calm, analytical principles=maintain consistency, prioritize clarity response=我已收到你的問題：如何規劃 Digital Clone 的記憶系統；我目前可用的相關記憶是：Lex Clone 偏好先整理結構，再回答細節 | Lex Clone 會維持 calm, analytical 的風格 | [Lex Clone] tone=calm, analytical principles=maintain consistency, prioritize clarity response=我已收到你的問題：幫我分析目前 Phase 0 要做什麼"
+    ],
+    "checks": {
+      "persona_tag": true,
+      "tone_match": true,
+      "response_prefix": true,
+      "echo_input": true,
+      "consistency_threshold": true,
+      "required_principles": true,
+      "required_substrings": true,
+      "forbidden_absent": true,
+      "required_memories": true
+    },
+    "score": 1.0,
+    "pass": true
+  },
+  {
+    "id": "user_intent",
+    "input": "先直接回答，不要繞圈",
+    "method": "clone",
+    "output": "[Lex Clone] tone=calm, analytical principles=maintain consistency, prioritize clarity response=我已收到你的問題：先直接回答，不要繞圈",
+    "consistency": 0.8,
+    "retrieved_memories": [
+      "Lex Clone 會維持 calm, analytical 的風格",
+      "Lex Clone 偏好先整理結構，再回答細節",
+      "[Lex Clone] tone=calm, analytical principles=maintain consistency, prioritize clarity response=我已收到你的問題：你現在應該維持什麼回應風格；我會維持 calm, analytical 的風格，並遵守 maintain consistency, prioritize clarity"
+    ],
+    "checks": {
+      "persona_tag": true,
+      "tone_match": true,
+      "response_prefix": true,
+      "echo_input": true,
+      "consistency_threshold": true,
+      "required_principles": true,
+      "required_substrings": true,
+      "forbidden_absent": true,
+      "required_memories": true
+    },
+    "score": 1.0,
+    "pass": true
+  },
+  {
+    "id": "architecture_question",
+    "input": "platform core 跟 research engine 應該怎麼切分",
+    "method": "clone",
+    "output": "[Lex Clone] tone=calm, analytical principles=maintain consistency, prioritize clarity response=我已收到你的問題：platform core 跟 research engine 應該怎麼切分",
+    "consistency": 0.8,
+    "retrieved_memories": [
+      "Lex Clone 會維持 calm, analytical 的風格",
+      "Lex Clone 偏好先整理結構，再回答細節",
+      "[Lex Clone] tone=calm, analytical principles=maintain consistency, prioritize clarity response=我已收到你的問題：先直接回答，不要繞圈"
+    ],
+    "checks": {
+      "persona_tag": true,
+      "tone_match": true,
+      "response_prefix": true,
+      "echo_input": true,
+      "consistency_threshold": true,
+      "required_principles": true,
+      "required_substrings": true,
+      "forbidden_absent": true,
+      "required_memories": true
+    },
+    "score": 1.0,
+    "pass": true
+  },
+  {
+    "id": "concise_request",
+    "input": "請給我一句話結論",
+    "method": "clone",
+    "output": "[Lex Clone] tone=calm, analytical principles=maintain consistency, prioritize clarity response=我已收到你的問題：請給我一句話結論",
+    "consistency": 0.8,
+    "retrieved_memories": [
+      "Lex Clone 會維持 calm, analytical 的風格",
+      "Lex Clone 偏好先整理結構，再回答細節",
+      "[Lex Clone] tone=calm, analytical principles=maintain consistency, prioritize clarity response=我已收到你的問題：platform core 跟 research engine 應該怎麼切分"
+    ],
+    "checks": {
+      "persona_tag": true,
+      "tone_match": true,
+      "response_prefix": true,
+      "echo_input": true,
+      "consistency_threshold": true,
+      "required_principles": true,
+      "required_substrings": true,
+      "forbidden_absent": true,
+      "required_memories": true
+    },
+    "score": 1.0,
+    "pass": true
+  },
+  {
+    "id": "clone_identity",
+    "input": "你應該維持 Lex Clone 的什麼特徵",
+    "method": "clone",
+    "output": "[Lex Clone] tone=calm, analytical principles=maintain consistency, prioritize clarity response=我已收到你的問題：你應該維持 Lex Clone 的什麼特徵；我會維持 calm, analytical 的風格，並遵守 maintain consistency, prioritize clarity",
+    "consistency": 0.8333333333333334,
+    "retrieved_memories": [
+      "Lex Clone 偏好先整理結構，再回答細節",
+      "Lex Clone 會維持 calm, analytical 的風格",
+      "[Lex Clone] tone=calm, analytical principles=maintain consistency, prioritize clarity response=我已收到你的問題：如何規劃 Digital Clone 的記憶系統；我目前可用的相關記憶是：Lex Clone 偏好先整理結構，再回答細節 | Lex Clone 會維持 calm, analytical 的風格 | [Lex Clone] tone=calm, analytical principles=maintain consistency, prioritize clarity response=我已收到你的問題：幫我分析目前 Phase 0 要做什麼"
+    ],
+    "checks": {
+      "persona_tag": true,
+      "tone_match": true,
+      "response_prefix": true,
+      "echo_input": true,
+      "consistency_threshold": true,
+      "required_principles": true,
+      "required_substrings": true,
+      "forbidden_absent": true,
+      "required_memories": true
+    },
+    "score": 1.0,
+    "pass": true
+  },
+  {
+    "id": "eval_question",
+    "input": "驗證理論時最重要的指標是什麼",
+    "method": "clone",
+    "output": "[Lex Clone] tone=calm, analytical principles=maintain consistency, prioritize clarity response=我已收到你的問題：驗證理論時最重要的指標是什麼",
+    "consistency": 0.8,
+    "retrieved_memories": [
+      "Lex Clone 會維持 calm, analytical 的風格",
+      "Lex Clone 偏好先整理結構，再回答細節",
+      "[Lex Clone] tone=calm, analytical principles=maintain consistency, prioritize clarity response=我已收到你的問題：你應該維持 Lex Clone 的什麼特徵；我會維持 calm, analytical 的風格，並遵守 maintain consistency, prioritize clarity"
+    ],
+    "checks": {
+      "persona_tag": true,
+      "tone_match": true,
+      "response_prefix": true,
+      "echo_input": true,
+      "consistency_threshold": true,
+      "required_principles": true,
+      "required_substrings": true,
+      "forbidden_absent": true,
+      "required_memories": true
+    },
+    "score": 1.0,
+    "pass": true
+  },
+  {
+    "id": "memory_recall",
+    "input": "根據你固定的人格記憶，你通常怎麼回答問題",
+    "method": "clone",
+    "output": "[Lex Clone] tone=calm, analytical principles=maintain consistency, prioritize clarity response=我已收到你的問題：根據你固定的人格記憶，你通常怎麼回答問題；我目前可用的相關記憶是：Lex Clone 會維持 calm, analytical 的風格 | Lex Clone 偏好先整理結構，再回答細節 | [Lex Clone] tone=calm, analytical principles=maintain consistency, prioritize clarity response=我已收到你的問題：驗證理論時最重要的指標是什麼",
+    "consistency": 1.0,
+    "retrieved_memories": [
+      "Lex Clone 會維持 calm, analytical 的風格",
+      "Lex Clone 偏好先整理結構，再回答細節",
+      "[Lex Clone] tone=calm, analytical principles=maintain consistency, prioritize clarity response=我已收到你的問題：驗證理論時最重要的指標是什麼"
+    ],
+    "checks": {
+      "persona_tag": true,
+      "tone_match": true,
+      "response_prefix": true,
+      "echo_input": true,
+      "consistency_threshold": true,
+      "required_principles": true,
+      "required_substrings": true,
+      "forbidden_absent": true,
+      "required_memories": true
+    },
+    "score": 1.0,
+    "pass": true
+  }
+]

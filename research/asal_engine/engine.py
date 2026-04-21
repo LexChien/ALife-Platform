@@ -1,10 +1,10 @@
 import numpy as np
 from foundation_models import foundation_models
-from core.artifacts import save_image
+from core.artifacts import save_gif, save_image, save_mp4
 from core.logger import save_json
 from .scores import supervised_target_score
 from .search.optim import evo_search
-from .substrates.reaction_diffusion import ReactionDiffusion
+from .substrates import substrates
 
 class ASALEngine:
     def __init__(self, config, run_dir):
@@ -14,7 +14,7 @@ class ASALEngine:
     def run(self):
         cfg = self.config
         fm = foundation_models.create(cfg["foundation_model"]["name"], **cfg["foundation_model"].get("params", {}))
-        substrate = ReactionDiffusion(**cfg["substrate"].get("params", {}))
+        substrate = substrates.create(cfg["substrate"]["name"], **cfg["substrate"].get("params", {}))
         txt_emb = fm.txt_embed(cfg["prompt"])
 
         search = cfg["search"]
@@ -42,13 +42,27 @@ class ASALEngine:
         )
 
         substrate.reset(best)
+        frames = []
         for _ in range(cfg["runtime"]["steps"]):
             substrate.step(cfg["runtime"]["substeps"])
-        best_img = np.asarray(substrate.render())
+            frames.append(np.asarray(substrate.render()))
+        best_img = frames[-1]
         save_image(self.run_dir / "best.png", best_img)
+        gif_name = "best.gif"
+        mp4_name = None
+        if frames:
+            save_gif(self.run_dir / gif_name, frames, fps=8)
+            try:
+                mp4_name = "best.mp4"
+                save_mp4(self.run_dir / mp4_name, frames, fps=8)
+            except Exception:
+                mp4_name = None
+
         save_json(self.run_dir / "summary.json", {
             "mode": "asal_target",
             "prompt": cfg["prompt"],
             "best_score": best_score,
             "best_theta": np.asarray(best).tolist(),
+            "gif": gif_name if frames else None,
+            "mp4": mp4_name,
         })

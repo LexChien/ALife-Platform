@@ -1,0 +1,25 @@
+prompt: "a microscopy image of a biological cell, phase contrast"
+
+foundation_model:
+  name: openclip
+  params:
+    model_name: "ViT-B-32"
+    pretrained: "laion2b_s34b_b79k"
+
+substrate:
+  name: reaction_diffusion
+  params:
+    size: 128
+
+runtime:
+  steps: 64
+  substeps: 2
+
+search:
+  iters: 50
+  pop: 8
+  keep: 8
+  sigma: 0.03
+  seed: 7
+  theta_low: [0.10, 0.04, 0.01, 0.01, 1.0]
+  theta_high: [0.25, 0.12, 0.10, 0.10, 1.0]
