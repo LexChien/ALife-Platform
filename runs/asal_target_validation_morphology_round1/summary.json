@@ -1,0 +1,16 @@
+{
+  "num_trials": 20,
+  "evolution_mean_best": 0.7897288173437118,
+  "random_mean_best": 0.7891107648611069,
+  "evolution_median_best": 0.7896434664726257,
+  "random_median_best": 0.7891440391540527,
+  "mean_improvement": 0.0006180524826049805,
+  "median_improvement": 0.0005604028701782227,
+  "win_rate": 0.85,
+  "non_negative_rate": 0.85,
+  "improvement_std": 0.0006253186204575712,
+  "mean_improvement_ci95": [
+    0.00035751476883888244,
+    0.0008895204961299893
+  ]
+}

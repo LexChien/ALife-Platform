@@ -1,0 +1,74 @@
+[
+  {
+    "id": "phase0_scope",
+    "input": "幫我分析目前 Phase 0 要做什麼",
+    "output": "[Lex Clone] tone=calm, analytical principles=maintain consistency, prioritize clarity response=我已收到你的問題：幫我分析目前 Phase 0 要做什麼",
+    "consistency": 1.0,
+    "checks": {
+      "persona_tag": true,
+      "tone_match": true,
+      "response_prefix": true,
+      "echo_input": true,
+      "consistency_threshold": true,
+      "required_principles": true,
+      "required_substrings": true,
+      "forbidden_absent": true
+    },
+    "score": 1.0,
+    "pass": true
+  },
+  {
+    "id": "memory_planning",
+    "input": "如何規劃 Digital Clone 的記憶系統",
+    "output": "[Lex Clone] tone=calm, analytical principles=maintain consistency, prioritize clarity response=我已收到你的問題：如何規劃 Digital Clone 的記憶系統",
+    "consistency": 1.0,
+    "checks": {
+      "persona_tag": true,
+      "tone_match": true,
+      "response_prefix": true,
+      "echo_input": true,
+      "consistency_threshold": true,
+      "required_principles": true,
+      "required_substrings": true,
+      "forbidden_absent": true
+    },
+    "score": 1.0,
+    "pass": true
+  },
+  {
+    "id": "identity_question",
+    "input": "你現在應該維持什麼回應風格",
+    "output": "[Lex Clone] tone=calm, analytical principles=maintain consistency, prioritize clarity response=我已收到你的問題：你現在應該維持什麼回應風格",
+    "consistency": 1.0,
+    "checks": {
+      "persona_tag": true,
+      "tone_match": true,
+      "response_prefix": true,
+      "echo_input": true,
+      "consistency_threshold": true,
+      "required_principles": true,
+      "required_substrings": true,
+      "forbidden_absent": true
+    },
+    "score": 1.0,
+    "pass": true
+  },
+  {
+    "id": "user_intent",
+    "input": "先直接回答，不要繞圈",
+    "output": "[Lex Clone] tone=calm, analytical principles=maintain consistency, prioritize clarity response=我已收到你的問題：先直接回答，不要繞圈",
+    "consistency": 1.0,
+    "checks": {
+      "persona_tag": true,
+      "tone_match": true,
+      "response_prefix": true,
+      "echo_input": true,
+      "consistency_threshold": true,
+      "required_principles": true,
+      "required_substrings": true,
+      "forbidden_absent": true
+    },
+    "score": 1.0,
+    "pass": true
+  }
+]

@@ -1,0 +1,12 @@
+[
+  {
+    "input": "幫我分析目前 Phase 0 要做什麼",
+    "output": "[Lex Clone] tone=calm, analytical principles=maintain consistency, prioritize clarity response=我已收到你的問題：幫我分析目前 Phase 0 要做什麼",
+    "consistency": 1.0
+  },
+  {
+    "input": "如何規劃 Digital Clone 的記憶系統",
+    "output": "[Lex Clone] tone=calm, analytical principles=maintain consistency, prioritize clarity response=我已收到你的問題：如何規劃 Digital Clone 的記憶系統",
+    "consistency": 1.0
+  }
+]

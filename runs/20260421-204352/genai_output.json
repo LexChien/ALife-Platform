@@ -1,0 +1,8 @@
+{
+  "text": "[DummyLLM] prompt=Generate a futuristic AI cell organism concept context=prototype baseline",
+  "audio": {
+    "status": "stub",
+    "text": "[DummyLLM] prompt=Generate a futuristic AI cell organism concept context=prototype baseline"
+  },
+  "prompt": "Generate a futuristic AI cell organism concept"
+}

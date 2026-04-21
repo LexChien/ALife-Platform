@@ -1,0 +1,10 @@
+{
+  "num_cases": 8,
+  "clone_mean_score": 1.0,
+  "baseline_mean_score": 0.359375,
+  "clone_pass_rate": 1.0,
+  "baseline_pass_rate": 0.0,
+  "mean_improvement": 0.640625,
+  "win_rate": 1.0,
+  "non_negative_rate": 1.0
+}
