@@ -1,0 +1,19 @@
+{
+  "base": "ai_life_monorepo_proto.zip",
+  "integrated_files": {
+    "AGENTS.md": "True",
+    "README.md": "True",
+    "ASAL_Architecture.mmd": "True",
+    "log.zip": "True"
+  },
+  "history_entries": 10,
+  "history_root": "research/asal_engine/history/log",
+  "index_files": [
+    "docs/WORKLOG_INDEX.md",
+    "docs/WORKLOG_INDEX.json",
+    "tools/query_worklog.py",
+    "context/SESSION_CONTEXT.md",
+    "context/TASKS.md",
+    "context/DECISIONS.md"
+  ]
+}

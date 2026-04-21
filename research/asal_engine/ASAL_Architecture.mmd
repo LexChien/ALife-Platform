@@ -1,0 +1,42 @@
+flowchart LR
+  subgraph S[Substrate S(θ)]
+    A[Substrate Registry\n(Boids / ParticleLife / Lenia / NCA / Life-like CA)]
+    B[Simulation Runner\n(T steps, seeds)]
+    C[Renderer → Images/Video]
+    A --> B --> C
+  end
+
+  subgraph FM[Foundation Model]
+    V1[VLM_img (CLIP/DINOv2)]
+    V2[VLM_txt (prompt)]
+  end
+
+  subgraph SC[ASAL Scorers]
+    T[Supervised Target\nmaximize <img_T, txt_T> (Eq.2)]
+    OE[Open-Endedness\nmin hist. NN sim (Eq.3)]
+    IL[Illumination\nmin NN across sims (Eq.4)]
+  end
+
+  subgraph OPT[Search / Optim]
+    O1[Sep-CMA-ES / Evo]
+    O2[Genetic (μ+λ)]
+    O3[Selection & Archive]
+  end
+
+  subgraph AR[Artifacts & UI]
+    R[(Artifacts Store\nparams, frames, embeddings, scores)]
+    D[Atlas / UMAP / Dashboard]
+  end
+
+  C --> V1
+  V2 --> T
+  V1 --> T
+  V1 --> OE
+  V1 --> IL
+
+  T --> O1 --> O3
+  OE --> O2 --> O3
+  IL --> O2
+
+  O3 --> S
+  O3 --> R --> D
