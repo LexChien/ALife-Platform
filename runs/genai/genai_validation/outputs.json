@@ -1,0 +1,126 @@
+[
+  {
+    "id": "contextual_generation",
+    "genai_output": {
+      "text": "[DummyLLM] prompt=Generate a futuristic AI cell organism concept context=prototype baseline system=none",
+      "audio": {
+        "status": "stub",
+        "text": "[DummyLLM] prompt=Generate a futuristic AI cell organism concept context=prototype baseline system=none"
+      },
+      "prompt": "Generate a futuristic AI cell organism concept",
+      "context": "prototype baseline",
+      "system": null,
+      "llm": {
+        "backend": "dummy",
+        "model_family": "dummy",
+        "runtime": {
+          "backend": "dummy",
+          "model_family": "dummy",
+          "mode": "dummy"
+        },
+        "healthcheck": {
+          "backend": "dummy",
+          "model_family": "dummy",
+          "mode": "dummy",
+          "ok": true
+        }
+      }
+    },
+    "genai_summary": {
+      "mode": "genai_multimodal_generation",
+      "prompt": "Generate a futuristic AI cell organism concept",
+      "has_context": true,
+      "text_length": 103,
+      "has_audio": true,
+      "has_image": true,
+      "llm_backend": "dummy",
+      "llm_model_family": "dummy",
+      "llm_runtime": {
+        "backend": "dummy",
+        "model_family": "dummy",
+        "mode": "dummy"
+      },
+      "llm_healthcheck": {
+        "backend": "dummy",
+        "model_family": "dummy",
+        "mode": "dummy",
+        "ok": true
+      }
+    },
+    "baseline_output": {
+      "text": "Generate a futuristic AI cell organism concept | prototype baseline",
+      "audio": null,
+      "prompt": "Generate a futuristic AI cell organism concept"
+    },
+    "baseline_summary": {
+      "mode": "genai_naive_baseline",
+      "prompt": "Generate a futuristic AI cell organism concept",
+      "has_context": true,
+      "text_length": 67,
+      "has_audio": false,
+      "has_image": false
+    }
+  },
+  {
+    "id": "prompt_only_generation",
+    "genai_output": {
+      "text": "[DummyLLM] prompt=Create a synthetic microbial habitat scene context=none system=none",
+      "audio": {
+        "status": "stub",
+        "text": "[DummyLLM] prompt=Create a synthetic microbial habitat scene context=none system=none"
+      },
+      "prompt": "Create a synthetic microbial habitat scene",
+      "context": null,
+      "system": null,
+      "llm": {
+        "backend": "dummy",
+        "model_family": "dummy",
+        "runtime": {
+          "backend": "dummy",
+          "model_family": "dummy",
+          "mode": "dummy"
+        },
+        "healthcheck": {
+          "backend": "dummy",
+          "model_family": "dummy",
+          "mode": "dummy",
+          "ok": true
+        }
+      }
+    },
+    "genai_summary": {
+      "mode": "genai_multimodal_generation",
+      "prompt": "Create a synthetic microbial habitat scene",
+      "has_context": false,
+      "text_length": 85,
+      "has_audio": true,
+      "has_image": true,
+      "llm_backend": "dummy",
+      "llm_model_family": "dummy",
+      "llm_runtime": {
+        "backend": "dummy",
+        "model_family": "dummy",
+        "mode": "dummy"
+      },
+      "llm_healthcheck": {
+        "backend": "dummy",
+        "model_family": "dummy",
+        "mode": "dummy",
+        "ok": true
+      }
+    },
+    "baseline_output": {
+      "text": "Create a synthetic microbial habitat scene",
+      "audio": null,
+      "prompt": "Create a synthetic microbial habitat scene"
+    },
+    "baseline_summary": {
+      "mode": "genai_naive_baseline",
+      "prompt": "Create a synthetic microbial habitat scene",
+      "has_context": false,
+      "text_length": 42,
+      "has_audio": false,
+      "has_image": false
+    }
+  }
+]

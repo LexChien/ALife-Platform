@@ -1,0 +1,55 @@
+{
+  "schema_version": "1.0",
+  "status": "completed",
+  "system": "genai",
+  "mode": "genai_multimodal_generation",
+  "config_path": "configs/genai/gemma_llama_cpp.yaml",
+  "run_dir": "runs/genai/20260422-103746",
+  "started_at": "2026-04-22T10:37:46+08:00",
+  "completed_at": "2026-04-22T10:38:43+08:00",
+  "run_elapsed_seconds": 57.0,
+  "artifacts": {
+    "image": "generated.png",
+    "output": "genai_output.json"
+  },
+  "metrics": {
+    "text_length": 1206,
+    "has_context": true,
+    "has_audio": true,
+    "has_image": true
+  },
+  "details": {
+    "prompt": "Generate a futuristic AI cell organism concept",
+    "llm_backend": "llama_cpp",
+    "llm_model_family": "gemma",
+    "llm_runtime": {
+      "model_path": "models/gemma/gemma.gguf",
+      "context_length": 4096,
+      "n_gpu_layers": 0,
+      "temperature": 0.7,
+      "max_tokens": 256,
+      "chat_format": null,
+      "driver": "subprocess",
+      "cli_path": "third_party/llama.cpp/build/bin/llama-completion"
+    },
+    "llm_healthcheck": {
+      "backend": "llama_cpp",
+      "model_family": "gemma",
+      "model_path": "models/gemma/gemma.gguf",
+      "exists": true,
+      "binding_available": false,
+      "cli_available": true,
+      "cli_path": "third_party/llama.cpp/build/bin/llama-completion",
+      "driver": "subprocess",
+      "ok": true
+    },
+    "runtime": {
+      "device_request": "cpu",
+      "resolved_device": "cpu",
+      "precision": "fp32",
+      "backend": "local"
+    },
+    "tracking_backend": null,
+    "active_profile": "cpu_smoke"
+  }
+}

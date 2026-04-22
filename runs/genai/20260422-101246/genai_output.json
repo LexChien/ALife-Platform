@@ -1,0 +1,25 @@
+{
+  "text": "[DummyLLM] prompt=Generate a futuristic AI cell organism concept context=prototype baseline system=none",
+  "audio": {
+    "status": "stub",
+    "text": "[DummyLLM] prompt=Generate a futuristic AI cell organism concept context=prototype baseline system=none"
+  },
+  "prompt": "Generate a futuristic AI cell organism concept",
+  "context": "prototype baseline",
+  "system": null,
+  "llm": {
+    "backend": "dummy",
+    "model_family": "dummy",
+    "runtime": {
+      "backend": "dummy",
+      "model_family": "dummy",
+      "mode": "dummy"
+    },
+    "healthcheck": {
+      "backend": "dummy",
+      "model_family": "dummy",
+      "mode": "dummy",
+      "ok": true
+    }
+  }
+}

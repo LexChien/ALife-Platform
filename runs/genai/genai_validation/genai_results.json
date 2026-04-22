@@ -1,0 +1,66 @@
+[
+  {
+    "id": "contextual_generation",
+    "method": "genai",
+    "prompt": "Generate a futuristic AI cell organism concept",
+    "context": "prototype baseline",
+    "text": "[DummyLLM] prompt=Generate a futuristic AI cell organism concept context=prototype baseline system=none",
+    "llm": {
+      "backend": "dummy",
+      "model_family": "dummy",
+      "runtime": {
+        "backend": "dummy",
+        "model_family": "dummy",
+        "mode": "dummy"
+      },
+      "healthcheck": {
+        "backend": "dummy",
+        "model_family": "dummy",
+        "mode": "dummy",
+        "ok": true
+      }
+    },
+    "checks": {
+      "expected_prefix": true,
+      "prompt_reflected": true,
+      "context_reflected": true,
+      "required_substrings": true,
+      "has_audio": true,
+      "has_image": true
+    },
+    "score": 1.0,
+    "pass": true
+  },
+  {
+    "id": "prompt_only_generation",
+    "method": "genai",
+    "prompt": "Create a synthetic microbial habitat scene",
+    "context": null,
+    "text": "[DummyLLM] prompt=Create a synthetic microbial habitat scene context=none system=none",
+    "llm": {
+      "backend": "dummy",
+      "model_family": "dummy",
+      "runtime": {
+        "backend": "dummy",
+        "model_family": "dummy",
+        "mode": "dummy"
+      },
+      "healthcheck": {
+        "backend": "dummy",
+        "model_family": "dummy",
+        "mode": "dummy",
+        "ok": true
+      }
+    },
+    "checks": {
+      "expected_prefix": true,
+      "prompt_reflected": true,
+      "context_reflected": true,
+      "required_substrings": true,
+      "has_audio": true,
+      "has_image": true
+    },
+    "score": 1.0,
+    "pass": true
+  }
+]

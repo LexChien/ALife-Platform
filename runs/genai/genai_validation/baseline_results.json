@@ -1,0 +1,38 @@
+[
+  {
+    "id": "contextual_generation",
+    "method": "naive_baseline",
+    "prompt": "Generate a futuristic AI cell organism concept",
+    "context": "prototype baseline",
+    "text": "Generate a futuristic AI cell organism concept | prototype baseline",
+    "llm": null,
+    "checks": {
+      "expected_prefix": false,
+      "prompt_reflected": true,
+      "context_reflected": true,
+      "required_substrings": true,
+      "has_audio": false,
+      "has_image": false
+    },
+    "score": 0.5,
+    "pass": false
+  },
+  {
+    "id": "prompt_only_generation",
+    "method": "naive_baseline",
+    "prompt": "Create a synthetic microbial habitat scene",
+    "context": null,
+    "text": "Create a synthetic microbial habitat scene",
+    "llm": null,
+    "checks": {
+      "expected_prefix": false,
+      "prompt_reflected": true,
+      "context_reflected": true,
+      "required_substrings": true,
+      "has_audio": false,
+      "has_image": false
+    },
+    "score": 0.5,
+    "pass": false
+  }
+]

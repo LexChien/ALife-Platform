@@ -1,0 +1,35 @@
+{
+  "text": "system\nYou are a multimodal assistant for ALife-Platform.\nuser\nContext:\nprototype baseline\n\nUser request:\nGenerate a futuristic AI cell organism concept\nmodel\n<|channel>thought\nHere's a thinking process that leads to the suggested concepts:\n\n1.  **Analyze the Request:** The user wants a \"futuristic AI cell organism concept.\"\n    *   **Core Components:**\n        *   Futuristic (Implies advanced tech, bio-integration, non-traditional biology).\n        *   AI (Implies consciousness, complex processing, self-optimization).\n        *   Cell Organism (Implies biological structure, metabolism, replication, physical form).\n\n2.  **Establish Design Principles (What should it *feel* like?):** A good concept needs a theme. I should aim for concepts that blend the organic and the digital.\n    *   *Themes:* Cybernetic, Symbiotic, Self-Replicating, Energy-based, Fractal.\n\n3.  **Brainstorm Core Concepts (Iterative Development):**\n\n    *   *Idea 1: Focus on Data/Information.* How can cells store data? -> Living processors. (Leads to the \"Neural Lattice\" concept).\n    *   *Idea 2: Focus on Adaptation/Environment.* How can it interact with the world? -> Sensing, changing form. (Leads to the \"Adaptive Swarm",
+  "audio": {
+    "status": "stub",
+    "text": "system\nYou are a multimodal assistant for ALife-Platform.\nuser\nContext:\nprototype baseline\n\nUser request:\nGenerate a futuristic AI cell organism concept\nmodel\n<|channel>thought\nHere's a thinking process that leads to the suggested concepts:\n\n1.  **Analyze the Request:** The user wants a \"futuristic AI cell organism concept.\"\n    *   **Core Components:**\n        *   Futuristic (Implies advanced tech, bio-integration, non-traditional biology).\n        *   AI (Implies consciousness, complex processing, self-optimization).\n        *   Cell Organism (Implies biological structure, metabolism, replication, physical form).\n\n2.  **Establish Design Principles (What should it *feel* like?):** A good concept needs a theme. I should aim for concepts that blend the organic and the digital.\n    *   *Themes:* Cybernetic, Symbiotic, Self-Replicating, Energy-based, Fractal.\n\n3.  **Brainstorm Core Concepts (Iterative Development):**\n\n    *   *Idea 1: Focus on Data/Information.* How can cells store data? -> Living processors. (Leads to the \"Neural Lattice\" concept).\n    *   *Idea 2: Focus on Adaptation/Environment.* How can it interact with the world? -> Sensing, changing form. (Leads to the \"Adaptive Swarm"
+  },
+  "prompt": "Generate a futuristic AI cell organism concept",
+  "context": "prototype baseline",
+  "system": "You are a multimodal assistant for ALife-Platform.",
+  "llm": {
+    "backend": "llama_cpp",
+    "model_family": "gemma",
+    "runtime": {
+      "model_path": "models/gemma/gemma.gguf",
+      "context_length": 4096,
+      "n_gpu_layers": 0,
+      "temperature": 0.7,
+      "max_tokens": 256,
+      "chat_format": null,
+      "driver": "subprocess",
+      "cli_path": "third_party/llama.cpp/build/bin/llama-completion"
+    },
+    "healthcheck": {
+      "backend": "llama_cpp",
+      "model_family": "gemma",
+      "model_path": "models/gemma/gemma.gguf",
+      "exists": true,
+      "binding_available": false,
+      "cli_available": true,
+      "cli_path": "third_party/llama.cpp/build/bin/llama-completion",
+      "driver": "subprocess",
+      "ok": true
+    }
+  }
+}

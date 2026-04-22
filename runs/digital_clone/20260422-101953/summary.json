@@ -1,0 +1,39 @@
+{
+  "schema_version": "1.0",
+  "status": "completed",
+  "system": "digital_clone",
+  "mode": "digital_clone_session",
+  "config_path": "configs/clone/clone_baseline.yaml",
+  "run_dir": "runs/digital_clone/20260422-101953",
+  "started_at": "2026-04-22T10:19:53+08:00",
+  "completed_at": "2026-04-22T10:19:53+08:00",
+  "run_elapsed_seconds": 0.0,
+  "artifacts": {
+    "outputs": "digital_clone_outputs.json"
+  },
+  "metrics": {
+    "num_inputs": 2,
+    "mean_consistency": 1.0,
+    "min_consistency": 1.0,
+    "max_consistency": 1.0,
+    "retrieval_hit_rate": 0.5
+  },
+  "details": {
+    "persona_name": "Lex Clone",
+    "llm_backend": "dummy",
+    "llm_model_family": "dummy",
+    "llm_runtime": {
+      "backend": "dummy",
+      "model_family": "dummy",
+      "mode": "dummy"
+    },
+    "runtime": {
+      "device_request": "cpu",
+      "resolved_device": "cpu",
+      "precision": "fp32",
+      "backend": "local"
+    },
+    "tracking_backend": null,
+    "active_profile": "cpu_smoke"
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.0",
+  "status": "completed",
+  "system": "asal",
+  "mode": "asal_target",
+  "config_path": "configs/asal/target_cell_clip.yaml",
+  "run_dir": "runs/asal/20260422-020824",
+  "started_at": "2026-04-22T02:08:24+08:00",
+  "completed_at": "2026-04-22T02:11:02+08:00",
+  "run_elapsed_seconds": 158.0,
+  "artifacts": {
+    "image": "best.png",
+    "gif": "best.gif",
+    "mp4": null
+  },
+  "metrics": {
+    "best_score": 0.26158270239830017,
+    "num_frames": 64,
+    "search_iters": 50,
+    "search_pop": 8,
+    "search_keep": 8
+  },
+  "details": {
+    "prompt": "a microscopy image of a biological cell, phase contrast",
+    "best_theta": [
+      0.1,
+      0.11892304247731839,
+      0.033187062463454126,
+      0.1,
+      1.0
+    ],
+    "foundation_model": "openclip",
+    "substrate": "reaction_diffusion"
+  }
+}

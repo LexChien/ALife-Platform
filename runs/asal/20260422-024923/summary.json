@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.0",
+  "status": "completed",
+  "system": "asal",
+  "mode": "asal_target",
+  "config_path": "configs/asal/target_cell_fullopt_400_80_32.yaml",
+  "run_dir": "runs/asal/20260422-024923",
+  "started_at": "2026-04-22T02:49:23+08:00",
+  "completed_at": "2026-04-22T03:22:57+08:00",
+  "run_elapsed_seconds": 2014.0,
+  "artifacts": {
+    "image": "best.png",
+    "gif": "best.gif",
+    "mp4": null
+  },
+  "metrics": {
+    "best_score": 0.24271252751350403,
+    "num_frames": 400,
+    "search_iters": 80,
+    "search_pop": 32,
+    "search_keep": 32
+  },
+  "details": {
+    "prompt": "a biological cell",
+    "best_theta": [
+      0.2155994082015415,
+      0.09260006486556979,
+      0.09163869715228945,
+      0.012863725191362311,
+      1.0
+    ],
+    "foundation_model": "openclip",
+    "substrate": "reaction_diffusion"
+  }
+}

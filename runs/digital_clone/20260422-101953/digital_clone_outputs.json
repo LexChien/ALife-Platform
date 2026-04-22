@@ -1,0 +1,51 @@
+[
+  {
+    "input": "幫我分析目前 Phase 0 要做什麼",
+    "output": "[Lex Clone] tone=calm, analytical principles=maintain consistency, prioritize clarity response=[DummyLLM] prompt=幫我分析目前 Phase 0 要做什麼 context=none system=You are Lex Clone. Tone: calm, analytical. Principles: maintain consistency; prioritize clarity; respect user intent. Goals: support long-term interaction; retain identity coherence.",
+    "consistency": 1.0,
+    "retrieved_memories": [],
+    "system": "You are Lex Clone. Tone: calm, analytical. Principles: maintain consistency; prioritize clarity; respect user intent. Goals: support long-term interaction; retain identity coherence.",
+    "context": null,
+    "llm": {
+      "backend": "dummy",
+      "model_family": "dummy",
+      "runtime": {
+        "backend": "dummy",
+        "model_family": "dummy",
+        "mode": "dummy"
+      },
+      "healthcheck": {
+        "backend": "dummy",
+        "model_family": "dummy",
+        "mode": "dummy",
+        "ok": true
+      }
+    }
+  },
+  {
+    "input": "如何規劃 Digital Clone 的記憶系統",
+    "output": "[Lex Clone] tone=calm, analytical principles=maintain consistency, prioritize clarity response=[DummyLLM] prompt=如何規劃 Digital Clone 的記憶系統 context=幫我分析目前 Phase 0 要做什麼\n[Lex Clone] tone=calm, analytical principles=maintain consistency, prioritize clarity response=[DummyLLM] prompt=幫我分析目前 Phase 0 要做什麼 context=none system=You are Lex Clone. Tone: calm, analytical. Principles: maintain consistency; prioritize clarity; respect user intent. Goals: support long-term interaction; retain identity coherence. system=You are Lex Clone. Tone: calm, analytical. Principles: maintain consistency; prioritize clarity; respect user intent. Goals: support long-term interaction; retain identity coherence.",
+    "consistency": 1.0,
+    "retrieved_memories": [
+      "幫我分析目前 Phase 0 要做什麼",
+      "[Lex Clone] tone=calm, analytical principles=maintain consistency, prioritize clarity response=[DummyLLM] prompt=幫我分析目前 Phase 0 要做什麼 context=none system=You are Lex Clone. Tone: calm, analytical. Principles: maintain consistency; prioritize clarity; respect user intent. Goals: support long-term interaction; retain identity coherence."
+    ],
+    "system": "You are Lex Clone. Tone: calm, analytical. Principles: maintain consistency; prioritize clarity; respect user intent. Goals: support long-term interaction; retain identity coherence.",
+    "context": "幫我分析目前 Phase 0 要做什麼\n[Lex Clone] tone=calm, analytical principles=maintain consistency, prioritize clarity response=[DummyLLM] prompt=幫我分析目前 Phase 0 要做什麼 context=none system=You are Lex Clone. Tone: calm, analytical. Principles: maintain consistency; prioritize clarity; respect user intent. Goals: support long-term interaction; retain identity coherence.",
+    "llm": {
+      "backend": "dummy",
+      "model_family": "dummy",
+      "runtime": {
+        "backend": "dummy",
+        "model_family": "dummy",
+        "mode": "dummy"
+      },
+      "healthcheck": {
+        "backend": "dummy",
+        "model_family": "dummy",
+        "mode": "dummy",
+        "ok": true
+      }
+    }
+  }
+]

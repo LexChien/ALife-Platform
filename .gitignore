@@ -1,8 +1,3 @@
 .chroma_db/
 models/
 third_party/
-
-runs/asal/
-runs/genai/
-runs/test-genai-engine/
-runs/digital_clone/20*/

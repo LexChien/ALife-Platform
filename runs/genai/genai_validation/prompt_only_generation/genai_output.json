@@ -1,0 +1,25 @@
+{
+  "text": "[DummyLLM] prompt=Create a synthetic microbial habitat scene context=none system=none",
+  "audio": {
+    "status": "stub",
+    "text": "[DummyLLM] prompt=Create a synthetic microbial habitat scene context=none system=none"
+  },
+  "prompt": "Create a synthetic microbial habitat scene",
+  "context": null,
+  "system": null,
+  "llm": {
+    "backend": "dummy",
+    "model_family": "dummy",
+    "runtime": {
+      "backend": "dummy",
+      "model_family": "dummy",
+      "mode": "dummy"
+    },
+    "healthcheck": {
+      "backend": "dummy",
+      "model_family": "dummy",
+      "mode": "dummy",
+      "ok": true
+    }
+  }
+}
