@@ -1,3 +1,7 @@
 .chroma_db/
-models/
+models/*
+!models/.gitkeep
+!models/gemma/
+models/gemma/*
+!models/gemma/.gitkeep
 third_party/
