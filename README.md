@@ -1,71 +1,290 @@
-# alife-platform
+# ALife-Platform
 
-This is a practical integration prototype for `alife-platform` that combines:
+`ALife-Platform` is a local-first research and integration repository that combines:
 
-- `research/asal_engine/` for ASAL-style artificial life search
-- `core/` for shared runtime, config, artifacts, registry, logging
-- `foundation_models/` for reusable FM backends
-- `digital_clone/` for identity / memory / consistency baseline
-- `genai/` for generation adapters
-- `apps/` as unified CLI entrypoints
+- `ASAL`: artificial life search and evaluation
+- `Digital Clone`: persona, memory, retrieval, and consistency workflows
+- `GenAI`: text/image/voice generation pipelines
+- shared platform services for config, runtime, logging, artifacts, and evaluation
 
-## Goals
+The repository is no longer planning-only. It contains runnable CLI entrypoints, evaluation paths, local run artifacts, and a working local `Gemma 4 + llama.cpp` integration path for `GenAI`.
 
-1. Preserve ASAL as a research engine
-2. Move common runtime concerns into platform core
-3. Create a future-ready structure for:
-   - Digital Clone
-   - Artificial Life / ASAL
-   - Generative AI
+## Current Scope
 
-## Quick start
+What works now:
+
+- shared config loading with profile overrides
+- shared runtime metadata and run summaries
+- runnable CLI entrypoints for `ASAL`, `Digital Clone`, and `GenAI`
+- evaluation entrypoint at `apps/eval_cli.py`
+- OpenCLIP-based foundation model path for ASAL
+- local `Gemma 4 GGUF` execution through `llama.cpp` subprocess integration
+
+What is still incomplete:
+
+- many subsystems are still baseline-quality, not final research-quality
+- `ASAL` substrate/search coverage is still narrow
+- `Digital Clone` evaluation is still lightweight compared with a full long-term identity system
+- `GenAI` image/voice adapters are still dummy paths
+- Gemma 4 text output currently works, but output cleaning can still be improved
+
+## Repository Layout
+
+```text
+apps/                 Unified CLI entrypoints
+configs/              YAML configs for ASAL / Clone / GenAI
+core/                 Shared config, runtime, logging, tracking, storage
+digital_clone/        Persona, memory, prompt building, evaluation
+docs/                 Status, plans, architecture documents
+foundation_models/    OpenCLIP and other FM adapters
+genai/                Multimodal generation and LLM adapter layer
+log/                  Project work logs
+models/               Local model directory skeleton
+research/asal_engine/ ASAL engine and imported ASAL history
+runs/                 Local run outputs and validation artifacts
+tests/                Unit and integration-style tests
+tools/                Utility scripts such as CUDA / llama.cpp checks
+```
+
+## Main Entry Points
+
+Run a subsystem:
 
 ```bash
-python -m venv .venv
+./.venv/bin/python apps/asal_cli.py --config configs/asal/target_cell.yaml
+./.venv/bin/python apps/clone_cli.py --config configs/clone/clone_baseline.yaml
+./.venv/bin/python apps/genai_cli.py --config configs/genai/genai_baseline.yaml
+```
+
+Run evaluation:
+
+```bash
+./.venv/bin/python apps/eval_cli.py asal
+./.venv/bin/python apps/eval_cli.py clone
+./.venv/bin/python apps/eval_cli.py genai
+```
+
+Each CLI writes outputs under `runs/` and a normalized `summary.json` for the run.
+
+## Environment Setup
+
+Create and install the local environment:
+
+```bash
+python3 -m venv .venv
 source .venv/bin/activate
-pip install -r requirements.txt
-
-python apps/asal_cli.py --config configs/asal/target_cell.yaml
-python apps/clone_cli.py --config configs/clone/clone_baseline.yaml
-python apps/genai_cli.py --config configs/genai/genai_baseline.yaml
+python -m pip install --upgrade pip
+python -m pip install -r requirements.txt
 ```
 
-On Jetson-class hosts, `apps/asal_cli.py` will automatically re-exec into
-`ALIFE_ASAL_PYTHON` or `/home/lexchien/Documents/ASAL/.venv/bin/python` when
-the current interpreter cannot see CUDA. This avoids accidentally running ASAL
-with an incompatible desktop PyTorch wheel such as `torch 2.11 + cu130`.
+If you want to run tests:
 
-## Status
-
-This repository is a Phase 0 / Phase 1 prototype:
-- Core runtime works
-- ASAL engine skeleton works
-- Foundation model registry works
-- Digital clone baseline works
-- GenAI baseline works
-
-What still needs real implementation:
-- Replace random/tiny stubs with actual OpenCLIP / TinyVLM / GGUF
-- Import full ASAL logic into `research/asal_engine/`
-- Add trained NCA / Lenia / MAP-Elites
-- Add long-term memory store and real consistency evaluation
-
-## Integrated ASAL history
-
-This prototype now includes imported ASAL project history:
-- `research/asal_engine/AGENTS.md`
-- `research/asal_engine/README_IMPORTED.md`
-- `research/asal_engine/ASAL_Architecture.mmd`
-- `research/asal_engine/history/log/`
-- `docs/WORKLOG_INDEX.md`
-- `tools/query_worklog.py`
-
-Search historical notes:
 ```bash
-python tools/query_worklog.py jetson
-python tools/query_worklog.py cuda openclip
-python tools/query_worklog.py runtime summary --limit 10
+./.venv/bin/python -m unittest discover -s tests
 ```
 
-The tool searches both root project logs under `log/` and imported ASAL
-historical logs under `research/asal_engine/history/log/`.
+## Config Profiles
+
+Configs support:
+
+- `defaults`
+- `profiles`
+- `active_profile`
+- `--profile <name>`
+- `ALIFE_PROFILE=<name>`
+
+Example:
+
+```bash
+./.venv/bin/python apps/genai_cli.py \
+  --config configs/genai/gemma_llama_cpp.yaml \
+  --profile cpu_smoke
+```
+
+The loader merges:
+
+1. `defaults`
+2. top-level config body
+3. selected profile override
+
+## ASAL
+
+Primary files:
+
+- [apps/asal_cli.py](/home/lexchien/Documents/ALife-Platform/apps/asal_cli.py)
+- [research/asal_engine/engine.py](/home/lexchien/Documents/ALife-Platform/research/asal_engine/engine.py)
+- [configs/asal/target_cell.yaml](/home/lexchien/Documents/ALife-Platform/configs/asal/target_cell.yaml)
+- [configs/asal/target_cell_eval.yaml](/home/lexchien/Documents/ALife-Platform/configs/asal/target_cell_eval.yaml)
+
+Run baseline search:
+
+```bash
+./.venv/bin/python apps/asal_cli.py --config configs/asal/target_cell.yaml
+```
+
+Run evaluation:
+
+```bash
+./.venv/bin/python apps/eval_cli.py asal \
+  --config configs/asal/target_cell_eval.yaml
+```
+
+Jetson note:
+
+- on `aarch64`, `apps/asal_cli.py` can re-exec into a known-good interpreter when the current Python cannot see CUDA
+- this is meant to avoid accidentally using an incompatible system PyTorch wheel
+
+## Digital Clone
+
+Primary files:
+
+- [apps/clone_cli.py](/home/lexchien/Documents/ALife-Platform/apps/clone_cli.py)
+- [digital_clone/engine.py](/home/lexchien/Documents/ALife-Platform/digital_clone/engine.py)
+- [digital_clone/memory/store.py](/home/lexchien/Documents/ALife-Platform/digital_clone/memory/store.py)
+- [digital_clone/decision/policy.py](/home/lexchien/Documents/ALife-Platform/digital_clone/decision/policy.py)
+- [configs/clone/clone_baseline.yaml](/home/lexchien/Documents/ALife-Platform/configs/clone/clone_baseline.yaml)
+- [configs/clone/clone_gemma_llama_cpp.yaml](/home/lexchien/Documents/ALife-Platform/configs/clone/clone_gemma_llama_cpp.yaml)
+
+Run baseline:
+
+```bash
+./.venv/bin/python apps/clone_cli.py \
+  --config configs/clone/clone_baseline.yaml
+```
+
+Run evaluation:
+
+```bash
+./.venv/bin/python apps/eval_cli.py clone
+```
+
+Current state:
+
+- retrieval and prompt construction exist
+- shared LLM adapter integration exists
+- evaluation is usable, but still not equivalent to a production-grade long-term identity system
+
+## GenAI
+
+Primary files:
+
+- [apps/genai_cli.py](/home/lexchien/Documents/ALife-Platform/apps/genai_cli.py)
+- [genai/multimodal/engine.py](/home/lexchien/Documents/ALife-Platform/genai/multimodal/engine.py)
+- [genai/llm/adapter.py](/home/lexchien/Documents/ALife-Platform/genai/llm/adapter.py)
+- [genai/llm/backends/llama_cpp.py](/home/lexchien/Documents/ALife-Platform/genai/llm/backends/llama_cpp.py)
+- [configs/genai/genai_baseline.yaml](/home/lexchien/Documents/ALife-Platform/configs/genai/genai_baseline.yaml)
+- [configs/genai/gemma_llama_cpp.yaml](/home/lexchien/Documents/ALife-Platform/configs/genai/gemma_llama_cpp.yaml)
+
+Run dummy baseline:
+
+```bash
+./.venv/bin/python apps/genai_cli.py \
+  --config configs/genai/genai_baseline.yaml
+```
+
+Run local Gemma 4 path:
+
+```bash
+./.venv/bin/python apps/genai_cli.py \
+  --config configs/genai/gemma_llama_cpp.yaml \
+  --profile cpu_smoke
+```
+
+Run GenAI evaluation:
+
+```bash
+./.venv/bin/python apps/eval_cli.py genai
+```
+
+## Local Gemma 4 + llama.cpp
+
+The repository now supports a local `Gemma 4 GGUF` path through `llama.cpp`.
+
+Current runtime mode:
+
+- backend: `llama_cpp`
+- driver: `subprocess`
+- CLI: `third_party/llama.cpp/build/bin/llama-completion`
+- model path: `models/gemma/gemma.gguf`
+
+Important:
+
+- the repository tracks the `models/` directory skeleton only
+- the actual `.gguf` file is local-only
+- `third_party/llama.cpp/` is also local-only
+
+Check the runtime:
+
+```bash
+./.venv/bin/python tools/check_llama_cpp.py \
+  --config configs/genai/gemma_llama_cpp.yaml
+```
+
+Expected success indicators:
+
+- `exists: True`
+- `cli_available: True`
+- `driver: subprocess`
+- `ok: True`
+
+## CUDA / OpenCLIP Verification
+
+Check the CUDA environment and OpenCLIP device placement:
+
+```bash
+./.venv/bin/python tools/check_cuda.py
+```
+
+This verifies:
+
+- Python executable
+- PyTorch import
+- CUDA availability
+- CUDA tensor execution
+- OpenCLIP adapter device
+- OpenCLIP model parameter device
+
+## Runs And Artifacts
+
+The repository stores run outputs under `runs/`, for example:
+
+- `runs/asal/...`
+- `runs/digital_clone/...`
+- `runs/genai/...`
+
+Typical files include:
+
+- `summary.json`
+- generated images
+- evaluation reports
+- subsystem output payloads such as `genai_output.json`
+
+## Logs And Historical Notes
+
+Project work logs are under:
+
+- [log/](/home/lexchien/Documents/ALife-Platform/log)
+
+Imported historical ASAL records remain under:
+
+- [research/asal_engine/history/](/home/lexchien/Documents/ALife-Platform/research/asal_engine/history)
+
+Useful references:
+
+- [docs/STATUS.md](/home/lexchien/Documents/ALife-Platform/docs/STATUS.md)
+- [log/2026-04-22/llm_phase_a_execution.md](/home/lexchien/Documents/ALife-Platform/log/2026-04-22/llm_phase_a_execution.md)
+- [log/2026-04-22/openclip_device_auto_fix.md](/home/lexchien/Documents/ALife-Platform/log/2026-04-22/openclip_device_auto_fix.md)
+
+## Practical Status
+
+Best short summary:
+
+- platform wiring is real
+- CLI entrypoints are real
+- evaluation entrypoints are real
+- local Gemma 4 inference is real
+- many research and product layers are still baseline-grade
+
+If you want the current detailed project state, start with:
+
+- [docs/STATUS.md](/home/lexchien/Documents/ALife-Platform/docs/STATUS.md)
