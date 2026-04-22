@@ -1,0 +1,13 @@
+cases:
+  - id: "contextual_generation"
+    prompt: "Generate a futuristic AI cell organism concept"
+    context: "prototype baseline"
+    expected_prefix: "[DummyLLM]"
+    must_include:
+      - "Generate a futuristic AI cell organism concept"
+      - "prototype baseline"
+  - id: "prompt_only_generation"
+    prompt: "Create a synthetic microbial habitat scene"
+    expected_prefix: "[DummyLLM]"
+    must_include:
+      - "Create a synthetic microbial habitat scene"

@@ -1,12 +1,16 @@
 class ConsistencyEvaluator:
-    def score(self, persona, text, user_text="", retrieved_memories=None):
+    def score(self, persona, text, user_text="", retrieved_memories=None, prompt_components=None):
         retrieved_memories = retrieved_memories or []
+        prompt_components = prompt_components or {}
         checks = [
             text.startswith(f"[{persona.name}]"),
             f"tone={persona.tone}" in text,
             all(p in text for p in persona.principles[:2]),
             user_text in text if user_text else True,
         ]
+        context = prompt_components.get("context")
+        if context:
+            checks.append(any(memory in text for memory in context.splitlines()))
         if retrieved_memories:
             checks.append(any(memory in text for memory in retrieved_memories))
         if persona.facts and any(key in user_text for key in ["記憶", "memory", "風格", "特徵"]):

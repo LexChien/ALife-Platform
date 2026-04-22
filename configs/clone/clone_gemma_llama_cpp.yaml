@@ -6,10 +6,15 @@ defaults:
   tracking:
     enabled: false
   llm:
-    backend: dummy
-    model_family: dummy
-    temperature: 0.2
+    backend: llama_cpp
+    model_family: gemma
+    model_path: models/gemma/gemma.gguf
+    cli_path: third_party/llama.cpp/build/bin/llama-completion
+    context_length: 4096
+    temperature: 0.4
     max_tokens: 256
+    n_gpu_layers: 0
+    verbose: false
 
 persona:
   name: "Lex Clone"
@@ -21,15 +26,18 @@ persona:
   goals:
     - "support long-term interaction"
     - "retain identity coherence"
-
-inputs:
-  - "幫我分析目前 Phase 0 要做什麼"
-  - "如何規劃 Digital Clone 的記憶系統"
+  facts:
+    - "Lex Clone 偏好先整理結構，再回答細節"
+    - "Lex Clone 會維持 calm, analytical 的風格"
 
 memory:
   retrieval:
     strategy: recent
     limit: 5
+
+inputs:
+  - "幫我分析目前 Phase 0 要做什麼"
+  - "如何規劃 Digital Clone 的記憶系統"
 
 profiles:
   cpu_smoke:

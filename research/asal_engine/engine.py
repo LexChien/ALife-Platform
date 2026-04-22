@@ -1,7 +1,6 @@
 import numpy as np
 from foundation_models import foundation_models
 from core.artifacts import save_gif, save_image, save_mp4
-from core.logger import save_json
 from .scores import supervised_target_score
 from .search.optim import evo_search
 from .substrates import substrates
@@ -58,11 +57,17 @@ class ASALEngine:
             except Exception:
                 mp4_name = None
 
-        save_json(self.run_dir / "summary.json", {
+        return {
             "mode": "asal_target",
             "prompt": cfg["prompt"],
-            "best_score": best_score,
+            "best_score": float(best_score),
             "best_theta": np.asarray(best).tolist(),
+            "num_frames": len(frames),
+            "foundation_model": cfg["foundation_model"]["name"],
+            "substrate": cfg["substrate"]["name"],
+            "search_iters": int(search["iters"]),
+            "search_pop": int(search["pop"]),
+            "search_keep": int(search["keep"]),
             "gif": gif_name if frames else None,
             "mp4": mp4_name,
-        })
+        }

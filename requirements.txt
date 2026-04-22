@@ -2,3 +2,6 @@ numpy
 Pillow
 pyyaml
 imageio
+torch
+chromadb
+mlflow

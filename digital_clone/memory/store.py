@@ -1,42 +1,35 @@
-import re
-import numpy as np
-from collections import defaultdict
+import logging
+import uuid
+from typing import List
+
+from core.storage import storage_registry
+
+logger = logging.getLogger(__name__)
 
 class MemoryStore:
-    def __init__(self):
+    def __init__(self, collection_name="digital_clone"):
         self.items = []
-        self.vocab = {}
-        self.idf = {}
-
-    def _update_idf(self):
-        self.vocab = {}
-        doc_counts = defaultdict(int)
-        for i, item in enumerate(self.items):
-            tokens = self._tokenize(item["content"])
-            for tok in set(tokens):
-                if tok not in self.vocab:
-                    self.vocab[tok] = len(self.vocab)
-                doc_counts[tok] += 1
-        
-        N = max(len(self.items), 1)
-        self.idf = {tok: np.log(N / (count + 1)) + 1.0 for tok, count in doc_counts.items()}
-
-    def _vectorize(self, text):
-        tokens = self._tokenize(text)
-        vec = np.zeros(len(self.vocab))
-        if not self.vocab: 
-            return vec
-        for tok in tokens:
-            if tok in self.vocab:
-                vec[self.vocab[tok]] += self.idf.get(tok, 1.0)
-        norm = np.linalg.norm(vec)
-        if norm > 0:
-            vec = vec / norm
-        return vec
+        try:
+            self.vector_store = storage_registry.create("chromadb", collection_name=collection_name)
+            self.use_vector_db = True
+        except Exception as e:
+            logger.warning(f"Failed to initialize ChromaDBStore: {e}. Falling back to in-memory list only.")
+            self.vector_store = None
+            self.use_vector_db = False
 
     def add(self, role, content, kind="dialogue"):
-        self.items.append({"role": role, "content": content, "kind": kind})
-        self._update_idf()
+        item = {"role": role, "content": content, "kind": kind}
+        self.items.append(item)
+        
+        if self.use_vector_db:
+            try:
+                self.vector_store.add_documents(
+                    documents=[content],
+                    metadatas=[{"role": role, "kind": kind}],
+                    ids=[str(uuid.uuid4())]
+                )
+            except Exception as e:
+                logger.error(f"Failed to add document to vector store: {e}")
 
     def recent(self, n=5):
         return self.items[-n:]
@@ -49,27 +42,47 @@ class MemoryStore:
         if not self.items: 
             return []
             
-        q_vec = self._vectorize(query)
-        scored = []
-        
-        for idx, item in enumerate(self.items):
-            if kinds is not None and item["kind"] not in kinds:
-                continue
+        if self.use_vector_db:
+            try:
+                docs = self.vector_store.query([query], n_results=n * 3)
+                retrieved = []
+                seen_contents = set()
                 
-            i_vec = self._vectorize(item["content"])
-            overlap = float(np.dot(q_vec, i_vec))
-            
-            recency_bonus = (idx + 1) / max(len(self.items), 1) * 0.05
-            kind_bonus = 0.1 if item["kind"] == "profile_fact" else 0.0
-            
-            score = overlap + recency_bonus + kind_bonus
-            # Lower threshold to allow fuzzy matches
-            if score > 0.02: 
-                scored.append((score, item))
+                if docs and len(docs) > 0:
+                    for doc_content in docs[0]:
+                        if doc_content in seen_contents:
+                            continue
+                        # Find the original item in self.items
+                        matched_items = [i for i in self.items if i["content"] == doc_content]
+                        for item in matched_items:
+                            if kinds is None or item["kind"] in kinds:
+                                retrieved.append(item)
+                                seen_contents.add(doc_content)
+                                break
+                        if len(retrieved) >= n:
+                            break
+                return retrieved
+            except Exception as e:
+                logger.error(f"Vector search failed: {e}. Falling back to recent.")
                 
-        scored.sort(key=lambda x: x[0], reverse=True)
-        return [item for _, item in scored[:n]]
+        # Fallback if no vector db or error
+        filtered = [i for i in self.items if kinds is None or i["kind"] in kinds]
+        return filtered[-n:]
 
-    def _tokenize(self, text):
-        tokens = re.findall(r"[\u4e00-\u9fffA-Za-z0-9_]+", text.lower())
-        return [tok for tok in tokens if len(tok) >= 2]
+    def retrieve_for_prompt(self, user_text, limit=5):
+        profile = self.retrieve(user_text, n=max(limit // 2, 1), kinds=["profile_fact"])
+        dialogue = self.retrieve(user_text, n=limit, kinds=["dialogue"])
+        merged = []
+        seen = set()
+        for item in profile + dialogue:
+            content = item.get("content")
+            role = item.get("role")
+            if not content or content == user_text or content in seen:
+                continue
+            if item.get("kind") == "dialogue" and role != "user":
+                continue
+            merged.append(item)
+            seen.add(content)
+            if len(merged) >= limit:
+                break
+        return merged

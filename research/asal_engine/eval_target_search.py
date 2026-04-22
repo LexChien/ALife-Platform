@@ -4,21 +4,16 @@ import json
 import sys
 
 import numpy as np
-import yaml
 
 ROOT = Path(__file__).resolve().parents[2]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
+from core.config import load_config
 from foundation_models import foundation_models
 from research.asal_engine.scores import supervised_target_score
 from research.asal_engine.search.optim import evo_search
 from research.asal_engine.substrates.reaction_diffusion import ReactionDiffusion
-
-
-def load_config(path: str) -> dict:
-    return yaml.safe_load(Path(path).read_text(encoding="utf-8"))
-
 
 def make_evaluator(config: dict):
     fm = foundation_models.create(
@@ -174,11 +169,12 @@ def render_markdown(config_path: str, seeds: list[int], results: list[dict], sum
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--config", default="configs/asal/target_cell.yaml")
+    ap.add_argument("--profile")
     ap.add_argument("--seeds", default="0,1,2,3,4")
     ap.add_argument("--outdir", default="runs/asal_target_validation")
     args = ap.parse_args()
 
-    config = load_config(args.config)
+    config = load_config(args.config, profile=args.profile)
     seeds = [int(s.strip()) for s in args.seeds.split(",") if s.strip()]
     outdir = Path(args.outdir)
     outdir.mkdir(parents=True, exist_ok=True)

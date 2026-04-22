@@ -30,6 +30,11 @@ python apps/clone_cli.py --config configs/clone/clone_baseline.yaml
 python apps/genai_cli.py --config configs/genai/genai_baseline.yaml
 ```
 
+On Jetson-class hosts, `apps/asal_cli.py` will automatically re-exec into
+`ALIFE_ASAL_PYTHON` or `/home/lexchien/Documents/ASAL/.venv/bin/python` when
+the current interpreter cannot see CUDA. This avoids accidentally running ASAL
+with an incompatible desktop PyTorch wheel such as `torch 2.11 + cu130`.
+
 ## Status
 
 This repository is a Phase 0 / Phase 1 prototype:
@@ -58,6 +63,9 @@ This prototype now includes imported ASAL project history:
 Search historical notes:
 ```bash
 python tools/query_worklog.py jetson
-python tools/query_worklog.py cuda
-python tools/query_worklog.py openclip
+python tools/query_worklog.py cuda openclip
+python tools/query_worklog.py runtime summary --limit 10
 ```
+
+The tool searches both root project logs under `log/` and imported ASAL
+historical logs under `research/asal_engine/history/log/`.

@@ -12,14 +12,14 @@ substrate:
     size: 128
 
 runtime:
-  steps: 64
+  steps: 400
   substeps: 2
 
 search:
-  iters: 6
-  pop: 8
-  keep: 8
+  iters: 80
+  pop: 32
+  keep: 32
   sigma: 0.03
-  seed: 7
+  seed: 42
   theta_low: [0.10, 0.04, 0.01, 0.01, 1.0]
   theta_high: [0.25, 0.12, 0.10, 0.10, 1.0]

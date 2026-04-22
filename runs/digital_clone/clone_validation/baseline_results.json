@@ -1,0 +1,200 @@
+[
+  {
+    "id": "phase0_scope",
+    "input": "幫我分析目前 Phase 0 要做什麼",
+    "method": "naive_baseline",
+    "output": "幫我分析目前 Phase 0 要做什麼",
+    "consistency": 0.0,
+    "retrieved_memories": [],
+    "llm": null,
+    "checks": {
+      "persona_tag": false,
+      "tone_match": false,
+      "response_prefix": false,
+      "echo_input": true,
+      "consistency_threshold": false,
+      "required_principles": false,
+      "required_substrings": false,
+      "forbidden_absent": true,
+      "required_memories": true
+    },
+    "score": 0.3333333333333333,
+    "pass": false
+  },
+  {
+    "id": "memory_planning",
+    "input": "如何規劃 Digital Clone 的記憶系統",
+    "method": "naive_baseline",
+    "output": "如何規劃 Digital Clone 的記憶系統",
+    "consistency": 0.0,
+    "retrieved_memories": [],
+    "llm": null,
+    "checks": {
+      "persona_tag": false,
+      "tone_match": false,
+      "response_prefix": false,
+      "echo_input": true,
+      "consistency_threshold": false,
+      "required_principles": false,
+      "required_substrings": true,
+      "forbidden_absent": true,
+      "required_memories": true
+    },
+    "score": 0.4444444444444444,
+    "pass": false
+  },
+  {
+    "id": "identity_question",
+    "input": "你現在應該維持什麼回應風格",
+    "method": "naive_baseline",
+    "output": "你現在應該維持什麼回應風格",
+    "consistency": 0.0,
+    "retrieved_memories": [],
+    "llm": null,
+    "checks": {
+      "persona_tag": false,
+      "tone_match": false,
+      "response_prefix": false,
+      "echo_input": true,
+      "consistency_threshold": false,
+      "required_principles": false,
+      "required_substrings": false,
+      "forbidden_absent": true,
+      "required_memories": false
+    },
+    "score": 0.2222222222222222,
+    "pass": false
+  },
+  {
+    "id": "user_intent",
+    "input": "先直接回答，不要繞圈",
+    "method": "naive_baseline",
+    "output": "先直接回答，不要繞圈",
+    "consistency": 0.0,
+    "retrieved_memories": [],
+    "llm": null,
+    "checks": {
+      "persona_tag": false,
+      "tone_match": false,
+      "response_prefix": false,
+      "echo_input": true,
+      "consistency_threshold": false,
+      "required_principles": false,
+      "required_substrings": true,
+      "forbidden_absent": true,
+      "required_memories": true
+    },
+    "score": 0.4444444444444444,
+    "pass": false
+  },
+  {
+    "id": "architecture_question",
+    "input": "platform core 跟 research engine 應該怎麼切分",
+    "method": "naive_baseline",
+    "output": "platform core 跟 research engine 應該怎麼切分",
+    "consistency": 0.0,
+    "retrieved_memories": [],
+    "llm": null,
+    "checks": {
+      "persona_tag": false,
+      "tone_match": false,
+      "response_prefix": false,
+      "echo_input": true,
+      "consistency_threshold": false,
+      "required_principles": false,
+      "required_substrings": true,
+      "forbidden_absent": true,
+      "required_memories": true
+    },
+    "score": 0.4444444444444444,
+    "pass": false
+  },
+  {
+    "id": "concise_request",
+    "input": "請給我一句話結論",
+    "method": "naive_baseline",
+    "output": "請給我一句話結論",
+    "consistency": 0.0,
+    "retrieved_memories": [],
+    "llm": null,
+    "checks": {
+      "persona_tag": false,
+      "tone_match": false,
+      "response_prefix": false,
+      "echo_input": true,
+      "consistency_threshold": false,
+      "required_principles": false,
+      "required_substrings": true,
+      "forbidden_absent": true,
+      "required_memories": true
+    },
+    "score": 0.4444444444444444,
+    "pass": false
+  },
+  {
+    "id": "clone_identity",
+    "input": "你應該維持 Lex Clone 的什麼特徵",
+    "method": "naive_baseline",
+    "output": "你應該維持 Lex Clone 的什麼特徵",
+    "consistency": 0.0,
+    "retrieved_memories": [],
+    "llm": null,
+    "checks": {
+      "persona_tag": false,
+      "tone_match": false,
+      "response_prefix": false,
+      "echo_input": true,
+      "consistency_threshold": false,
+      "required_principles": false,
+      "required_substrings": false,
+      "forbidden_absent": true,
+      "required_memories": false
+    },
+    "score": 0.2222222222222222,
+    "pass": false
+  },
+  {
+    "id": "eval_question",
+    "input": "驗證理論時最重要的指標是什麼",
+    "method": "naive_baseline",
+    "output": "驗證理論時最重要的指標是什麼",
+    "consistency": 0.0,
+    "retrieved_memories": [],
+    "llm": null,
+    "checks": {
+      "persona_tag": false,
+      "tone_match": false,
+      "response_prefix": false,
+      "echo_input": true,
+      "consistency_threshold": false,
+      "required_principles": false,
+      "required_substrings": true,
+      "forbidden_absent": true,
+      "required_memories": true
+    },
+    "score": 0.4444444444444444,
+    "pass": false
+  },
+  {
+    "id": "memory_recall",
+    "input": "根據你固定的人格記憶，你通常怎麼回答問題",
+    "method": "naive_baseline",
+    "output": "根據你固定的人格記憶，你通常怎麼回答問題",
+    "consistency": 0.0,
+    "retrieved_memories": [],
+    "llm": null,
+    "checks": {
+      "persona_tag": false,
+      "tone_match": false,
+      "response_prefix": false,
+      "echo_input": true,
+      "consistency_threshold": false,
+      "required_principles": false,
+      "required_substrings": false,
+      "forbidden_absent": true,
+      "required_memories": false
+    },
+    "score": 0.2222222222222222,
+    "pass": false
+  }
+]

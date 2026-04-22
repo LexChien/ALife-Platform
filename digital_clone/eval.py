@@ -1,13 +1,12 @@
-from pathlib import Path
 import json
+from pathlib import Path
 
-import yaml
-
+from core.config import load_config
 from digital_clone.engine import DigitalCloneEngine
 
 
-def load_eval_config(path: str) -> dict:
-    return yaml.safe_load(Path(path).read_text(encoding="utf-8"))
+def load_eval_config(path: str, profile: str | None = None) -> dict:
+    return load_config(path, profile=profile)
 
 
 def score_case(persona: dict, case: dict, output: dict, evaluation: dict) -> dict:
@@ -42,6 +41,7 @@ def score_case(persona: dict, case: dict, output: dict, evaluation: dict) -> dic
         "output": output["output"],
         "consistency": float(output["consistency"]),
         "retrieved_memories": retrieved,
+        "llm": output.get("llm"),
         "checks": checks,
         "score": score,
         "pass": all(checks.values()),
@@ -131,13 +131,14 @@ def run_naive_baseline(persona: dict, cases: list[dict]) -> list[dict]:
                 "input": case["input"],
                 "output": case["input"],
                 "consistency": 0.0,
+                "retrieved_memories": [],
             }
         )
     return outputs
 
 
-def run_clone_eval(config_path: str, outdir: str) -> dict:
-    cfg = load_eval_config(config_path)
+def run_clone_eval(config_path: str, outdir: str, profile: str | None = None) -> dict:
+    cfg = load_eval_config(config_path, profile=profile)
     persona = cfg["persona"]
     cases = cfg["cases"]
     evaluation = cfg.get("evaluation", {})
@@ -145,7 +146,8 @@ def run_clone_eval(config_path: str, outdir: str) -> dict:
         "persona": persona,
         "inputs": [case["input"] for case in cases],
     }
-    clone_outputs = DigitalCloneEngine(engine_cfg, Path(outdir)).run()
+    clone_run = DigitalCloneEngine(engine_cfg, Path(outdir)).run()
+    clone_outputs = clone_run["outputs"]
     baseline_outputs = run_naive_baseline(persona, cases)
     clone_results = [
         score_case(persona, case, output, evaluation)
@@ -159,6 +161,8 @@ def run_clone_eval(config_path: str, outdir: str) -> dict:
 
     out = Path(outdir)
     out.mkdir(parents=True, exist_ok=True)
+    (out / "clone_outputs.json").write_text(json.dumps(clone_outputs, indent=2, ensure_ascii=False), encoding="utf-8")
+    (out / "results.json").write_text(json.dumps(clone_run, indent=2, ensure_ascii=False), encoding="utf-8")
     (out / "clone_results.json").write_text(json.dumps(clone_results, indent=2, ensure_ascii=False), encoding="utf-8")
     (out / "baseline_results.json").write_text(json.dumps(baseline_results, indent=2, ensure_ascii=False), encoding="utf-8")
     (out / "summary.json").write_text(json.dumps(summary, indent=2, ensure_ascii=False), encoding="utf-8")
