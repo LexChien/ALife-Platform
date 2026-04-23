@@ -5,16 +5,18 @@
     "prompt": "Generate a futuristic AI cell organism concept",
     "context": "prototype baseline",
     "text": "Generate a futuristic AI cell organism concept | prototype baseline",
-    "llm": null,
+    "llm": {},
+    "postprocess": {},
     "checks": {
       "expected_prefix": false,
       "prompt_reflected": true,
       "context_reflected": true,
       "required_substrings": true,
+      "reasoning_leak_absent": true,
       "has_audio": false,
       "has_image": false
     },
-    "score": 0.5,
+    "score": 0.5714285714285714,
     "pass": false
   },
   {
@@ -23,16 +25,18 @@
     "prompt": "Create a synthetic microbial habitat scene",
     "context": null,
     "text": "Create a synthetic microbial habitat scene",
-    "llm": null,
+    "llm": {},
+    "postprocess": {},
     "checks": {
       "expected_prefix": false,
       "prompt_reflected": true,
       "context_reflected": true,
       "required_substrings": true,
+      "reasoning_leak_absent": true,
       "has_audio": false,
       "has_image": false
     },
-    "score": 0.5,
+    "score": 0.5714285714285714,
     "pass": false
   }
 ]

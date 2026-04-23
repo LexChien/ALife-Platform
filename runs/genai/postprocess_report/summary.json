@@ -1,0 +1,10 @@
+{
+  "num_runs": 3,
+  "reasoning_visible_rate": 0.3333333333333333,
+  "reasoning_leak_detected_rate": 0.0,
+  "extractor_applied_rate": 0.3333333333333333,
+  "heuristic_first_pass_rate": 0.0,
+  "heuristic_fallback_rate": 0.3333333333333333,
+  "heuristic_fallback_skipped_rate": 0.0,
+  "extractor_error_rate": 0.0
+}

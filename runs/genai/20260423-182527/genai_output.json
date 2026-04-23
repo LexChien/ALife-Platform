@@ -1,0 +1,41 @@
+{
+  "text": "*   Name: Gemma 4.\n*   Developer: Google DeepMind.\n*   Nature: Large Language Model.\n*   Type: Open weights model.",
+  "audio": {
+    "status": "stub",
+    "text": "*   Name: Gemma 4.\n*   Developer: Google DeepMind.\n*   Nature: Large Language Model.\n*   Type: Open weights model."
+  },
+  "prompt": "你是誰，告訴我你來自哪裡",
+  "context": "兩百字簡單介紹相對論",
+  "system": "You are a multimodal assistant for ALife-Platform.",
+  "llm": {
+    "backend": "llama_cpp",
+    "model_family": "gemma",
+    "runtime": {
+      "model_path": "models/gemma/gemma.gguf",
+      "context_length": 4096,
+      "n_gpu_layers": 0,
+      "temperature": 0.7,
+      "max_tokens": 256,
+      "chat_format": null,
+      "driver": "subprocess",
+      "cli_path": "third_party/llama.cpp/build/bin/llama-completion",
+      "postprocess": {
+        "reasoning_leak_detected": false,
+        "extractor_applied": true,
+        "extractor_error": null,
+        "heuristic_fallback_applied": true
+      }
+    },
+    "healthcheck": {
+      "backend": "llama_cpp",
+      "model_family": "gemma",
+      "model_path": "models/gemma/gemma.gguf",
+      "exists": true,
+      "binding_available": false,
+      "cli_available": true,
+      "cli_path": "third_party/llama.cpp/build/bin/llama-completion",
+      "driver": "subprocess",
+      "ok": true
+    }
+  }
+}

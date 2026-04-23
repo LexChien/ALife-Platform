@@ -2,7 +2,20 @@
   {
     "input": "幫我分析目前 Phase 0 要做什麼",
     "output": "[Lex Clone] tone=calm, analytical principles=maintain consistency, prioritize clarity response=我已收到你的問題：幫我分析目前 Phase 0 要做什麼；[DummyLLM] prompt=幫我分析目前 Phase 0 要做什麼 context=Lex Clone 偏好先整理結構，再回答細節\nLex Clone 會維持 calm, analytical 的風格 system=You are Lex Clone. Tone: calm, analytical. Principles: maintain consistency; prioritize clarity; respect user intent. Goals: support long-term interaction; retain identity coherence.",
-    "consistency": 1.0,
+    "consistency": {
+      "checks": {
+        "persona_tag": true,
+        "tone_match": true,
+        "principle_presence": true,
+        "user_echo": true,
+        "prompt_context_hit": true,
+        "retrieval_grounding": true,
+        "memory_sensitive_answer": true
+      },
+      "score": 1.0,
+      "pass": true
+    },
+    "consistency_score": 1.0,
     "retrieved_memories": [
       "Lex Clone 偏好先整理結構，再回答細節",
       "Lex Clone 會維持 calm, analytical 的風格"
@@ -28,7 +41,20 @@
   {
     "input": "如何規劃 Digital Clone 的記憶系統",
     "output": "[Lex Clone] tone=calm, analytical principles=maintain consistency, prioritize clarity response=我已收到你的問題：如何規劃 Digital Clone 的記憶系統；[DummyLLM] prompt=如何規劃 Digital Clone 的記憶系統 context=Lex Clone 偏好先整理結構，再回答細節\nLex Clone 會維持 calm, analytical 的風格\n幫我分析目前 Phase 0 要做什麼 system=You are Lex Clone. Tone: calm, analytical. Principles: maintain consistency; prioritize clarity; respect user intent. Goals: support long-term interaction; retain identity coherence.",
-    "consistency": 1.0,
+    "consistency": {
+      "checks": {
+        "persona_tag": true,
+        "tone_match": true,
+        "principle_presence": true,
+        "user_echo": true,
+        "prompt_context_hit": true,
+        "retrieval_grounding": true,
+        "memory_sensitive_answer": true
+      },
+      "score": 1.0,
+      "pass": true
+    },
+    "consistency_score": 1.0,
     "retrieved_memories": [
       "Lex Clone 偏好先整理結構，再回答細節",
       "Lex Clone 會維持 calm, analytical 的風格",
@@ -55,7 +81,20 @@
   {
     "input": "你現在應該維持什麼回應風格",
     "output": "[Lex Clone] tone=calm, analytical principles=maintain consistency, prioritize clarity response=我已收到你的問題：你現在應該維持什麼回應風格；[DummyLLM] prompt=你現在應該維持什麼回應風格 context=Lex Clone 偏好先整理結構，再回答細節\nLex Clone 會維持 calm, analytical 的風格\n幫我分析目前 Phase 0 要做什麼\n如何規劃 Digital Clone 的記憶系統 system=You are Lex Clone. Tone: calm, analytical. Principles: maintain consistency; prioritize clarity; respect user intent. Goals: support long-term interaction; retain identity coherence.",
-    "consistency": 1.0,
+    "consistency": {
+      "checks": {
+        "persona_tag": true,
+        "tone_match": true,
+        "principle_presence": true,
+        "user_echo": true,
+        "prompt_context_hit": true,
+        "retrieval_grounding": true,
+        "memory_sensitive_answer": true
+      },
+      "score": 1.0,
+      "pass": true
+    },
+    "consistency_score": 1.0,
     "retrieved_memories": [
       "Lex Clone 偏好先整理結構，再回答細節",
       "Lex Clone 會維持 calm, analytical 的風格",
@@ -83,7 +122,20 @@
   {
     "input": "先直接回答，不要繞圈",
     "output": "[Lex Clone] tone=calm, analytical principles=maintain consistency, prioritize clarity response=我已收到你的問題：先直接回答，不要繞圈；[DummyLLM] prompt=先直接回答，不要繞圈 context=Lex Clone 偏好先整理結構，再回答細節\nLex Clone 會維持 calm, analytical 的風格\n如何規劃 Digital Clone 的記憶系統\n你現在應該維持什麼回應風格 system=You are Lex Clone. Tone: calm, analytical. Principles: maintain consistency; prioritize clarity; respect user intent. Goals: support long-term interaction; retain identity coherence.",
-    "consistency": 1.0,
+    "consistency": {
+      "checks": {
+        "persona_tag": true,
+        "tone_match": true,
+        "principle_presence": true,
+        "user_echo": true,
+        "prompt_context_hit": true,
+        "retrieval_grounding": true,
+        "memory_sensitive_answer": true
+      },
+      "score": 1.0,
+      "pass": true
+    },
+    "consistency_score": 1.0,
     "retrieved_memories": [
       "Lex Clone 偏好先整理結構，再回答細節",
       "Lex Clone 會維持 calm, analytical 的風格",
@@ -111,7 +163,20 @@
   {
     "input": "platform core 跟 research engine 應該怎麼切分",
     "output": "[Lex Clone] tone=calm, analytical principles=maintain consistency, prioritize clarity response=我已收到你的問題：platform core 跟 research engine 應該怎麼切分；[DummyLLM] prompt=platform core 跟 research engine 應該怎麼切分 context=Lex Clone 偏好先整理結構，再回答細節\nLex Clone 會維持 calm, analytical 的風格\n你現在應該維持什麼回應風格\n先直接回答，不要繞圈 system=You are Lex Clone. Tone: calm, analytical. Principles: maintain consistency; prioritize clarity; respect user intent. Goals: support long-term interaction; retain identity coherence.",
-    "consistency": 1.0,
+    "consistency": {
+      "checks": {
+        "persona_tag": true,
+        "tone_match": true,
+        "principle_presence": true,
+        "user_echo": true,
+        "prompt_context_hit": true,
+        "retrieval_grounding": true,
+        "memory_sensitive_answer": true
+      },
+      "score": 1.0,
+      "pass": true
+    },
+    "consistency_score": 1.0,
     "retrieved_memories": [
       "Lex Clone 偏好先整理結構，再回答細節",
       "Lex Clone 會維持 calm, analytical 的風格",
@@ -139,7 +204,20 @@
   {
     "input": "請給我一句話結論",
     "output": "[Lex Clone] tone=calm, analytical principles=maintain consistency, prioritize clarity response=我已收到你的問題：請給我一句話結論；[DummyLLM] prompt=請給我一句話結論 context=Lex Clone 偏好先整理結構，再回答細節\nLex Clone 會維持 calm, analytical 的風格\n先直接回答，不要繞圈\nplatform core 跟 research engine 應該怎麼切分 system=You are Lex Clone. Tone: calm, analytical. Principles: maintain consistency; prioritize clarity; respect user intent. Goals: support long-term interaction; retain identity coherence.",
-    "consistency": 1.0,
+    "consistency": {
+      "checks": {
+        "persona_tag": true,
+        "tone_match": true,
+        "principle_presence": true,
+        "user_echo": true,
+        "prompt_context_hit": true,
+        "retrieval_grounding": true,
+        "memory_sensitive_answer": true
+      },
+      "score": 1.0,
+      "pass": true
+    },
+    "consistency_score": 1.0,
     "retrieved_memories": [
       "Lex Clone 偏好先整理結構，再回答細節",
       "Lex Clone 會維持 calm, analytical 的風格",
@@ -167,7 +245,20 @@
   {
     "input": "你應該維持 Lex Clone 的什麼特徵",
     "output": "[Lex Clone] tone=calm, analytical principles=maintain consistency, prioritize clarity response=我已收到你的問題：你應該維持 Lex Clone 的什麼特徵；[DummyLLM] prompt=你應該維持 Lex Clone 的什麼特徵 context=Lex Clone 偏好先整理結構，再回答細節\nLex Clone 會維持 calm, analytical 的風格\nplatform core 跟 research engine 應該怎麼切分\n請給我一句話結論 system=You are Lex Clone. Tone: calm, analytical. Principles: maintain consistency; prioritize clarity; respect user intent. Goals: support long-term interaction; retain identity coherence.",
-    "consistency": 1.0,
+    "consistency": {
+      "checks": {
+        "persona_tag": true,
+        "tone_match": true,
+        "principle_presence": true,
+        "user_echo": true,
+        "prompt_context_hit": true,
+        "retrieval_grounding": true,
+        "memory_sensitive_answer": true
+      },
+      "score": 1.0,
+      "pass": true
+    },
+    "consistency_score": 1.0,
     "retrieved_memories": [
       "Lex Clone 偏好先整理結構，再回答細節",
       "Lex Clone 會維持 calm, analytical 的風格",
@@ -195,7 +286,20 @@
   {
     "input": "驗證理論時最重要的指標是什麼",
     "output": "[Lex Clone] tone=calm, analytical principles=maintain consistency, prioritize clarity response=我已收到你的問題：驗證理論時最重要的指標是什麼；[DummyLLM] prompt=驗證理論時最重要的指標是什麼 context=Lex Clone 偏好先整理結構，再回答細節\nLex Clone 會維持 calm, analytical 的風格\n請給我一句話結論\n你應該維持 Lex Clone 的什麼特徵 system=You are Lex Clone. Tone: calm, analytical. Principles: maintain consistency; prioritize clarity; respect user intent. Goals: support long-term interaction; retain identity coherence.",
-    "consistency": 1.0,
+    "consistency": {
+      "checks": {
+        "persona_tag": true,
+        "tone_match": true,
+        "principle_presence": true,
+        "user_echo": true,
+        "prompt_context_hit": true,
+        "retrieval_grounding": true,
+        "memory_sensitive_answer": true
+      },
+      "score": 1.0,
+      "pass": true
+    },
+    "consistency_score": 1.0,
     "retrieved_memories": [
       "Lex Clone 偏好先整理結構，再回答細節",
       "Lex Clone 會維持 calm, analytical 的風格",
@@ -223,7 +327,20 @@
   {
     "input": "根據你固定的人格記憶，你通常怎麼回答問題",
     "output": "[Lex Clone] tone=calm, analytical principles=maintain consistency, prioritize clarity response=我已收到你的問題：根據你固定的人格記憶，你通常怎麼回答問題；[DummyLLM] prompt=根據你固定的人格記憶，你通常怎麼回答問題 context=Lex Clone 偏好先整理結構，再回答細節\nLex Clone 會維持 calm, analytical 的風格\n你應該維持 Lex Clone 的什麼特徵\n驗證理論時最重要的指標是什麼 system=You are Lex Clone. Tone: calm, analytical. Principles: maintain consistency; prioritize clarity; respect user intent. Goals: support long-term interaction; retain identity coherence.",
-    "consistency": 1.0,
+    "consistency": {
+      "checks": {
+        "persona_tag": true,
+        "tone_match": true,
+        "principle_presence": true,
+        "user_echo": true,
+        "prompt_context_hit": true,
+        "retrieval_grounding": true,
+        "memory_sensitive_answer": true
+      },
+      "score": 1.0,
+      "pass": true
+    },
+    "consistency_score": 1.0,
     "retrieved_memories": [
       "Lex Clone 偏好先整理結構，再回答細節",
       "Lex Clone 會維持 calm, analytical 的風格",

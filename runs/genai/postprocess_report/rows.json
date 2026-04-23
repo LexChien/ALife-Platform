@@ -1,0 +1,50 @@
+[
+  {
+    "run_dir": "runs/genai/20260422-190853",
+    "config_path": "configs/genai/gemma_llama_cpp.yaml",
+    "text_length": 1049,
+    "reasoning_visible_in_text": false,
+    "postprocess": {
+      "reasoning_leak_detected": false,
+      "extractor_applied": false,
+      "extractor_error": null,
+      "heuristic_fallback_applied": false,
+      "heuristic_fallback_skipped": false,
+      "heuristic_fallback_skip_reason": null,
+      "heuristic_first_pass_applied": false
+    },
+    "text_preview": "1.  **Analyze the Request:** The user wants a \"futuristic AI cell organism concept.\" This is highly abstract and requires blending biology, artificial intelligence, and speculative"
+  },
+  {
+    "run_dir": "runs/genai/20260422-191022",
+    "config_path": "configs/genai/gemma_llama_cpp.yaml",
+    "text_length": 1013,
+    "reasoning_visible_in_text": true,
+    "postprocess": {
+      "reasoning_leak_detected": false,
+      "extractor_applied": false,
+      "extractor_error": null,
+      "heuristic_fallback_applied": false,
+      "heuristic_fallback_skipped": false,
+      "heuristic_fallback_skip_reason": null,
+      "heuristic_first_pass_applied": false
+    },
+    "text_preview": "Thinking Process:\n\n1.  **Analyze the Request:** The user wants to \"Generate a futuristic AI cell organism concept.\"\n2.  **Identify Key Themes:**\n    *   Futuristic\n    *   AI (Arti"
+  },
+  {
+    "run_dir": "runs/genai/20260423-182527",
+    "config_path": "configs/genai/gemma_llama_cpp_lex.yaml",
+    "text_length": 114,
+    "reasoning_visible_in_text": false,
+    "postprocess": {
+      "reasoning_leak_detected": false,
+      "extractor_applied": true,
+      "extractor_error": null,
+      "heuristic_fallback_applied": true,
+      "heuristic_fallback_skipped": false,
+      "heuristic_fallback_skip_reason": null,
+      "heuristic_first_pass_applied": false
+    },
+    "text_preview": "*   Name: Gemma 4.\n*   Developer: Google DeepMind.\n*   Nature: Large Language Model.\n*   Type: Open weights model."
+  }
+]

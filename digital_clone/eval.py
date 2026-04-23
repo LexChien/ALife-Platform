@@ -3,6 +3,7 @@ from pathlib import Path
 
 from core.config import load_config
 from digital_clone.engine import DigitalCloneEngine
+from evaluation.heuristics import contains_all, excludes_all, make_result
 
 
 def load_eval_config(path: str, profile: str | None = None) -> dict:
@@ -22,29 +23,37 @@ def score_case(persona: dict, case: dict, output: dict, evaluation: dict) -> dic
     consistency_min = float(case.get("consistency_min", evaluation.get("consistency_min", 1.0)))
     retrieved = output.get("retrieved_memories", [])
 
+    consistency_payload = output.get("consistency")
+    consistency_score = float(
+        output.get(
+            "consistency_score",
+            consistency_payload["score"] if isinstance(consistency_payload, dict) and "score" in consistency_payload else output.get("consistency", 0.0),
+        )
+    )
     checks = {
         "persona_tag": text.startswith(f"[{persona['name']}]"),
         "tone_match": f"tone={persona['tone']}" in text,
         "response_prefix": response_prefix in text,
         "echo_input": case.get("input", "") in text if case.get("expect_echo", True) else True,
-        "consistency_threshold": float(output["consistency"]) >= consistency_min,
-        "required_principles": all(p in text for p in required_principles),
-        "required_substrings": all(s in text for s in required_substrings),
-        "forbidden_absent": all(s not in text for s in forbidden_substrings),
+        "consistency_threshold": consistency_score >= consistency_min,
+        "required_principles": contains_all(text, required_principles),
+        "required_substrings": contains_all(text, required_substrings),
+        "forbidden_absent": excludes_all(text, forbidden_substrings),
         "required_memories": all(any(req in mem for mem in retrieved) or req in text for req in required_memories),
     }
-    score = sum(1.0 for ok in checks.values() if ok) / len(checks)
+    heuristic = make_result(checks)
     return {
         "id": case["id"],
         "input": case["input"],
         "method": output.get("method", "clone"),
         "output": output["output"],
-        "consistency": float(output["consistency"]),
+        "consistency": consistency_payload if isinstance(consistency_payload, dict) else {"score": consistency_score},
+        "consistency_score": consistency_score,
         "retrieved_memories": retrieved,
         "llm": output.get("llm"),
-        "checks": checks,
-        "score": score,
-        "pass": all(checks.values()),
+        "checks": heuristic["checks"],
+        "score": heuristic["score"],
+        "pass": heuristic["pass"],
     }
 
 

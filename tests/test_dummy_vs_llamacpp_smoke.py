@@ -10,10 +10,15 @@ class DummyVsLlamaCppSmokeTests(unittest.TestCase):
         llama_cfg = load_config("configs/genai/gemma_llama_cpp.yaml")
         dummy = create_llm_adapter(dummy_cfg)
         llama = create_llm_adapter(llama_cfg)
+        dummy_health = dummy.healthcheck()
+        llama_health = llama.healthcheck()
         self.assertEqual(dummy.backend_name, "dummy")
         self.assertEqual(llama.backend_name, "llama_cpp")
         self.assertNotEqual(dummy.backend_name, llama.backend_name)
-        self.assertNotEqual(dummy.healthcheck()["ok"], llama.healthcheck()["ok"])
+        self.assertNotEqual(dummy_health["backend"], llama_health["backend"])
+        self.assertNotEqual(dummy_health["model_family"], llama_health["model_family"])
+        self.assertEqual(dummy_health["ok"], True)
+        self.assertIn("driver", llama_health)
 
 
 if __name__ == "__main__":

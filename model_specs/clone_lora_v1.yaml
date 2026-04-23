@@ -1,0 +1,16 @@
+model_id: clone_lora_v1
+family: gemma
+role: digital_clone
+runtime_backend: llama_cpp
+artifact_format: gguf
+artifact_path: models/clone/clone_lora_v1.gguf
+hardware_target: workstation_or_jetson_future
+prompt_profile: clone
+quantization: q4_k_m
+lineage:
+  base_model: gemma_bootstrap_v1
+  tuning_type: lora
+  dataset: clone_dialog_v1
+  version: "0.1"
+  notes: "Placeholder spec for future Digital Clone specialization."
+

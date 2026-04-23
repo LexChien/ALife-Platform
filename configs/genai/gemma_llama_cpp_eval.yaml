@@ -1,0 +1,45 @@
+defaults:
+  runtime_profile:
+    device: auto
+    precision: fp32
+    backend: local
+  tracking:
+    enabled: false
+  llm:
+    backend: llama_cpp
+    model_family: gemma
+    model_path: models/gemma/gemma.gguf
+    cli_path: third_party/llama.cpp/build/bin/llama-completion
+    context_length: 4096
+    temperature: 0.4
+    max_tokens: 220
+    n_gpu_layers: 0
+    verbose: false
+
+system: "你是 Gemma。請直接回答，不要輸出思考過程、分析步驟或任何隱藏推理。"
+
+cases:
+  - id: "identity_origin_cn"
+    prompt: "你是誰？你來自哪裡？請用繁體中文兩到三句回答。"
+    context: "只回答身分與來源，不要提到相對論。"
+    must_include:
+      - "Gemma"
+    require_prompt_reflection: false
+    require_context_reflection: false
+  - id: "relativity_cn"
+    prompt: "請用繁體中文簡單介紹相對論。"
+    context: "控制在 120 字內，給一般人看的版本。"
+    must_include:
+      - "相對論"
+    require_prompt_reflection: false
+    require_context_reflection: false
+  - id: "one_line_direct_cn"
+    prompt: "一句話說明大型語言模型是什麼。"
+    context: "不要列點，不要輸出思考過程。"
+    require_prompt_reflection: false
+    require_context_reflection: false
+
+profiles:
+  cpu_smoke:
+    runtime_profile:
+      device: cpu

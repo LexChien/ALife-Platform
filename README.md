@@ -156,6 +156,8 @@ Run evaluation:
 
 ```bash
 ./.venv/bin/python apps/eval_cli.py clone
+./.venv/bin/python tools/run_clone_eval.py \
+  --config configs/clone/clone_eval_dataset.yaml
 ```
 
 Current state:
@@ -194,6 +196,8 @@ Run GenAI evaluation:
 
 ```bash
 ./.venv/bin/python apps/eval_cli.py genai
+./.venv/bin/python tools/run_genai_eval.py \
+  --config configs/genai/genai_eval_dataset.yaml
 ```
 
 ## Local Gemma 4 + llama.cpp
@@ -226,6 +230,29 @@ Expected success indicators:
 - `cli_available: True`
 - `driver: subprocess`
 - `ok: True`
+
+Run a direct single-turn Gemma chat without image/audio generation:
+
+```bash
+./.venv/bin/python tools/chat_gemma.py \
+  --config configs/genai/gemma_llama_cpp.yaml \
+  --profile cpu_smoke \
+  --prompt "你是誰？請用繁體中文兩句話介紹你自己。" \
+  --context "不要列點，不要輸出思考過程。" \
+  --max-tokens 96 \
+  --temperature 0.2 \
+  --save-run
+```
+
+Analyze archived real Gemma runs for extractor/fallback hit rates:
+
+```bash
+./.venv/bin/python tools/report_genai_postprocess.py \
+  runs/genai/20260422-190853 \
+  runs/genai/20260422-191022 \
+  runs/genai/20260423-182527 \
+  --outdir runs/genai/postprocess_report
+```
 
 ## CUDA / OpenCLIP Verification
 

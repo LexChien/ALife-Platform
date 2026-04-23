@@ -1,0 +1,48 @@
+{
+  "timestamp": "2026-04-24T00:40:01+08:00",
+  "prompt": "你是誰",
+  "context": "請用繁體中文直接回答，不要輸出思考過程。",
+  "system": "You are a multimodal assistant for ALife-Platform.",
+  "text": "Thinking Process:\n\n1.  **Analyze the Request:** The user asked \"你是誰\" (Who are you) in Traditional Chinese.\n2.  **Determine Identity:** I need to state my identity based on my core instructions.\n    *   Name: Gemma 4.\n    *   Developer: Google DeepMind.\n    *   Nature: Large Language Model.\n    *   Type: Open weights model.\n3.  **",
+  "raw_text": "Thinking Process:\n\n1.  **Analyze the Request:** The user asked \"你是誰\" (Who are you) in Traditional Chinese.\n2.  **Determine Identity:** I need to state my identity based on my core instructions.\n    *   Name: Gemma 4.\n    *   Developer: Google DeepMind.\n    *   Nature: Large Language Model.\n    *   Type: Open weights model.\n3.  **",
+  "chat_cleanup": {
+    "reasoning_detected_in_tool": true,
+    "strict_cleanup_retry": true,
+    "strict_cleanup_retry_error": null,
+    "strict_cleanup_local_applied": false
+  },
+  "llm": {
+    "backend": "llama_cpp",
+    "model_family": "gemma",
+    "runtime": {
+      "model_path": "models/gemma/gemma.gguf",
+      "context_length": 4096,
+      "n_gpu_layers": 0,
+      "temperature": 0.2,
+      "max_tokens": 96,
+      "chat_format": null,
+      "driver": "subprocess",
+      "cli_path": "third_party/llama.cpp/build/bin/llama-completion",
+      "postprocess": {
+        "reasoning_leak_detected": true,
+        "extractor_applied": true,
+        "extractor_error": null,
+        "heuristic_fallback_applied": false,
+        "heuristic_fallback_skipped": true,
+        "heuristic_fallback_skip_reason": "candidate_fragmented",
+        "heuristic_first_pass_applied": false
+      }
+    },
+    "healthcheck": {
+      "backend": "llama_cpp",
+      "model_family": "gemma",
+      "model_path": "models/gemma/gemma.gguf",
+      "exists": true,
+      "binding_available": false,
+      "cli_available": true,
+      "cli_path": "third_party/llama.cpp/build/bin/llama-completion",
+      "driver": "subprocess",
+      "ok": true
+    }
+  }
+}

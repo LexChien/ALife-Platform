@@ -6,9 +6,7 @@ defaults:
   tracking:
     enabled: false
   llm:
-    backend: llama_cpp
-    model_family: gemma
-    model_path: models/gemma/gemma.gguf
+    model_id: gemma_bootstrap_v1
     cli_path: third_party/llama.cpp/build/bin/llama-completion
     context_length: 4096
     temperature: 0.7

@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from pathlib import Path
+import re
 import shutil
 import subprocess
 from typing import Any
@@ -37,6 +38,7 @@ class LlamaCppAdapter(BaseLLMAdapter):
         self.verbose = verbose
         self.driver = driver
         self.cli_path = cli_path
+        self.subprocess_timeout = 120
         self._llm = None
 
     @property
@@ -109,34 +111,125 @@ class LlamaCppAdapter(BaseLLMAdapter):
             return f"Context:\n{request.context}\n\nUser request:\n{request.prompt}"
         return request.prompt
 
-    def _clean_subprocess_output(self, text: str) -> str:
+    def _subprocess_system(self, request: LLMRequest) -> str:
+        base = request.system.strip() if request.system else "You are a helpful assistant."
+        suffix = (
+            " Return only the final answer. "
+            "Do not reveal chain-of-thought. "
+            "Do not emit reasoning channels, hidden analysis, or thought tags."
+        )
+        return f"{base}{suffix}"
+
+    def _reasoning_markers(self) -> tuple[str, ...]:
+        return (
+            "<|channel>thought",
+            "Thinking Process:",
+            "Here's a thinking process",
+            "Analyze the Request:",
+            "Deconstruct Key Terms:",
+            "Brainstorm Core Concepts",
+        )
+
+    def _has_reasoning_leak(self, text: str) -> bool:
+        stripped = text.strip()
+        if any(marker in stripped for marker in self._reasoning_markers()):
+            return True
+        return bool(re.match(r"^1\.\s+\*\*Analyze", stripped))
+
+    def _heuristic_extract_final_answer(self, text: str) -> str:
         cleaned = text.strip()
-        if "\nmodel\n" in cleaned:
-            cleaned = cleaned.rsplit("\nmodel\n", 1)[-1].strip()
-        if cleaned.startswith("model\n"):
-            cleaned = cleaned[len("model\n") :].strip()
-        if cleaned.startswith("<|channel>final\n"):
-            cleaned = cleaned[len("<|channel>final\n") :].strip()
-        return cleaned
+        for marker in ("Final Answer:", "Final Response:", "Answer:"):
+            if marker in cleaned:
+                tail = cleaned.split(marker, 1)[-1].strip()
+                if tail:
+                    return tail
 
-    def healthcheck(self) -> dict[str, object]:
-        model_exists = Path(self.model_path).exists()
-        binding_available = self._binding_available()
-        cli_resolved_path = self._cli_resolved_path()
-        driver = self._resolve_driver()
-        return {
-            "backend": self.backend_name,
-            "model_family": self.model_family,
-            "model_path": self.model_path,
-            "exists": model_exists,
-            "binding_available": binding_available,
-            "cli_available": cli_resolved_path is not None,
-            "cli_path": cli_resolved_path,
-            "driver": driver,
-            "ok": model_exists and driver in {"python", "subprocess"},
-        }
+        lines = [line.rstrip() for line in cleaned.splitlines()]
+        kept: list[str] = []
+        started = False
+        for line in lines:
+            stripped = line.strip()
+            if not stripped:
+                if started and kept and kept[-1] != "":
+                    kept.append("")
+                continue
+            if any(marker in stripped for marker in self._reasoning_markers()):
+                continue
+            if re.match(r"^\d+\.\s+\*\*.*\*\*:?", stripped):
+                continue
+            if stripped.startswith("*   **") or stripped.startswith("- **"):
+                continue
+            if not started and re.match(r"^\d+\.\s+", stripped):
+                continue
+            started = True
+            kept.append(stripped)
 
-    def generate(self, request: LLMRequest) -> LLMResponse:
+        candidate = "\n".join(kept).strip()
+        return candidate or cleaned
+
+    def _looks_fragmented(self, text: str) -> bool:
+        stripped = text.strip()
+        if not stripped:
+            return True
+        lines = [line.strip() for line in stripped.splitlines() if line.strip()]
+        if not lines:
+            return True
+        bullet_like = sum(
+            1
+            for line in lines
+            if line.startswith(("*", "-", "•"))
+            or re.match(r"^\d+\.", line)
+            or re.match(r"^[A-Z][A-Za-z ]+:\s+\S+", line)
+        )
+        prose_markers = sum(stripped.count(mark) for mark in (".", "。", "!", "！", "?", "？"))
+        if bullet_like == len(lines) and len(lines) >= 2:
+            return True
+        if len(stripped) < 80 and prose_markers == 0:
+            return True
+        return False
+
+    def _should_apply_fallback(self, original: str, candidate: str) -> tuple[bool, str | None]:
+        original = original.strip()
+        candidate = candidate.strip()
+        if not candidate:
+            return False, "empty_candidate"
+        if candidate == original:
+            return False, "no_change"
+        if self._looks_fragmented(candidate) and not self._looks_fragmented(original):
+            return False, "candidate_fragmented"
+        if len(original) >= 160 and len(candidate) < max(80, int(len(original) * 0.4)):
+            return False, "overcompressed"
+        return True, None
+
+    def _extractor_request(self, request: LLMRequest, draft: str) -> LLMRequest:
+        return LLMRequest(
+            prompt=(
+                "Rewrite the following draft as the final answer only. "
+                "Remove reasoning, planning, analysis, and chain-of-thought. "
+                "Keep only the user-facing answer.\n\n"
+                f"Original user request:\n{request.prompt}\n\n"
+                f"Draft:\n{draft}"
+            ),
+            context=request.context,
+            system=(
+                "You are a response post-processor. "
+                "Return only the cleaned final answer. "
+                "Do not include reasoning, commentary, or meta text."
+            ),
+            max_tokens=min(
+                request.max_tokens or self.default_max_tokens,
+                128,
+            ),
+            temperature=min(
+                request.temperature if request.temperature is not None else self.default_temperature,
+                0.2,
+            ),
+            stop=request.stop,
+            json_mode=request.json_mode,
+            metadata={**request.metadata, "disable_reasoning_extractor": True},
+        )
+
+    def _generate_once(self, request: LLMRequest) -> tuple[str, Any, str]:
         final_prompt = self.build_prompt(request)
         max_tokens = request.max_tokens or self.default_max_tokens
         temperature = (
@@ -176,17 +269,19 @@ class LlamaCppAdapter(BaseLLMAdapter):
                 "--jinja",
                 "-rea",
                 "off",
+                "--reasoning-budget",
+                "0",
                 "-st",
                 "-p",
                 cli_prompt,
             ]
-            if request.system:
-                cmd.extend(["-sys", request.system])
+            cmd.extend(["-sys", self._subprocess_system(request)])
             proc = subprocess.run(
                 cmd,
                 capture_output=True,
                 text=True,
                 check=True,
+                timeout=self.subprocess_timeout,
             )
             out = {"stdout": proc.stdout, "stderr": proc.stderr, "cmd": cmd}
             text = self._clean_subprocess_output(proc.stdout)
@@ -194,6 +289,103 @@ class LlamaCppAdapter(BaseLLMAdapter):
             raise RuntimeError(
                 "No usable llama.cpp runtime found. Install llama-cpp-python or provide a llama.cpp CLI binary."
             )
+        return text, out, driver
+
+    def _clean_subprocess_output(self, text: str) -> str:
+        cleaned = text.strip()
+        if "\nmodel\n" in cleaned:
+            cleaned = cleaned.rsplit("\nmodel\n", 1)[-1].strip()
+        if cleaned.startswith("model\n"):
+            cleaned = cleaned[len("model\n") :].strip()
+        if cleaned.startswith("<|channel>final\n"):
+            cleaned = cleaned[len("<|channel>final\n") :].strip()
+        if "<|channel>thought\n" in cleaned and "<|channel>final\n" in cleaned:
+            cleaned = cleaned.split("<|channel>final\n", 1)[-1].strip()
+        elif cleaned.startswith("<|channel>thought\n"):
+            cleaned = cleaned[len("<|channel>thought\n") :].strip()
+            cleaned = re.sub(
+                r"^Here's a thinking process that leads to the suggested concept:\s*",
+                "",
+                cleaned,
+                count=1,
+            ).strip()
+        cleaned = re.sub(r"^<\|channel\>[a-z_]+\n", "", cleaned).strip()
+        return cleaned
+
+    def healthcheck(self) -> dict[str, object]:
+        model_exists = Path(self.model_path).exists()
+        binding_available = self._binding_available()
+        cli_resolved_path = self._cli_resolved_path()
+        driver = self._resolve_driver()
+        return {
+            "backend": self.backend_name,
+            "model_family": self.model_family,
+            "model_path": self.model_path,
+            "exists": model_exists,
+            "binding_available": binding_available,
+            "cli_available": cli_resolved_path is not None,
+            "cli_path": cli_resolved_path,
+            "driver": driver,
+            "ok": model_exists and driver in {"python", "subprocess"},
+        }
+
+    def generate(self, request: LLMRequest) -> LLMResponse:
+        max_tokens = request.max_tokens or self.default_max_tokens
+        temperature = (
+            request.temperature
+            if request.temperature is not None
+            else self.default_temperature
+        )
+        text, out, driver = self._generate_once(request)
+        postprocess = {
+            "reasoning_leak_detected": self._has_reasoning_leak(text),
+            "extractor_applied": False,
+            "extractor_error": None,
+            "heuristic_fallback_applied": False,
+            "heuristic_fallback_skipped": False,
+            "heuristic_fallback_skip_reason": None,
+            "heuristic_first_pass_applied": False,
+        }
+        if postprocess["reasoning_leak_detected"]:
+            heuristic_candidate = self._heuristic_extract_final_answer(text)
+            should_apply, skip_reason = self._should_apply_fallback(text, heuristic_candidate)
+            if should_apply:
+                text = heuristic_candidate
+                postprocess["heuristic_fallback_applied"] = True
+                postprocess["heuristic_first_pass_applied"] = True
+                postprocess["reasoning_leak_detected"] = self._has_reasoning_leak(text)
+            else:
+                postprocess["heuristic_fallback_skipped"] = True
+                postprocess["heuristic_fallback_skip_reason"] = skip_reason
+
+        if postprocess["reasoning_leak_detected"] and not request.metadata.get("disable_reasoning_extractor"):
+            extractor_request = self._extractor_request(request, text)
+            try:
+                extracted_text, extracted_out, _ = self._generate_once(extractor_request)
+                if extracted_text:
+                    text = extracted_text
+                    out = {
+                        "primary": out,
+                        "extractor": extracted_out,
+                    }
+                    postprocess["extractor_applied"] = True
+                    postprocess["reasoning_leak_detected"] = self._has_reasoning_leak(text)
+                    if postprocess["reasoning_leak_detected"]:
+                        fallback_text = self._heuristic_extract_final_answer(text)
+                        should_apply, skip_reason = self._should_apply_fallback(text, fallback_text)
+                        if should_apply:
+                            text = fallback_text
+                            postprocess["heuristic_fallback_applied"] = True
+                            postprocess["reasoning_leak_detected"] = self._has_reasoning_leak(text)
+                        else:
+                            postprocess["heuristic_fallback_skipped"] = True
+                            postprocess["heuristic_fallback_skip_reason"] = skip_reason
+            except subprocess.TimeoutExpired as exc:
+                postprocess["extractor_error"] = f"timeout: {exc.timeout}s"
+            except subprocess.CalledProcessError as exc:
+                postprocess["extractor_error"] = f"called_process_error: {exc.returncode}"
+            except Exception as exc:
+                postprocess["extractor_error"] = f"{type(exc).__name__}: {exc}"
         return LLMResponse(
             text=text,
             model_family=self.model_family,
@@ -207,6 +399,7 @@ class LlamaCppAdapter(BaseLLMAdapter):
                 "chat_format": self.chat_format,
                 "driver": driver,
                 "cli_path": self._cli_resolved_path(),
+                "postprocess": postprocess,
             },
             raw=out,
         )

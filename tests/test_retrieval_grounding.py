@@ -22,6 +22,8 @@ class CloneRetrievalGroundingTests(unittest.TestCase):
         self.assertIn(case["expected_keyword"], row["context"])
         self.assertIn(case["expected_keyword"], row["output"])
         self.assertTrue(row["retrieved_memories"])
+        self.assertIn("retrieval_grounding", row["consistency"]["checks"])
+        self.assertTrue(row["consistency"]["checks"]["retrieval_grounding"])
 
 
 if __name__ == "__main__":

@@ -1,22 +1,25 @@
+from evaluation.heuristics import contains_all, contains_any, make_result
+
+
 class ConsistencyEvaluator:
     def score(self, persona, text, user_text="", retrieved_memories=None, prompt_components=None):
         retrieved_memories = retrieved_memories or []
         prompt_components = prompt_components or {}
-        checks = [
-            text.startswith(f"[{persona.name}]"),
-            f"tone={persona.tone}" in text,
-            all(p in text for p in persona.principles[:2]),
-            user_text in text if user_text else True,
-        ]
         context = prompt_components.get("context")
-        if context:
-            checks.append(any(memory in text for memory in context.splitlines()))
-        if retrieved_memories:
-            checks.append(any(memory in text for memory in retrieved_memories))
-        if persona.facts and any(key in user_text for key in ["記憶", "memory", "風格", "特徵"]):
-            checks.append(
-                any(fact in text for fact in persona.facts[:2])
+        memory_lines = context.splitlines() if context else []
+        ask_memory_sensitive = any(key in user_text for key in ["記憶", "memory", "風格", "特徵"])
+
+        checks = {
+            "persona_tag": text.startswith(f"[{persona.name}]"),
+            "tone_match": f"tone={persona.tone}" in text,
+            "principle_presence": contains_all(text, persona.principles[:2]),
+            "user_echo": user_text in text if user_text else True,
+            "prompt_context_hit": contains_any(text, memory_lines) if memory_lines else True,
+            "retrieval_grounding": contains_any(text, retrieved_memories) if retrieved_memories else True,
+            "memory_sensitive_answer": (
+                contains_any(text, persona.facts[:2])
                 or persona.tone in text
-                or any(memory in text for memory in retrieved_memories)
-            )
-        return sum(1.0 for ok in checks if ok) / max(len(checks), 1)
+                or contains_any(text, retrieved_memories)
+            ) if persona.facts and ask_memory_sensitive else True,
+        }
+        return make_result(checks)

@@ -2,6 +2,7 @@ import json
 from pathlib import Path
 
 from core.config import load_config
+from evaluation.heuristics import contains_all, excludes_all, make_result
 from genai.multimodal.engine import GenAIEngine
 
 
@@ -30,30 +31,46 @@ def score_case(case: dict, result: dict, method: str) -> dict:
     output = result["output"]
     summary = result["summary"]
     text = output["text"]
+    llm = output.get("llm") or {}
+    runtime = llm.get("runtime") or {}
+    postprocess = runtime.get("postprocess") or {}
     prompt = case["prompt"]
     context = case.get("context")
-    expected_prefix = case.get("expected_prefix", "[DummyLLM]")
+    expected_prefix = case.get("expected_prefix", "")
+    require_prompt_reflection = case.get("require_prompt_reflection", bool(expected_prefix))
+    require_context_reflection = case.get(
+        "require_context_reflection",
+        bool(context and expected_prefix),
+    )
     must_include = case.get("must_include", [])
+    forbidden_substrings = case.get(
+        "must_not_include",
+        ["<|channel>thought", "Thinking Process:"],
+    )
 
     checks = {
         "expected_prefix": text.startswith(expected_prefix) if expected_prefix else True,
-        "prompt_reflected": prompt in text,
-        "context_reflected": context in text if context else not summary["has_context"] or context is None,
-        "required_substrings": all(token in text for token in must_include),
+        "prompt_reflected": prompt in text if require_prompt_reflection else True,
+        "context_reflected": (
+            context in text if require_context_reflection and context else not summary["has_context"] or context is None
+        ),
+        "required_substrings": contains_all(text, must_include),
+        "reasoning_leak_absent": excludes_all(text, forbidden_substrings),
         "has_audio": bool(summary["has_audio"]),
         "has_image": bool(summary["has_image"]),
     }
-    score = sum(1.0 for ok in checks.values() if ok) / len(checks)
+    heuristic = make_result(checks)
     return {
         "id": case["id"],
         "method": method,
         "prompt": prompt,
         "context": context,
         "text": text,
-        "llm": output.get("llm"),
-        "checks": checks,
-        "score": score,
-        "pass": all(checks.values()),
+        "llm": llm,
+        "postprocess": postprocess,
+        "checks": heuristic["checks"],
+        "score": heuristic["score"],
+        "pass": heuristic["pass"],
     }
 
 
@@ -70,6 +87,24 @@ def summarize_comparison(genai_results: list[dict], baseline_results: list[dict]
         "mean_improvement": sum(improvements) / max(len(improvements), 1),
         "win_rate": sum(1 for value in improvements if value > 0.0) / max(len(improvements), 1),
         "non_negative_rate": sum(1 for value in improvements if value >= 0.0) / max(len(improvements), 1),
+        "reasoning_leak_rate": sum(
+            1 for row in genai_results if row.get("postprocess", {}).get("reasoning_leak_detected")
+        ) / max(len(genai_results), 1),
+        "extractor_applied_rate": sum(
+            1 for row in genai_results if row.get("postprocess", {}).get("extractor_applied")
+        ) / max(len(genai_results), 1),
+        "heuristic_fallback_rate": sum(
+            1 for row in genai_results if row.get("postprocess", {}).get("heuristic_fallback_applied")
+        ) / max(len(genai_results), 1),
+        "heuristic_first_pass_rate": sum(
+            1 for row in genai_results if row.get("postprocess", {}).get("heuristic_first_pass_applied")
+        ) / max(len(genai_results), 1),
+        "extractor_error_rate": sum(
+            1 for row in genai_results if row.get("postprocess", {}).get("extractor_error")
+        ) / max(len(genai_results), 1),
+        "heuristic_fallback_skip_rate": sum(
+            1 for row in genai_results if row.get("postprocess", {}).get("heuristic_fallback_skipped")
+        ) / max(len(genai_results), 1),
     }
 
 
@@ -85,7 +120,7 @@ def render_markdown(config_path: str, summary: dict, genai_results: list[dict], 
         "",
         f"- Config: `{config_path}`",
         f"- Cases: `{summary['num_cases']}`",
-        "- Metrics: expected prefix, prompt reflection, context reflection, required substrings, audio presence, image presence",
+        "- Metrics: expected prefix, prompt reflection, context reflection, required substrings, reasoning leakage absence, audio presence, image presence",
         "- Comparator: naive baseline without multimodal artifact generation",
         "",
         "## Results",
@@ -109,6 +144,38 @@ def render_markdown(config_path: str, summary: dict, genai_results: list[dict], 
         f"- Baseline pass rate: `{summary['baseline_pass_rate']:.2%}`",
         f"- Win rate: `{summary['win_rate']:.2%}`",
         f"- Non-negative rate: `{summary['non_negative_rate']:.2%}`",
+        f"- Reasoning leak rate: `{summary['reasoning_leak_rate']:.2%}`",
+        f"- Extractor applied rate: `{summary['extractor_applied_rate']:.2%}`",
+        f"- Heuristic fallback rate: `{summary['heuristic_fallback_rate']:.2%}`",
+        f"- Heuristic first-pass rate: `{summary['heuristic_first_pass_rate']:.2%}`",
+        f"- Extractor error rate: `{summary['extractor_error_rate']:.2%}`",
+        "",
+        "## Postprocess Analysis",
+        "",
+        "This section isolates the reasoning-leak handling path so the team can tell whether a poor answer came from the model itself or from aggressive cleanup.",
+        "",
+        f"- Reasoning leak detection hit rate: `{summary['reasoning_leak_rate']:.2%}`",
+        f"- Extractor second-pass hit rate: `{summary['extractor_applied_rate']:.2%}`",
+        f"- Heuristic fallback applied rate: `{summary['heuristic_fallback_rate']:.2%}`",
+        f"- Heuristic first-pass rescue rate: `{summary['heuristic_first_pass_rate']:.2%}`",
+        f"- Heuristic fallback skipped rate: `{summary['heuristic_fallback_skip_rate']:.2%}`",
+        f"- Extractor error rate: `{summary['extractor_error_rate']:.2%}`",
+        "",
+        "| Case | Leak Detected | Heuristic First Pass | Extractor Applied | Fallback Applied | Fallback Skipped | Extractor Error |",
+        "|---|---:|---:|---:|---:|---:|---|",
+    ]
+    for row in genai_results:
+        post = row.get("postprocess", {})
+        lines.append(
+            f"| {row['id']} | {'yes' if post.get('reasoning_leak_detected') else 'no'} | "
+            f"{'yes' if post.get('heuristic_first_pass_applied') else 'no'} | "
+            f"{'yes' if post.get('extractor_applied') else 'no'} | "
+            f"{'yes' if post.get('heuristic_fallback_applied') else 'no'} | "
+            f"{'yes' if post.get('heuristic_fallback_skipped') else 'no'} | "
+            f"{post.get('extractor_error') or ''} |"
+        )
+
+    lines += [
         "",
         "## Interpretation",
         "",

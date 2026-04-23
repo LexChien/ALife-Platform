@@ -1,0 +1,26 @@
+defaults:
+  runtime_profile:
+    device: auto
+    precision: fp32
+    backend: local
+  tracking:
+    enabled: false
+  llm:
+    backend: llama_cpp
+    model_family: gemma
+    model_path: models/gemma/gemma.gguf
+    cli_path: third_party/llama.cpp/build/bin/llama-completion
+    context_length: 4096
+    temperature: 0.7
+    max_tokens: 256
+    n_gpu_layers: 0
+    verbose: false
+
+system: "You are a multimodal assistant for ALife-Platform."
+prompt: "你是誰，告訴我你來自哪裡"
+context: "兩百字簡單介紹相對論"
+
+profiles:
+  cpu_smoke:
+    runtime_profile:
+      device: cpu

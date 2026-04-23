@@ -1,0 +1,16 @@
+model_id: planner_lora_v1
+family: gemma
+role: planner
+runtime_backend: llama_cpp
+artifact_format: gguf
+artifact_path: models/planner/planner_lora_v1.gguf
+hardware_target: workstation_future
+prompt_profile: planner
+quantization: q4_k_m
+lineage:
+  base_model: gemma_bootstrap_v1
+  tuning_type: lora
+  dataset: planner_instruction_v1
+  version: "0.1"
+  notes: "Placeholder spec for future structured planning specialization."
+

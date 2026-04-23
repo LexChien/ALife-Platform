@@ -55,7 +55,7 @@ class DigitalCloneEngine:
                 f"principles={', '.join(self.persona.principles[:2])} "
                 f"response={response_text}"
             )
-            score = self.consistency.score(
+            consistency = self.consistency.score(
                 self.persona,
                 reply,
                 user_text=text,
@@ -67,7 +67,8 @@ class DigitalCloneEngine:
                 {
                     "input": text,
                     "output": reply,
-                    "consistency": score,
+                    "consistency": consistency,
+                    "consistency_score": float(consistency["score"]),
                     "retrieved_memories": [m["content"] for m in memories],
                     "system": built["system"],
                     "context": built["context"],
@@ -79,7 +80,7 @@ class DigitalCloneEngine:
                     },
                 }
             )
-        consistencies = [float(row["consistency"]) for row in outputs]
+        consistencies = [float(row["consistency_score"]) for row in outputs]
         retrieval_hits = sum(1 for row in outputs if row["retrieved_memories"])
         return {
             "outputs": outputs,

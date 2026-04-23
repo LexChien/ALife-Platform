@@ -20,11 +20,13 @@
         "ok": true
       }
     },
+    "postprocess": {},
     "checks": {
       "expected_prefix": true,
       "prompt_reflected": true,
       "context_reflected": true,
       "required_substrings": true,
+      "reasoning_leak_absent": true,
       "has_audio": true,
       "has_image": true
     },
@@ -52,11 +54,13 @@
         "ok": true
       }
     },
+    "postprocess": {},
     "checks": {
       "expected_prefix": true,
       "prompt_reflected": true,
       "context_reflected": true,
       "required_substrings": true,
+      "reasoning_leak_absent": true,
       "has_audio": true,
       "has_image": true
     },
