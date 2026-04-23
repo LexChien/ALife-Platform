@@ -20,6 +20,17 @@ def make_evaluator(config: dict):
         config["foundation_model"]["name"],
         **config["foundation_model"].get("params", {}),
     )
+    morphology_cfg = config.get("morphology_judge")
+    morphology_fm = None
+    morphology_txt_emb = None
+    morphology_weight = 0.0
+    if morphology_cfg and morphology_cfg.get("enabled", False):
+        morphology_fm = foundation_models.create(
+            morphology_cfg["name"],
+            **morphology_cfg.get("params", {}),
+        )
+        morphology_txt_emb = morphology_fm.txt_embed(config["prompt"])
+        morphology_weight = float(morphology_cfg.get("weight", 0.0))
     substrate = ReactionDiffusion(**config["substrate"].get("params", {}))
     txt_emb = fm.txt_embed(config["prompt"])
     runtime = config["runtime"]
@@ -30,7 +41,11 @@ def make_evaluator(config: dict):
             substrate.step(runtime["substeps"])
         img = substrate.render()
         img_emb = fm.img_embed(img)
-        return supervised_target_score([img_emb], txt_emb)
+        score = supervised_target_score([img_emb], txt_emb)
+        if morphology_fm is not None and morphology_weight > 0.0:
+            morph_score = supervised_target_score([morphology_fm.img_embed(img)], morphology_txt_emb)
+            score = (1.0 - morphology_weight) * score + morphology_weight * morph_score
+        return score
 
     return evaluate
 

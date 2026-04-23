@@ -1,0 +1,44 @@
+defaults:
+  runtime_profile:
+    device: auto
+    precision: fp32
+    backend: local
+  tracking:
+    enabled: false
+
+prompt: "a microscopy image of a biological cell, phase contrast"
+
+foundation_model:
+  name: openclip
+  params:
+    model_name: "ViT-B-32"
+    pretrained: "laion2b_s34b_b79k"
+
+morphology_judge:
+  enabled: true
+  name: morphology_judge_stub
+  params: {}
+  weight: 0.35
+
+substrate:
+  name: reaction_diffusion
+  params:
+    size: 96
+
+runtime:
+  steps: 96
+  substeps: 2
+
+search:
+  iters: 10
+  pop: 12
+  keep: 12
+  sigma: 0.025
+  seed: 7
+  theta_low: [0.10, 0.04, 0.01, 0.01, 1.0]
+  theta_high: [0.25, 0.12, 0.10, 0.10, 1.0]
+
+profiles:
+  cpu_smoke:
+    runtime_profile:
+      device: cpu

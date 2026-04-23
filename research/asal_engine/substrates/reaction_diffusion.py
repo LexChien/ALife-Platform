@@ -12,9 +12,15 @@ class ReactionDiffusion:
         s = self.size
         self.U = np.ones((s, s), dtype=np.float32)
         self.V = np.zeros((s, s), dtype=np.float32)
-        r = s // 10
         c = s // 2
-        self.V[c-r:c+r, c-r:c+r] = 1.0
+        radius = max(s // 10, 3)
+        yy, xx = np.mgrid[0:s, 0:s]
+        dist2 = (yy - c) ** 2 + (xx - c) ** 2
+        disc = dist2 <= radius ** 2
+        halo = dist2 <= int((radius * 1.45) ** 2)
+        self.V[disc] = 1.0
+        self.U[disc] = 0.5
+        self.V[halo & ~disc] = 0.35
 
     def step(self, substeps=2):
         Du, Dv, F, k, _ = self.theta
@@ -25,10 +31,21 @@ class ReactionDiffusion:
             uvv = U * V * V
             self.U = U + Du * lapU - uvv + F * (1-U)
             self.V = V + Dv * lapV + uvv - (F+k) * V
+            self.U = np.clip(self.U, 0.0, 1.0)
+            self.V = np.clip(self.V, 0.0, 1.0)
 
     def render(self):
-        x = (self.V - self.V.min()) / (np.ptp(self.V) + 1e-9)
-        img = np.stack([x, x*0.7, 1-x], axis=-1)
+        field = np.clip(self.V - 0.35 * self.U, -1.0, 1.0)
+        x = (field - field.min()) / (np.ptp(field) + 1e-9)
+        gy, gx = np.gradient(x)
+        edge = np.sqrt(gx * gx + gy * gy)
+        edge = edge / (edge.max() + 1e-9)
+
+        # Approximate a microscopy phase-contrast look with grayscale body and bright rim.
+        body = np.clip(0.20 + 0.65 * x, 0.0, 1.0)
+        halo = np.clip(body + 0.35 * edge, 0.0, 1.0)
+        shadow = np.clip(body - 0.18 * edge, 0.0, 1.0)
+        img = np.stack([halo, body, shadow], axis=-1)
         return Image.fromarray((img * 255).astype("uint8"))
 
     def stats(self):

@@ -1,0 +1,124 @@
+{
+  "total_score": 0.216384138132179,
+  "phase_order_valid": false,
+  "expected_component_sequence": [
+    1,
+    2,
+    1
+  ],
+  "actual_component_sequence": [
+    1,
+    1,
+    1
+  ],
+  "phases": [
+    {
+      "name": "birth",
+      "frame_index": 13,
+      "frame_range": [
+        0,
+        15
+      ],
+      "target_components": 1,
+      "score": 0.865269549306022,
+      "stats": {
+        "num_components": 1,
+        "largest_area": 1877.0,
+        "second_area": 0.0,
+        "dominant_mass_ratio": 1.0,
+        "largest_centroid": [
+          104.76451873779297,
+          68.9429931640625
+        ],
+        "second_centroid": null,
+        "centroid_distance": null,
+        "foreground_fraction": 0.11456298828125,
+        "largest_radius": 26.98742609055535,
+        "largest_circularity_proxy": 0.8203354281646225,
+        "components": [
+          {
+            "area": 1877.0,
+            "centroid": [
+              104.76451873779297,
+              68.9429931640625
+            ],
+            "radius": 26.98742609055535,
+            "circularity_proxy": 0.8203354281646225
+          }
+        ]
+      }
+    },
+    {
+      "name": "split",
+      "frame_index": 17,
+      "frame_range": [
+        16,
+        31
+      ],
+      "target_components": 2,
+      "score": 0.2550316787347561,
+      "stats": {
+        "num_components": 1,
+        "largest_area": 1478.0,
+        "second_area": 0.0,
+        "dominant_mass_ratio": 1.0,
+        "largest_centroid": [
+          45.30514144897461,
+          40.51218032836914
+        ],
+        "second_centroid": null,
+        "centroid_distance": null,
+        "foreground_fraction": 0.0902099609375,
+        "largest_radius": 24.10970537081294,
+        "largest_circularity_proxy": 0.8093581699740112,
+        "components": [
+          {
+            "area": 1478.0,
+            "centroid": [
+              45.30514144897461,
+              40.51218032836914
+            ],
+            "radius": 24.10970537081294,
+            "circularity_proxy": 0.8093581699740112
+          }
+        ]
+      }
+    },
+    {
+      "name": "fusion",
+      "frame_index": 44,
+      "frame_range": [
+        32,
+        47
+      ],
+      "target_components": 1,
+      "score": 0.855489527925532,
+      "stats": {
+        "num_components": 1,
+        "largest_area": 1314.0,
+        "second_area": 0.0,
+        "dominant_mass_ratio": 1.0,
+        "largest_centroid": [
+          67.87519073486328,
+          41.30517578125
+        ],
+        "second_centroid": null,
+        "centroid_distance": null,
+        "foreground_fraction": 0.0802001953125,
+        "largest_radius": 19.568288318497448,
+        "largest_circularity_proxy": 1.0922946720881377,
+        "components": [
+          {
+            "area": 1314.0,
+            "centroid": [
+              67.87519073486328,
+              41.30517578125
+            ],
+            "radius": 19.568288318497448,
+            "circularity_proxy": 1.0922946720881377
+          }
+        ]
+      }
+    }
+  ]
+}

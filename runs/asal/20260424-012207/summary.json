@@ -1,0 +1,43 @@
+{
+  "schema_version": "1.0",
+  "status": "completed",
+  "system": "asal",
+  "mode": "asal_target",
+  "config_path": "configs/asal/target_cell_boids_morph.yaml",
+  "run_dir": "runs/asal/20260424-012207",
+  "started_at": "2026-04-24T01:22:07+08:00",
+  "completed_at": "2026-04-24T01:22:57+08:00",
+  "run_elapsed_seconds": 50.0,
+  "artifacts": {
+    "image": "best.png",
+    "gif": "best.gif",
+    "mp4": null
+  },
+  "metrics": {
+    "best_score": 0.8287708546899105,
+    "num_frames": 180,
+    "search_iters": 12,
+    "search_pop": 16,
+    "search_keep": 16
+  },
+  "details": {
+    "prompt": "a microscopy image of a biological cell, phase contrast",
+    "best_theta": [
+      0.15261657874791434,
+      1.5598375844802292,
+      0.876818462881787,
+      97.58116956140353,
+      6.378942315981314
+    ],
+    "foundation_model": "morphology_judge_stub",
+    "substrate": "boids",
+    "runtime": {
+      "device_request": "auto",
+      "resolved_device": "cpu",
+      "precision": "fp32",
+      "backend": "local"
+    },
+    "tracking_backend": null,
+    "active_profile": null
+  }
+}

@@ -1,0 +1,1250 @@
+[
+  {
+    "num_components": 1,
+    "largest_area": 1069.0,
+    "second_area": 0.0,
+    "dominant_mass_ratio": 1.0,
+    "largest_centroid": [
+      104.15715789794922,
+      22.778297424316406
+    ],
+    "second_centroid": null,
+    "centroid_distance": null,
+    "foreground_fraction": 0.06524658203125,
+    "largest_radius": 16.124169143475463,
+    "largest_circularity_proxy": 1.3087995649175952,
+    "components": [
+      {
+        "area": 1069.0,
+        "centroid": [
+          104.15715789794922,
+          22.778297424316406
+        ],
+        "radius": 16.124169143475463,
+        "circularity_proxy": 1.3087995649175952
+      }
+    ]
+  },
+  {
+    "num_components": 1,
+    "largest_area": 1050.0,
+    "second_area": 0.0,
+    "dominant_mass_ratio": 1.0,
+    "largest_centroid": [
+      100.65904998779297,
+      68.84571075439453
+    ],
+    "second_centroid": null,
+    "centroid_distance": null,
+    "foreground_fraction": 0.0640869140625,
+    "largest_radius": 16.186912732199062,
+    "largest_circularity_proxy": 1.275590792405187,
+    "components": [
+      {
+        "area": 1050.0,
+        "centroid": [
+          100.65904998779297,
+          68.84571075439453
+        ],
+        "radius": 16.186912732199062,
+        "circularity_proxy": 1.275590792405187
+      }
+    ]
+  },
+  {
+    "num_components": 1,
+    "largest_area": 1239.0,
+    "second_area": 0.0,
+    "dominant_mass_ratio": 1.0,
+    "largest_centroid": [
+      32.245357513427734,
+      102.72881317138672
+    ],
+    "second_centroid": null,
+    "centroid_distance": null,
+    "foreground_fraction": 0.07562255859375,
+    "largest_radius": 18.560467849649562,
+    "largest_circularity_proxy": 1.1448368375149656,
+    "components": [
+      {
+        "area": 1239.0,
+        "centroid": [
+          32.245357513427734,
+          102.72881317138672
+        ],
+        "radius": 18.560467849649562,
+        "circularity_proxy": 1.1448368375149656
+      }
+    ]
+  },
+  {
+    "num_components": 1,
+    "largest_area": 1550.0,
+    "second_area": 0.0,
+    "dominant_mass_ratio": 1.0,
+    "largest_centroid": [
+      31.29161262512207,
+      62.01677322387695
+    ],
+    "second_centroid": null,
+    "centroid_distance": null,
+    "foreground_fraction": 0.0946044921875,
+    "largest_radius": 26.962647774300653,
+    "largest_circularity_proxy": 0.6786670257995311,
+    "components": [
+      {
+        "area": 1550.0,
+        "centroid": [
+          31.29161262512207,
+          62.01677322387695
+        ],
+        "radius": 26.962647774300653,
+        "circularity_proxy": 0.6786670257995311
+      }
+    ]
+  },
+  {
+    "num_components": 1,
+    "largest_area": 500.0,
+    "second_area": 0.0,
+    "dominant_mass_ratio": 1.0,
+    "largest_centroid": [
+      41.2599983215332,
+      23.79599952697754
+    ],
+    "second_centroid": null,
+    "centroid_distance": null,
+    "foreground_fraction": 0.030517578125,
+    "largest_radius": 15.443535123170776,
+    "largest_circularity_proxy": 0.6673085530762832,
+    "components": [
+      {
+        "area": 500.0,
+        "centroid": [
+          41.2599983215332,
+          23.79599952697754
+        ],
+        "radius": 15.443535123170776,
+        "circularity_proxy": 0.6673085530762832
+      }
+    ]
+  },
+  {
+    "num_components": 1,
+    "largest_area": 429.0,
+    "second_area": 0.0,
+    "dominant_mass_ratio": 1.0,
+    "largest_centroid": [
+      33.44055938720703,
+      108.68065643310547
+    ],
+    "second_centroid": null,
+    "centroid_distance": null,
+    "foreground_fraction": 0.02618408203125,
+    "largest_radius": 9.853351669586099,
+    "largest_circularity_proxy": 1.4064990822164902,
+    "components": [
+      {
+        "area": 429.0,
+        "centroid": [
+          33.44055938720703,
+          108.68065643310547
+        ],
+        "radius": 9.853351669586099,
+        "circularity_proxy": 1.4064990822164902
+      }
+    ]
+  },
+  {
+    "num_components": 1,
+    "largest_area": 685.0,
+    "second_area": 0.0,
+    "dominant_mass_ratio": 1.0,
+    "largest_centroid": [
+      14.176642417907715,
+      91.69342803955078
+    ],
+    "second_centroid": null,
+    "centroid_distance": null,
+    "foreground_fraction": 0.04180908203125,
+    "largest_radius": 12.337779163153082,
+    "largest_circularity_proxy": 1.4324079209783667,
+    "components": [
+      {
+        "area": 685.0,
+        "centroid": [
+          14.176642417907715,
+          91.69342803955078
+        ],
+        "radius": 12.337779163153082,
+        "circularity_proxy": 1.4324079209783667
+      }
+    ]
+  },
+  {
+    "num_components": 1,
+    "largest_area": 890.0,
+    "second_area": 0.0,
+    "dominant_mass_ratio": 1.0,
+    "largest_centroid": [
+      28.396629333496094,
+      100.2426986694336
+    ],
+    "second_centroid": null,
+    "centroid_distance": null,
+    "foreground_fraction": 0.0543212890625,
+    "largest_radius": 20.915790838442717,
+    "largest_circularity_proxy": 0.6475772059509013,
+    "components": [
+      {
+        "area": 890.0,
+        "centroid": [
+          28.396629333496094,
+          100.2426986694336
+        ],
+        "radius": 20.915790838442717,
+        "circularity_proxy": 0.6475772059509013
+      }
+    ]
+  },
+  {
+    "num_components": 1,
+    "largest_area": 817.0,
+    "second_area": 0.0,
+    "dominant_mass_ratio": 1.0,
+    "largest_centroid": [
+      42.30110168457031,
+      114.75397491455078
+    ],
+    "second_centroid": null,
+    "centroid_distance": null,
+    "foreground_fraction": 0.04986572265625,
+    "largest_radius": 15.557981271713885,
+    "largest_circularity_proxy": 1.0743992465867762,
+    "components": [
+      {
+        "area": 817.0,
+        "centroid": [
+          42.30110168457031,
+          114.75397491455078
+        ],
+        "radius": 15.557981271713885,
+        "circularity_proxy": 1.0743992465867762
+      }
+    ]
+  },
+  {
+    "num_components": 1,
+    "largest_area": 1566.0,
+    "second_area": 0.0,
+    "dominant_mass_ratio": 1.0,
+    "largest_centroid": [
+      48.15581130981445,
+      42.41634750366211
+    ],
+    "second_centroid": null,
+    "centroid_distance": null,
+    "foreground_fraction": 0.0955810546875,
+    "largest_radius": 22.991760104781967,
+    "largest_circularity_proxy": 0.9429690665211702,
+    "components": [
+      {
+        "area": 1566.0,
+        "centroid": [
+          48.15581130981445,
+          42.41634750366211
+        ],
+        "radius": 22.991760104781967,
+        "circularity_proxy": 0.9429690665211702
+      }
+    ]
+  },
+  {
+    "num_components": 1,
+    "largest_area": 762.0,
+    "second_area": 0.0,
+    "dominant_mass_ratio": 1.0,
+    "largest_centroid": [
+      88.26640319824219,
+      62.68635177612305
+    ],
+    "second_centroid": null,
+    "centroid_distance": null,
+    "foreground_fraction": 0.0465087890625,
+    "largest_radius": 16.834884320336894,
+    "largest_circularity_proxy": 0.8558247179272018,
+    "components": [
+      {
+        "area": 762.0,
+        "centroid": [
+          88.26640319824219,
+          62.68635177612305
+        ],
+        "radius": 16.834884320336894,
+        "circularity_proxy": 0.8558247179272018
+      }
+    ]
+  },
+  {
+    "num_components": 1,
+    "largest_area": 899.0,
+    "second_area": 0.0,
+    "dominant_mass_ratio": 1.0,
+    "largest_centroid": [
+      34.15572738647461,
+      82.42825317382812
+    ],
+    "second_centroid": null,
+    "centroid_distance": null,
+    "foreground_fraction": 0.05487060546875,
+    "largest_radius": 16.81702552216382,
+    "largest_circularity_proxy": 1.0118390879904038,
+    "components": [
+      {
+        "area": 899.0,
+        "centroid": [
+          34.15572738647461,
+          82.42825317382812
+        ],
+        "radius": 16.81702552216382,
+        "circularity_proxy": 1.0118390879904038
+      }
+    ]
+  },
+  {
+    "num_components": 1,
+    "largest_area": 693.0,
+    "second_area": 0.0,
+    "dominant_mass_ratio": 1.0,
+    "largest_centroid": [
+      40.487735748291016,
+      77.20490264892578
+    ],
+    "second_centroid": null,
+    "centroid_distance": null,
+    "foreground_fraction": 0.04229736328125,
+    "largest_radius": 14.846985153244022,
+    "largest_circularity_proxy": 1.0007067136359595,
+    "components": [
+      {
+        "area": 693.0,
+        "centroid": [
+          40.487735748291016,
+          77.20490264892578
+        ],
+        "radius": 14.846985153244022,
+        "circularity_proxy": 1.0007067136359595
+      }
+    ]
+  },
+  {
+    "num_components": 1,
+    "largest_area": 1877.0,
+    "second_area": 0.0,
+    "dominant_mass_ratio": 1.0,
+    "largest_centroid": [
+      104.76451873779297,
+      68.9429931640625
+    ],
+    "second_centroid": null,
+    "centroid_distance": null,
+    "foreground_fraction": 0.11456298828125,
+    "largest_radius": 26.98742609055535,
+    "largest_circularity_proxy": 0.8203354281646225,
+    "components": [
+      {
+        "area": 1877.0,
+        "centroid": [
+          104.76451873779297,
+          68.9429931640625
+        ],
+        "radius": 26.98742609055535,
+        "circularity_proxy": 0.8203354281646225
+      }
+    ]
+  },
+  {
+    "num_components": 1,
+    "largest_area": 1596.0,
+    "second_area": 0.0,
+    "dominant_mass_ratio": 1.0,
+    "largest_centroid": [
+      66.05638885498047,
+      84.45613861083984
+    ],
+    "second_centroid": null,
+    "centroid_distance": null,
+    "foreground_fraction": 0.097412109375,
+    "largest_radius": 34.29434429730725,
+    "largest_circularity_proxy": 0.43195450429773163,
+    "components": [
+      {
+        "area": 1596.0,
+        "centroid": [
+          66.05638885498047,
+          84.45613861083984
+        ],
+        "radius": 34.29434429730725,
+        "circularity_proxy": 0.43195450429773163
+      }
+    ]
+  },
+  {
+    "num_components": 1,
+    "largest_area": 776.0,
+    "second_area": 0.0,
+    "dominant_mass_ratio": 1.0,
+    "largest_centroid": [
+      89.71392059326172,
+      27.395618438720703
+    ],
+    "second_centroid": null,
+    "centroid_distance": null,
+    "foreground_fraction": 0.04736328125,
+    "largest_radius": 15.500250537479477,
+    "largest_circularity_proxy": 1.0280977595259124,
+    "components": [
+      {
+        "area": 776.0,
+        "centroid": [
+          89.71392059326172,
+          27.395618438720703
+        ],
+        "radius": 15.500250537479477,
+        "circularity_proxy": 1.0280977595259124
+      }
+    ]
+  },
+  {
+    "num_components": 1,
+    "largest_area": 675.0,
+    "second_area": 0.0,
+    "dominant_mass_ratio": 1.0,
+    "largest_centroid": [
+      99.7718505859375,
+      57.14073944091797
+    ],
+    "second_centroid": null,
+    "centroid_distance": null,
+    "foreground_fraction": 0.04119873046875,
+    "largest_radius": 14.407636927409529,
+    "largest_circularity_proxy": 1.0350668237664045,
+    "components": [
+      {
+        "area": 675.0,
+        "centroid": [
+          99.7718505859375,
+          57.14073944091797
+        ],
+        "radius": 14.407636927409529,
+        "circularity_proxy": 1.0350668237664045
+      }
+    ]
+  },
+  {
+    "num_components": 1,
+    "largest_area": 1478.0,
+    "second_area": 0.0,
+    "dominant_mass_ratio": 1.0,
+    "largest_centroid": [
+      45.30514144897461,
+      40.51218032836914
+    ],
+    "second_centroid": null,
+    "centroid_distance": null,
+    "foreground_fraction": 0.0902099609375,
+    "largest_radius": 24.10970537081294,
+    "largest_circularity_proxy": 0.8093581699740112,
+    "components": [
+      {
+        "area": 1478.0,
+        "centroid": [
+          45.30514144897461,
+          40.51218032836914
+        ],
+        "radius": 24.10970537081294,
+        "circularity_proxy": 0.8093581699740112
+      }
+    ]
+  },
+  {
+    "num_components": 1,
+    "largest_area": 511.0,
+    "second_area": 0.0,
+    "dominant_mass_ratio": 1.0,
+    "largest_centroid": [
+      91.37769317626953,
+      47.77690887451172
+    ],
+    "second_centroid": null,
+    "centroid_distance": null,
+    "foreground_fraction": 0.03118896484375,
+    "largest_radius": 13.618126491614953,
+    "largest_circularity_proxy": 0.877074127002903,
+    "components": [
+      {
+        "area": 511.0,
+        "centroid": [
+          91.37769317626953,
+          47.77690887451172
+        ],
+        "radius": 13.618126491614953,
+        "circularity_proxy": 0.877074127002903
+      }
+    ]
+  },
+  {
+    "num_components": 1,
+    "largest_area": 1220.0,
+    "second_area": 0.0,
+    "dominant_mass_ratio": 1.0,
+    "largest_centroid": [
+      83.52377319335938,
+      53.928688049316406
+    ],
+    "second_centroid": null,
+    "centroid_distance": null,
+    "foreground_fraction": 0.074462890625,
+    "largest_radius": 19.550127595866783,
+    "largest_circularity_proxy": 1.0160399058245402,
+    "components": [
+      {
+        "area": 1220.0,
+        "centroid": [
+          83.52377319335938,
+          53.928688049316406
+        ],
+        "radius": 19.550127595866783,
+        "circularity_proxy": 1.0160399058245402
+      }
+    ]
+  },
+  {
+    "num_components": 1,
+    "largest_area": 1157.0,
+    "second_area": 0.0,
+    "dominant_mass_ratio": 1.0,
+    "largest_centroid": [
+      43.10803985595703,
+      27.158166885375977
+    ],
+    "second_centroid": null,
+    "centroid_distance": null,
+    "foreground_fraction": 0.07061767578125,
+    "largest_radius": 19.95495262530943,
+    "largest_circularity_proxy": 0.9248729636462624,
+    "components": [
+      {
+        "area": 1157.0,
+        "centroid": [
+          43.10803985595703,
+          27.158166885375977
+        ],
+        "radius": 19.95495262530943,
+        "circularity_proxy": 0.9248729636462624
+      }
+    ]
+  },
+  {
+    "num_components": 1,
+    "largest_area": 988.0,
+    "second_area": 0.0,
+    "dominant_mass_ratio": 1.0,
+    "largest_centroid": [
+      60.47166061401367,
+      107.49291229248047
+    ],
+    "second_centroid": null,
+    "centroid_distance": null,
+    "foreground_fraction": 0.060302734375,
+    "largest_radius": 17.02294002402484,
+    "largest_circularity_proxy": 1.0852703394153822,
+    "components": [
+      {
+        "area": 988.0,
+        "centroid": [
+          60.47166061401367,
+          107.49291229248047
+        ],
+        "radius": 17.02294002402484,
+        "circularity_proxy": 1.0852703394153822
+      }
+    ]
+  },
+  {
+    "num_components": 1,
+    "largest_area": 754.0,
+    "second_area": 0.0,
+    "dominant_mass_ratio": 1.0,
+    "largest_centroid": [
+      108.32758331298828,
+      85.14588928222656
+    ],
+    "second_centroid": null,
+    "centroid_distance": null,
+    "foreground_fraction": 0.0460205078125,
+    "largest_radius": 14.578154307346747,
+    "largest_circularity_proxy": 1.1293183565920926,
+    "components": [
+      {
+        "area": 754.0,
+        "centroid": [
+          108.32758331298828,
+          85.14588928222656
+        ],
+        "radius": 14.578154307346747,
+        "circularity_proxy": 1.1293183565920926
+      }
+    ]
+  },
+  {
+    "num_components": 1,
+    "largest_area": 597.0,
+    "second_area": 0.0,
+    "dominant_mass_ratio": 1.0,
+    "largest_centroid": [
+      31.66666603088379,
+      95.76716613769531
+    ],
+    "second_centroid": null,
+    "centroid_distance": null,
+    "foreground_fraction": 0.03643798828125,
+    "largest_radius": 13.26809665766027,
+    "largest_circularity_proxy": 1.07946161842281,
+    "components": [
+      {
+        "area": 597.0,
+        "centroid": [
+          31.66666603088379,
+          95.76716613769531
+        ],
+        "radius": 13.26809665766027,
+        "circularity_proxy": 1.07946161842281
+      }
+    ]
+  },
+  {
+    "num_components": 1,
+    "largest_area": 910.0,
+    "second_area": 0.0,
+    "dominant_mass_ratio": 1.0,
+    "largest_centroid": [
+      110.80439758300781,
+      43.0428581237793
+    ],
+    "second_centroid": null,
+    "centroid_distance": null,
+    "foreground_fraction": 0.0555419921875,
+    "largest_radius": 18.204168592698505,
+    "largest_circularity_proxy": 0.8740772599146935,
+    "components": [
+      {
+        "area": 910.0,
+        "centroid": [
+          110.80439758300781,
+          43.0428581237793
+        ],
+        "radius": 18.204168592698505,
+        "circularity_proxy": 0.8740772599146935
+      }
+    ]
+  },
+  {
+    "num_components": 1,
+    "largest_area": 446.0,
+    "second_area": 0.0,
+    "dominant_mass_ratio": 1.0,
+    "largest_centroid": [
+      10.921525001525879,
+      106.49327087402344
+    ],
+    "second_centroid": null,
+    "centroid_distance": null,
+    "foreground_fraction": 0.0272216796875,
+    "largest_radius": 10.074134308657548,
+    "largest_circularity_proxy": 1.3988447358450602,
+    "components": [
+      {
+        "area": 446.0,
+        "centroid": [
+          10.921525001525879,
+          106.49327087402344
+        ],
+        "radius": 10.074134308657548,
+        "circularity_proxy": 1.3988447358450602
+      }
+    ]
+  },
+  {
+    "num_components": 1,
+    "largest_area": 1016.0,
+    "second_area": 0.0,
+    "dominant_mass_ratio": 1.0,
+    "largest_centroid": [
+      80.76968383789062,
+      32.72539520263672
+    ],
+    "second_centroid": null,
+    "centroid_distance": null,
+    "foreground_fraction": 0.06201171875,
+    "largest_radius": 18.646116025147585,
+    "largest_circularity_proxy": 0.9301801569301082,
+    "components": [
+      {
+        "area": 1016.0,
+        "centroid": [
+          80.76968383789062,
+          32.72539520263672
+        ],
+        "radius": 18.646116025147585,
+        "circularity_proxy": 0.9301801569301082
+      }
+    ]
+  },
+  {
+    "num_components": 1,
+    "largest_area": 765.0,
+    "second_area": 0.0,
+    "dominant_mass_ratio": 1.0,
+    "largest_centroid": [
+      104.37255096435547,
+      14.998692512512207
+    ],
+    "second_centroid": null,
+    "centroid_distance": null,
+    "foreground_fraction": 0.04669189453125,
+    "largest_radius": 17.183279844144188,
+    "largest_circularity_proxy": 0.8247065359751818,
+    "components": [
+      {
+        "area": 765.0,
+        "centroid": [
+          104.37255096435547,
+          14.998692512512207
+        ],
+        "radius": 17.183279844144188,
+        "circularity_proxy": 0.8247065359751818
+      }
+    ]
+  },
+  {
+    "num_components": 1,
+    "largest_area": 975.0,
+    "second_area": 0.0,
+    "dominant_mass_ratio": 1.0,
+    "largest_centroid": [
+      31.849231719970703,
+      69.27897644042969
+    ],
+    "second_centroid": null,
+    "centroid_distance": null,
+    "foreground_fraction": 0.05950927734375,
+    "largest_radius": 20.60313560549325,
+    "largest_circularity_proxy": 0.7311190517553272,
+    "components": [
+      {
+        "area": 975.0,
+        "centroid": [
+          31.849231719970703,
+          69.27897644042969
+        ],
+        "radius": 20.60313560549325,
+        "circularity_proxy": 0.7311190517553272
+      }
+    ]
+  },
+  {
+    "num_components": 1,
+    "largest_area": 627.0,
+    "second_area": 0.0,
+    "dominant_mass_ratio": 1.0,
+    "largest_centroid": [
+      83.31419372558594,
+      22.01754379272461
+    ],
+    "second_centroid": null,
+    "centroid_distance": null,
+    "foreground_fraction": 0.03826904296875,
+    "largest_radius": 17.022262357644603,
+    "largest_circularity_proxy": 0.6887840923930887,
+    "components": [
+      {
+        "area": 627.0,
+        "centroid": [
+          83.31419372558594,
+          22.01754379272461
+        ],
+        "radius": 17.022262357644603,
+        "circularity_proxy": 0.6887840923930887
+      }
+    ]
+  },
+  {
+    "num_components": 1,
+    "largest_area": 997.0,
+    "second_area": 0.0,
+    "dominant_mass_ratio": 1.0,
+    "largest_centroid": [
+      109.27582550048828,
+      90.44232940673828
+    ],
+    "second_centroid": null,
+    "centroid_distance": null,
+    "foreground_fraction": 0.06085205078125,
+    "largest_radius": 16.45336427001424,
+    "largest_circularity_proxy": 1.1722921580713652,
+    "components": [
+      {
+        "area": 997.0,
+        "centroid": [
+          109.27582550048828,
+          90.44232940673828
+        ],
+        "radius": 16.45336427001424,
+        "circularity_proxy": 1.1722921580713652
+      }
+    ]
+  },
+  {
+    "num_components": 1,
+    "largest_area": 1044.0,
+    "second_area": 0.0,
+    "dominant_mass_ratio": 1.0,
+    "largest_centroid": [
+      59.30938720703125,
+      84.10249328613281
+    ],
+    "second_centroid": null,
+    "centroid_distance": null,
+    "foreground_fraction": 0.063720703125,
+    "largest_radius": 20.35045207505728,
+    "largest_circularity_proxy": 0.8024214016270422,
+    "components": [
+      {
+        "area": 1044.0,
+        "centroid": [
+          59.30938720703125,
+          84.10249328613281
+        ],
+        "radius": 20.35045207505728,
+        "circularity_proxy": 0.8024214016270422
+      }
+    ]
+  },
+  {
+    "num_components": 1,
+    "largest_area": 663.0,
+    "second_area": 0.0,
+    "dominant_mass_ratio": 1.0,
+    "largest_centroid": [
+      80.68325805664062,
+      14.190045356750488
+    ],
+    "second_centroid": null,
+    "centroid_distance": null,
+    "foreground_fraction": 0.04046630859375,
+    "largest_radius": 13.9598401219881,
+    "largest_circularity_proxy": 1.082935939128553,
+    "components": [
+      {
+        "area": 663.0,
+        "centroid": [
+          80.68325805664062,
+          14.190045356750488
+        ],
+        "radius": 13.9598401219881,
+        "circularity_proxy": 1.082935939128553
+      }
+    ]
+  },
+  {
+    "num_components": 1,
+    "largest_area": 605.0,
+    "second_area": 0.0,
+    "dominant_mass_ratio": 1.0,
+    "largest_centroid": [
+      110.9504165649414,
+      75.7884292602539
+    ],
+    "second_centroid": null,
+    "centroid_distance": null,
+    "foreground_fraction": 0.03692626953125,
+    "largest_radius": 12.192764788373216,
+    "largest_circularity_proxy": 1.2953917004615638,
+    "components": [
+      {
+        "area": 605.0,
+        "centroid": [
+          110.9504165649414,
+          75.7884292602539
+        ],
+        "radius": 12.192764788373216,
+        "circularity_proxy": 1.2953917004615638
+      }
+    ]
+  },
+  {
+    "num_components": 1,
+    "largest_area": 1383.0,
+    "second_area": 0.0,
+    "dominant_mass_ratio": 1.0,
+    "largest_centroid": [
+      58.27042770385742,
+      25.443239212036133
+    ],
+    "second_centroid": null,
+    "centroid_distance": null,
+    "foreground_fraction": 0.08441162109375,
+    "largest_radius": 21.336985196059434,
+    "largest_circularity_proxy": 0.96695484904827,
+    "components": [
+      {
+        "area": 1383.0,
+        "centroid": [
+          58.27042770385742,
+          25.443239212036133
+        ],
+        "radius": 21.336985196059434,
+        "circularity_proxy": 0.96695484904827
+      }
+    ]
+  },
+  {
+    "num_components": 1,
+    "largest_area": 792.0,
+    "second_area": 0.0,
+    "dominant_mass_ratio": 1.0,
+    "largest_centroid": [
+      12.91919231414795,
+      74.06944274902344
+    ],
+    "second_centroid": null,
+    "centroid_distance": null,
+    "foreground_fraction": 0.04833984375,
+    "largest_radius": 16.62221417716035,
+    "largest_circularity_proxy": 0.912425808617637,
+    "components": [
+      {
+        "area": 792.0,
+        "centroid": [
+          12.91919231414795,
+          74.06944274902344
+        ],
+        "radius": 16.62221417716035,
+        "circularity_proxy": 0.912425808617637
+      }
+    ]
+  },
+  {
+    "num_components": 1,
+    "largest_area": 617.0,
+    "second_area": 0.0,
+    "dominant_mass_ratio": 1.0,
+    "largest_centroid": [
+      83.28687286376953,
+      50.86061477661133
+    ],
+    "second_centroid": null,
+    "centroid_distance": null,
+    "foreground_fraction": 0.03765869140625,
+    "largest_radius": 13.321254090658094,
+    "largest_circularity_proxy": 1.1067386250621614,
+    "components": [
+      {
+        "area": 617.0,
+        "centroid": [
+          83.28687286376953,
+          50.86061477661133
+        ],
+        "radius": 13.321254090658094,
+        "circularity_proxy": 1.1067386250621614
+      }
+    ]
+  },
+  {
+    "num_components": 1,
+    "largest_area": 701.0,
+    "second_area": 0.0,
+    "dominant_mass_ratio": 1.0,
+    "largest_centroid": [
+      42.258201599121094,
+      89.72467803955078
+    ],
+    "second_centroid": null,
+    "centroid_distance": null,
+    "foreground_fraction": 0.04278564453125,
+    "largest_radius": 15.071684383870823,
+    "largest_circularity_proxy": 0.9823009482900648,
+    "components": [
+      {
+        "area": 701.0,
+        "centroid": [
+          42.258201599121094,
+          89.72467803955078
+        ],
+        "radius": 15.071684383870823,
+        "circularity_proxy": 0.9823009482900648
+      }
+    ]
+  },
+  {
+    "num_components": 1,
+    "largest_area": 633.0,
+    "second_area": 0.0,
+    "dominant_mass_ratio": 1.0,
+    "largest_centroid": [
+      29.12006378173828,
+      79.620849609375
+    ],
+    "second_centroid": null,
+    "centroid_distance": null,
+    "foreground_fraction": 0.03863525390625,
+    "largest_radius": 15.028349979341908,
+    "largest_circularity_proxy": 0.8921363533750657,
+    "components": [
+      {
+        "area": 633.0,
+        "centroid": [
+          29.12006378173828,
+          79.620849609375
+        ],
+        "radius": 15.028349979341908,
+        "circularity_proxy": 0.8921363533750657
+      }
+    ]
+  },
+  {
+    "num_components": 1,
+    "largest_area": 1002.0,
+    "second_area": 0.0,
+    "dominant_mass_ratio": 1.0,
+    "largest_centroid": [
+      105.97105407714844,
+      85.89620971679688
+    ],
+    "second_centroid": null,
+    "centroid_distance": null,
+    "foreground_fraction": 0.0611572265625,
+    "largest_radius": 19.30709338511286,
+    "largest_circularity_proxy": 0.8556261603522199,
+    "components": [
+      {
+        "area": 1002.0,
+        "centroid": [
+          105.97105407714844,
+          85.89620971679688
+        ],
+        "radius": 19.30709338511286,
+        "circularity_proxy": 0.8556261603522199
+      }
+    ]
+  },
+  {
+    "num_components": 1,
+    "largest_area": 592.0,
+    "second_area": 0.0,
+    "dominant_mass_ratio": 1.0,
+    "largest_centroid": [
+      73.61824035644531,
+      73.67567443847656
+    ],
+    "second_centroid": null,
+    "centroid_distance": null,
+    "foreground_fraction": 0.0361328125,
+    "largest_radius": 12.65561582134217,
+    "largest_circularity_proxy": 1.176536130435965,
+    "components": [
+      {
+        "area": 592.0,
+        "centroid": [
+          73.61824035644531,
+          73.67567443847656
+        ],
+        "radius": 12.65561582134217,
+        "circularity_proxy": 1.176536130435965
+      }
+    ]
+  },
+  {
+    "num_components": 1,
+    "largest_area": 698.0,
+    "second_area": 0.0,
+    "dominant_mass_ratio": 1.0,
+    "largest_centroid": [
+      104.9727783203125,
+      72.63753509521484
+    ],
+    "second_centroid": null,
+    "centroid_distance": null,
+    "foreground_fraction": 0.0426025390625,
+    "largest_radius": 15.093584711375776,
+    "largest_circularity_proxy": 0.975260774152824,
+    "components": [
+      {
+        "area": 698.0,
+        "centroid": [
+          104.9727783203125,
+          72.63753509521484
+        ],
+        "radius": 15.093584711375776,
+        "circularity_proxy": 0.975260774152824
+      }
+    ]
+  },
+  {
+    "num_components": 1,
+    "largest_area": 770.0,
+    "second_area": 0.0,
+    "dominant_mass_ratio": 1.0,
+    "largest_centroid": [
+      54.202598571777344,
+      26.302597045898438
+    ],
+    "second_centroid": null,
+    "centroid_distance": null,
+    "foreground_fraction": 0.0469970703125,
+    "largest_radius": 16.54568261021918,
+    "largest_circularity_proxy": 0.8953059570810916,
+    "components": [
+      {
+        "area": 770.0,
+        "centroid": [
+          54.202598571777344,
+          26.302597045898438
+        ],
+        "radius": 16.54568261021918,
+        "circularity_proxy": 0.8953059570810916
+      }
+    ]
+  },
+  {
+    "num_components": 1,
+    "largest_area": 744.0,
+    "second_area": 0.0,
+    "dominant_mass_ratio": 1.0,
+    "largest_centroid": [
+      70.24462127685547,
+      11.745967864990234
+    ],
+    "second_centroid": null,
+    "centroid_distance": null,
+    "foreground_fraction": 0.04541015625,
+    "largest_radius": 18.974956672253317,
+    "largest_circularity_proxy": 0.6577509394720925,
+    "components": [
+      {
+        "area": 744.0,
+        "centroid": [
+          70.24462127685547,
+          11.745967864990234
+        ],
+        "radius": 18.974956672253317,
+        "circularity_proxy": 0.6577509394720925
+      }
+    ]
+  },
+  {
+    "num_components": 1,
+    "largest_area": 1314.0,
+    "second_area": 0.0,
+    "dominant_mass_ratio": 1.0,
+    "largest_centroid": [
+      67.87519073486328,
+      41.30517578125
+    ],
+    "second_centroid": null,
+    "centroid_distance": null,
+    "foreground_fraction": 0.0802001953125,
+    "largest_radius": 19.568288318497448,
+    "largest_circularity_proxy": 1.0922946720881377,
+    "components": [
+      {
+        "area": 1314.0,
+        "centroid": [
+          67.87519073486328,
+          41.30517578125
+        ],
+        "radius": 19.568288318497448,
+        "circularity_proxy": 1.0922946720881377
+      }
+    ]
+  },
+  {
+    "num_components": 1,
+    "largest_area": 605.0,
+    "second_area": 0.0,
+    "dominant_mass_ratio": 1.0,
+    "largest_centroid": [
+      53.67107391357422,
+      15.930578231811523
+    ],
+    "second_centroid": null,
+    "centroid_distance": null,
+    "foreground_fraction": 0.03692626953125,
+    "largest_radius": 12.65280986236296,
+    "largest_circularity_proxy": 1.202905576816285,
+    "components": [
+      {
+        "area": 605.0,
+        "centroid": [
+          53.67107391357422,
+          15.930578231811523
+        ],
+        "radius": 12.65280986236296,
+        "circularity_proxy": 1.202905576816285
+      }
+    ]
+  },
+  {
+    "num_components": 1,
+    "largest_area": 490.0,
+    "second_area": 0.0,
+    "dominant_mass_ratio": 1.0,
+    "largest_centroid": [
+      85.11224365234375,
+      91.72040557861328
+    ],
+    "second_centroid": null,
+    "centroid_distance": null,
+    "foreground_fraction": 0.0299072265625,
+    "largest_radius": 10.49232202194218,
+    "largest_circularity_proxy": 1.416781851498838,
+    "components": [
+      {
+        "area": 490.0,
+        "centroid": [
+          85.11224365234375,
+          91.72040557861328
+        ],
+        "radius": 10.49232202194218,
+        "circularity_proxy": 1.416781851498838
+      }
+    ]
+  },
+  {
+    "num_components": 1,
+    "largest_area": 652.0,
+    "second_area": 0.0,
+    "dominant_mass_ratio": 1.0,
+    "largest_centroid": [
+      88.72085571289062,
+      30.27914047241211
+    ],
+    "second_centroid": null,
+    "centroid_distance": null,
+    "foreground_fraction": 0.039794921875,
+    "largest_radius": 16.19675867129217,
+    "largest_circularity_proxy": 0.7911184270144425,
+    "components": [
+      {
+        "area": 652.0,
+        "centroid": [
+          88.72085571289062,
+          30.27914047241211
+        ],
+        "radius": 16.19675867129217,
+        "circularity_proxy": 0.7911184270144425
+      }
+    ]
+  }
+]

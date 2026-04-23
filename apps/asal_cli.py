@@ -119,6 +119,8 @@ def main():
             "image": "best.png",
             "gif": result["gif"],
             "mp4": result["mp4"],
+            "narrative_summary": result.get("narrative_summary"),
+            "trajectory_stats": result.get("trajectory_stats"),
         },
         details={
             "prompt": result["prompt"],
@@ -128,6 +130,10 @@ def main():
             "runtime": runtime.to_dict(),
             "tracking_backend": cfg.get("tracking", {}).get("backend") if tracker else None,
             "active_profile": cfg.get("_active_profile"),
+            "narrative_enabled": result.get("narrative_enabled"),
+            "narrative_keyframes": result.get("narrative_keyframes"),
+            "narrative_score": result.get("narrative_score"),
+            "narrative_phase_order_valid": result.get("narrative_phase_order_valid"),
         },
     )
     save_json(run_dir / "summary.json", summary)
