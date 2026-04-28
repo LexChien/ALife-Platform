@@ -1,0 +1,9 @@
+{
+  "ok": true,
+  "session_id": "87130408-877e-4cbf-aa24-2204410eda24",
+  "transcript": "你是誰",
+  "audio_artifacts": {
+    "input": "runs/chat_gemma_web/20260428-022447/transcriptions/2d7b39ffc5c444bd8b0fa1f16d89dce2.webm",
+    "normalized": "runs/chat_gemma_web/20260428-022447/transcriptions/2d7b39ffc5c444bd8b0fa1f16d89dce2.aiff"
+  }
+}

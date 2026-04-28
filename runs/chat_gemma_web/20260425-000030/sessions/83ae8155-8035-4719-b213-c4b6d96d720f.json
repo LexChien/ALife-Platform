@@ -1,0 +1,112 @@
+{
+  "schema_version": "1.0",
+  "session_id": "83ae8155-8035-4719-b213-c4b6d96d720f",
+  "created_at": "2026-04-25T00:03:58+08:00",
+  "updated_at": "2026-04-25T00:06:01+08:00",
+  "reset_count": 0,
+  "message_count": 10,
+  "turn_count": 5,
+  "messages": [
+    {
+      "role": "user",
+      "text": "你能聽得到我聲音嗎",
+      "created_at": "2026-04-25T00:04:06+08:00"
+    },
+    {
+      "role": "assistant",
+      "text": "我無法聽到您的聲音，我只能處理",
+      "created_at": "2026-04-25T00:04:06+08:00"
+    },
+    {
+      "role": "user",
+      "text": "你可以再說一次嗎",
+      "created_at": "2026-04-25T00:04:23+08:00"
+    },
+    {
+      "role": "assistant",
+      "text": "我無法聽到您的聲音，我只能處理",
+      "created_at": "2026-04-25T00:04:23+08:00"
+    },
+    {
+      "role": "user",
+      "text": "你現在是誰",
+      "created_at": "2026-04-25T00:04:40+08:00"
+    },
+    {
+      "role": "assistant",
+      "text": "思考過程：\n1.  **分析請求：** 使用者要求我根據提供的上下文和草稿，將「你現在是誰」這個問題改寫成最終答案，只保留對用戶的回答，移除所有推理、規劃、分析和思考過程。\n2.  **分析上下文：**\n    *   上下文：prototype baseline。\n    *   對話歷史：\n        *   用戶：你能聽得到我聲音嗎\n        *   助手：我無法聽到您的聲音，我只能處理\n        *   用戶：你可以再說一次嗎\n        *   助手",
+      "created_at": "2026-04-25T00:04:40+08:00"
+    },
+    {
+      "role": "user",
+      "text": "你現在可以做什麼",
+      "created_at": "2026-04-25T00:05:27+08:00"
+    },
+    {
+      "role": "assistant",
+      "text": "*   History shows the assistant is limited in auditory input (\"我無法聽到您的聲音，我只能處理\").\n*   The final question is \"你現在是誰\" (Who are you now).",
+      "created_at": "2026-04-25T00:05:27+08:00"
+    },
+    {
+      "role": "user",
+      "text": "你現在可以做什麼",
+      "created_at": "2026-04-25T00:06:01+08:00"
+    },
+    {
+      "role": "assistant",
+      "text": "*   上下文標籤：prototype baseline。\n*   對話歷史：",
+      "created_at": "2026-04-25T00:06:01+08:00"
+    }
+  ],
+  "config_path": "configs/genai/gemma_llama_cpp.yaml",
+  "profile": "cpu_smoke",
+  "cleanup": {
+    "reasoning_detected_in_tool": true,
+    "strict_cleanup_retry": true,
+    "strict_cleanup_retry_error": null,
+    "strict_cleanup_local_applied": true,
+    "strict_cleanup_retry_strategy": "direct_answer_retry",
+    "strict_cleanup_rescue": false,
+    "strict_cleanup_rescue_error": null,
+    "strict_cleanup_final_fallback": false
+  },
+  "runtime": {
+    "model_path": "models/gemma/gemma.gguf",
+    "context_length": 4096,
+    "n_gpu_layers": 0,
+    "temperature": 0.7,
+    "max_tokens": 256,
+    "chat_format": null,
+    "driver": "subprocess",
+    "cli_path": "tools/llama_completion",
+    "postprocess": {
+      "reasoning_leak_detected": true,
+      "extractor_applied": true,
+      "extractor_error": null,
+      "heuristic_fallback_applied": false,
+      "heuristic_fallback_skipped": true,
+      "heuristic_fallback_skip_reason": "candidate_fragmented",
+      "heuristic_first_pass_applied": false
+    }
+  },
+  "voice": {
+    "input_provider": "browser_web_speech",
+    "output_provider": "browser_speech_synthesis",
+    "recognition_lang": "zh-TW",
+    "synthesis_lang": "zh-TW",
+    "auto_submit": true,
+    "auto_speak": true
+  },
+  "avatar": {
+    "profile": "orb",
+    "display_name": "Gemma 4",
+    "enable_visual_state": true,
+    "states": {
+      "idle": "idle",
+      "listening": "listening",
+      "thinking": "thinking",
+      "speaking": "speaking",
+      "error": "error"
+    }
+  }
+}

@@ -33,6 +33,7 @@ substrate:
           alignment_scale: 1.10
           cohesion_scale: 1.85
           center_pull: 0.060
+          global_pull: 0.070
           damping: 0.20
         - name: split
           separation_scale: 0.70
@@ -41,6 +42,9 @@ substrate:
           center_pull: 0.004
           split_push: 0.085
           cohort_pull: 0.070
+          cohort_locality: true
+          cohort_global_pull: 0.060
+          cross_cohort_repulsion: 0.22
           split_offset: 24.0
           damping: 0.04
         - name: fusion
@@ -48,6 +52,7 @@ substrate:
           alignment_scale: 1.05
           cohesion_scale: 1.75
           center_pull: 0.070
+          global_pull: 0.085
           damping: 0.22
 
 runtime:
@@ -119,6 +124,7 @@ profiles:
               alignment_scale: 1.10
               cohesion_scale: 1.95
               center_pull: 0.070
+              global_pull: 0.085
               damping: 0.22
             - name: split
               separation_scale: 0.82
@@ -127,6 +133,9 @@ profiles:
               center_pull: 0.004
               split_push: 0.095
               cohort_pull: 0.080
+              cohort_locality: true
+              cohort_global_pull: 0.070
+              cross_cohort_repulsion: 0.25
               split_offset: 26.0
               damping: 0.04
             - name: fusion
@@ -134,6 +143,7 @@ profiles:
               alignment_scale: 1.05
               cohesion_scale: 1.85
               center_pull: 0.080
+              global_pull: 0.100
               damping: 0.24
   cpu_tiny:
     runtime:
@@ -173,6 +183,7 @@ profiles:
               alignment_scale: 1.08
               cohesion_scale: 2.05
               center_pull: 0.085
+              global_pull: 0.100
               damping: 0.26
             - name: split
               separation_scale: 0.78
@@ -181,6 +192,9 @@ profiles:
               center_pull: 0.003
               split_push: 0.110
               cohort_pull: 0.095
+              cohort_locality: true
+              cohort_global_pull: 0.085
+              cross_cohort_repulsion: 0.30
               split_offset: 28.0
               damping: 0.03
             - name: fusion
@@ -188,4 +202,5 @@ profiles:
               alignment_scale: 1.05
               cohesion_scale: 1.95
               center_pull: 0.095
+              global_pull: 0.120
               damping: 0.28

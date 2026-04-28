@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.0",
+  "started_at": "2026-04-24T23:56:02+08:00",
+  "config_path": "configs/genai/gemma_llama_cpp.yaml",
+  "host": "127.0.0.1",
+  "port": 8085,
+  "profile": "cpu_smoke",
+  "history_turns": 6,
+  "session_schema_version": "1.0",
+  "llm": {
+    "backend": "llama_cpp",
+    "model_family": "gemma",
+    "max_tokens": 256,
+    "temperature": 0.7
+  },
+  "voice": {
+    "input_provider": "browser_web_speech",
+    "output_provider": "browser_speech_synthesis",
+    "recognition_lang": "zh-TW",
+    "synthesis_lang": "zh-TW",
+    "auto_submit": true,
+    "auto_speak": true
+  },
+  "avatar": {
+    "profile": "orb",
+    "display_name": "Gemma 4",
+    "enable_visual_state": true,
+    "states": {
+      "idle": "idle",
+      "listening": "listening",
+      "thinking": "thinking",
+      "speaking": "speaking",
+      "error": "error"
+    }
+  }
+}

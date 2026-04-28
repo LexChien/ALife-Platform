@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.0",
+  "session_id": "test-fix",
+  "created_at": "2026-04-25T13:37:26+08:00",
+  "updated_at": "2026-04-25T13:37:35+08:00",
+  "reset_count": 0,
+  "message_count": 2,
+  "turn_count": 1,
+  "messages": [
+    {
+      "role": "user",
+      "text": "你是誰",
+      "created_at": "2026-04-25T13:37:35+08:00"
+    },
+    {
+      "role": "assistant",
+      "text": "*Draft Check:* The previous internal",
+      "created_at": "2026-04-25T13:37:35+08:00"
+    }
+  ],
+  "config_path": "configs/genai/gemma_llama_cpp.yaml",
+  "profile": "cpu_smoke",
+  "cleanup": {
+    "reasoning_detected_in_tool": true,
+    "strict_cleanup_retry": false,
+    "strict_cleanup_retry_error": null,
+    "strict_cleanup_local_applied": true,
+    "strict_cleanup_retry_strategy": null,
+    "strict_cleanup_rescue": false,
+    "strict_cleanup_rescue_error": null,
+    "strict_cleanup_final_fallback": false
+  },
+  "runtime": {
+    "model_path": "models/gemma/gemma.gguf",
+    "context_length": 4096,
+    "n_gpu_layers": 0,
+    "temperature": 0.7,
+    "max_tokens": 256,
+    "chat_format": null,
+    "driver": "subprocess",
+    "cli_path": "tools/llama_completion",
+    "postprocess": {
+      "reasoning_leak_detected": true,
+      "extractor_applied": true,
+      "extractor_error": null,
+      "heuristic_fallback_applied": false,
+      "heuristic_fallback_skipped": true,
+      "heuristic_fallback_skip_reason": "candidate_fragmented",
+      "heuristic_first_pass_applied": false
+    }
+  },
+  "voice": {
+    "input_provider": "macos_speech_via_upload",
+    "output_provider": "browser_speech_synthesis",
+    "recognition_lang": "zh-TW",
+    "synthesis_lang": "zh-TW",
+    "auto_submit": true,
+    "auto_speak": true
+  },
+  "avatar": {
+    "profile": "orb",
+    "display_name": "Gemma 4",
+    "enable_visual_state": true,
+    "states": {
+      "idle": "idle",
+      "listening": "listening",
+      "thinking": "thinking",
+      "speaking": "speaking",
+      "error": "error"
+    }
+  }
+}

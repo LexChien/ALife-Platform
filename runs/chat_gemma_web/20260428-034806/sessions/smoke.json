@@ -1,0 +1,82 @@
+{
+  "schema_version": "1.0",
+  "session_id": "smoke",
+  "created_at": "2026-04-28T03:49:34+08:00",
+  "updated_at": "2026-04-28T03:49:58+08:00",
+  "reset_count": 0,
+  "message_count": 4,
+  "turn_count": 2,
+  "messages": [
+    {
+      "role": "user",
+      "text": "請用一句繁體中文自我介紹。",
+      "created_at": "2026-04-28T03:49:41+08:00"
+    },
+    {
+      "role": "assistant",
+      "text": "我是 Gemma 4，一個由 Google DeepMind 開發的開放權重大型語言模型！",
+      "created_at": "2026-04-28T03:49:41+08:00"
+    },
+    {
+      "role": "user",
+      "text": "剛剛你怎麼介紹自己？請簡短回答。",
+      "created_at": "2026-04-28T03:49:58+08:00"
+    },
+    {
+      "role": "assistant",
+      "text": "我剛才介紹自己是：我是 Gemma 4，一個由 Google DeepMind 開發的開放權重大型語言模型！",
+      "created_at": "2026-04-28T03:49:58+08:00"
+    }
+  ],
+  "config_path": "configs/genai/gemma_llama_cpp.yaml",
+  "profile": "cpu_smoke",
+  "cleanup": {
+    "reasoning_detected_in_tool": false,
+    "strict_cleanup_retry": false,
+    "strict_cleanup_retry_error": null,
+    "strict_cleanup_local_applied": false,
+    "strict_cleanup_retry_strategy": null,
+    "strict_cleanup_rescue": false,
+    "strict_cleanup_rescue_error": null,
+    "strict_cleanup_final_fallback": false
+  },
+  "runtime": {
+    "model_path": "models/gemma/gemma.gguf",
+    "context_length": 4096,
+    "n_gpu_layers": 0,
+    "temperature": 0.7,
+    "max_tokens": 256,
+    "chat_format": null,
+    "driver": "subprocess",
+    "cli_path": "/Users/lexchien/Documents/AI/ALife-Platform/tools/llama_completion",
+    "postprocess": {
+      "reasoning_leak_detected": false,
+      "extractor_applied": false,
+      "extractor_error": null,
+      "heuristic_fallback_applied": false,
+      "heuristic_fallback_skipped": false,
+      "heuristic_fallback_skip_reason": null,
+      "heuristic_first_pass_applied": false
+    }
+  },
+  "voice": {
+    "input_provider": "macos_speech_via_upload",
+    "output_provider": "browser_speech_synthesis",
+    "recognition_lang": "zh-TW",
+    "synthesis_lang": "zh-TW",
+    "auto_submit": true,
+    "auto_speak": true
+  },
+  "avatar": {
+    "profile": "orb",
+    "display_name": "Gemma 4",
+    "enable_visual_state": true,
+    "states": {
+      "idle": "idle",
+      "listening": "listening",
+      "thinking": "thinking",
+      "speaking": "speaking",
+      "error": "error"
+    }
+  }
+}

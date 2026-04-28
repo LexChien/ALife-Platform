@@ -7,10 +7,18 @@ from core.storage import storage_registry
 logger = logging.getLogger(__name__)
 
 class MemoryStore:
-    def __init__(self, collection_name="digital_clone"):
+    def __init__(self, collection_name="digital_clone", use_vector_db=True, persist_directory=".chroma_db"):
         self.items = []
+        self.vector_store = None
+        self.use_vector_db = False
+        if not use_vector_db:
+            return
         try:
-            self.vector_store = storage_registry.create("chromadb", collection_name=collection_name)
+            self.vector_store = storage_registry.create(
+                "chromadb",
+                collection_name=collection_name,
+                persist_directory=persist_directory,
+            )
             self.use_vector_db = True
         except Exception as e:
             logger.warning(f"Failed to initialize ChromaDBStore: {e}. Falling back to in-memory list only.")

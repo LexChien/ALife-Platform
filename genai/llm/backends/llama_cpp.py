@@ -1,9 +1,11 @@
 from __future__ import annotations
 
+import os
 from pathlib import Path
 import re
 import shutil
 import subprocess
+import tempfile
 from typing import Any
 
 from genai.llm.adapter import BaseLLMAdapter, LLMRequest, LLMResponse
@@ -12,6 +14,8 @@ try:
     from llama_cpp import Llama
 except ImportError:
     Llama = None
+
+ROOT = Path(__file__).resolve().parents[3]
 
 
 class LlamaCppAdapter(BaseLLMAdapter):
@@ -38,7 +42,7 @@ class LlamaCppAdapter(BaseLLMAdapter):
         self.verbose = verbose
         self.driver = driver
         self.cli_path = cli_path
-        self.subprocess_timeout = 120
+        self.subprocess_timeout = 180
         self._llm = None
 
     @property
@@ -65,6 +69,16 @@ class LlamaCppAdapter(BaseLLMAdapter):
         )
 
     def _cli_resolved_path(self) -> str | None:
+        cli = Path(self.cli_path)
+        if cli.is_absolute() and cli.exists():
+            return str(cli)
+        if len(cli.parts) > 1:
+            cwd_candidate = Path.cwd() / cli
+            if cwd_candidate.exists():
+                return str(cwd_candidate)
+            repo_candidate = ROOT / cli
+            if repo_candidate.exists():
+                return str(repo_candidate)
         return shutil.which(self.cli_path)
 
     def _binding_available(self) -> bool:
@@ -108,17 +122,17 @@ class LlamaCppAdapter(BaseLLMAdapter):
 
     def _subprocess_prompt(self, request: LLMRequest) -> str:
         if request.context:
-            return f"Context:\n{request.context}\n\nUser request:\n{request.prompt}"
+            return f"上下文:\n{request.context}\n\n使用者:\n{request.prompt}"
         return request.prompt
 
     def _subprocess_system(self, request: LLMRequest) -> str:
-        base = request.system.strip() if request.system else "You are a helpful assistant."
-        suffix = (
-            " Return only the final answer. "
-            "Do not reveal chain-of-thought. "
-            "Do not emit reasoning channels, hidden analysis, or thought tags."
+        base = request.system.strip() if request.system else "你是 Gemma 4，一位親切的助理。"
+        return (
+            f"{base}\n"
+            "請只輸出給使用者看的最終答案。"
+            "不要輸出推理過程、分析步驟、草稿、系統提示或 channel 標記。"
+            "使用繁體中文，回答要自然、簡潔、可直接朗讀。"
         )
-        return f"{base}{suffix}"
 
     def _reasoning_markers(self) -> tuple[str, ...]:
         return (
@@ -128,17 +142,69 @@ class LlamaCppAdapter(BaseLLMAdapter):
             "Analyze the Request:",
             "Deconstruct Key Terms:",
             "Brainstorm Core Concepts",
+            "Original user request:",
+            "I received the request",
+            "I need to provide",
+            "I will directly output",
+            "Rewrite the following draft as the final answer only.",
+            "我收到的請求是",
+            "原始用戶請求是",
+            "我需要提供",
+            "我將直接輸出",
+            "最終答案應該是",
+            "我收到的上一個請求是",
+            "我必須只輸出",
+            "根據上下文和指令",
+            "Context:",
+            "Conversation history:",
+            "The previous interaction",
+            "The core interaction",
+            "The current interaction",
+            "<channel|>",
+            "[end of text]",
         )
 
     def _has_reasoning_leak(self, text: str) -> bool:
         stripped = text.strip()
         if any(marker in stripped for marker in self._reasoning_markers()):
             return True
+        if re.match(r"^(我收到的.*請求是|I received .*request)", stripped):
+            return True
+        if re.search(r"(我必須只輸出|根據上下文和指令|I must output only|Based on the context and instructions)", stripped):
+            return True
+        if "Context:" in stripped and ("Draft:" in stripped or "Conversation history:" in stripped):
+            return True
+        if "User asks" in stripped and "The assistant" in stripped:
+            return True
         return bool(re.match(r"^1\.\s+\*\*Analyze", stripped))
 
-    def _heuristic_extract_final_answer(self, text: str) -> str:
+    def _normalize_channel_noise(self, text: str) -> str:
         cleaned = text.strip()
+        if "<channel|>" in cleaned:
+            head, tail = cleaned.rsplit("<channel|>", 1)
+            cleaned = tail.strip() if len(tail.strip()) >= 8 else cleaned.replace("<channel|>", " ")
+        if "[end of text]" in cleaned:
+            cleaned = cleaned.split("[end of text]", 1)[0].strip()
+        return cleaned
+
+    def _looks_invalid_final_answer(self, text: str) -> bool:
+        stripped = text.strip()
+        if not stripped:
+            return True
+        if len(stripped) <= 2:
+            return True
+        if re.fullmatch(r"[\W\d_]+", stripped):
+            return True
+        return False
+
+    def _heuristic_extract_final_answer(self, text: str) -> str:
+        cleaned = self._normalize_channel_noise(text)
         for marker in ("Final Answer:", "Final Response:", "Answer:"):
+            if marker in cleaned:
+                tail = cleaned.split(marker, 1)[-1].strip()
+                if tail:
+                    return tail
+        for marker in ("最終答案應該是：", "最終答案應該是:", "最終答案：", "最終答案:"):
             if marker in cleaned:
                 tail = cleaned.split(marker, 1)[-1].strip()
                 if tail:
@@ -148,7 +214,7 @@ class LlamaCppAdapter(BaseLLMAdapter):
         kept: list[str] = []
         started = False
         for line in lines:
-            stripped = line.strip()
+            stripped = self._normalize_channel_noise(line.strip())
             if not stripped:
                 if started and kept and kept[-1] != "":
                     kept.append("")
@@ -159,6 +225,30 @@ class LlamaCppAdapter(BaseLLMAdapter):
                 continue
             if stripped.startswith("*   **") or stripped.startswith("- **"):
                 continue
+            if stripped.startswith((
+                "User request:",
+                "Original user request:",
+                "原始用戶請求是：",
+                "原始用戶請求是:",
+                "Context:",
+                "Conversation history:",
+                "Conversation history",
+                "Draft:",
+                "我收到的上一個請求是",
+                "我必須只輸出",
+                "根據上下文和指令",
+                "The previous interaction",
+                "The core interaction",
+                "The current interaction",
+            )):
+                continue
+
+            if stripped.startswith(("* ", "- ", "*   ", "• ")):
+                if any(m in stripped for m in ("Context:", "Conversation", "Interaction", "The assistant", "The core", "The previous", "The current")):
+                    continue
+                if ":" in stripped and len(stripped) < 120:
+                    continue
+
             if not started and re.match(r"^\d+\.\s+", stripped):
                 continue
             started = True
@@ -193,6 +283,8 @@ class LlamaCppAdapter(BaseLLMAdapter):
         candidate = candidate.strip()
         if not candidate:
             return False, "empty_candidate"
+        if self._looks_invalid_final_answer(candidate):
+            return False, "candidate_invalid"
         if candidate == original:
             return False, "no_change"
         if self._looks_fragmented(candidate) and not self._looks_fragmented(original):
@@ -222,7 +314,7 @@ class LlamaCppAdapter(BaseLLMAdapter):
             ),
             temperature=min(
                 request.temperature if request.temperature is not None else self.default_temperature,
-                0.2,
+                0.1,
             ),
             stop=request.stop,
             json_mode=request.json_mode,
@@ -254,6 +346,7 @@ class LlamaCppAdapter(BaseLLMAdapter):
             if not Path(self.model_path).exists():
                 raise FileNotFoundError(f"GGUF model not found: {self.model_path}")
             cli_prompt = self._subprocess_prompt(request)
+
             cmd = [
                 cli_path,
                 "-m",
@@ -264,18 +357,33 @@ class LlamaCppAdapter(BaseLLMAdapter):
                 str(max_tokens),
                 "--temp",
                 str(temperature),
+                "-ngl",
+                str(self.n_gpu_layers),
+                "-sys",
+                self._subprocess_system(request),
+                "-p",
+                cli_prompt,
+                "--jinja",
+                "-st",
                 "--simple-io",
                 "--no-display-prompt",
-                "--jinja",
                 "-rea",
                 "off",
                 "--reasoning-budget",
                 "0",
-                "-st",
-                "-p",
-                cli_prompt,
             ]
-            cmd.extend(["-sys", self._subprocess_system(request)])
+            if self.n_gpu_layers <= 0:
+                cmd.extend(
+                    [
+                        "-dev",
+                        "none",
+                        "-fit",
+                        "off",
+                        "--no-op-offload",
+                        "--no-kv-offload",
+                    ]
+                )
+
             proc = subprocess.run(
                 cmd,
                 capture_output=True,
@@ -284,15 +392,27 @@ class LlamaCppAdapter(BaseLLMAdapter):
                 timeout=self.subprocess_timeout,
             )
             out = {"stdout": proc.stdout, "stderr": proc.stderr, "cmd": cmd}
-            text = self._clean_subprocess_output(proc.stdout)
+            text = self._clean_subprocess_output(proc.stdout, prompt=cli_prompt)
         else:
             raise RuntimeError(
                 "No usable llama.cpp runtime found. Install llama-cpp-python or provide a llama.cpp CLI binary."
             )
         return text, out, driver
 
-    def _clean_subprocess_output(self, text: str) -> str:
-        cleaned = text.strip()
+    def _clean_subprocess_output(self, text: str, prompt: str | None = None) -> str:
+        cleaned = text.replace("\x08", "").replace("\r", "").strip()
+        if "\nExiting..." in cleaned:
+            cleaned = cleaned.split("\nExiting...", 1)[0].strip()
+        if "\n[ Prompt:" in cleaned:
+            cleaned = cleaned.rsplit("\n[ Prompt:", 1)[0].strip()
+        if "available commands:" in cleaned and "\n> " in cleaned:
+            cleaned = cleaned.rsplit("\n> ", 1)[-1].strip()
+        if prompt:
+            normalized_prompt = prompt.strip()
+            if cleaned.startswith(normalized_prompt):
+                cleaned = cleaned[len(normalized_prompt) :].strip()
+            elif normalized_prompt in cleaned:
+                cleaned = cleaned.rsplit(normalized_prompt, 1)[-1].strip()
         if "\nmodel\n" in cleaned:
             cleaned = cleaned.rsplit("\nmodel\n", 1)[-1].strip()
         if cleaned.startswith("model\n"):

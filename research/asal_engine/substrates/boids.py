@@ -81,6 +81,11 @@ class Boids:
             split_offset = float(phase_control.get("split_offset", 0.0))
             split_axis = self.narrative_controller.get("split_axis", "horizontal")
             axis_vec = np.array([1.0, 0.0], dtype=np.float32) if split_axis == "horizontal" else np.array([0.0, 1.0], dtype=np.float32)
+            cohort_locality = bool(phase_control.get("cohort_locality", False))
+            same_cohort = (self._cohort_sign == self._cohort_sign.T)
+            cross_cohort_repulsion = float(phase_control.get("cross_cohort_repulsion", 0.0))
+            global_pull = float(phase_control.get("global_pull", 0.0))
+            cohort_global_pull = float(phase_control.get("cohort_global_pull", 0.0))
 
             dx = self.positions[:, 0:1] - self.positions[:, 0:1].T
             dy = self.positions[:, 1:2] - self.positions[:, 1:2].T
@@ -92,20 +97,26 @@ class Boids:
             np.fill_diagonal(dist, np.inf)
 
             mask = dist < view_radius
-            counts = mask.sum(axis=1)[:, None]
+            local_mask = mask & same_cohort if cohort_locality else mask
+            counts = local_mask.sum(axis=1)[:, None]
             counts_safe = np.where(counts == 0, 1, counts)
 
             sep_x = np.where(mask & (dist > 0), dx / dist**2, 0).sum(axis=1)
             sep_y = np.where(mask & (dist > 0), dy / dist**2, 0).sum(axis=1)
             separation = np.stack([sep_x, sep_y], axis=1) * separation_gain
+            if cross_cohort_repulsion > 0.0:
+                cross_mask = mask & (~same_cohort)
+                cross_sep_x = np.where(cross_mask & (dist > 0), dx / dist**2, 0).sum(axis=1)
+                cross_sep_y = np.where(cross_mask & (dist > 0), dy / dist**2, 0).sum(axis=1)
+                separation += np.stack([cross_sep_x, cross_sep_y], axis=1) * cross_cohort_repulsion
 
-            align_x = np.where(mask, self.velocities[:, 0], 0).sum(axis=1)
-            align_y = np.where(mask, self.velocities[:, 1], 0).sum(axis=1)
+            align_x = np.where(local_mask, self.velocities[:, 0], 0).sum(axis=1)
+            align_y = np.where(local_mask, self.velocities[:, 1], 0).sum(axis=1)
             alignment = np.stack([align_x, align_y], axis=1) / counts_safe - self.velocities
             alignment = np.where(counts > 0, alignment, 0) * alignment_gain
 
-            local_center_x = np.where(mask, self.positions[:, 0], 0).sum(axis=1)
-            local_center_y = np.where(mask, self.positions[:, 1], 0).sum(axis=1)
+            local_center_x = np.where(local_mask, self.positions[:, 0], 0).sum(axis=1)
+            local_center_y = np.where(local_mask, self.positions[:, 1], 0).sum(axis=1)
             local_center = np.stack([local_center_x, local_center_y], axis=1) / counts_safe
 
             coh_dx = local_center[:, 0] - self.positions[:, 0]
@@ -119,12 +130,30 @@ class Boids:
             center = np.array([self.width / 2.0, self.height / 2.0], dtype=np.float32)
             to_center = center[None, :] - self.positions
             center_force = to_center * center_pull
+            global_center = self.positions.mean(axis=0, keepdims=True)
+            global_force = (global_center - self.positions) * global_pull
+
+            left_mask = (self._cohort_sign[:, 0] < 0)
+            right_mask = ~left_mask
+            cohort_centers = np.zeros_like(self.positions)
+            cohort_centers[left_mask] = self.positions[left_mask].mean(axis=0, keepdims=True)
+            cohort_centers[right_mask] = self.positions[right_mask].mean(axis=0, keepdims=True)
+            cohort_global_force = (cohort_centers - self.positions) * cohort_global_pull
 
             split_force = self._cohort_sign * axis_vec[None, :] * split_push
             cohort_anchor = center[None, :] + self._cohort_sign * axis_vec[None, :] * split_offset
             cohort_force = (cohort_anchor - self.positions) * cohort_pull
 
-            self.velocities += separation + alignment + cohesion + center_force + split_force + cohort_force
+            self.velocities += (
+                separation
+                + alignment
+                + cohesion
+                + center_force
+                + global_force
+                + split_force
+                + cohort_force
+                + cohort_global_force
+            )
             if damping > 0.0:
                 self.velocities *= max(0.0, 1.0 - damping)
 

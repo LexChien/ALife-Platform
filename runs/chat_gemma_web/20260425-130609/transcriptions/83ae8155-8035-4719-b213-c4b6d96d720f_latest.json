@@ -1,0 +1,9 @@
+{
+  "ok": true,
+  "session_id": "83ae8155-8035-4719-b213-c4b6d96d720f",
+  "transcript": "一個簡單的問題你都不會你還能幹什麼講中文",
+  "audio_artifacts": {
+    "input": "runs/chat_gemma_web/20260425-130609/transcriptions/8caddab9f46a4bcabaaa3678ebb5f089.webm",
+    "normalized": "runs/chat_gemma_web/20260425-130609/transcriptions/8caddab9f46a4bcabaaa3678ebb5f089.aiff"
+  }
+}

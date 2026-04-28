@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.0",
+  "session_id": "reasoning-smoke",
+  "created_at": "2026-04-28T03:49:54+08:00",
+  "updated_at": "2026-04-28T03:50:05+08:00",
+  "reset_count": 0,
+  "message_count": 2,
+  "turn_count": 1,
+  "messages": [
+    {
+      "role": "user",
+      "text": "請用三句話解釋相對論，不要列點。",
+      "created_at": "2026-04-28T03:50:05+08:00"
+    },
+    {
+      "role": "assistant",
+      "text": "相對論告訴我們，時間和空間並不是絕對的，它們會隨著觀察者的運動而相互影響。 簡單來說，物體相對於不同觀察者的測量結果會不同。 這兩種觀念是愛因斯坦提出的，徹底改變了我們對宇宙的理解。",
+      "created_at": "2026-04-28T03:50:05+08:00"
+    }
+  ],
+  "config_path": "configs/genai/gemma_llama_cpp.yaml",
+  "profile": "cpu_smoke",
+  "cleanup": {
+    "reasoning_detected_in_tool": false,
+    "strict_cleanup_retry": false,
+    "strict_cleanup_retry_error": null,
+    "strict_cleanup_local_applied": false,
+    "strict_cleanup_retry_strategy": null,
+    "strict_cleanup_rescue": false,
+    "strict_cleanup_rescue_error": null,
+    "strict_cleanup_final_fallback": false
+  },
+  "runtime": {
+    "model_path": "models/gemma/gemma.gguf",
+    "context_length": 4096,
+    "n_gpu_layers": 0,
+    "temperature": 0.7,
+    "max_tokens": 256,
+    "chat_format": null,
+    "driver": "subprocess",
+    "cli_path": "/Users/lexchien/Documents/AI/ALife-Platform/tools/llama_completion",
+    "postprocess": {
+      "reasoning_leak_detected": false,
+      "extractor_applied": false,
+      "extractor_error": null,
+      "heuristic_fallback_applied": false,
+      "heuristic_fallback_skipped": false,
+      "heuristic_fallback_skip_reason": null,
+      "heuristic_first_pass_applied": false
+    }
+  },
+  "voice": {
+    "input_provider": "macos_speech_via_upload",
+    "output_provider": "browser_speech_synthesis",
+    "recognition_lang": "zh-TW",
+    "synthesis_lang": "zh-TW",
+    "auto_submit": true,
+    "auto_speak": true
+  },
+  "avatar": {
+    "profile": "orb",
+    "display_name": "Gemma 4",
+    "enable_visual_state": true,
+    "states": {
+      "idle": "idle",
+      "listening": "listening",
+      "thinking": "thinking",
+      "speaking": "speaking",
+      "error": "error"
+    }
+  }
+}

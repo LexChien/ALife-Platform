@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.0",
+  "started_at": "2026-04-25T13:46:54+08:00",
+  "config_path": "configs/genai/gemma_llama_cpp.yaml",
+  "host": "127.0.0.1",
+  "port": 8080,
+  "profile": "cpu_smoke",
+  "history_turns": 6,
+  "session_schema_version": "1.0",
+  "llm": {
+    "backend": "llama_cpp",
+    "model_family": "gemma",
+    "max_tokens": 256,
+    "temperature": 0.7
+  },
+  "voice": {
+    "input_provider": "macos_speech_via_upload",
+    "output_provider": "browser_speech_synthesis",
+    "recognition_lang": "zh-TW",
+    "synthesis_lang": "zh-TW",
+    "auto_submit": true,
+    "auto_speak": true
+  },
+  "avatar": {
+    "profile": "orb",
+    "display_name": "Gemma 4",
+    "enable_visual_state": true,
+    "states": {
+      "idle": "idle",
+      "listening": "listening",
+      "thinking": "thinking",
+      "speaking": "speaking",
+      "error": "error"
+    }
+  },
+  "stt": {
+    "provider": "macos_speech",
+    "locale": "zh-TW",
+    "ffmpeg": "/opt/homebrew/bin/ffmpeg",
+    "xcrun": "/usr/bin/xcrun",
+    "swift_script": "/Users/lexchien/Documents/AI/ALife-Platform/tools/transcribe_audio.swift",
+    "ok": true
+  }
+}

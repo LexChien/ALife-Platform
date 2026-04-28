@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.0",
+  "session_id": "reasoning-fix",
+  "created_at": "2026-04-24T23:55:01+08:00",
+  "updated_at": "2026-04-24T23:55:09+08:00",
+  "reset_count": 0,
+  "message_count": 2,
+  "turn_count": 1,
+  "messages": [
+    {
+      "role": "user",
+      "text": "請用繁體中文一句話自我介紹。",
+      "created_at": "2026-04-24T23:55:09+08:00"
+    },
+    {
+      "role": "assistant",
+      "text": "我收到的請求是要求我根據提供的上下文（prototype baseline）和原始用戶請求（請用繁體中文一句話自我介紹）來重寫草稿，只輸出最終答案，並移除所有思考過程。\n\n原始用戶請求是：請用繁體中文一句話自我介紹。\n\n我需要提供一個繁體中文的單句自我介紹。根據我的身份（Gemma 4），我應該介紹我的身份。\n\n我將直接輸出最精簡的自我介紹。\n\n最終答案應該是：我是 Gemma 4，一個由 Google DeepMind 開發的開放權重",
+      "created_at": "2026-04-24T23:55:09+08:00"
+    }
+  ],
+  "config_path": "configs/genai/gemma_llama_cpp.yaml",
+  "profile": "cpu_smoke",
+  "cleanup": {
+    "reasoning_detected_in_tool": false,
+    "strict_cleanup_retry": false,
+    "strict_cleanup_retry_error": null,
+    "strict_cleanup_local_applied": false,
+    "strict_cleanup_retry_strategy": null,
+    "strict_cleanup_rescue": false,
+    "strict_cleanup_rescue_error": null,
+    "strict_cleanup_final_fallback": false
+  },
+  "runtime": {
+    "model_path": "models/gemma/gemma.gguf",
+    "context_length": 4096,
+    "n_gpu_layers": 0,
+    "temperature": 0.7,
+    "max_tokens": 256,
+    "chat_format": null,
+    "driver": "subprocess",
+    "cli_path": "tools/llama_completion",
+    "postprocess": {
+      "reasoning_leak_detected": false,
+      "extractor_applied": true,
+      "extractor_error": null,
+      "heuristic_fallback_applied": false,
+      "heuristic_fallback_skipped": true,
+      "heuristic_fallback_skip_reason": "candidate_fragmented",
+      "heuristic_first_pass_applied": false
+    }
+  },
+  "voice": {
+    "input_provider": "browser_web_speech",
+    "output_provider": "browser_speech_synthesis",
+    "recognition_lang": "zh-TW",
+    "synthesis_lang": "zh-TW",
+    "auto_submit": true,
+    "auto_speak": true
+  },
+  "avatar": {
+    "profile": "orb",
+    "display_name": "Gemma 4",
+    "enable_visual_state": true,
+    "states": {
+      "idle": "idle",
+      "listening": "listening",
+      "thinking": "thinking",
+      "speaking": "speaking",
+      "error": "error"
+    }
+  }
+}

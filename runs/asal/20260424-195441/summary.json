@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.0",
+  "status": "completed",
+  "system": "asal",
+  "mode": "asal_target",
+  "config_path": "configs/asal/target_cell_fusion_narrative.yaml",
+  "run_dir": "runs/asal/20260424-195441",
+  "started_at": "2026-04-24T19:54:41+08:00",
+  "completed_at": "2026-04-24T20:00:29+08:00",
+  "run_elapsed_seconds": 348.0,
+  "artifacts": {
+    "image": "best.png",
+    "gif": "best.gif",
+    "mp4": null,
+    "narrative_summary": "narrative_summary.json",
+    "trajectory_stats": "trajectory_morphology.json"
+  },
+  "metrics": {
+    "best_score": 0.8316692393321459,
+    "num_frames": 90,
+    "search_iters": 6,
+    "search_pop": 8,
+    "search_keep": 8
+  },
+  "details": {
+    "prompt": "a microscopy image of a biological cell, phase contrast",
+    "best_theta": [
+      0.9858133520933227,
+      0.0,
+      0.6401936558714523,
+      121.56419727190597,
+      5.646035694130588
+    ],
+    "foundation_model": "morphology_judge_stub",
+    "substrate": "boids",
+    "runtime": {
+      "device_request": "cpu",
+      "resolved_device": "cpu",
+      "precision": "fp32",
+      "backend": "local"
+    },
+    "tracking_backend": null,
+    "active_profile": "cpu_smoke",
+    "narrative_enabled": true,
+    "narrative_keyframes": {
+      "birth": "phase_keyframes/phase1_birth.png",
+      "split": "phase_keyframes/phase2_split.png",
+      "fusion": "phase_keyframes/phase3_fusion.png"
+    },
+    "narrative_score": 0.7827486676690139,
+    "narrative_phase_order_valid": true
+  }
+}

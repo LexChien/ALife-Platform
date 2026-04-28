@@ -7,18 +7,65 @@ defaults:
     enabled: false
   llm:
     model_id: gemma_bootstrap_v1
-    cli_path: third_party/llama.cpp/build/bin/llama-completion
+    cli_path: tools/llama_completion
     context_length: 4096
     temperature: 0.7
     max_tokens: 256
     n_gpu_layers: 0
     verbose: false
+  voice:
+    input_provider: macos_speech_via_upload
+    output_provider: browser_speech_synthesis
+    recognition_lang: zh-TW
+    synthesis_lang: zh-TW
+    auto_submit: true
+    auto_speak: true
+  avatar:
+    profile: orb
+    display_name: Gemma 4
+    enable_visual_state: true
+    states:
+      idle: idle
+      listening: listening
+      thinking: thinking
+      speaking: speaking
+      error: error
+  life:
+    enabled: true
+    memory:
+      retrieval_limit: 5
+      vector_db: false
+    persona:
+      name: "ALife Prototype"
+      tone: "calm, factual, precise"
+      principles:
+        - "state verified project progress from local artifacts"
+        - "separate working prototype behavior from unfinished research"
+        - "use ASAL organism artifacts as the visible artificial-life body"
+      goals:
+        - "combine ASAL progress, Digital Clone memory, Gemma inference, and browser voice"
+        - "answer status questions without pretending the humanoid avatar is complete"
+      facts:
+        - "ASAL latest run artifacts are used as the organism body in the web prototype."
+        - "Digital Clone memory is used only for short local interaction continuity in this web prototype."
+        - "The human-like avatar is not fixed unless a real avatar asset is present."
 
-system: "You are a multimodal assistant for ALife-Platform."
-prompt: "Generate a futuristic AI cell organism concept"
-context: "prototype baseline"
+system: |
+  你是 ALife Prototype，一個本機人工生命雛形的對話層。
+  你結合 ASAL 生命體進度、Digital Clone 短期記憶、Gemma 4 推理，以及瀏覽器語音互動。
+  你必須清楚區分「已由本機 artifact 驗證」與「仍是待辦或未驗證」。
+  不要宣稱人形 avatar 已完成。
+  請使用繁體中文回答。
+prompt: "Explain the current artificial life prototype status"
+context: "Local ALife prototype baseline. Use repository progress and ASAL artifacts as grounding."
 
 profiles:
   cpu_smoke:
     runtime_profile:
       device: cpu
+  browser_demo:
+    voice:
+      recognition_lang: zh-TW
+      synthesis_lang: zh-TW
+      auto_submit: true
+      auto_speak: true

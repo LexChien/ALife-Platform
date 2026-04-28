@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+ROOT_DIR="$(cd "$(dirname "$0")/.." && pwd)"
+MAC_BIN="$ROOT_DIR/third_party/llama.cpp/build-macos-fix/bin/llama-cli"
+LINUX_BIN="$ROOT_DIR/third_party/llama.cpp/build/bin/llama-completion"
+
+if [[ -x "$MAC_BIN" ]]; then
+  exec "$MAC_BIN" "$@"
+fi
+
+if [[ -x "$LINUX_BIN" ]]; then
+  exec "$LINUX_BIN" "$@"
+fi
+
+echo "No usable llama-completion binary found." >&2
+echo "Checked:" >&2
+echo "  $MAC_BIN" >&2
+echo "  $LINUX_BIN" >&2
+exit 1

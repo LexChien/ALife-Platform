@@ -244,6 +244,37 @@ Run a direct single-turn Gemma chat without image/audio generation:
   --save-run
 ```
 
+Run a local web chat UI for Gemma with text input, browser microphone input,
+and browser speech playback:
+
+```bash
+./tools/run_gemma_web \
+  --config configs/genai/gemma_llama_cpp.yaml \
+  --profile cpu_smoke \
+  --host 127.0.0.1 \
+  --port 8080
+```
+
+Then open:
+
+```text
+http://127.0.0.1:8080
+```
+
+Notes:
+
+- the backend still uses the local `Gemma 4 + llama.cpp` path already configured in the repo
+- `configs/genai/gemma_llama_cpp.yaml` now uses `tools/llama_completion`, which auto-selects a usable local `llama.cpp` binary path
+- on this macOS workspace, use `python3` instead of `./.venv/bin/python` because the checked-in `.venv` is a Linux ARM environment and cannot execute locally
+- if your active `python3` cannot import `yaml`, use `./tools/run_gemma_web ...`, which auto-selects a usable interpreter with `PyYAML`
+- microphone input and spoken reply use the browser Web Speech API
+- microphone input now performs a browser permission preflight; the first click should trigger a microphone permission prompt
+- if voice input still fails, confirm you are on `localhost`, using Chrome/Edge, and that microphone access is allowed for the page
+- the web runtime now exposes config-driven `voice` and `avatar` sections from `configs/genai/gemma_llama_cpp.yaml`
+- the UI now includes avatar state display and a voice auto-submit toggle
+- browser mic support works best in Chromium-based browsers and requires microphone permission
+- web chat transcripts are stored under `runs/chat_gemma_web/...`
+
 Analyze archived real Gemma runs for extractor/fallback hit rates:
 
 ```bash

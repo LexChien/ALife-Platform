@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ALife Prototype | ASAL + Gemma</title>
+    <link rel="stylesheet" href="/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;400;600&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="hero-panel">
+        <div class="visual-container">
+          <div class="avatar-wrap" id="avatarWrap" data-state="idle">
+            <div class="noir-viewport">
+              <div class="noir-image-back"></div>
+              <img id="lifeVisual" class="life-visual" alt="ASAL artificial-life organism" hidden>
+              <div id="lifeFallback" class="life-fallback">ASAL</div>
+              <div class="sunlight-bars"></div>
+              <div class="interaction-lens"></div>
+            </div>
+            <div class="noir-label">SYSTEM READY</div>
+          </div>
+
+          <div class="user-video-wrap" id="userVideoWrap">
+            <video id="userVideo" autoplay playsinline muted></video>
+            <div class="video-overlay">LOCAL FEED</div>
+            <div class="video-controls">
+              <button id="cameraToggle" class="icon-button">📷</button>
+            </div>
+          </div>
+        </div>
+
+        <h1 class="noir-title">ALIFE PROTOTYPE</h1>
+        <p class="noir-subtitle">ASAL + DIGITAL CLONE + GEMMA VOICE</p>
+
+        <div class="status-grid">
+          <div class="status-card">
+            <span class="label">ENGINE</span>
+            <span class="value mono" id="backendStatus">ONLINE</span>
+          </div>
+          <div class="status-card">
+            <span class="label">STATE</span>
+            <span class="value mono" id="avatarStatus">IDLE</span>
+          </div>
+        </div>
+
+        <section class="life-panel" aria-label="Artificial life progress">
+          <div class="life-panel-head">
+            <span class="label">LIFE CORE</span>
+            <span class="value mono" id="lifeRunStatus">LOADING</span>
+          </div>
+          <p id="lifeSummary" class="life-summary">讀取 ASAL 進度中</p>
+          <div class="life-metrics">
+            <span id="lifeScore">score --</span>
+            <span id="lifePhase">phase --</span>
+          </div>
+          <div id="lifePhases" class="life-phases"></div>
+          <div class="life-detail-grid">
+            <div>
+              <span class="label">RECENT RUNS</span>
+              <div id="lifeRuns" class="life-runs"></div>
+            </div>
+            <div>
+              <span class="label">OPEN ITEMS</span>
+              <div id="lifeTasks" class="life-tasks"></div>
+            </div>
+          </div>
+          <div id="lifeMilestones" class="life-milestones"></div>
+        </section>
+      </section>
+
+      <section class="chat-panel">
+        <div class="chat-log" id="chatLog"></div>
+        <div class="quick-actions" aria-label="Suggested prompts">
+          <button type="button" class="quick-button" data-prompt="請用三句話說明目前人工生命雛形的 ASAL 進度、限制與下一步。">STATUS</button>
+          <button type="button" class="quick-button" data-prompt="請根據 birth split fusion 三個 phase，解釋目前這個 ASAL 生命體看起來完成了什麼。">PHASES</button>
+          <button type="button" class="quick-button" data-prompt="目前這個人工生命雛形還不能誇稱完成的地方有哪些？">LIMITS</button>
+        </div>
+
+        <form class="composer" id="composerForm">
+          <textarea id="messageInput" placeholder="Enter message..." spellcheck="false"></textarea>
+          <div class="composer-actions">
+            <div class="toggles">
+              <label class="toggle"><input type="checkbox" id="speakToggle" checked> VOICE</label>
+              <label class="toggle"><input type="checkbox" id="submitToggle" checked> AUTO</label>
+            </div>
+            <div class="buttons">
+              <button type="button" class="mic-button" id="micButton">MICROPHONE</button>
+              <button type="submit" class="send-button" id="sendButton">SEND</button>
+            </div>
+          </div>
+          <div class="mic-hint" id="micHint">READY</div>
+        </form>
+      </section>
+    </main>
+
+    <template id="messageTemplate">
+      <article class="message-row">
+        <div class="message-bubble"></div>
+      </article>
+    </template>
+
+    <script src="/app.js"></script>
+  </body>
+</html>

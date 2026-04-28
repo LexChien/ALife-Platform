@@ -1,0 +1,89 @@
+{
+  "schema_version": "1.0",
+  "session_id": "83ae8155-8035-4719-b213-c4b6d96d720f",
+  "created_at": "2026-04-24T23:47:28+08:00",
+  "updated_at": "2026-04-24T23:51:26+08:00",
+  "reset_count": 0,
+  "message_count": 6,
+  "turn_count": 3,
+  "messages": [
+    {
+      "role": "user",
+      "text": "我要聽到嗎",
+      "created_at": "2026-04-24T23:47:37+08:00"
+    },
+    {
+      "role": "assistant",
+      "text": "*   Instruction: \"Rewrite the following draft as the final answer only. Remove reasoning, planning, analysis, and chain-of-thought. Keep only the user-facing answer.\"",
+      "created_at": "2026-04-24T23:47:37+08:00"
+    },
+    {
+      "role": "user",
+      "text": "中文嗎",
+      "created_at": "2026-04-24T23:48:19+08:00"
+    },
+    {
+      "role": "assistant",
+      "text": "*   User request (The instruction to be processed): Rewrite the following draft as the final answer only. Remove reasoning, planning, analysis, and chain-of",
+      "created_at": "2026-04-24T23:48:19+08:00"
+    },
+    {
+      "role": "user",
+      "text": "你現在是誰",
+      "created_at": "2026-04-24T23:51:26+08:00"
+    },
+    {
+      "role": "assistant",
+      "text": "Thinking Process:\n\n1.  **Analyze the Request:** The user asked \"你現在是誰\" (Who are you now?).\n2.  **Analyze the Context/Role:** I am a direct-answer assistant. The preceding context involves a conversation history where the assistant's previous responses were empty or placeholder marks (*).\n3.  **Determine Identity:** I must state my identity based on my core instructions. I am Gemma 4, a",
+      "created_at": "2026-04-24T23:51:26+08:00"
+    }
+  ],
+  "config_path": "configs/genai/gemma_llama_cpp.yaml",
+  "profile": "cpu_smoke",
+  "cleanup": {
+    "reasoning_detected_in_tool": true,
+    "strict_cleanup_retry": true,
+    "strict_cleanup_retry_error": null,
+    "strict_cleanup_local_applied": false,
+    "strict_cleanup_retry_strategy": "direct_answer_retry"
+  },
+  "runtime": {
+    "model_path": "models/gemma/gemma.gguf",
+    "context_length": 4096,
+    "n_gpu_layers": 0,
+    "temperature": 0.7,
+    "max_tokens": 256,
+    "chat_format": null,
+    "driver": "subprocess",
+    "cli_path": "tools/llama_completion",
+    "postprocess": {
+      "reasoning_leak_detected": true,
+      "extractor_applied": true,
+      "extractor_error": null,
+      "heuristic_fallback_applied": false,
+      "heuristic_fallback_skipped": true,
+      "heuristic_fallback_skip_reason": "candidate_fragmented",
+      "heuristic_first_pass_applied": false
+    }
+  },
+  "voice": {
+    "input_provider": "browser_web_speech",
+    "output_provider": "browser_speech_synthesis",
+    "recognition_lang": "zh-TW",
+    "synthesis_lang": "zh-TW",
+    "auto_submit": true,
+    "auto_speak": true
+  },
+  "avatar": {
+    "profile": "orb",
+    "display_name": "Gemma 4",
+    "enable_visual_state": true,
+    "states": {
+      "idle": "idle",
+      "listening": "listening",
+      "thinking": "thinking",
+      "speaking": "speaking",
+      "error": "error"
+    }
+  }
+}
