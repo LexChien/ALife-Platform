@@ -1,0 +1,7026 @@
+{
+  "system": "live_asal",
+  "start_time": "2026-04-29T00:57:59+08:00",
+  "evolution_history": [
+    {
+      "timestamp": "2026-04-29T00:20:17+08:00",
+      "elapsed": 0.02,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": -1.0,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 104.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        1.0,
+        1.0,
+        1.0,
+        5.0,
+        2.0
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:20:23+08:00",
+      "elapsed": 6.21,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": -1.0,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 93.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        1.0,
+        1.0,
+        1.0,
+        5.0,
+        2.0
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:20:29+08:00",
+      "elapsed": 12.61,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": -1.0,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 108.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        1.0,
+        1.0,
+        1.0,
+        5.0,
+        2.0
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:20:36+08:00",
+      "elapsed": 19.46,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": -1.0,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 81.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        1.0,
+        1.0,
+        1.0,
+        5.0,
+        2.0
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:20:43+08:00",
+      "elapsed": 25.94,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": -1.0,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 50.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        1.0,
+        1.0,
+        1.0,
+        5.0,
+        2.0
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:20:49+08:00",
+      "elapsed": 32.23,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": -1.0,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 118.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        1.0,
+        1.0,
+        1.0,
+        5.0,
+        2.0
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:20:55+08:00",
+      "elapsed": 38.36,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": -1.0,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 76.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        1.0,
+        1.0,
+        1.0,
+        5.0,
+        2.0
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:21:02+08:00",
+      "elapsed": 44.96,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": -1.0,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 161.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        1.0,
+        1.0,
+        1.0,
+        5.0,
+        2.0
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:21:08+08:00",
+      "elapsed": 51.55,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": -1.0,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 67.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        1.0,
+        1.0,
+        1.0,
+        5.0,
+        2.0
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:21:15+08:00",
+      "elapsed": 58.16,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": -1.0,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 106.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        1.0,
+        1.0,
+        1.0,
+        5.0,
+        2.0
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:21:21+08:00",
+      "elapsed": 64.31,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": -1.0,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 57.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        1.0,
+        1.0,
+        1.0,
+        5.0,
+        2.0
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:21:27+08:00",
+      "elapsed": 70.45,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": -1.0,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 88.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        1.0,
+        1.0,
+        1.0,
+        5.0,
+        2.0
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:21:34+08:00",
+      "elapsed": 76.9,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": -1.0,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 105.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        1.0,
+        1.0,
+        1.0,
+        5.0,
+        2.0
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:21:40+08:00",
+      "elapsed": 83.2,
+      "state": "thinking",
+      "phase": "split",
+      "best_score": 0.1822,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 104.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.9302932690805088,
+        1.033377825211154,
+        1.0656808865151899,
+        5.082703368656468,
+        2.0848560361197546
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:21:47+08:00",
+      "elapsed": 90.27,
+      "state": "thinking",
+      "phase": "split",
+      "best_score": 0.1899,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 96.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.8899709891832716,
+        0.8701085799185708,
+        0.9874823173532484,
+        5.128959983209312,
+        1.9522522190840046
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:21:53+08:00",
+      "elapsed": 96.6,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.1899,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 0,
+        "largest_area": 34.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.8899709891832716,
+        0.8701085799185708,
+        0.9874823173532484,
+        5.128959983209312,
+        1.9522522190840046
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:22:00+08:00",
+      "elapsed": 103.28,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.1899,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 0,
+        "largest_area": 42.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.8899709891832716,
+        0.8701085799185708,
+        0.9874823173532484,
+        5.128959983209312,
+        1.9522522190840046
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:22:07+08:00",
+      "elapsed": 109.84,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2074,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 0,
+        "largest_area": 42.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.9308178885025309,
+        0.9341332614717652,
+        1.1044522841103972,
+        5.21041648271665,
+        1.9599088582340622
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:22:13+08:00",
+      "elapsed": 116.49,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2074,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 0,
+        "largest_area": 44.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.9308178885025309,
+        0.9341332614717652,
+        1.1044522841103972,
+        5.21041648271665,
+        1.9599088582340622
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:22:20+08:00",
+      "elapsed": 122.99,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2074,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 0,
+        "largest_area": 43.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.9308178885025309,
+        0.9341332614717652,
+        1.1044522841103972,
+        5.21041648271665,
+        1.9599088582340622
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:22:27+08:00",
+      "elapsed": 129.68,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2074,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 0,
+        "largest_area": 38.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.9308178885025309,
+        0.9341332614717652,
+        1.1044522841103972,
+        5.21041648271665,
+        1.9599088582340622
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:22:33+08:00",
+      "elapsed": 136.21,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2074,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 0,
+        "largest_area": 37.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.9308178885025309,
+        0.9341332614717652,
+        1.1044522841103972,
+        5.21041648271665,
+        1.9599088582340622
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:22:40+08:00",
+      "elapsed": 142.79,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2074,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 0,
+        "largest_area": 38.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.9308178885025309,
+        0.9341332614717652,
+        1.1044522841103972,
+        5.21041648271665,
+        1.9599088582340622
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:22:46+08:00",
+      "elapsed": 149.39,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2074,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 0,
+        "largest_area": 40.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.9308178885025309,
+        0.9341332614717652,
+        1.1044522841103972,
+        5.21041648271665,
+        1.9599088582340622
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:22:53+08:00",
+      "elapsed": 155.83,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2074,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 0,
+        "largest_area": 47.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.9308178885025309,
+        0.9341332614717652,
+        1.1044522841103972,
+        5.21041648271665,
+        1.9599088582340622
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:22:59+08:00",
+      "elapsed": 162.43,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2074,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 57.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.9308178885025309,
+        0.9341332614717652,
+        1.1044522841103972,
+        5.21041648271665,
+        1.9599088582340622
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:23:06+08:00",
+      "elapsed": 169.07,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2074,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 48.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.9308178885025309,
+        0.9341332614717652,
+        1.1044522841103972,
+        5.21041648271665,
+        1.9599088582340622
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:23:12+08:00",
+      "elapsed": 175.49,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2074,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 0,
+        "largest_area": 42.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.9308178885025309,
+        0.9341332614717652,
+        1.1044522841103972,
+        5.21041648271665,
+        1.9599088582340622
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:23:19+08:00",
+      "elapsed": 182.23,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2074,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 0,
+        "largest_area": 41.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.9308178885025309,
+        0.9341332614717652,
+        1.1044522841103972,
+        5.21041648271665,
+        1.9599088582340622
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:23:26+08:00",
+      "elapsed": 188.69,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2074,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 0,
+        "largest_area": 37.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.9308178885025309,
+        0.9341332614717652,
+        1.1044522841103972,
+        5.21041648271665,
+        1.9599088582340622
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:23:32+08:00",
+      "elapsed": 195.14,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2074,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 0,
+        "largest_area": 37.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.9308178885025309,
+        0.9341332614717652,
+        1.1044522841103972,
+        5.21041648271665,
+        1.9599088582340622
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:23:39+08:00",
+      "elapsed": 201.72,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2074,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 0,
+        "largest_area": 40.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.9308178885025309,
+        0.9341332614717652,
+        1.1044522841103972,
+        5.21041648271665,
+        1.9599088582340622
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:23:45+08:00",
+      "elapsed": 208.45,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2074,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 0,
+        "largest_area": 41.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.9308178885025309,
+        0.9341332614717652,
+        1.1044522841103972,
+        5.21041648271665,
+        1.9599088582340622
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:23:52+08:00",
+      "elapsed": 214.79,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2074,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 0,
+        "largest_area": 45.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.9308178885025309,
+        0.9341332614717652,
+        1.1044522841103972,
+        5.21041648271665,
+        1.9599088582340622
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:23:58+08:00",
+      "elapsed": 221.38,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2074,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 0,
+        "largest_area": 44.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.9308178885025309,
+        0.9341332614717652,
+        1.1044522841103972,
+        5.21041648271665,
+        1.9599088582340622
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:24:05+08:00",
+      "elapsed": 227.99,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2074,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 0,
+        "largest_area": 43.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.9308178885025309,
+        0.9341332614717652,
+        1.1044522841103972,
+        5.21041648271665,
+        1.9599088582340622
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:24:11+08:00",
+      "elapsed": 234.59,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2074,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 0,
+        "largest_area": 40.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.9308178885025309,
+        0.9341332614717652,
+        1.1044522841103972,
+        5.21041648271665,
+        1.9599088582340622
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:24:18+08:00",
+      "elapsed": 241.19,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2074,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 0,
+        "largest_area": 40.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.9308178885025309,
+        0.9341332614717652,
+        1.1044522841103972,
+        5.21041648271665,
+        1.9599088582340622
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:24:25+08:00",
+      "elapsed": 247.78,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2074,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 0,
+        "largest_area": 36.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.9308178885025309,
+        0.9341332614717652,
+        1.1044522841103972,
+        5.21041648271665,
+        1.9599088582340622
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:24:31+08:00",
+      "elapsed": 254.34,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2074,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 0,
+        "largest_area": 38.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.9308178885025309,
+        0.9341332614717652,
+        1.1044522841103972,
+        5.21041648271665,
+        1.9599088582340622
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:24:38+08:00",
+      "elapsed": 260.88,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2074,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 0,
+        "largest_area": 39.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.9308178885025309,
+        0.9341332614717652,
+        1.1044522841103972,
+        5.21041648271665,
+        1.9599088582340622
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:24:44+08:00",
+      "elapsed": 267.44,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2074,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 0,
+        "largest_area": 42.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.9308178885025309,
+        0.9341332614717652,
+        1.1044522841103972,
+        5.21041648271665,
+        1.9599088582340622
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:24:51+08:00",
+      "elapsed": 274.2,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2074,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 0,
+        "largest_area": 38.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.9308178885025309,
+        0.9341332614717652,
+        1.1044522841103972,
+        5.21041648271665,
+        1.9599088582340622
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:24:58+08:00",
+      "elapsed": 280.93,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2074,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 0,
+        "largest_area": 42.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.9308178885025309,
+        0.9341332614717652,
+        1.1044522841103972,
+        5.21041648271665,
+        1.9599088582340622
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:25:04+08:00",
+      "elapsed": 287.54,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2074,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 0,
+        "largest_area": 39.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.9308178885025309,
+        0.9341332614717652,
+        1.1044522841103972,
+        5.21041648271665,
+        1.9599088582340622
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:25:11+08:00",
+      "elapsed": 294.04,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2074,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 0,
+        "largest_area": 43.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.9308178885025309,
+        0.9341332614717652,
+        1.1044522841103972,
+        5.21041648271665,
+        1.9599088582340622
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:25:18+08:00",
+      "elapsed": 300.78,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2074,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 0,
+        "largest_area": 38.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.9308178885025309,
+        0.9341332614717652,
+        1.1044522841103972,
+        5.21041648271665,
+        1.9599088582340622
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:25:24+08:00",
+      "elapsed": 307.35,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2074,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 0,
+        "largest_area": 39.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.9308178885025309,
+        0.9341332614717652,
+        1.1044522841103972,
+        5.21041648271665,
+        1.9599088582340622
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:25:31+08:00",
+      "elapsed": 313.91,
+      "state": "thinking",
+      "phase": "split",
+      "best_score": 0.2165,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 52.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6787129212466321,
+        0.9932318548304259,
+        1.0947692112148464,
+        5.072944910504894,
+        1.9179533787079897
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:25:37+08:00",
+      "elapsed": 320.28,
+      "state": "thinking",
+      "phase": "split",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 256.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:25:44+08:00",
+      "elapsed": 327.27,
+      "state": "thinking",
+      "phase": "split",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 212.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:25:51+08:00",
+      "elapsed": 334.19,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 105.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:25:58+08:00",
+      "elapsed": 340.92,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 211.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:26:04+08:00",
+      "elapsed": 347.43,
+      "state": "thinking",
+      "phase": "split",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 97.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:26:11+08:00",
+      "elapsed": 354.39,
+      "state": "thinking",
+      "phase": "split",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 119.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:26:18+08:00",
+      "elapsed": 361.08,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 122.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:26:25+08:00",
+      "elapsed": 367.63,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 99.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:26:31+08:00",
+      "elapsed": 374.37,
+      "state": "thinking",
+      "phase": "split",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 149.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:26:38+08:00",
+      "elapsed": 380.79,
+      "state": "thinking",
+      "phase": "split",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 143.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:26:44+08:00",
+      "elapsed": 387.52,
+      "state": "thinking",
+      "phase": "split",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 191.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:26:51+08:00",
+      "elapsed": 394.29,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 128.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:26:58+08:00",
+      "elapsed": 401.17,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 91.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:27:05+08:00",
+      "elapsed": 408.03,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 163.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:27:11+08:00",
+      "elapsed": 414.48,
+      "state": "thinking",
+      "phase": "split",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 72.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:27:18+08:00",
+      "elapsed": 421.23,
+      "state": "thinking",
+      "phase": "split",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 68.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:27:25+08:00",
+      "elapsed": 428.02,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 160.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:27:32+08:00",
+      "elapsed": 434.75,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 297.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:27:38+08:00",
+      "elapsed": 441.36,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 146.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:27:45+08:00",
+      "elapsed": 448.12,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 145.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:27:52+08:00",
+      "elapsed": 454.97,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 147.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:27:58+08:00",
+      "elapsed": 461.5,
+      "state": "thinking",
+      "phase": "split",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 140.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:28:05+08:00",
+      "elapsed": 468.25,
+      "state": "thinking",
+      "phase": "split",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 164.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:28:12+08:00",
+      "elapsed": 474.95,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 93.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:28:19+08:00",
+      "elapsed": 481.77,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 91.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:28:25+08:00",
+      "elapsed": 488.62,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 211.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:28:32+08:00",
+      "elapsed": 495.53,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 109.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:28:39+08:00",
+      "elapsed": 502.38,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 175.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:28:46+08:00",
+      "elapsed": 509.16,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 156.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:28:53+08:00",
+      "elapsed": 516.03,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 258.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:29:00+08:00",
+      "elapsed": 522.78,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 124.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:29:07+08:00",
+      "elapsed": 529.7,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 70.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:29:13+08:00",
+      "elapsed": 536.6,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 184.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:29:20+08:00",
+      "elapsed": 543.52,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 156.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:29:27+08:00",
+      "elapsed": 550.42,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 139.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:29:34+08:00",
+      "elapsed": 557.18,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 2,
+        "dominant_num": 1,
+        "largest_area": 107.0,
+        "mass_ratio": 0.8991596638655462
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:29:41+08:00",
+      "elapsed": 563.83,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 174.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:29:47+08:00",
+      "elapsed": 570.37,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 197.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:29:54+08:00",
+      "elapsed": 577.17,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 224.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:30:01+08:00",
+      "elapsed": 584.01,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 56.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:30:08+08:00",
+      "elapsed": 590.99,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 148.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:30:15+08:00",
+      "elapsed": 597.7,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 126.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:30:21+08:00",
+      "elapsed": 604.58,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 135.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:30:28+08:00",
+      "elapsed": 611.29,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 224.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:30:35+08:00",
+      "elapsed": 618.08,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 120.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:30:42+08:00",
+      "elapsed": 624.86,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 155.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:30:49+08:00",
+      "elapsed": 631.67,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 100.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:30:55+08:00",
+      "elapsed": 638.58,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 117.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:31:02+08:00",
+      "elapsed": 645.5,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 218.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:31:09+08:00",
+      "elapsed": 652.2,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 107.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:31:16+08:00",
+      "elapsed": 659.0,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 216.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:31:23+08:00",
+      "elapsed": 665.67,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 154.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:31:29+08:00",
+      "elapsed": 672.35,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 216.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:31:36+08:00",
+      "elapsed": 679.05,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 138.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:31:43+08:00",
+      "elapsed": 685.82,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 95.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:31:49+08:00",
+      "elapsed": 692.45,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 131.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:31:56+08:00",
+      "elapsed": 699.16,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 97.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:32:03+08:00",
+      "elapsed": 705.8,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 201.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:32:09+08:00",
+      "elapsed": 712.49,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 158.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:32:16+08:00",
+      "elapsed": 719.15,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 117.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:32:23+08:00",
+      "elapsed": 725.84,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 347.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:32:29+08:00",
+      "elapsed": 732.4,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 52.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:32:36+08:00",
+      "elapsed": 739.12,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 220.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:32:43+08:00",
+      "elapsed": 745.72,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 81.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:32:49+08:00",
+      "elapsed": 752.42,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 114.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:32:56+08:00",
+      "elapsed": 759.17,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 127.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:33:03+08:00",
+      "elapsed": 765.86,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 97.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:33:10+08:00",
+      "elapsed": 772.84,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 134.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:33:17+08:00",
+      "elapsed": 779.8,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 199.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:33:23+08:00",
+      "elapsed": 786.44,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 130.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:33:30+08:00",
+      "elapsed": 793.12,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 236.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:33:37+08:00",
+      "elapsed": 799.97,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 169.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:33:44+08:00",
+      "elapsed": 806.7,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 120.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:33:50+08:00",
+      "elapsed": 813.36,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 102.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:33:57+08:00",
+      "elapsed": 819.97,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 96.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:34:04+08:00",
+      "elapsed": 826.72,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 139.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:34:10+08:00",
+      "elapsed": 833.5,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 204.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:34:17+08:00",
+      "elapsed": 840.15,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 88.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:34:24+08:00",
+      "elapsed": 846.85,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 86.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:34:30+08:00",
+      "elapsed": 853.55,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 277.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:34:37+08:00",
+      "elapsed": 860.35,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 94.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:34:44+08:00",
+      "elapsed": 867.11,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 85.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:34:51+08:00",
+      "elapsed": 873.94,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 120.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:34:58+08:00",
+      "elapsed": 880.7,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 114.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:35:04+08:00",
+      "elapsed": 887.48,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 191.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:35:11+08:00",
+      "elapsed": 894.26,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 115.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:35:18+08:00",
+      "elapsed": 901.1,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 188.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:35:25+08:00",
+      "elapsed": 907.88,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 174.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:35:31+08:00",
+      "elapsed": 914.61,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 137.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:35:38+08:00",
+      "elapsed": 921.36,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 97.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:35:45+08:00",
+      "elapsed": 928.22,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 121.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:35:52+08:00",
+      "elapsed": 935.0,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 173.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:35:59+08:00",
+      "elapsed": 941.81,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 177.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:36:06+08:00",
+      "elapsed": 948.63,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 202.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:36:12+08:00",
+      "elapsed": 955.3,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 110.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:36:19+08:00",
+      "elapsed": 962.0,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 93.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:36:26+08:00",
+      "elapsed": 968.63,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 131.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:36:32+08:00",
+      "elapsed": 975.41,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 274.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:36:39+08:00",
+      "elapsed": 982.4,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 309.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:36:46+08:00",
+      "elapsed": 989.14,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 230.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:36:53+08:00",
+      "elapsed": 995.79,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 143.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:37:00+08:00",
+      "elapsed": 1002.66,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 156.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:37:06+08:00",
+      "elapsed": 1009.44,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 119.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:37:13+08:00",
+      "elapsed": 1016.11,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 121.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:37:20+08:00",
+      "elapsed": 1022.92,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 61.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:37:27+08:00",
+      "elapsed": 1029.68,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 161.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:37:33+08:00",
+      "elapsed": 1036.37,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 173.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:37:40+08:00",
+      "elapsed": 1043.1,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 109.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:37:47+08:00",
+      "elapsed": 1049.9,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 138.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:37:54+08:00",
+      "elapsed": 1056.66,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 179.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:38:00+08:00",
+      "elapsed": 1063.43,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 112.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:38:07+08:00",
+      "elapsed": 1070.21,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 86.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:38:14+08:00",
+      "elapsed": 1076.9,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 148.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:38:21+08:00",
+      "elapsed": 1084.28,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 126.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:38:28+08:00",
+      "elapsed": 1091.58,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 71.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:38:36+08:00",
+      "elapsed": 1098.94,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 154.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:38:43+08:00",
+      "elapsed": 1106.24,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 310.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:38:50+08:00",
+      "elapsed": 1113.58,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 167.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:38:58+08:00",
+      "elapsed": 1120.99,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 207.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:39:05+08:00",
+      "elapsed": 1128.46,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 225.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:39:13+08:00",
+      "elapsed": 1135.99,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 161.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:39:20+08:00",
+      "elapsed": 1143.34,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 71.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:39:28+08:00",
+      "elapsed": 1150.64,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 139.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:39:35+08:00",
+      "elapsed": 1158.02,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 157.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:39:42+08:00",
+      "elapsed": 1165.41,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 148.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:39:50+08:00",
+      "elapsed": 1172.82,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 86.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:39:57+08:00",
+      "elapsed": 1180.07,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 223.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:40:04+08:00",
+      "elapsed": 1186.71,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 224.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:40:10+08:00",
+      "elapsed": 1193.47,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 142.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:40:17+08:00",
+      "elapsed": 1200.26,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 157.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:40:23+08:00",
+      "elapsed": 1206.32,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 82.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:40:29+08:00",
+      "elapsed": 1212.47,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 247.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:40:35+08:00",
+      "elapsed": 1218.48,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 214.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:40:42+08:00",
+      "elapsed": 1224.63,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 99.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:40:48+08:00",
+      "elapsed": 1230.78,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 164.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:40:54+08:00",
+      "elapsed": 1236.93,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 181.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:41:00+08:00",
+      "elapsed": 1243.09,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 145.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:41:06+08:00",
+      "elapsed": 1249.23,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 298.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:41:12+08:00",
+      "elapsed": 1255.38,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 60.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:41:18+08:00",
+      "elapsed": 1261.54,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 161.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:41:24+08:00",
+      "elapsed": 1267.53,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 138.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:41:30+08:00",
+      "elapsed": 1273.6,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 153.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:41:37+08:00",
+      "elapsed": 1279.74,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 78.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:41:43+08:00",
+      "elapsed": 1285.8,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 202.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:41:49+08:00",
+      "elapsed": 1292.6,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 218.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:41:56+08:00",
+      "elapsed": 1299.04,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 177.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:42:03+08:00",
+      "elapsed": 1305.81,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 268.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:42:09+08:00",
+      "elapsed": 1312.49,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 176.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:42:16+08:00",
+      "elapsed": 1319.12,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 132.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:42:22+08:00",
+      "elapsed": 1325.54,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 129.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:42:28+08:00",
+      "elapsed": 1331.59,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 124.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:42:34+08:00",
+      "elapsed": 1337.57,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 241.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:42:40+08:00",
+      "elapsed": 1343.57,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 260.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:42:47+08:00",
+      "elapsed": 1349.71,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 2,
+        "dominant_num": 1,
+        "largest_area": 206.0,
+        "mass_ratio": 0.9363636363636364
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:42:53+08:00",
+      "elapsed": 1355.78,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 114.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:42:59+08:00",
+      "elapsed": 1361.81,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 145.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:43:05+08:00",
+      "elapsed": 1367.89,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 356.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:43:11+08:00",
+      "elapsed": 1373.96,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 119.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:43:17+08:00",
+      "elapsed": 1380.34,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 167.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:43:23+08:00",
+      "elapsed": 1386.45,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 156.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:43:29+08:00",
+      "elapsed": 1392.51,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 129.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:43:36+08:00",
+      "elapsed": 1398.64,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 95.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:43:42+08:00",
+      "elapsed": 1404.64,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 214.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:43:48+08:00",
+      "elapsed": 1410.67,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 216.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:43:54+08:00",
+      "elapsed": 1416.66,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 162.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:43:59+08:00",
+      "elapsed": 1422.62,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 127.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:44:06+08:00",
+      "elapsed": 1428.63,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 81.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:44:12+08:00",
+      "elapsed": 1434.63,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 209.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:44:18+08:00",
+      "elapsed": 1440.81,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 114.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:44:24+08:00",
+      "elapsed": 1446.93,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 139.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:44:30+08:00",
+      "elapsed": 1452.97,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 82.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:44:36+08:00",
+      "elapsed": 1459.07,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 197.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:44:42+08:00",
+      "elapsed": 1465.09,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 135.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:44:48+08:00",
+      "elapsed": 1471.2,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 149.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:44:54+08:00",
+      "elapsed": 1477.33,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 60.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:45:00+08:00",
+      "elapsed": 1483.5,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 2,
+        "dominant_num": 1,
+        "largest_area": 183.0,
+        "mass_ratio": 0.9104477611940298
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:45:06+08:00",
+      "elapsed": 1489.57,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 145.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:45:12+08:00",
+      "elapsed": 1495.59,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 147.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:45:19+08:00",
+      "elapsed": 1501.69,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 180.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:45:25+08:00",
+      "elapsed": 1507.83,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 213.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:45:31+08:00",
+      "elapsed": 1513.97,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 269.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:45:37+08:00",
+      "elapsed": 1520.13,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 111.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:45:43+08:00",
+      "elapsed": 1526.13,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 2,
+        "dominant_num": 1,
+        "largest_area": 188.0,
+        "mass_ratio": 0.912621359223301
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:45:49+08:00",
+      "elapsed": 1532.28,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 142.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:45:55+08:00",
+      "elapsed": 1538.28,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 255.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:46:01+08:00",
+      "elapsed": 1544.27,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 80.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:46:07+08:00",
+      "elapsed": 1550.27,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 230.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:46:13+08:00",
+      "elapsed": 1556.27,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 175.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:46:19+08:00",
+      "elapsed": 1562.28,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 183.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:46:25+08:00",
+      "elapsed": 1568.27,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 158.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:46:31+08:00",
+      "elapsed": 1574.37,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 246.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:46:38+08:00",
+      "elapsed": 1580.64,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 86.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:46:44+08:00",
+      "elapsed": 1586.8,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 117.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:46:50+08:00",
+      "elapsed": 1592.94,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 70.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:46:56+08:00",
+      "elapsed": 1599.1,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 162.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:47:02+08:00",
+      "elapsed": 1605.26,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 171.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:47:08+08:00",
+      "elapsed": 1611.44,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 0,
+        "largest_area": 39.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:47:15+08:00",
+      "elapsed": 1617.63,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 161.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:47:21+08:00",
+      "elapsed": 1623.82,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 184.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:47:27+08:00",
+      "elapsed": 1629.93,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 258.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:47:33+08:00",
+      "elapsed": 1636.08,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 78.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:47:39+08:00",
+      "elapsed": 1642.23,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 117.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:47:45+08:00",
+      "elapsed": 1648.34,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 76.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:47:51+08:00",
+      "elapsed": 1654.49,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 126.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:47:57+08:00",
+      "elapsed": 1660.52,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 143.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:48:03+08:00",
+      "elapsed": 1666.52,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 124.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:48:09+08:00",
+      "elapsed": 1672.52,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 162.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:48:15+08:00",
+      "elapsed": 1678.57,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 122.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:48:22+08:00",
+      "elapsed": 1685.15,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 253.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:48:29+08:00",
+      "elapsed": 1691.89,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 93.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:48:35+08:00",
+      "elapsed": 1698.49,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 110.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:48:42+08:00",
+      "elapsed": 1705.1,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 141.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:48:48+08:00",
+      "elapsed": 1711.5,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 99.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:48:54+08:00",
+      "elapsed": 1717.6,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 108.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:49:01+08:00",
+      "elapsed": 1723.94,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 224.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:49:08+08:00",
+      "elapsed": 1730.87,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 161.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:49:14+08:00",
+      "elapsed": 1737.55,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 91.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:49:21+08:00",
+      "elapsed": 1744.24,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 114.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:49:28+08:00",
+      "elapsed": 1751.01,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 140.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:49:35+08:00",
+      "elapsed": 1757.9,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 151.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:49:42+08:00",
+      "elapsed": 1764.63,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 136.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:49:48+08:00",
+      "elapsed": 1771.31,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 185.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:49:55+08:00",
+      "elapsed": 1777.68,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 119.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:50:01+08:00",
+      "elapsed": 1783.72,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 74.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:50:07+08:00",
+      "elapsed": 1789.83,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 128.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:50:13+08:00",
+      "elapsed": 1795.97,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 171.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:50:19+08:00",
+      "elapsed": 1802.04,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 81.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:50:25+08:00",
+      "elapsed": 1808.19,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 113.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:50:31+08:00",
+      "elapsed": 1814.28,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 104.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:50:37+08:00",
+      "elapsed": 1820.32,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 107.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:50:43+08:00",
+      "elapsed": 1826.37,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 105.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:50:49+08:00",
+      "elapsed": 1832.43,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 137.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:50:55+08:00",
+      "elapsed": 1838.42,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 225.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:51:01+08:00",
+      "elapsed": 1844.42,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 136.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:51:07+08:00",
+      "elapsed": 1850.42,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 90.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:51:13+08:00",
+      "elapsed": 1856.43,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 123.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:51:19+08:00",
+      "elapsed": 1862.44,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 212.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:51:25+08:00",
+      "elapsed": 1868.58,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 138.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:51:32+08:00",
+      "elapsed": 1874.74,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 165.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:51:38+08:00",
+      "elapsed": 1880.88,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 220.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:51:44+08:00",
+      "elapsed": 1886.94,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 102.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:51:50+08:00",
+      "elapsed": 1893.03,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 112.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:51:56+08:00",
+      "elapsed": 1899.06,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 121.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:52:02+08:00",
+      "elapsed": 1905.15,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 283.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:52:08+08:00",
+      "elapsed": 1911.18,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 120.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:52:14+08:00",
+      "elapsed": 1917.33,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 114.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:52:20+08:00",
+      "elapsed": 1923.39,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 75.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:52:26+08:00",
+      "elapsed": 1929.54,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 89.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:52:33+08:00",
+      "elapsed": 1935.81,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 60.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:52:39+08:00",
+      "elapsed": 1941.9,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 88.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:52:45+08:00",
+      "elapsed": 1948.0,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 224.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:52:51+08:00",
+      "elapsed": 1954.08,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 196.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:52:57+08:00",
+      "elapsed": 1960.17,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 124.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:53:03+08:00",
+      "elapsed": 1966.34,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 204.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:53:09+08:00",
+      "elapsed": 1972.37,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 102.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:53:15+08:00",
+      "elapsed": 1978.38,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 169.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:53:21+08:00",
+      "elapsed": 1984.39,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 120.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:53:27+08:00",
+      "elapsed": 1990.53,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 153.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:53:33+08:00",
+      "elapsed": 1996.6,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 259.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:53:40+08:00",
+      "elapsed": 2002.68,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 156.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:53:46+08:00",
+      "elapsed": 2008.69,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 61.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:53:52+08:00",
+      "elapsed": 2015.15,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 108.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:53:58+08:00",
+      "elapsed": 2021.44,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 141.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:54:05+08:00",
+      "elapsed": 2027.63,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 141.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:54:11+08:00",
+      "elapsed": 2033.88,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 111.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:54:17+08:00",
+      "elapsed": 2040.07,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 113.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:54:23+08:00",
+      "elapsed": 2046.19,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 149.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:54:29+08:00",
+      "elapsed": 2052.3,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 87.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:54:35+08:00",
+      "elapsed": 2058.45,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 195.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:54:41+08:00",
+      "elapsed": 2064.53,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 103.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:54:48+08:00",
+      "elapsed": 2070.68,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 140.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:54:54+08:00",
+      "elapsed": 2076.79,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 88.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:55:00+08:00",
+      "elapsed": 2082.93,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 121.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:55:06+08:00",
+      "elapsed": 2089.02,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 157.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:55:12+08:00",
+      "elapsed": 2095.47,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 148.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:55:18+08:00",
+      "elapsed": 2101.58,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 129.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:55:25+08:00",
+      "elapsed": 2107.64,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 195.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:55:31+08:00",
+      "elapsed": 2113.68,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 151.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:55:37+08:00",
+      "elapsed": 2119.68,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 0,
+        "largest_area": 31.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:55:43+08:00",
+      "elapsed": 2125.68,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 187.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:55:49+08:00",
+      "elapsed": 2131.68,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 231.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:55:55+08:00",
+      "elapsed": 2137.68,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 273.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:56:01+08:00",
+      "elapsed": 2143.68,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 84.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:56:07+08:00",
+      "elapsed": 2149.69,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 135.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:56:13+08:00",
+      "elapsed": 2155.69,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 137.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:56:19+08:00",
+      "elapsed": 2161.84,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 155.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:56:25+08:00",
+      "elapsed": 2168.22,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 101.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:56:32+08:00",
+      "elapsed": 2175.21,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 139.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:56:39+08:00",
+      "elapsed": 2182.19,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 124.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:56:46+08:00",
+      "elapsed": 2188.73,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 164.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:56:52+08:00",
+      "elapsed": 2194.81,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 90.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:56:58+08:00",
+      "elapsed": 2200.97,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 244.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:57:04+08:00",
+      "elapsed": 2207.11,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 85.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:57:10+08:00",
+      "elapsed": 2213.28,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 91.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:57:16+08:00",
+      "elapsed": 2219.46,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 111.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:57:22+08:00",
+      "elapsed": 2225.54,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 286.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:57:29+08:00",
+      "elapsed": 2231.65,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 124.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:57:35+08:00",
+      "elapsed": 2237.78,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 143.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:57:41+08:00",
+      "elapsed": 2243.84,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 88.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:57:47+08:00",
+      "elapsed": 2249.98,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 84.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:57:53+08:00",
+      "elapsed": 2255.9,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 157.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T00:57:59+08:00",
+      "elapsed": 2261.8,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2247,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 81.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        0.6747406659390753,
+        1.1751491131537224,
+        1.1262737897168298,
+        5.224656626276097,
+        1.8438007968279764
+      ]
+    }
+  ]
+}
