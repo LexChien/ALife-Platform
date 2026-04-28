@@ -1,74 +1,91 @@
 # ALife-Platform
 
-`ALife-Platform` is a local-first research and integration repository that combines:
+`ALife-Platform` is a local-first artificial-life and generative-AI integration
+repository.
 
-- `ASAL`: artificial life search and evaluation
-- `Digital Clone`: persona, memory, retrieval, and consistency workflows
-- `GenAI`: text/image/voice generation pipelines
-- shared platform services for config, runtime, logging, artifacts, and evaluation
+It currently combines:
 
-The repository is no longer planning-only. It contains runnable CLI entrypoints, evaluation paths, local run artifacts, and a working local `Gemma 4 + llama.cpp` integration path for `GenAI`.
+- `ASAL`: artificial-life search, morphology scoring, narrative phase control,
+  and exported organism artifacts
+- `Digital Clone`: persona, short-term memory, retrieval, prompt construction,
+  and consistency evaluation
+- `GenAI`: local LLM integration, multimodal generation scaffolding, and
+  evaluation artifacts
+- `Gemma Web`: a browser prototype that connects ASAL progress, Digital Clone
+  memory, local Gemma inference, and voice interaction into an early artificial
+  life console
 
-## Current Scope
+This repository is not only planning material. It contains runnable CLI
+entrypoints, tests, local web UI code, and tracked `runs/` artifacts that show
+actual execution state.
 
-What works now:
+## Current State
 
-- shared config loading with profile overrides
-- shared runtime metadata and run summaries
-- runnable CLI entrypoints for `ASAL`, `Digital Clone`, and `GenAI`
-- evaluation entrypoint at `apps/eval_cli.py`
-- OpenCLIP-based foundation model path for ASAL
-- local `Gemma 4 GGUF` execution through `llama.cpp` subprocess integration
+Working now:
 
-What is still incomplete:
+- ASAL run artifacts are available under `runs/asal/`.
+- The latest ALife web prototype reads ASAL run summaries and serves organism
+  images/GIFs through `/api/life` and `/artifacts/asal/...`.
+- Local Gemma inference is wired through `llama.cpp` subprocess integration.
+- The Gemma web UI supports text chat, browser microphone capture, browser
+  speech playback, visible avatar state, and ASAL progress panels.
+- Digital Clone memory is used in the web prototype for short local interaction
+  continuity.
+- Test coverage exists for LLM cleanup, web service behavior, and ASAL life
+  state indexing.
 
-- many subsystems are still baseline-quality, not final research-quality
-- `ASAL` substrate/search coverage is still narrow
-- `Digital Clone` evaluation is still lightweight compared with a full long-term identity system
-- `GenAI` image/voice adapters are still dummy paths
-- Gemma 4 text output currently works, but output cleaning can still be improved
+Still incomplete:
+
+- The visible body is currently ASAL organism artifacts, not a finished
+  human-like avatar.
+- Digital Clone is still a lightweight local memory/persona layer, not a
+  production identity system.
+- Voice input depends on browser/macOS runtime support.
+- The ASAL narrative organism is a validated prototype, not a final artificial
+  life model.
+
+## Public Repository Rules
+
+`runs/` artifacts are part of the public project state. If a run is used for
+validation, demo behavior, or handoff of current progress, it should be tracked
+and pushed.
+
+`docs/` and `log/` are local planning and handoff areas. They are not part of
+the public GitHub tracking scope unless the user explicitly names a specific
+file as an exception.
+
+Do not publish local-only runtime payloads such as:
+
+- `.venv/`
+- `.chroma_db/`
+- `models/**/*.gguf`
+- `third_party/llama.cpp/` build outputs
+- `server.log`
+- `__pycache__/` and `.pycache/`
 
 ## Repository Layout
 
 ```text
-apps/                 Unified CLI entrypoints
-configs/              YAML configs for ASAL / Clone / GenAI
-core/                 Shared config, runtime, logging, tracking, storage
-digital_clone/        Persona, memory, prompt building, evaluation
-docs/                 Status, plans, architecture documents
-foundation_models/    OpenCLIP and other FM adapters
-genai/                Multimodal generation and LLM adapter layer
-log/                  Project work logs
-models/               Local model directory skeleton
-research/asal_engine/ ASAL engine and imported ASAL history
-runs/                 Local run outputs and validation artifacts
-tests/                Unit and integration-style tests
-tools/                Utility scripts such as CUDA / llama.cpp checks
+apps/                  CLI and local server entrypoints
+configs/               YAML configs for ASAL, Digital Clone, and GenAI
+context/               Small tracked project context files
+core/                  Shared config, runtime, logging, storage, tracking
+digital_clone/         Persona, memory, retrieval, prompt, evaluation modules
+evaluation/            Shared evaluation helpers
+foundation_models/     Foundation model adapters
+genai/                 LLM, multimodal, image, voice, and web service modules
+model_specs/           Model metadata/specification files
+models/                Local model directory skeleton; large weights stay local
+research/asal_engine/  ASAL engine, substrates, scoring, visualization
+runs/                  Tracked run outputs and validation/demo artifacts
+tests/                 Unit and integration-style tests
+tools/                 Runtime helpers and local utility scripts
+web/gemma_chat/        Browser UI for the ALife/Gemma prototype
 ```
 
-## Main Entry Points
+## Environment
 
-Run a subsystem:
-
-```bash
-./.venv/bin/python apps/asal_cli.py --config configs/asal/target_cell.yaml
-./.venv/bin/python apps/clone_cli.py --config configs/clone/clone_baseline.yaml
-./.venv/bin/python apps/genai_cli.py --config configs/genai/genai_baseline.yaml
-```
-
-Run evaluation:
-
-```bash
-./.venv/bin/python apps/eval_cli.py asal
-./.venv/bin/python apps/eval_cli.py clone
-./.venv/bin/python apps/eval_cli.py genai
-```
-
-Each CLI writes outputs under `runs/` and a normalized `summary.json` for the run.
-
-## Environment Setup
-
-Create and install the local environment:
+Create a Python environment:
 
 ```bash
 python3 -m venv .venv
@@ -77,175 +94,132 @@ python -m pip install --upgrade pip
 python -m pip install -r requirements.txt
 ```
 
-If you want to run tests:
+On the current macOS workspace, `/usr/bin/python3` is often the safer runtime
+for the local web server because an existing checked-in `.venv` may not match
+the host architecture.
+
+## Run Tests
+
+Targeted validation used by the current web prototype:
 
 ```bash
-./.venv/bin/python -m unittest discover -s tests
+/usr/bin/python3 -m unittest \
+  tests.test_life_state \
+  tests.test_gemma_web_service \
+  tests.test_chat_gemma \
+  tests.test_llm_adapter
 ```
 
-## Config Profiles
-
-Configs support:
-
-- `defaults`
-- `profiles`
-- `active_profile`
-- `--profile <name>`
-- `ALIFE_PROFILE=<name>`
-
-Example:
+Run the broader test suite:
 
 ```bash
-./.venv/bin/python apps/genai_cli.py \
-  --config configs/genai/gemma_llama_cpp.yaml \
-  --profile cpu_smoke
+python -m unittest discover -s tests
 ```
 
-The loader merges:
+Check frontend syntax:
 
-1. `defaults`
-2. top-level config body
-3. selected profile override
+```bash
+node --check web/gemma_chat/app.js
+```
 
 ## ASAL
 
-Primary files:
+ASAL is the artificial-life search and artifact layer.
 
-- [apps/asal_cli.py](/home/lexchien/Documents/ALife-Platform/apps/asal_cli.py)
-- [research/asal_engine/engine.py](/home/lexchien/Documents/ALife-Platform/research/asal_engine/engine.py)
-- [configs/asal/target_cell.yaml](/home/lexchien/Documents/ALife-Platform/configs/asal/target_cell.yaml)
-- [configs/asal/target_cell_eval.yaml](/home/lexchien/Documents/ALife-Platform/configs/asal/target_cell_eval.yaml)
-
-Run baseline search:
+Run a baseline ASAL search:
 
 ```bash
-./.venv/bin/python apps/asal_cli.py --config configs/asal/target_cell.yaml
+python apps/asal_cli.py --config configs/asal/target_cell.yaml
 ```
 
-Run evaluation:
+Run the narrative cell-fusion profile:
 
 ```bash
-./.venv/bin/python apps/eval_cli.py asal \
+python apps/asal_cli.py \
+  --config configs/asal/target_cell_fusion_narrative.yaml \
+  --profile cpu_tiny
+```
+
+Run ASAL evaluation:
+
+```bash
+python apps/eval_cli.py asal \
   --config configs/asal/target_cell_eval.yaml
 ```
 
-Jetson note:
+Important outputs:
 
-- on `aarch64`, `apps/asal_cli.py` can re-exec into a known-good interpreter when the current Python cannot see CUDA
-- this is meant to avoid accidentally using an incompatible system PyTorch wheel
+- `runs/asal/<run_id>/summary.json`
+- `runs/asal/<run_id>/best.gif`
+- `runs/asal/<run_id>/best.png`
+- `runs/asal/<run_id>/narrative_summary.json`
+- `runs/asal/<run_id>/phase_keyframes/*.png`
+
+The current ALife web prototype uses these artifacts as the visible organism
+body and project-progress source.
 
 ## Digital Clone
 
-Primary files:
-
-- [apps/clone_cli.py](/home/lexchien/Documents/ALife-Platform/apps/clone_cli.py)
-- [digital_clone/engine.py](/home/lexchien/Documents/ALife-Platform/digital_clone/engine.py)
-- [digital_clone/memory/store.py](/home/lexchien/Documents/ALife-Platform/digital_clone/memory/store.py)
-- [digital_clone/decision/policy.py](/home/lexchien/Documents/ALife-Platform/digital_clone/decision/policy.py)
-- [configs/clone/clone_baseline.yaml](/home/lexchien/Documents/ALife-Platform/configs/clone/clone_baseline.yaml)
-- [configs/clone/clone_gemma_llama_cpp.yaml](/home/lexchien/Documents/ALife-Platform/configs/clone/clone_gemma_llama_cpp.yaml)
-
-Run baseline:
+Run the baseline clone workflow:
 
 ```bash
-./.venv/bin/python apps/clone_cli.py \
+python apps/clone_cli.py \
   --config configs/clone/clone_baseline.yaml
 ```
 
-Run evaluation:
+Run clone evaluation:
 
 ```bash
-./.venv/bin/python apps/eval_cli.py clone
-./.venv/bin/python tools/run_clone_eval.py \
+python apps/eval_cli.py clone
+python tools/run_clone_eval.py \
   --config configs/clone/clone_eval_dataset.yaml
 ```
 
-Current state:
+Current role in the web prototype:
 
-- retrieval and prompt construction exist
-- shared LLM adapter integration exists
-- evaluation is usable, but still not equivalent to a production-grade long-term identity system
+- stores short local interaction memory
+- provides retrieved context to the Gemma request
+- does not claim full long-term identity or production-grade memory
 
-## GenAI
+## GenAI And Gemma
 
-Primary files:
-
-- [apps/genai_cli.py](/home/lexchien/Documents/ALife-Platform/apps/genai_cli.py)
-- [genai/multimodal/engine.py](/home/lexchien/Documents/ALife-Platform/genai/multimodal/engine.py)
-- [genai/llm/adapter.py](/home/lexchien/Documents/ALife-Platform/genai/llm/adapter.py)
-- [genai/llm/backends/llama_cpp.py](/home/lexchien/Documents/ALife-Platform/genai/llm/backends/llama_cpp.py)
-- [configs/genai/genai_baseline.yaml](/home/lexchien/Documents/ALife-Platform/configs/genai/genai_baseline.yaml)
-- [configs/genai/gemma_llama_cpp.yaml](/home/lexchien/Documents/ALife-Platform/configs/genai/gemma_llama_cpp.yaml)
-
-Run dummy baseline:
+Run dummy GenAI baseline:
 
 ```bash
-./.venv/bin/python apps/genai_cli.py \
+python apps/genai_cli.py \
   --config configs/genai/genai_baseline.yaml
 ```
 
-Run local Gemma 4 path:
+Run local Gemma path:
 
 ```bash
-./.venv/bin/python apps/genai_cli.py \
+python apps/genai_cli.py \
   --config configs/genai/gemma_llama_cpp.yaml \
   --profile cpu_smoke
 ```
 
-Run GenAI evaluation:
+Run direct Gemma chat:
 
 ```bash
-./.venv/bin/python apps/eval_cli.py genai
-./.venv/bin/python tools/run_genai_eval.py \
-  --config configs/genai/genai_eval_dataset.yaml
-```
-
-## Local Gemma 4 + llama.cpp
-
-The repository now supports a local `Gemma 4 GGUF` path through `llama.cpp`.
-
-Current runtime mode:
-
-- backend: `llama_cpp`
-- driver: `subprocess`
-- CLI: `third_party/llama.cpp/build/bin/llama-completion`
-- model path: `models/gemma/gemma.gguf`
-
-Important:
-
-- the repository tracks the `models/` directory skeleton only
-- the actual `.gguf` file is local-only
-- `third_party/llama.cpp/` is also local-only
-
-Check the runtime:
-
-```bash
-./.venv/bin/python tools/check_llama_cpp.py \
-  --config configs/genai/gemma_llama_cpp.yaml
-```
-
-Expected success indicators:
-
-- `exists: True`
-- `cli_available: True`
-- `driver: subprocess`
-- `ok: True`
-
-Run a direct single-turn Gemma chat without image/audio generation:
-
-```bash
-./.venv/bin/python tools/chat_gemma.py \
+python tools/chat_gemma.py \
   --config configs/genai/gemma_llama_cpp.yaml \
   --profile cpu_smoke \
-  --prompt "你是誰？請用繁體中文兩句話介紹你自己。" \
-  --context "不要列點，不要輸出思考過程。" \
-  --max-tokens 96 \
+  --max-tokens 160 \
   --temperature 0.2 \
   --save-run
 ```
 
-Run a local web chat UI for Gemma with text input, browser microphone input,
-and browser speech playback:
+Local model expectations:
+
+- config path: `configs/genai/gemma_llama_cpp.yaml`
+- CLI shim: `tools/llama_completion`
+- default local model path: `models/gemma/gemma.gguf`
+- `models/gemma/gemma.gguf` is local-only and must not be committed
+- `third_party/llama.cpp/` build output is local-only and must not be committed
+
+## ALife Gemma Web Prototype
+
+Start the local server:
 
 ```bash
 ./tools/run_gemma_web \
@@ -255,94 +229,91 @@ and browser speech playback:
   --port 8080
 ```
 
-Then open:
+Open:
 
 ```text
 http://127.0.0.1:8080
 ```
 
-Notes:
+Useful API endpoints:
 
-- the backend still uses the local `Gemma 4 + llama.cpp` path already configured in the repo
-- `configs/genai/gemma_llama_cpp.yaml` now uses `tools/llama_completion`, which auto-selects a usable local `llama.cpp` binary path
-- on this macOS workspace, use `python3` instead of `./.venv/bin/python` because the checked-in `.venv` is a Linux ARM environment and cannot execute locally
-- if your active `python3` cannot import `yaml`, use `./tools/run_gemma_web ...`, which auto-selects a usable interpreter with `PyYAML`
-- microphone input and spoken reply use the browser Web Speech API
-- microphone input now performs a browser permission preflight; the first click should trigger a microphone permission prompt
-- if voice input still fails, confirm you are on `localhost`, using Chrome/Edge, and that microphone access is allowed for the page
-- the web runtime now exposes config-driven `voice` and `avatar` sections from `configs/genai/gemma_llama_cpp.yaml`
-- the UI now includes avatar state display and a voice auto-submit toggle
-- browser mic support works best in Chromium-based browsers and requires microphone permission
-- web chat transcripts are stored under `runs/chat_gemma_web/...`
+- `GET /api/health`
+- `GET /api/life`
+- `POST /api/chat`
+- `POST /api/reset`
+- `POST /api/transcribe`
+- `GET /artifacts/asal/<run_id>/<asset_path>`
 
-Analyze archived real Gemma runs for extractor/fallback hit rates:
+The UI currently shows:
 
-```bash
-./.venv/bin/python tools/report_genai_postprocess.py \
-  runs/genai/20260422-190853 \
-  runs/genai/20260422-191022 \
-  runs/genai/20260423-182527 \
-  --outdir runs/genai/postprocess_report
+- ASAL organism GIF/image artifact
+- `birth`, `split`, and `fusion` phase cards
+- recent ASAL runs
+- pending project tasks from tracked context files
+- Gemma chat with ASAL/Digital Clone context
+- browser voice controls and speech playback
+
+Web server artifacts are stored under:
+
+```text
+runs/chat_gemma_web/<timestamp>/
 ```
-
-## CUDA / OpenCLIP Verification
-
-Check the CUDA environment and OpenCLIP device placement:
-
-```bash
-./.venv/bin/python tools/check_cuda.py
-```
-
-This verifies:
-
-- Python executable
-- PyTorch import
-- CUDA availability
-- CUDA tensor execution
-- OpenCLIP adapter device
-- OpenCLIP model parameter device
 
 ## Runs And Artifacts
 
-The repository stores run outputs under `runs/`, for example:
+Tracked run folders are intentional. They are the evidence trail for what the
+system has actually produced.
 
-- `runs/asal/...`
-- `runs/digital_clone/...`
-- `runs/genai/...`
+Current public artifact categories:
 
-Typical files include:
+- `runs/asal/`: ASAL organism images, GIFs, summaries, narrative scores
+- `runs/digital_clone/`: clone evaluation outputs
+- `runs/genai/`: GenAI/Gemma outputs and reports
+- `runs/chat_gemma/`: direct Gemma chat outputs
+- `runs/chat_gemma_web/`: local web server metadata, sessions, and voice
+  transcription artifacts
+
+Typical files:
 
 - `summary.json`
-- generated images
-- evaluation reports
-- subsystem output payloads such as `genai_output.json`
+- `server_meta.json`
+- `best.gif`
+- `best.png`
+- `narrative_summary.json`
+- `trajectory_morphology.json`
+- `genai_output.json`
+- `report.md`
 
-## Logs And Historical Notes
+## Runtime Notes
 
-Project work logs are under:
+Config files support:
 
-- [log/](/home/lexchien/Documents/ALife-Platform/log)
+- `defaults`
+- `profiles`
+- `active_profile`
+- `--profile <name>`
+- `ALIFE_PROFILE=<name>`
 
-Imported historical ASAL records remain under:
+Config merge order:
 
-- [research/asal_engine/history/](/home/lexchien/Documents/ALife-Platform/research/asal_engine/history)
+1. `defaults`
+2. top-level config body
+3. selected profile override
 
-Useful references:
+The local Gemma web profile currently keeps vector DB disabled for browser
+prototype memory so the server can run without requiring a persistent ChromaDB
+setup.
 
-- [docs/STATUS.md](/home/lexchien/Documents/ALife-Platform/docs/STATUS.md)
-- [log/2026-04-22/llm_phase_a_execution.md](/home/lexchien/Documents/ALife-Platform/log/2026-04-22/llm_phase_a_execution.md)
-- [log/2026-04-22/openclip_device_auto_fix.md](/home/lexchien/Documents/ALife-Platform/log/2026-04-22/openclip_device_auto_fix.md)
+## Practical Summary
 
-## Practical Status
+This repository currently demonstrates an early artificial-life AI shell:
 
-Best short summary:
+1. ASAL generates and scores organism artifacts.
+2. `runs/` stores those artifacts as public validation state.
+3. Gemma reads the ASAL progress context.
+4. Digital Clone contributes short local memory.
+5. The browser UI exposes the combined system through text, voice, and visible
+   organism state.
 
-- platform wiring is real
-- CLI entrypoints are real
-- evaluation entrypoints are real
-- local Gemma 4 inference is real
-- many research and product layers are still baseline-grade
-
-If you want the current detailed project state, start with:
-
-- [docs/STATUS.md](/home/lexchien/Documents/ALife-Platform/docs/STATUS.md)
+The prototype is usable as a local research console, but it must not be
+described as a completed human avatar or finished artificial-life system.
