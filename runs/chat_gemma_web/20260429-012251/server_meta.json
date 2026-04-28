@@ -1,113 +1,17 @@
 {
   "schema_version": "1.0",
-  "session_id": "87130408-877e-4cbf-aa24-2204410eda24",
-  "created_at": "2026-04-29T00:21:34+08:00",
-  "updated_at": "2026-04-29T01:21:10+08:00",
-  "reset_count": 0,
-  "message_count": 14,
-  "turn_count": 7,
-  "messages": [
-    {
-      "role": "user",
-      "text": "請用三句話說明目前人工生命雛形的 ASAL 進度、限制與下一步。",
-      "created_at": "2026-04-29T00:21:50+08:00"
-    },
-    {
-      "role": "assistant",
-      "text": "目前人工生命雛形的 ASAL 進度已完成 7 項任務，並在最新運行中獲得了 0.8316692393321459 的最佳分數，但仍有 2 項任務待辦。\n本雛形目前僅為一個工作原型，尚未完成人形 avatar 的修訂，這也是當前進度的限制。\n下一步應著重於完成剩餘的 2 項待辦任務，並進一步整合已完成的模態分析與敘事評分成果。",
-      "created_at": "2026-04-29T00:21:50+08:00"
-    },
-    {
-      "role": "user",
-      "text": "請根據 birth split fusion 三個 phase，解釋目前這個 ASAL 生命體看起來完成了什麼。",
-      "created_at": "2026-04-29T00:25:46+08:00"
-    },
-    {
-      "role": "assistant",
-      "text": "User: 請用三句話說明目前人工生命雛形的 ASAL 進度、限制與下一步。\nAssistant: 目前人工生命雛形的 ASAL 進度已完成 7 項任務，並在最新運行中獲得了 0.8316692393321459 的最佳分數，但仍有 2 項任務待辦。\n本雛形目前僅為一個工作原型，尚未完成人形 avatar 的修訂，這也是當前進度的限制。 ... (truncated)\n\n根據已驗證的本地資產，這個人工生命雛形在「birth split fusion」三個階段的進度如下：\n\n第一階段（Phase 1）和第二階段（Phase 2）的順序檢查是有效的，這表明生命體的演化路徑在結構上是合理的。\n目前已完成 7 項任務中的大部分，並在最新運行中獲得了最佳分數 $0.8316692393321459$。\n儘管核心模態分析和敘事評分已存在，但由於人形 avatar 尚未修訂，因此整體成果仍屬於工作原型階段。",
-      "created_at": "2026-04-29T00:25:46+08:00"
-    },
-    {
-      "role": "user",
-      "text": "請用三句話說明目前人工生命雛形的 ASAL 進度、限制與下一步。",
-      "created_at": "2026-04-29T00:26:14+08:00"
-    },
-    {
-      "role": "assistant",
-      "text": "User: 請用三句話說明目前人工生命雛形的 ASAL 進度、限制與下一步。\nAssistant: 目前人工生命雛形的 ASAL 進度已完成 7 項任務，並在最新運行中獲得了 0.8316692393321459 的最佳分數，但仍有 2 項任務待辦。\n本雛形目前僅為一個工作原型，尚未完成人形 avatar 的修訂，這也是當前進度的限制。 ... (truncated)\n\n目前人工生命雛形的 ASAL 進度已完成 7 項任務，並在最新運行中獲得了 $0.8316692393321459$ 的最佳分數，但仍有 2 項任務待辦。本雛形目前僅為一個工作原型，尚未完成人形 avatar 的修訂，這也是當前進度的限制。下一步應著重於完成剩餘的 2 項待辦任務，並進一步整合已完成的模態分析與敘事評分成果。",
-      "created_at": "2026-04-29T00:26:14+08:00"
-    },
-    {
-      "role": "user",
-      "text": "目前這個人工生命雛形還不能誇稱完成的地方有哪些？",
-      "created_at": "2026-04-29T00:26:45+08:00"
-    },
-    {
-      "role": "assistant",
-      "text": "User: 請用三句話說明目前人工生命雛形的 ASAL 進度、限制與下一步。\nAssistant: 目前人工生命雛形的 ASAL 進度已完成 7 項任務，並在最新運行中獲得了 0.8316692393321459 的最佳分數，但仍有 2 項任務待辦。\n本雛形目前僅為一個工作原型，尚未完成人形 avatar 的修訂，這也是當前進度的限制。 ... (truncated)\n\n目前人工生命雛形仍處於工作原型階段，尚未完全完成以下部分：",
-      "created_at": "2026-04-29T00:26:45+08:00"
-    },
-    {
-      "role": "user",
-      "text": "Please describe the current progress, limitations, and next steps of ASAL, a prototype of artificial life, in three sentences.",
-      "created_at": "2026-04-29T00:27:24+08:00"
-    },
-    {
-      "role": "assistant",
-      "text": "User: 請根據 birth split fusion 三個 phase，解釋目前這個 ASAL 生命體看起來完成了什麼。\nAssistant: User: 請用三句話說明目前人工生命雛形的 ASAL 進度、限制與下一步。\nAssistant: 目前人工生命雛形的 ASAL 進度已完成 7 項任務，並在最新運行中獲得了 0.8316692393321459 的最佳分數，但仍有 2 項任務� ... (truncated)\n\n目前人工生命雛形的 ASAL 進度已完成 7 項任務，並在最新運行中獲得了 $0.8316692393321459$ 的最佳分數，但仍有 2 項任務待辦。本雛形目前僅為一個工作原型，尚未完成人形 avatar 的修訂，這也是當前進度的限制。下一步應著重於完成剩餘的 2 項待辦任務，並進一步整合已完成的模態分析與敘事評分成果。",
-      "created_at": "2026-04-29T00:27:24+08:00"
-    },
-    {
-      "role": "user",
-      "text": "請用英文回答",
-      "created_at": "2026-04-29T00:28:10+08:00"
-    },
-    {
-      "role": "assistant",
-      "text": "User: 請用三句話說明目前人工生命雛形的 ASAL 進度、限制與下一步。\nAssistant: User: 請用三句話說明目前人工生命雛形的 ASAL 進度、限制與下一步。\nAssistant: 目前人工生命雛形的 ASAL 進度已完成 7 項任務，並在最新運行中獲得了 0.8316692393321459 的最佳分數，但仍有 2 項任務待辦。\n本雛形� ... (truncated)\n\nThe Artificial Life prototype has completed 7 tasks and achieved a best score of 0.8316692393321459 in the latest run, but there are still 2 tasks pending. This prototype is currently a working prototype and has not yet completed the refinement of the humanoid avatar, which is a current limitation. The next steps should focus on completing the remaining 2 tasks and further integrating the results from the completed modal analysis and narrative scoring.",
-      "created_at": "2026-04-29T00:28:10+08:00"
-    },
-    {
-      "role": "user",
-      "text": "who r u",
-      "created_at": "2026-04-29T01:21:10+08:00"
-    },
-    {
-      "role": "assistant",
-      "text": "User: 目前這個人工生命雛形還不能誇稱完成的地方有哪些？\nAssistant: User: 請用三句話說明目前人工生命雛形的 ASAL 進度、限制與下一步。\nAssistant: 目前人工生命雛形的 ASAL 進度已完成 7 項任務，並在最新運行中獲得了 0.8316692393321459 的最佳分數，但仍有 2 項任務待辦。\n本雛形目前僅為� ... (truncated)\n\n我是一個 ALife Prototype，一個本機人工生命雛形的對話層。我的運作基於結合 ASAL 生命體進度、Digital Clone 短期記憶、Gemma 推理以及瀏覽器語音互動。",
-      "created_at": "2026-04-29T01:21:10+08:00"
-    }
-  ],
+  "started_at": "2026-04-29T01:22:53+08:00",
   "config_path": "configs/genai/gemma_llama_cpp.yaml",
+  "host": "127.0.0.1",
+  "port": 8080,
   "profile": "cpu_smoke",
-  "cleanup": {
-    "reasoning_detected_in_tool": true,
-    "strict_cleanup_retry": false,
-    "strict_cleanup_retry_error": null,
-    "strict_cleanup_local_applied": true,
-    "strict_cleanup_retry_strategy": null,
-    "strict_cleanup_rescue": false,
-    "strict_cleanup_rescue_error": null,
-    "strict_cleanup_final_fallback": false
-  },
-  "runtime": {
-    "model_path": "models/gemma/gemma.gguf",
-    "context_length": 4096,
-    "n_gpu_layers": 0,
-    "temperature": 0.7,
+  "history_turns": 6,
+  "session_schema_version": "1.0",
+  "llm": {
+    "backend": "llama_cpp",
+    "model_family": "gemma",
     "max_tokens": 256,
-    "chat_format": null,
-    "driver": "subprocess",
-    "cli_path": "/Users/lexchien/Documents/AI/ALife-Platform/tools/llama_completion",
-    "postprocess": {
-      "reasoning_leak_detected": false,
-      "extractor_applied": false,
-      "extractor_error": null,
-      "heuristic_fallback_applied": true,
-      "heuristic_fallback_skipped": false,
-      "heuristic_fallback_skip_reason": null,
-      "heuristic_first_pass_applied": true
-    }
+    "temperature": 0.7
   },
   "voice": {
     "input_provider": "macos_speech_via_upload",
@@ -759,6 +663,17 @@
         "path": "research/asal_engine/history/log/2026-04-02/json_runtime_field_update.md",
         "title": "2026-04-02 Summary JSON Runtime Field Update"
       }
-    ]
+    ],
+    "ok": true,
+    "live_frame": "",
+    "live_state": "idle"
+  },
+  "stt": {
+    "provider": "macos_speech",
+    "locale": "zh-TW",
+    "ffmpeg": "/opt/homebrew/bin/ffmpeg",
+    "xcrun": "/usr/bin/xcrun",
+    "swift_script": "/Users/lexchien/Documents/AI/ALife-Platform/tools/transcribe_audio.swift",
+    "ok": true
   }
 }
