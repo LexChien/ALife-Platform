@@ -204,6 +204,15 @@ function renderLife(payload) {
     return;
   }
 
+  // Handle live frame from LiveLifeManager
+  if (payload.live_frame) {
+    if (lifeVisual) {
+      lifeVisual.src = `data:image/png;base64,${payload.live_frame}`;
+      lifeVisual.hidden = false;
+      if (lifeFallback) lifeFallback.hidden = true;
+    }
+  }
+
   const latest = payload.latest_run || {};
   const details = latest.details || {};
   const metrics = latest.metrics || {};
@@ -780,6 +789,21 @@ for (const button of quickButtons) {
 }
 
 appendSystemMessage("Gemma 4 網頁對話已就緒。你可以打字，或按麥克風直接說話。");
+async function pollLiveLife() {
+  try {
+    const response = await fetch("/api/life");
+    const payload = await response.json();
+    if (payload.ok) {
+      renderLife(payload);
+    }
+  } catch (err) {
+    // Silent fail for polling
+  }
+}
+
+// Start polling for live frames
+setInterval(pollLiveLife, 150);
+
 fetchHealth();
 syncAvatarState();
 messageInput.focus();

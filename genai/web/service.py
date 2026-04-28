@@ -11,6 +11,7 @@ from digital_clone.persona.model import PersonaModel
 from genai.llm.adapter import LLMRequest
 from genai.llm.factory import create_llm_adapter
 from genai.web.avatar import DEFAULT_AVATAR_CONFIG, DEFAULT_VOICE_CONFIG, merge_web_runtime_config
+from genai.web.life_engine import LiveLifeManager
 from genai.web.life_state import ASALProgressIndex
 from genai.web.session_store import ChatSession, ChatSessionStore, SESSION_SCHEMA_VERSION
 from genai.web.stt import MacOSSpeechTranscriber
@@ -43,6 +44,13 @@ class GemmaWebService:
         self.life_cfg = self.cfg.get("life", {})
         self.life_enabled = bool(self.life_cfg.get("enabled", False))
         self.life_index = ASALProgressIndex(root=ROOT, config=self.life_cfg)
+        
+        self.run_dir = make_run_dir(run_base)
+        self.live_life = None
+        if self.life_enabled:
+            self.live_life = LiveLifeManager(self.life_cfg, self.run_dir / "live_engine")
+            self.live_life.start()
+
         self.voice_cfg = merge_web_runtime_config(self.cfg.get("voice"), DEFAULT_VOICE_CONFIG)
         self.avatar_cfg = merge_web_runtime_config(self.cfg.get("avatar"), DEFAULT_AVATAR_CONFIG)
         self.clone_persona = self._build_clone_persona()
@@ -61,7 +69,6 @@ class GemmaWebService:
         self.temperature = llm_cfg.get("temperature")
         self.profile = self.cfg.get("_active_profile")
         self.store = ChatSessionStore()
-        self.run_dir = make_run_dir(run_base)
         self.sessions_dir = self.run_dir / "sessions"
         self.transcriptions_dir = self.run_dir / "transcriptions"
         self.sessions_dir.mkdir(parents=True, exist_ok=True)
@@ -144,6 +151,9 @@ class GemmaWebService:
             }
         payload = self.life_index.snapshot()
         payload["ok"] = True
+        if self.live_life:
+            payload["live_frame"] = self.live_life.get_latest_frame_b64()
+            payload["live_state"] = self.live_life.current_state
         return payload
 
     def read_life_artifact(self, run_id: str, asset: str) -> tuple[bytes, str]:
@@ -184,6 +194,9 @@ class GemmaWebService:
         if not user_message:
             raise ValueError("message is required")
 
+        if self.live_life:
+            self.live_life.set_state("thinking", prompt=user_message)
+
         session = self.store.get_or_create(session_id)
         transcript = session.transcript_pairs()
         selected_transcript = transcript[-self.history_turns:] if self.history_turns > 0 else transcript
@@ -222,12 +235,20 @@ class GemmaWebService:
             metadata={"transcript": selected_transcript},
         )
         with self._generate_lock:
+            if self.live_life:
+                self.live_life.set_state("thinking")
             response = self.adapter.generate(request)
+            if self.live_life:
+                self.live_life.set_state("speaking")
             cleaned_text, cleanup_meta = _strict_cleanup_with_retry(
                 self.adapter,
                 request,
                 response.text,
             )
+        
+        if self.live_life:
+            self.live_life.set_state("idle")
+
         session.append("user", user_message)
         session.append("assistant", cleaned_text)
         if self.life_enabled:
