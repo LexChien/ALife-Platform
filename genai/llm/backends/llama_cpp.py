@@ -387,17 +387,26 @@ class LlamaCppAdapter(BaseLLMAdapter):
             proc = subprocess.run(
                 cmd,
                 capture_output=True,
-                text=True,
                 check=True,
                 timeout=self.subprocess_timeout,
             )
-            out = {"stdout": proc.stdout, "stderr": proc.stderr, "cmd": cmd}
-            text = self._clean_subprocess_output(proc.stdout, prompt=cli_prompt)
+            stdout = self._decode_subprocess_bytes(proc.stdout)
+            stderr = self._decode_subprocess_bytes(proc.stderr)
+            out = {"stdout": stdout, "stderr": stderr, "cmd": cmd}
+            text = self._clean_subprocess_output(stdout, prompt=cli_prompt)
         else:
             raise RuntimeError(
                 "No usable llama.cpp runtime found. Install llama-cpp-python or provide a llama.cpp CLI binary."
             )
         return text, out, driver
+
+    @staticmethod
+    def _decode_subprocess_bytes(data: bytes | str | None) -> str:
+        if data is None:
+            return ""
+        if isinstance(data, str):
+            return data
+        return data.decode("utf-8", errors="replace")
 
     def _clean_subprocess_output(self, text: str, prompt: str | None = None) -> str:
         cleaned = text.replace("\x08", "").replace("\r", "").strip()

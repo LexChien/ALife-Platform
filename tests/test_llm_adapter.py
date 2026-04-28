@@ -54,6 +54,12 @@ class LLMAdapterTests(unittest.TestCase):
             "我是 Gemma 4，一個由 Google DeepMind 開發的開放權重大型語言模型！",
         )
 
+    def test_llama_cpp_decodes_invalid_subprocess_utf8_lossily(self):
+        raw = b"\xe7invalid\nfinal answer"
+        decoded = LlamaCppAdapter._decode_subprocess_bytes(raw)
+        self.assertIn("\ufffd", decoded)
+        self.assertIn("final answer", decoded)
+
 
 if __name__ == "__main__":
     unittest.main()
