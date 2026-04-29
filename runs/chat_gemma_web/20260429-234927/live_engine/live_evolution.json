@@ -1,0 +1,2437 @@
+{
+  "system": "live_nca",
+  "start_time": "2026-04-30T00:06:40+08:00",
+  "evolution_history": [
+    {
+      "timestamp": "2026-04-29T23:49:30+08:00",
+      "elapsed": 0.02,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": -1.0,
+      "morphology": {
+        "num_components": 0,
+        "active_mass": 1.0,
+        "energy": 13.0,
+        "stability_delta": 0.0
+      }
+    },
+    {
+      "timestamp": "2026-04-29T23:49:36+08:00",
+      "elapsed": 6.57,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": -1.0,
+      "morphology": {
+        "num_components": 0,
+        "active_mass": 1.0,
+        "energy": 13.0,
+        "stability_delta": 0.0
+      }
+    },
+    {
+      "timestamp": "2026-04-29T23:49:43+08:00",
+      "elapsed": 12.96,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": -1.0,
+      "morphology": {
+        "num_components": 0,
+        "active_mass": 1.0,
+        "energy": 13.0,
+        "stability_delta": 0.0
+      }
+    },
+    {
+      "timestamp": "2026-04-29T23:49:49+08:00",
+      "elapsed": 19.27,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": -1.0,
+      "morphology": {
+        "num_components": 0,
+        "active_mass": 1.0,
+        "energy": 13.0,
+        "stability_delta": 0.0
+      }
+    },
+    {
+      "timestamp": "2026-04-29T23:49:55+08:00",
+      "elapsed": 25.8,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": -1.0,
+      "morphology": {
+        "num_components": 0,
+        "active_mass": 1.0,
+        "energy": 13.0,
+        "stability_delta": 0.0
+      }
+    },
+    {
+      "timestamp": "2026-04-29T23:50:02+08:00",
+      "elapsed": 31.97,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": -1.0,
+      "morphology": {
+        "num_components": 0,
+        "active_mass": 1.0,
+        "energy": 13.0,
+        "stability_delta": 0.0
+      }
+    },
+    {
+      "timestamp": "2026-04-29T23:50:08+08:00",
+      "elapsed": 38.04,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": -1.0,
+      "morphology": {
+        "num_components": 0,
+        "active_mass": 1.0,
+        "energy": 13.0,
+        "stability_delta": 0.0
+      }
+    },
+    {
+      "timestamp": "2026-04-29T23:50:13+08:00",
+      "elapsed": 43.54,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": -1.0,
+      "morphology": {
+        "num_components": 0,
+        "active_mass": 1.0,
+        "energy": 13.0,
+        "stability_delta": 0.0
+      }
+    },
+    {
+      "timestamp": "2026-04-29T23:50:18+08:00",
+      "elapsed": 48.57,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": -1.0,
+      "morphology": {
+        "num_components": 0,
+        "active_mass": 1.0,
+        "energy": 13.0,
+        "stability_delta": 0.0
+      }
+    },
+    {
+      "timestamp": "2026-04-29T23:50:23+08:00",
+      "elapsed": 53.57,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": -1.0,
+      "morphology": {
+        "num_components": 0,
+        "active_mass": 1.0,
+        "energy": 13.0,
+        "stability_delta": 0.0
+      }
+    },
+    {
+      "timestamp": "2026-04-29T23:50:29+08:00",
+      "elapsed": 59.34,
+      "state": "thinking",
+      "phase": "split",
+      "best_score": 0.1958,
+      "morphology": {
+        "num_components": 0,
+        "active_mass": 1.0,
+        "energy": 13.0,
+        "stability_delta": 0.0004
+      }
+    },
+    {
+      "timestamp": "2026-04-29T23:50:35+08:00",
+      "elapsed": 65.14,
+      "state": "thinking",
+      "phase": "split",
+      "best_score": 0.1958,
+      "morphology": {
+        "num_components": 0,
+        "active_mass": 1.0,
+        "energy": 48.18,
+        "stability_delta": 0.893
+      }
+    },
+    {
+      "timestamp": "2026-04-29T23:50:43+08:00",
+      "elapsed": 73.23,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2044,
+      "morphology": {
+        "num_components": 1,
+        "active_mass": 4.0,
+        "energy": 869.52,
+        "stability_delta": 34.4365
+      }
+    },
+    {
+      "timestamp": "2026-04-29T23:50:48+08:00",
+      "elapsed": 78.09,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2044,
+      "morphology": {
+        "num_components": 1,
+        "active_mass": 161.0,
+        "energy": 165301.78,
+        "stability_delta": 8819.0938
+      }
+    },
+    {
+      "timestamp": "2026-04-29T23:50:53+08:00",
+      "elapsed": 83.03,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2044,
+      "morphology": {
+        "num_components": 1,
+        "active_mass": 562.0,
+        "energy": 195839.19,
+        "stability_delta": 7722.2969
+      }
+    },
+    {
+      "timestamp": "2026-04-29T23:50:58+08:00",
+      "elapsed": 88.47,
+      "state": "thinking",
+      "phase": "split",
+      "best_score": 0.2398,
+      "morphology": {
+        "num_components": 1,
+        "active_mass": 1445.0,
+        "energy": 635083.62,
+        "stability_delta": 11891.0
+      }
+    },
+    {
+      "timestamp": "2026-04-29T23:51:06+08:00",
+      "elapsed": 95.99,
+      "state": "thinking",
+      "phase": "split",
+      "best_score": 0.2398,
+      "morphology": {
+        "num_components": 1,
+        "active_mass": 2076.0,
+        "energy": 817540.25,
+        "stability_delta": 15943.0625
+      }
+    },
+    {
+      "timestamp": "2026-04-29T23:51:14+08:00",
+      "elapsed": 104.84,
+      "state": "thinking",
+      "phase": "split",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 1,
+        "active_mass": 2165.0,
+        "energy": 978771.25,
+        "stability_delta": 5308.6875
+      }
+    },
+    {
+      "timestamp": "2026-04-29T23:51:22+08:00",
+      "elapsed": 112.18,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 2,
+        "active_mass": 2319.0,
+        "energy": 996308.12,
+        "stability_delta": 3154.4375
+      }
+    },
+    {
+      "timestamp": "2026-04-29T23:51:28+08:00",
+      "elapsed": 118.14,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 5,
+        "active_mass": 2482.0,
+        "energy": 884857.94,
+        "stability_delta": 537.6875
+      }
+    },
+    {
+      "timestamp": "2026-04-29T23:51:33+08:00",
+      "elapsed": 123.31,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 2,
+        "active_mass": 2361.0,
+        "energy": 997745.06,
+        "stability_delta": 2269.0625
+      }
+    },
+    {
+      "timestamp": "2026-04-29T23:51:38+08:00",
+      "elapsed": 128.33,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 4,
+        "active_mass": 1974.0,
+        "energy": 1001968.5,
+        "stability_delta": -2028.875
+      }
+    },
+    {
+      "timestamp": "2026-04-29T23:51:43+08:00",
+      "elapsed": 133.21,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 11,
+        "active_mass": 1289.0,
+        "energy": 1008417.38,
+        "stability_delta": -2515.25
+      }
+    },
+    {
+      "timestamp": "2026-04-29T23:51:48+08:00",
+      "elapsed": 138.14,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 3,
+        "active_mass": 1027.0,
+        "energy": 1007737.44,
+        "stability_delta": 1621.0625
+      }
+    },
+    {
+      "timestamp": "2026-04-29T23:51:53+08:00",
+      "elapsed": 143.65,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 5,
+        "active_mass": 880.0,
+        "energy": 996691.75,
+        "stability_delta": 1648.75
+      }
+    },
+    {
+      "timestamp": "2026-04-29T23:51:59+08:00",
+      "elapsed": 149.19,
+      "state": "thinking",
+      "phase": "split",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 4,
+        "active_mass": 827.0,
+        "energy": 998329.75,
+        "stability_delta": -930.3125
+      }
+    },
+    {
+      "timestamp": "2026-04-29T23:52:04+08:00",
+      "elapsed": 154.33,
+      "state": "thinking",
+      "phase": "split",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 7,
+        "active_mass": 655.0,
+        "energy": 1001881.44,
+        "stability_delta": -587.25
+      }
+    },
+    {
+      "timestamp": "2026-04-29T23:52:12+08:00",
+      "elapsed": 162.32,
+      "state": "thinking",
+      "phase": "split",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 10,
+        "active_mass": 1215.0,
+        "energy": 1008344.56,
+        "stability_delta": -483.375
+      }
+    },
+    {
+      "timestamp": "2026-04-29T23:52:19+08:00",
+      "elapsed": 168.98,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 2,
+        "active_mass": 1873.0,
+        "energy": 998485.06,
+        "stability_delta": 1505.4375
+      }
+    },
+    {
+      "timestamp": "2026-04-29T23:52:27+08:00",
+      "elapsed": 177.39,
+      "state": "thinking",
+      "phase": "split",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 3,
+        "active_mass": 1764.0,
+        "energy": 1003852.0,
+        "stability_delta": 182.5
+      }
+    },
+    {
+      "timestamp": "2026-04-29T23:52:36+08:00",
+      "elapsed": 186.51,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 4,
+        "active_mass": 2184.0,
+        "energy": 999748.75,
+        "stability_delta": 510.875
+      }
+    },
+    {
+      "timestamp": "2026-04-29T23:52:41+08:00",
+      "elapsed": 191.53,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 4,
+        "active_mass": 2323.0,
+        "energy": 999395.75,
+        "stability_delta": 3325.625
+      }
+    },
+    {
+      "timestamp": "2026-04-29T23:52:46+08:00",
+      "elapsed": 196.53,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 6,
+        "active_mass": 1989.0,
+        "energy": 1007532.25,
+        "stability_delta": -1154.6875
+      }
+    },
+    {
+      "timestamp": "2026-04-29T23:52:51+08:00",
+      "elapsed": 201.47,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 4,
+        "active_mass": 1626.0,
+        "energy": 1008199.81,
+        "stability_delta": 343.5625
+      }
+    },
+    {
+      "timestamp": "2026-04-29T23:52:56+08:00",
+      "elapsed": 206.43,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 5,
+        "active_mass": 1546.0,
+        "energy": 1014445.25,
+        "stability_delta": 824.875
+      }
+    },
+    {
+      "timestamp": "2026-04-29T23:53:01+08:00",
+      "elapsed": 211.4,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 5,
+        "active_mass": 1637.0,
+        "energy": 1012322.75,
+        "stability_delta": 230.5
+      }
+    },
+    {
+      "timestamp": "2026-04-29T23:53:06+08:00",
+      "elapsed": 216.46,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 3,
+        "active_mass": 1650.0,
+        "energy": 1008678.12,
+        "stability_delta": -359.875
+      }
+    },
+    {
+      "timestamp": "2026-04-29T23:53:11+08:00",
+      "elapsed": 221.54,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 4,
+        "active_mass": 1704.0,
+        "energy": 1011550.12,
+        "stability_delta": -1802.0
+      }
+    },
+    {
+      "timestamp": "2026-04-29T23:53:16+08:00",
+      "elapsed": 226.59,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 6,
+        "active_mass": 1319.0,
+        "energy": 1014218.62,
+        "stability_delta": 1275.0
+      }
+    },
+    {
+      "timestamp": "2026-04-29T23:53:21+08:00",
+      "elapsed": 231.66,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 4,
+        "active_mass": 1614.0,
+        "energy": 969535.44,
+        "stability_delta": -282.0625
+      }
+    },
+    {
+      "timestamp": "2026-04-29T23:53:26+08:00",
+      "elapsed": 236.69,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 8,
+        "active_mass": 1741.0,
+        "energy": 999796.0,
+        "stability_delta": -2600.1875
+      }
+    },
+    {
+      "timestamp": "2026-04-29T23:53:32+08:00",
+      "elapsed": 242.22,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 15,
+        "active_mass": 1349.0,
+        "energy": 1022880.75,
+        "stability_delta": -743.3125
+      }
+    },
+    {
+      "timestamp": "2026-04-29T23:53:37+08:00",
+      "elapsed": 247.26,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 11,
+        "active_mass": 1271.0,
+        "energy": 1000658.06,
+        "stability_delta": 568.9375
+      }
+    },
+    {
+      "timestamp": "2026-04-29T23:53:42+08:00",
+      "elapsed": 252.28,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 12,
+        "active_mass": 1178.0,
+        "energy": 1012743.38,
+        "stability_delta": -328.5
+      }
+    },
+    {
+      "timestamp": "2026-04-29T23:53:47+08:00",
+      "elapsed": 257.5,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 11,
+        "active_mass": 1019.0,
+        "energy": 1000959.94,
+        "stability_delta": 64.5
+      }
+    },
+    {
+      "timestamp": "2026-04-29T23:53:52+08:00",
+      "elapsed": 262.63,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 11,
+        "active_mass": 1085.0,
+        "energy": 999924.0,
+        "stability_delta": -828.5
+      }
+    },
+    {
+      "timestamp": "2026-04-29T23:53:57+08:00",
+      "elapsed": 267.71,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 11,
+        "active_mass": 1065.0,
+        "energy": 1033570.56,
+        "stability_delta": -631.1875
+      }
+    },
+    {
+      "timestamp": "2026-04-29T23:54:02+08:00",
+      "elapsed": 272.8,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 10,
+        "active_mass": 926.0,
+        "energy": 1029855.5,
+        "stability_delta": -77.75
+      }
+    },
+    {
+      "timestamp": "2026-04-29T23:54:07+08:00",
+      "elapsed": 277.8,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 11,
+        "active_mass": 979.0,
+        "energy": 1025124.12,
+        "stability_delta": 815.6875
+      }
+    },
+    {
+      "timestamp": "2026-04-29T23:54:12+08:00",
+      "elapsed": 282.75,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 12,
+        "active_mass": 1010.0,
+        "energy": 1042115.75,
+        "stability_delta": 2102.25
+      }
+    },
+    {
+      "timestamp": "2026-04-29T23:54:17+08:00",
+      "elapsed": 287.74,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 11,
+        "active_mass": 921.0,
+        "energy": 1065024.5,
+        "stability_delta": 2106.75
+      }
+    },
+    {
+      "timestamp": "2026-04-29T23:54:22+08:00",
+      "elapsed": 292.74,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 9,
+        "active_mass": 890.0,
+        "energy": 1073652.25,
+        "stability_delta": 1354.5
+      }
+    },
+    {
+      "timestamp": "2026-04-29T23:54:27+08:00",
+      "elapsed": 297.69,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 9,
+        "active_mass": 882.0,
+        "energy": 1084689.0,
+        "stability_delta": -1066.625
+      }
+    },
+    {
+      "timestamp": "2026-04-29T23:54:32+08:00",
+      "elapsed": 302.71,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 9,
+        "active_mass": 854.0,
+        "energy": 1084514.5,
+        "stability_delta": 1466.625
+      }
+    },
+    {
+      "timestamp": "2026-04-29T23:54:37+08:00",
+      "elapsed": 307.71,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 10,
+        "active_mass": 853.0,
+        "energy": 1103560.62,
+        "stability_delta": -1751.5
+      }
+    },
+    {
+      "timestamp": "2026-04-29T23:54:42+08:00",
+      "elapsed": 312.62,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 10,
+        "active_mass": 874.0,
+        "energy": 1093001.5,
+        "stability_delta": -345.0
+      }
+    },
+    {
+      "timestamp": "2026-04-29T23:54:47+08:00",
+      "elapsed": 317.51,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 9,
+        "active_mass": 920.0,
+        "energy": 1091404.38,
+        "stability_delta": 973.25
+      }
+    },
+    {
+      "timestamp": "2026-04-29T23:54:52+08:00",
+      "elapsed": 322.41,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 9,
+        "active_mass": 1035.0,
+        "energy": 1108427.38,
+        "stability_delta": 1557.625
+      }
+    },
+    {
+      "timestamp": "2026-04-29T23:54:57+08:00",
+      "elapsed": 327.42,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 9,
+        "active_mass": 1032.0,
+        "energy": 1102913.75,
+        "stability_delta": -3842.875
+      }
+    },
+    {
+      "timestamp": "2026-04-29T23:55:02+08:00",
+      "elapsed": 332.36,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 10,
+        "active_mass": 1044.0,
+        "energy": 1072960.25,
+        "stability_delta": 2520.625
+      }
+    },
+    {
+      "timestamp": "2026-04-29T23:55:07+08:00",
+      "elapsed": 337.46,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 9,
+        "active_mass": 1031.0,
+        "energy": 1108502.25,
+        "stability_delta": -2626.0
+      }
+    },
+    {
+      "timestamp": "2026-04-29T23:55:12+08:00",
+      "elapsed": 342.54,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 10,
+        "active_mass": 1120.0,
+        "energy": 1097947.75,
+        "stability_delta": 82.875
+      }
+    },
+    {
+      "timestamp": "2026-04-29T23:55:17+08:00",
+      "elapsed": 347.64,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 8,
+        "active_mass": 1176.0,
+        "energy": 1084631.25,
+        "stability_delta": -1517.125
+      }
+    },
+    {
+      "timestamp": "2026-04-29T23:55:22+08:00",
+      "elapsed": 352.67,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 8,
+        "active_mass": 1137.0,
+        "energy": 1099517.88,
+        "stability_delta": 2017.0
+      }
+    },
+    {
+      "timestamp": "2026-04-29T23:55:27+08:00",
+      "elapsed": 357.74,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 10,
+        "active_mass": 1147.0,
+        "energy": 1107636.0,
+        "stability_delta": -1032.625
+      }
+    },
+    {
+      "timestamp": "2026-04-29T23:55:33+08:00",
+      "elapsed": 362.97,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 9,
+        "active_mass": 1177.0,
+        "energy": 1101752.12,
+        "stability_delta": 1061.625
+      }
+    },
+    {
+      "timestamp": "2026-04-29T23:55:38+08:00",
+      "elapsed": 368.04,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 10,
+        "active_mass": 1101.0,
+        "energy": 1131603.25,
+        "stability_delta": 1563.625
+      }
+    },
+    {
+      "timestamp": "2026-04-29T23:55:43+08:00",
+      "elapsed": 373.39,
+      "state": "thinking",
+      "phase": "split",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 10,
+        "active_mass": 1182.0,
+        "energy": 1153356.5,
+        "stability_delta": 532.75
+      }
+    },
+    {
+      "timestamp": "2026-04-29T23:55:51+08:00",
+      "elapsed": 380.95,
+      "state": "thinking",
+      "phase": "split",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 9,
+        "active_mass": 1223.0,
+        "energy": 1167855.75,
+        "stability_delta": -2105.5
+      }
+    },
+    {
+      "timestamp": "2026-04-29T23:55:58+08:00",
+      "elapsed": 388.29,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 11,
+        "active_mass": 1208.0,
+        "energy": 1163652.75,
+        "stability_delta": -2224.0
+      }
+    },
+    {
+      "timestamp": "2026-04-29T23:56:04+08:00",
+      "elapsed": 394.33,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 11,
+        "active_mass": 1071.0,
+        "energy": 1138214.38,
+        "stability_delta": 494.75
+      }
+    },
+    {
+      "timestamp": "2026-04-29T23:56:10+08:00",
+      "elapsed": 400.34,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 12,
+        "active_mass": 1084.0,
+        "energy": 1132841.0,
+        "stability_delta": 1274.875
+      }
+    },
+    {
+      "timestamp": "2026-04-29T23:56:16+08:00",
+      "elapsed": 406.64,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 11,
+        "active_mass": 1144.0,
+        "energy": 1140205.25,
+        "stability_delta": 1860.625
+      }
+    },
+    {
+      "timestamp": "2026-04-29T23:56:22+08:00",
+      "elapsed": 412.84,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 12,
+        "active_mass": 1067.0,
+        "energy": 1134223.25,
+        "stability_delta": -1348.125
+      }
+    },
+    {
+      "timestamp": "2026-04-29T23:56:29+08:00",
+      "elapsed": 419.12,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 11,
+        "active_mass": 1040.0,
+        "energy": 1121030.62,
+        "stability_delta": 644.75
+      }
+    },
+    {
+      "timestamp": "2026-04-29T23:56:34+08:00",
+      "elapsed": 424.21,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 10,
+        "active_mass": 998.0,
+        "energy": 1133654.75,
+        "stability_delta": -645.25
+      }
+    },
+    {
+      "timestamp": "2026-04-29T23:56:39+08:00",
+      "elapsed": 429.28,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 10,
+        "active_mass": 994.0,
+        "energy": 1111473.88,
+        "stability_delta": 795.25
+      }
+    },
+    {
+      "timestamp": "2026-04-29T23:56:44+08:00",
+      "elapsed": 434.39,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 10,
+        "active_mass": 870.0,
+        "energy": 1145233.5,
+        "stability_delta": 35.125
+      }
+    },
+    {
+      "timestamp": "2026-04-29T23:56:50+08:00",
+      "elapsed": 440.29,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 8,
+        "active_mass": 893.0,
+        "energy": 1131604.88,
+        "stability_delta": 860.375
+      }
+    },
+    {
+      "timestamp": "2026-04-29T23:56:56+08:00",
+      "elapsed": 446.58,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 11,
+        "active_mass": 869.0,
+        "energy": 1151415.5,
+        "stability_delta": -726.375
+      }
+    },
+    {
+      "timestamp": "2026-04-29T23:57:03+08:00",
+      "elapsed": 453.23,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 11,
+        "active_mass": 922.0,
+        "energy": 1131478.12,
+        "stability_delta": -5315.875
+      }
+    },
+    {
+      "timestamp": "2026-04-29T23:57:09+08:00",
+      "elapsed": 459.32,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 14,
+        "active_mass": 898.0,
+        "energy": 1096158.0,
+        "stability_delta": 114.375
+      }
+    },
+    {
+      "timestamp": "2026-04-29T23:57:15+08:00",
+      "elapsed": 465.37,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 12,
+        "active_mass": 897.0,
+        "energy": 1120878.25,
+        "stability_delta": 51.125
+      }
+    },
+    {
+      "timestamp": "2026-04-29T23:57:21+08:00",
+      "elapsed": 471.59,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 10,
+        "active_mass": 887.0,
+        "energy": 1120699.12,
+        "stability_delta": -445.375
+      }
+    },
+    {
+      "timestamp": "2026-04-29T23:57:27+08:00",
+      "elapsed": 477.7,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 10,
+        "active_mass": 973.0,
+        "energy": 1138209.25,
+        "stability_delta": -929.25
+      }
+    },
+    {
+      "timestamp": "2026-04-29T23:57:33+08:00",
+      "elapsed": 483.86,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 9,
+        "active_mass": 960.0,
+        "energy": 1137867.0,
+        "stability_delta": -2439.125
+      }
+    },
+    {
+      "timestamp": "2026-04-29T23:57:40+08:00",
+      "elapsed": 489.98,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 8,
+        "active_mass": 930.0,
+        "energy": 1121880.88,
+        "stability_delta": -262.875
+      }
+    },
+    {
+      "timestamp": "2026-04-29T23:57:46+08:00",
+      "elapsed": 496.08,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 8,
+        "active_mass": 988.0,
+        "energy": 1126530.0,
+        "stability_delta": -1323.125
+      }
+    },
+    {
+      "timestamp": "2026-04-29T23:57:52+08:00",
+      "elapsed": 502.12,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 7,
+        "active_mass": 942.0,
+        "energy": 1119851.38,
+        "stability_delta": -855.0
+      }
+    },
+    {
+      "timestamp": "2026-04-29T23:57:58+08:00",
+      "elapsed": 508.13,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 7,
+        "active_mass": 899.0,
+        "energy": 1123736.0,
+        "stability_delta": -564.25
+      }
+    },
+    {
+      "timestamp": "2026-04-29T23:58:04+08:00",
+      "elapsed": 514.23,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 7,
+        "active_mass": 925.0,
+        "energy": 1112899.0,
+        "stability_delta": 1751.75
+      }
+    },
+    {
+      "timestamp": "2026-04-29T23:58:10+08:00",
+      "elapsed": 520.38,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 7,
+        "active_mass": 1035.0,
+        "energy": 1116906.62,
+        "stability_delta": -1423.5
+      }
+    },
+    {
+      "timestamp": "2026-04-29T23:58:16+08:00",
+      "elapsed": 526.41,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 6,
+        "active_mass": 868.0,
+        "energy": 1104708.62,
+        "stability_delta": -663.0
+      }
+    },
+    {
+      "timestamp": "2026-04-29T23:58:21+08:00",
+      "elapsed": 531.49,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 10,
+        "active_mass": 841.0,
+        "energy": 1121342.62,
+        "stability_delta": 597.75
+      }
+    },
+    {
+      "timestamp": "2026-04-29T23:58:26+08:00",
+      "elapsed": 536.67,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 5,
+        "active_mass": 861.0,
+        "energy": 1119350.12,
+        "stability_delta": 2359.0
+      }
+    },
+    {
+      "timestamp": "2026-04-29T23:58:32+08:00",
+      "elapsed": 541.87,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 6,
+        "active_mass": 893.0,
+        "energy": 1154713.25,
+        "stability_delta": -3422.625
+      }
+    },
+    {
+      "timestamp": "2026-04-29T23:58:37+08:00",
+      "elapsed": 546.95,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 7,
+        "active_mass": 917.0,
+        "energy": 1115792.0,
+        "stability_delta": -351.75
+      }
+    },
+    {
+      "timestamp": "2026-04-29T23:58:42+08:00",
+      "elapsed": 552.05,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 6,
+        "active_mass": 839.0,
+        "energy": 1133172.38,
+        "stability_delta": 2463.625
+      }
+    },
+    {
+      "timestamp": "2026-04-29T23:58:47+08:00",
+      "elapsed": 557.1,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 6,
+        "active_mass": 819.0,
+        "energy": 1133125.5,
+        "stability_delta": 266.5
+      }
+    },
+    {
+      "timestamp": "2026-04-29T23:58:52+08:00",
+      "elapsed": 562.09,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 5,
+        "active_mass": 898.0,
+        "energy": 1123363.0,
+        "stability_delta": -102.375
+      }
+    },
+    {
+      "timestamp": "2026-04-29T23:58:57+08:00",
+      "elapsed": 567.07,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 7,
+        "active_mass": 852.0,
+        "energy": 1127053.75,
+        "stability_delta": 1011.625
+      }
+    },
+    {
+      "timestamp": "2026-04-29T23:59:02+08:00",
+      "elapsed": 572.18,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 6,
+        "active_mass": 917.0,
+        "energy": 1143126.0,
+        "stability_delta": -829.0
+      }
+    },
+    {
+      "timestamp": "2026-04-29T23:59:07+08:00",
+      "elapsed": 577.21,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 5,
+        "active_mass": 921.0,
+        "energy": 1122276.0,
+        "stability_delta": -92.5
+      }
+    },
+    {
+      "timestamp": "2026-04-29T23:59:12+08:00",
+      "elapsed": 582.29,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 5,
+        "active_mass": 939.0,
+        "energy": 1118287.25,
+        "stability_delta": 54.0
+      }
+    },
+    {
+      "timestamp": "2026-04-29T23:59:17+08:00",
+      "elapsed": 587.34,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 7,
+        "active_mass": 1020.0,
+        "energy": 1118677.0,
+        "stability_delta": -186.125
+      }
+    },
+    {
+      "timestamp": "2026-04-29T23:59:22+08:00",
+      "elapsed": 592.52,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 7,
+        "active_mass": 1082.0,
+        "energy": 1126925.25,
+        "stability_delta": 423.375
+      }
+    },
+    {
+      "timestamp": "2026-04-29T23:59:27+08:00",
+      "elapsed": 597.56,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 8,
+        "active_mass": 1096.0,
+        "energy": 1152878.38,
+        "stability_delta": 3711.5
+      }
+    },
+    {
+      "timestamp": "2026-04-29T23:59:32+08:00",
+      "elapsed": 602.78,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 7,
+        "active_mass": 1090.0,
+        "energy": 1174414.88,
+        "stability_delta": 2421.25
+      }
+    },
+    {
+      "timestamp": "2026-04-29T23:59:37+08:00",
+      "elapsed": 607.86,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 3,
+        "active_mass": 1137.0,
+        "energy": 1183186.0,
+        "stability_delta": 371.75
+      }
+    },
+    {
+      "timestamp": "2026-04-29T23:59:43+08:00",
+      "elapsed": 612.89,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 3,
+        "active_mass": 1170.0,
+        "energy": 1210049.25,
+        "stability_delta": 2756.75
+      }
+    },
+    {
+      "timestamp": "2026-04-29T23:59:48+08:00",
+      "elapsed": 617.9,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 3,
+        "active_mass": 1146.0,
+        "energy": 1207975.12,
+        "stability_delta": -2191.75
+      }
+    },
+    {
+      "timestamp": "2026-04-29T23:59:53+08:00",
+      "elapsed": 622.89,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 2,
+        "active_mass": 1102.0,
+        "energy": 1228228.5,
+        "stability_delta": 1460.5
+      }
+    },
+    {
+      "timestamp": "2026-04-29T23:59:58+08:00",
+      "elapsed": 627.91,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 2,
+        "active_mass": 1083.0,
+        "energy": 1244400.88,
+        "stability_delta": 1400.625
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:00:03+08:00",
+      "elapsed": 632.98,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 2,
+        "active_mass": 1107.0,
+        "energy": 1286692.75,
+        "stability_delta": -877.375
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:00:08+08:00",
+      "elapsed": 638.01,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 2,
+        "active_mass": 1106.0,
+        "energy": 1285763.38,
+        "stability_delta": 611.25
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:00:13+08:00",
+      "elapsed": 643.03,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 2,
+        "active_mass": 1037.0,
+        "energy": 1273107.88,
+        "stability_delta": 1113.375
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:00:18+08:00",
+      "elapsed": 648.08,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 3,
+        "active_mass": 1043.0,
+        "energy": 1259424.88,
+        "stability_delta": -3240.0
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:00:23+08:00",
+      "elapsed": 653.08,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 4,
+        "active_mass": 1105.0,
+        "energy": 1226462.88,
+        "stability_delta": 1074.75
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:00:28+08:00",
+      "elapsed": 658.18,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 7,
+        "active_mass": 1135.0,
+        "energy": 1251986.75,
+        "stability_delta": 2690.5
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:00:33+08:00",
+      "elapsed": 663.47,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 7,
+        "active_mass": 1111.0,
+        "energy": 1278480.38,
+        "stability_delta": -2810.875
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:00:38+08:00",
+      "elapsed": 668.53,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 5,
+        "active_mass": 1128.0,
+        "energy": 1274516.5,
+        "stability_delta": -387.625
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:00:43+08:00",
+      "elapsed": 673.59,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 7,
+        "active_mass": 1171.0,
+        "energy": 1273367.88,
+        "stability_delta": 1986.125
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:00:48+08:00",
+      "elapsed": 678.62,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 5,
+        "active_mass": 1236.0,
+        "energy": 1271672.12,
+        "stability_delta": 3684.0
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:00:53+08:00",
+      "elapsed": 683.67,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 5,
+        "active_mass": 1205.0,
+        "energy": 1298165.0,
+        "stability_delta": 555.25
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:00:58+08:00",
+      "elapsed": 688.81,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 5,
+        "active_mass": 1151.0,
+        "energy": 1315477.75,
+        "stability_delta": 2067.25
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:01:04+08:00",
+      "elapsed": 694.01,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 5,
+        "active_mass": 1144.0,
+        "energy": 1345757.75,
+        "stability_delta": 1564.25
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:01:09+08:00",
+      "elapsed": 699.06,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 6,
+        "active_mass": 1105.0,
+        "energy": 1351591.38,
+        "stability_delta": 193.75
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:01:14+08:00",
+      "elapsed": 704.2,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 7,
+        "active_mass": 1077.0,
+        "energy": 1337976.75,
+        "stability_delta": -611.75
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:01:19+08:00",
+      "elapsed": 709.67,
+      "state": "thinking",
+      "phase": "split",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 6,
+        "active_mass": 1068.0,
+        "energy": 1331078.75,
+        "stability_delta": 1152.625
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:01:27+08:00",
+      "elapsed": 717.47,
+      "state": "thinking",
+      "phase": "split",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 6,
+        "active_mass": 1018.0,
+        "energy": 1320392.88,
+        "stability_delta": 471.5
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:01:36+08:00",
+      "elapsed": 726.75,
+      "state": "thinking",
+      "phase": "split",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 6,
+        "active_mass": 999.0,
+        "energy": 1321994.62,
+        "stability_delta": -440.125
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:01:42+08:00",
+      "elapsed": 731.99,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 5,
+        "active_mass": 970.0,
+        "energy": 1351436.0,
+        "stability_delta": 76.375
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:01:48+08:00",
+      "elapsed": 738.73,
+      "state": "thinking",
+      "phase": "split",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 6,
+        "active_mass": 936.0,
+        "energy": 1356627.12,
+        "stability_delta": 630.75
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:01:57+08:00",
+      "elapsed": 747.58,
+      "state": "thinking",
+      "phase": "split",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 5,
+        "active_mass": 892.0,
+        "energy": 1354087.12,
+        "stability_delta": -3057.25
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:02:03+08:00",
+      "elapsed": 753.63,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 6,
+        "active_mass": 947.0,
+        "energy": 1345629.0,
+        "stability_delta": -304.375
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:02:08+08:00",
+      "elapsed": 758.74,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 5,
+        "active_mass": 975.0,
+        "energy": 1348205.12,
+        "stability_delta": 168.25
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:02:13+08:00",
+      "elapsed": 763.84,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 6,
+        "active_mass": 885.0,
+        "energy": 1349562.75,
+        "stability_delta": 2133.875
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:02:19+08:00",
+      "elapsed": 768.92,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 8,
+        "active_mass": 847.0,
+        "energy": 1338772.12,
+        "stability_delta": 881.75
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:02:24+08:00",
+      "elapsed": 774.11,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 7,
+        "active_mass": 878.0,
+        "energy": 1336550.5,
+        "stability_delta": -1840.0
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:02:29+08:00",
+      "elapsed": 779.31,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 5,
+        "active_mass": 844.0,
+        "energy": 1327143.5,
+        "stability_delta": 1967.125
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:02:34+08:00",
+      "elapsed": 784.4,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 6,
+        "active_mass": 685.0,
+        "energy": 1332102.5,
+        "stability_delta": -985.25
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:02:39+08:00",
+      "elapsed": 789.51,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 6,
+        "active_mass": 578.0,
+        "energy": 1318909.5,
+        "stability_delta": -872.0
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:02:44+08:00",
+      "elapsed": 794.59,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 5,
+        "active_mass": 581.0,
+        "energy": 1303902.5,
+        "stability_delta": -1422.5
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:02:49+08:00",
+      "elapsed": 799.67,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 5,
+        "active_mass": 491.0,
+        "energy": 1292966.75,
+        "stability_delta": -604.5
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:02:54+08:00",
+      "elapsed": 804.74,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 5,
+        "active_mass": 498.0,
+        "energy": 1275368.38,
+        "stability_delta": 1187.875
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:03:00+08:00",
+      "elapsed": 809.91,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 5,
+        "active_mass": 560.0,
+        "energy": 1249504.25,
+        "stability_delta": -1238.0
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:03:05+08:00",
+      "elapsed": 815.0,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 4,
+        "active_mass": 524.0,
+        "energy": 1244323.5,
+        "stability_delta": -271.375
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:03:10+08:00",
+      "elapsed": 820.09,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 4,
+        "active_mass": 633.0,
+        "energy": 1244484.0,
+        "stability_delta": 966.625
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:03:15+08:00",
+      "elapsed": 825.12,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 5,
+        "active_mass": 609.0,
+        "energy": 1257909.0,
+        "stability_delta": -2021.75
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:03:20+08:00",
+      "elapsed": 830.23,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 4,
+        "active_mass": 759.0,
+        "energy": 1239675.0,
+        "stability_delta": -50.0
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:03:25+08:00",
+      "elapsed": 835.34,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 4,
+        "active_mass": 743.0,
+        "energy": 1234466.75,
+        "stability_delta": -58.0
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:03:30+08:00",
+      "elapsed": 840.53,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 3,
+        "active_mass": 688.0,
+        "energy": 1230794.75,
+        "stability_delta": -1414.375
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:03:35+08:00",
+      "elapsed": 845.67,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 3,
+        "active_mass": 718.0,
+        "energy": 1211720.25,
+        "stability_delta": -392.75
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:03:40+08:00",
+      "elapsed": 850.78,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 3,
+        "active_mass": 765.0,
+        "energy": 1216283.75,
+        "stability_delta": -1006.75
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:03:46+08:00",
+      "elapsed": 855.89,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 4,
+        "active_mass": 707.0,
+        "energy": 1230143.5,
+        "stability_delta": 1675.0
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:03:51+08:00",
+      "elapsed": 860.99,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 3,
+        "active_mass": 712.0,
+        "energy": 1226624.5,
+        "stability_delta": 1890.125
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:03:56+08:00",
+      "elapsed": 866.1,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 3,
+        "active_mass": 749.0,
+        "energy": 1231973.12,
+        "stability_delta": 1349.0
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:04:01+08:00",
+      "elapsed": 871.23,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 3,
+        "active_mass": 759.0,
+        "energy": 1232255.25,
+        "stability_delta": -180.0
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:04:06+08:00",
+      "elapsed": 876.39,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 4,
+        "active_mass": 738.0,
+        "energy": 1227116.25,
+        "stability_delta": 943.75
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:04:11+08:00",
+      "elapsed": 881.66,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 5,
+        "active_mass": 752.0,
+        "energy": 1250220.0,
+        "stability_delta": 1.25
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:04:17+08:00",
+      "elapsed": 887.01,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 6,
+        "active_mass": 819.0,
+        "energy": 1230539.62,
+        "stability_delta": -2077.875
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:04:22+08:00",
+      "elapsed": 892.19,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 3,
+        "active_mass": 869.0,
+        "energy": 1206925.38,
+        "stability_delta": -3680.75
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:04:27+08:00",
+      "elapsed": 897.4,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 2,
+        "active_mass": 881.0,
+        "energy": 1175727.0,
+        "stability_delta": 1716.75
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:04:32+08:00",
+      "elapsed": 902.71,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 3,
+        "active_mass": 892.0,
+        "energy": 1201572.25,
+        "stability_delta": 502.125
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:04:38+08:00",
+      "elapsed": 907.94,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 3,
+        "active_mass": 881.0,
+        "energy": 1185270.25,
+        "stability_delta": -1386.125
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:04:43+08:00",
+      "elapsed": 913.11,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 3,
+        "active_mass": 944.0,
+        "energy": 1201650.75,
+        "stability_delta": 566.125
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:04:48+08:00",
+      "elapsed": 918.35,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 3,
+        "active_mass": 957.0,
+        "energy": 1208960.38,
+        "stability_delta": 1113.0
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:04:53+08:00",
+      "elapsed": 923.61,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 3,
+        "active_mass": 970.0,
+        "energy": 1227585.75,
+        "stability_delta": -398.625
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:04:59+08:00",
+      "elapsed": 928.87,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 3,
+        "active_mass": 959.0,
+        "energy": 1228931.12,
+        "stability_delta": -4306.875
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:05:04+08:00",
+      "elapsed": 934.87,
+      "state": "thinking",
+      "phase": "split",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 2,
+        "active_mass": 927.0,
+        "energy": 1208373.5,
+        "stability_delta": -2036.625
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:05:10+08:00",
+      "elapsed": 940.02,
+      "state": "thinking",
+      "phase": "split",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 2,
+        "active_mass": 950.0,
+        "energy": 1198333.5,
+        "stability_delta": 406.5
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:05:18+08:00",
+      "elapsed": 948.52,
+      "state": "thinking",
+      "phase": "split",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 2,
+        "active_mass": 970.0,
+        "energy": 1226510.0,
+        "stability_delta": 4586.0
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:05:26+08:00",
+      "elapsed": 956.34,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 2,
+        "active_mass": 976.0,
+        "energy": 1303463.25,
+        "stability_delta": 1617.625
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:05:32+08:00",
+      "elapsed": 961.94,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 1,
+        "active_mass": 1042.0,
+        "energy": 1283346.75,
+        "stability_delta": 889.5
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:05:37+08:00",
+      "elapsed": 967.78,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 1,
+        "active_mass": 1101.0,
+        "energy": 1320838.25,
+        "stability_delta": 1782.75
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:05:43+08:00",
+      "elapsed": 973.24,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 1,
+        "active_mass": 1185.0,
+        "energy": 1333930.5,
+        "stability_delta": 1684.5
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:05:48+08:00",
+      "elapsed": 978.44,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 2,
+        "active_mass": 1187.0,
+        "energy": 1350117.25,
+        "stability_delta": 2571.875
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:05:53+08:00",
+      "elapsed": 983.58,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 2,
+        "active_mass": 1109.0,
+        "energy": 1392968.75,
+        "stability_delta": 1312.5
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:05:58+08:00",
+      "elapsed": 988.8,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 3,
+        "active_mass": 1042.0,
+        "energy": 1404661.12,
+        "stability_delta": -4091.875
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:06:04+08:00",
+      "elapsed": 994.14,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 2,
+        "active_mass": 1213.0,
+        "energy": 1386050.12,
+        "stability_delta": 709.0
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:06:09+08:00",
+      "elapsed": 999.25,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 1,
+        "active_mass": 1311.0,
+        "energy": 1363958.12,
+        "stability_delta": -553.0
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:06:14+08:00",
+      "elapsed": 1004.37,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 1,
+        "active_mass": 1530.0,
+        "energy": 1320402.0,
+        "stability_delta": 63.875
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:06:19+08:00",
+      "elapsed": 1009.51,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 1,
+        "active_mass": 1562.0,
+        "energy": 1306048.88,
+        "stability_delta": -2046.875
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:06:24+08:00",
+      "elapsed": 1014.69,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 1,
+        "active_mass": 1753.0,
+        "energy": 1300581.62,
+        "stability_delta": -2596.125
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:06:30+08:00",
+      "elapsed": 1019.93,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 1,
+        "active_mass": 1859.0,
+        "energy": 1278950.62,
+        "stability_delta": 2709.875
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:06:35+08:00",
+      "elapsed": 1025.14,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 1,
+        "active_mass": 1992.0,
+        "energy": 1325035.12,
+        "stability_delta": 1677.375
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:06:40+08:00",
+      "elapsed": 1030.25,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2521,
+      "morphology": {
+        "num_components": 1,
+        "active_mass": 2018.0,
+        "energy": 1326394.62,
+        "stability_delta": 4534.625
+      }
+    }
+  ]
+}

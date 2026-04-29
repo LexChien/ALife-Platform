@@ -1,0 +1,714 @@
+{
+  "schema_version": "1.0",
+  "session_id": "87130408-877e-4cbf-aa24-2204410eda24",
+  "created_at": "2026-04-30T00:58:44+08:00",
+  "updated_at": "2026-04-30T00:59:37+08:00",
+  "reset_count": 0,
+  "message_count": 4,
+  "turn_count": 2,
+  "messages": [
+    {
+      "role": "user",
+      "text": "請用三句話說明目前人工生命雛形的 ASAL 進度、限制與下一步。",
+      "created_at": "2026-04-30T00:58:58+08:00"
+    },
+    {
+      "role": "assistant",
+      "text": "目前人工生命雛形的 ASAL 進度已完成 7 項任務，並在最新運行中取得了最佳分數 0.8316692393321459，但仍有 2 項任務待辦。此雛形目前僅為功能原型，尚未完成人形 avatar 的修整。下一步應著重於完成剩餘的任務，並基於現有成果進一步發展生命體模型。",
+      "created_at": "2026-04-30T00:58:58+08:00"
+    },
+    {
+      "role": "user",
+      "text": "請根據 birth split fusion 三個 phase，解釋目前這個 ASAL 生命體看起來完成了什麼。",
+      "created_at": "2026-04-30T00:59:37+08:00"
+    },
+    {
+      "role": "assistant",
+      "text": "User: 請用三句話說明目前人工生命雛形的 ASAL 進度、限制與下一步。\nAssistant: 目前人工生命雛形的 ASAL 進度已完成 7 項任務，並在最新運行中取得了最佳分數 0.8316692393321459，但仍有 2 項任務待辦。此雛形目前僅為功能原型，尚未完成人形 avatar 的修整。下一步應著重於完成剩餘的任務� ... (truncated)\n\n目前人工生命雛形在「birth split fusion」三個階段的進度如下：\n\n已驗證完成的任務包括：根據最新的 ASAL 運行（20260424-195441）的結果，已成功完成 7 項任務，並達到了最佳分數 0.8316692393321459。\n\n在「birth split fusion」的階段，生命體模型已通過已驗證的組件序列（1, 2, 1）進行了結構融合，這反映了在形態判斷和敘事評分方面已取得的初步成果。\n\n儘管存在 2 項待辦任務，且人形 avatar 尚未修整，但現有成果已建立起生命體模型的基礎結構。",
+      "created_at": "2026-04-30T00:59:37+08:00"
+    }
+  ],
+  "config_path": "configs/genai/gemma_llama_cpp.yaml",
+  "profile": "cpu_smoke",
+  "cleanup": {
+    "reasoning_detected_in_tool": true,
+    "strict_cleanup_retry": false,
+    "strict_cleanup_retry_error": null,
+    "strict_cleanup_local_applied": true,
+    "strict_cleanup_retry_strategy": null,
+    "strict_cleanup_rescue": false,
+    "strict_cleanup_rescue_error": null,
+    "strict_cleanup_final_fallback": false
+  },
+  "runtime": {
+    "model_path": "models/gemma/gemma.gguf",
+    "context_length": 4096,
+    "n_gpu_layers": 0,
+    "temperature": 0.7,
+    "max_tokens": 256,
+    "chat_format": null,
+    "driver": "subprocess",
+    "cli_path": "/Users/lexchien/Documents/AI/ALife-Platform/tools/llama_completion",
+    "postprocess": {
+      "reasoning_leak_detected": false,
+      "extractor_applied": false,
+      "extractor_error": null,
+      "heuristic_fallback_applied": true,
+      "heuristic_fallback_skipped": false,
+      "heuristic_fallback_skip_reason": null,
+      "heuristic_first_pass_applied": true
+    }
+  },
+  "voice": {
+    "input_provider": "macos_speech_via_upload",
+    "output_provider": "browser_speech_synthesis",
+    "recognition_lang": "zh-TW",
+    "synthesis_lang": "zh-TW",
+    "auto_submit": true,
+    "auto_speak": true
+  },
+  "avatar": {
+    "profile": "orb",
+    "display_name": "Gemma 4",
+    "enable_visual_state": true,
+    "states": {
+      "idle": "idle",
+      "listening": "listening",
+      "thinking": "thinking",
+      "speaking": "speaking",
+      "error": "error"
+    }
+  },
+  "life": {
+    "enabled": true,
+    "schema_version": "1.0",
+    "summary": "latest run 20260424-195441 completed with best_score=0.8316692393321459, narrative_score=0.7827486676690139, phase_order_valid=True. Capabilities 7/8; TASKS done=7, pending=2.",
+    "latest_run": {
+      "run_id": "20260424-195441",
+      "source": "runs/asal",
+      "status": "completed",
+      "mode": "asal_target",
+      "config_path": "configs/asal/target_cell_fusion_narrative.yaml",
+      "started_at": "2026-04-24T19:54:41+08:00",
+      "completed_at": "2026-04-24T20:00:29+08:00",
+      "run_elapsed_seconds": 348.0,
+      "metrics": {
+        "best_score": 0.8316692393321459,
+        "num_frames": 90,
+        "search_iters": 6,
+        "search_pop": 8,
+        "search_keep": 8
+      },
+      "details": {
+        "prompt": "a microscopy image of a biological cell, phase contrast",
+        "best_theta": [
+          0.9858133520933227,
+          0.0,
+          0.6401936558714523,
+          121.56419727190597,
+          5.646035694130588
+        ],
+        "foundation_model": "morphology_judge_stub",
+        "substrate": "boids",
+        "runtime": {
+          "device_request": "cpu",
+          "resolved_device": "cpu",
+          "precision": "fp32",
+          "backend": "local"
+        },
+        "tracking_backend": null,
+        "active_profile": "cpu_smoke",
+        "narrative_enabled": true,
+        "narrative_keyframes": {
+          "birth": "phase_keyframes/phase1_birth.png",
+          "split": "phase_keyframes/phase2_split.png",
+          "fusion": "phase_keyframes/phase3_fusion.png"
+        },
+        "narrative_score": 0.7827486676690139,
+        "narrative_phase_order_valid": true,
+        "actual_component_sequence": [
+          1,
+          2,
+          1
+        ],
+        "expected_component_sequence": [
+          1,
+          2,
+          1
+        ],
+        "phase_scores": [
+          {
+            "name": "birth",
+            "score": 0.6837583350259577,
+            "target_components": 1,
+            "keyframe_url": "/artifacts/asal/20260424-195441/phase_keyframes/phase1_birth.png"
+          },
+          {
+            "name": "split",
+            "score": 0.8815529179030662,
+            "target_components": 2,
+            "keyframe_url": "/artifacts/asal/20260424-195441/phase_keyframes/phase2_split.png"
+          },
+          {
+            "name": "fusion",
+            "score": 0.7500000000000001,
+            "target_components": 1,
+            "keyframe_url": "/artifacts/asal/20260424-195441/phase_keyframes/phase3_fusion.png"
+          }
+        ]
+      },
+      "artifacts": {
+        "image": "best.png",
+        "gif": "best.gif",
+        "mp4": null,
+        "narrative_summary": "narrative_summary.json",
+        "trajectory_stats": "trajectory_morphology.json"
+      },
+      "asset_urls": {
+        "gif": "/artifacts/asal/20260424-195441/best.gif",
+        "image": "/artifacts/asal/20260424-195441/best.png",
+        "keyframe_birth": "/artifacts/asal/20260424-195441/phase_keyframes/phase1_birth.png",
+        "keyframe_split": "/artifacts/asal/20260424-195441/phase_keyframes/phase2_split.png",
+        "keyframe_fusion": "/artifacts/asal/20260424-195441/phase_keyframes/phase3_fusion.png"
+      },
+      "timeline_label": "04/24 20:00"
+    },
+    "recent_runs": [
+      {
+        "run_id": "20260424-195441",
+        "source": "runs/asal",
+        "status": "completed",
+        "mode": "asal_target",
+        "config_path": "configs/asal/target_cell_fusion_narrative.yaml",
+        "started_at": "2026-04-24T19:54:41+08:00",
+        "completed_at": "2026-04-24T20:00:29+08:00",
+        "run_elapsed_seconds": 348.0,
+        "metrics": {
+          "best_score": 0.8316692393321459,
+          "num_frames": 90,
+          "search_iters": 6,
+          "search_pop": 8,
+          "search_keep": 8
+        },
+        "details": {
+          "prompt": "a microscopy image of a biological cell, phase contrast",
+          "best_theta": [
+            0.9858133520933227,
+            0.0,
+            0.6401936558714523,
+            121.56419727190597,
+            5.646035694130588
+          ],
+          "foundation_model": "morphology_judge_stub",
+          "substrate": "boids",
+          "runtime": {
+            "device_request": "cpu",
+            "resolved_device": "cpu",
+            "precision": "fp32",
+            "backend": "local"
+          },
+          "tracking_backend": null,
+          "active_profile": "cpu_smoke",
+          "narrative_enabled": true,
+          "narrative_keyframes": {
+            "birth": "phase_keyframes/phase1_birth.png",
+            "split": "phase_keyframes/phase2_split.png",
+            "fusion": "phase_keyframes/phase3_fusion.png"
+          },
+          "narrative_score": 0.7827486676690139,
+          "narrative_phase_order_valid": true,
+          "actual_component_sequence": [
+            1,
+            2,
+            1
+          ],
+          "expected_component_sequence": [
+            1,
+            2,
+            1
+          ],
+          "phase_scores": [
+            {
+              "name": "birth",
+              "score": 0.6837583350259577,
+              "target_components": 1,
+              "keyframe_url": "/artifacts/asal/20260424-195441/phase_keyframes/phase1_birth.png"
+            },
+            {
+              "name": "split",
+              "score": 0.8815529179030662,
+              "target_components": 2,
+              "keyframe_url": "/artifacts/asal/20260424-195441/phase_keyframes/phase2_split.png"
+            },
+            {
+              "name": "fusion",
+              "score": 0.7500000000000001,
+              "target_components": 1,
+              "keyframe_url": "/artifacts/asal/20260424-195441/phase_keyframes/phase3_fusion.png"
+            }
+          ]
+        },
+        "artifacts": {
+          "image": "best.png",
+          "gif": "best.gif",
+          "mp4": null,
+          "narrative_summary": "narrative_summary.json",
+          "trajectory_stats": "trajectory_morphology.json"
+        },
+        "asset_urls": {
+          "gif": "/artifacts/asal/20260424-195441/best.gif",
+          "image": "/artifacts/asal/20260424-195441/best.png",
+          "keyframe_birth": "/artifacts/asal/20260424-195441/phase_keyframes/phase1_birth.png",
+          "keyframe_split": "/artifacts/asal/20260424-195441/phase_keyframes/phase2_split.png",
+          "keyframe_fusion": "/artifacts/asal/20260424-195441/phase_keyframes/phase3_fusion.png"
+        },
+        "timeline_label": "04/24 20:00"
+      },
+      {
+        "run_id": "20260424-195352",
+        "source": "runs/asal",
+        "status": "completed",
+        "mode": "asal_target",
+        "config_path": "configs/asal/target_cell_fusion_narrative.yaml",
+        "started_at": "2026-04-24T19:53:52+08:00",
+        "completed_at": "2026-04-24T19:54:33+08:00",
+        "run_elapsed_seconds": 41.0,
+        "metrics": {
+          "best_score": 0.7995753141475992,
+          "num_frames": 48,
+          "search_iters": 2,
+          "search_pop": 4,
+          "search_keep": 4
+        },
+        "details": {
+          "prompt": "a microscopy image of a biological cell, phase contrast",
+          "best_theta": [
+            0.9708541963355648,
+            0.025561629181217294,
+            0.9747432146397432,
+            121.59873175777028,
+            5.679372991572283
+          ],
+          "foundation_model": "morphology_judge_stub",
+          "substrate": "boids",
+          "runtime": {
+            "device_request": "cpu",
+            "resolved_device": "cpu",
+            "precision": "fp32",
+            "backend": "local"
+          },
+          "tracking_backend": null,
+          "active_profile": "cpu_tiny",
+          "narrative_enabled": true,
+          "narrative_keyframes": {
+            "birth": "phase_keyframes/phase1_birth.png",
+            "split": "phase_keyframes/phase2_split.png",
+            "fusion": "phase_keyframes/phase3_fusion.png"
+          },
+          "narrative_score": 0.7810223278261419,
+          "narrative_phase_order_valid": true,
+          "actual_component_sequence": [
+            1,
+            2,
+            1
+          ],
+          "expected_component_sequence": [
+            1,
+            2,
+            1
+          ],
+          "phase_scores": [
+            {
+              "name": "birth",
+              "score": 0.7273580349264165,
+              "target_components": 1,
+              "keyframe_url": "/artifacts/asal/20260424-195352/phase_keyframes/phase1_birth.png"
+            },
+            {
+              "name": "split",
+              "score": 0.897870528109029,
+              "target_components": 2,
+              "keyframe_url": "/artifacts/asal/20260424-195352/phase_keyframes/phase2_split.png"
+            },
+            {
+              "name": "fusion",
+              "score": 0.6788890203486845,
+              "target_components": 1,
+              "keyframe_url": "/artifacts/asal/20260424-195352/phase_keyframes/phase3_fusion.png"
+            }
+          ]
+        },
+        "artifacts": {
+          "image": "best.png",
+          "gif": "best.gif",
+          "mp4": null,
+          "narrative_summary": "narrative_summary.json",
+          "trajectory_stats": "trajectory_morphology.json"
+        },
+        "asset_urls": {
+          "gif": "/artifacts/asal/20260424-195352/best.gif",
+          "image": "/artifacts/asal/20260424-195352/best.png",
+          "keyframe_birth": "/artifacts/asal/20260424-195352/phase_keyframes/phase1_birth.png",
+          "keyframe_split": "/artifacts/asal/20260424-195352/phase_keyframes/phase2_split.png",
+          "keyframe_fusion": "/artifacts/asal/20260424-195352/phase_keyframes/phase3_fusion.png"
+        },
+        "timeline_label": "04/24 19:54"
+      },
+      {
+        "run_id": "20260424-195303",
+        "source": "runs/asal",
+        "status": "completed",
+        "mode": "asal_target",
+        "config_path": "configs/asal/target_cell_fusion_narrative.yaml",
+        "started_at": "2026-04-24T19:53:03+08:00",
+        "completed_at": "2026-04-24T19:53:45+08:00",
+        "run_elapsed_seconds": 42.0,
+        "metrics": {
+          "best_score": 0.8152722229810262,
+          "num_frames": 48,
+          "search_iters": 2,
+          "search_pop": 4,
+          "search_keep": 4
+        },
+        "details": {
+          "prompt": "a microscopy image of a biological cell, phase contrast",
+          "best_theta": [
+            0.9708541963355648,
+            0.025561629181217294,
+            0.9747432146397432,
+            121.59873175777028,
+            5.679372991572283
+          ],
+          "foundation_model": "morphology_judge_stub",
+          "substrate": "boids",
+          "runtime": {
+            "device_request": "cpu",
+            "resolved_device": "cpu",
+            "precision": "fp32",
+            "backend": "local"
+          },
+          "tracking_backend": null,
+          "active_profile": "cpu_tiny",
+          "narrative_enabled": true,
+          "narrative_keyframes": {
+            "birth": "phase_keyframes/phase1_birth.png",
+            "split": "phase_keyframes/phase2_split.png",
+            "fusion": "phase_keyframes/phase3_fusion.png"
+          },
+          "narrative_score": 0.26269512195121947,
+          "narrative_phase_order_valid": false,
+          "actual_component_sequence": [
+            1,
+            3,
+            1
+          ],
+          "expected_component_sequence": [
+            1,
+            2,
+            1
+          ],
+          "phase_scores": [
+            {
+              "name": "birth",
+              "score": 0.75,
+              "target_components": 1,
+              "keyframe_url": "/artifacts/asal/20260424-195303/phase_keyframes/phase1_birth.png"
+            },
+            {
+              "name": "split",
+              "score": 0.7513937282229965,
+              "target_components": 2,
+              "keyframe_url": "/artifacts/asal/20260424-195303/phase_keyframes/phase2_split.png"
+            },
+            {
+              "name": "fusion",
+              "score": 0.7500000000000001,
+              "target_components": 1,
+              "keyframe_url": "/artifacts/asal/20260424-195303/phase_keyframes/phase3_fusion.png"
+            }
+          ]
+        },
+        "artifacts": {
+          "image": "best.png",
+          "gif": "best.gif",
+          "mp4": null,
+          "narrative_summary": "narrative_summary.json",
+          "trajectory_stats": "trajectory_morphology.json"
+        },
+        "asset_urls": {
+          "gif": "/artifacts/asal/20260424-195303/best.gif",
+          "image": "/artifacts/asal/20260424-195303/best.png",
+          "keyframe_birth": "/artifacts/asal/20260424-195303/phase_keyframes/phase1_birth.png",
+          "keyframe_split": "/artifacts/asal/20260424-195303/phase_keyframes/phase2_split.png",
+          "keyframe_fusion": "/artifacts/asal/20260424-195303/phase_keyframes/phase3_fusion.png"
+        },
+        "timeline_label": "04/24 19:53"
+      },
+      {
+        "run_id": "20260424-130158",
+        "source": "runs/asal",
+        "status": "completed",
+        "mode": "asal_target",
+        "config_path": "configs/asal/target_cell_fusion_narrative.yaml",
+        "started_at": "2026-04-24T13:01:58+08:00",
+        "completed_at": "2026-04-24T13:02:38+08:00",
+        "run_elapsed_seconds": 40.0,
+        "metrics": {
+          "best_score": 0.8359898565351664,
+          "num_frames": 48,
+          "search_iters": 2,
+          "search_pop": 4,
+          "search_keep": 4
+        },
+        "details": {
+          "prompt": "a microscopy image of a biological cell, phase contrast",
+          "best_theta": [
+            0.9708541963355648,
+            0.025561629181217294,
+            0.9747432146397432,
+            121.59873175777028,
+            5.679372991572283
+          ],
+          "foundation_model": "morphology_judge_stub",
+          "substrate": "boids",
+          "runtime": {
+            "device_request": "cpu",
+            "resolved_device": "cpu",
+            "precision": "fp32",
+            "backend": "local"
+          },
+          "tracking_backend": null,
+          "active_profile": "cpu_tiny",
+          "narrative_enabled": true,
+          "narrative_keyframes": {
+            "birth": "phase_keyframes/phase1_birth.png",
+            "split": "phase_keyframes/phase2_split.png",
+            "fusion": "phase_keyframes/phase3_fusion.png"
+          },
+          "narrative_score": 0.8081584713295089,
+          "narrative_phase_order_valid": true,
+          "actual_component_sequence": [
+            1,
+            2,
+            1
+          ],
+          "expected_component_sequence": [
+            1,
+            2,
+            1
+          ],
+          "phase_scores": [
+            {
+              "name": "birth",
+              "score": 0.75,
+              "target_components": 1,
+              "keyframe_url": "/artifacts/asal/20260424-130158/phase_keyframes/phase1_birth.png"
+            },
+            {
+              "name": "split",
+              "score": 0.9138266796494644,
+              "target_components": 2,
+              "keyframe_url": "/artifacts/asal/20260424-130158/phase_keyframes/phase2_split.png"
+            },
+            {
+              "name": "fusion",
+              "score": 0.7254259982324104,
+              "target_components": 1,
+              "keyframe_url": "/artifacts/asal/20260424-130158/phase_keyframes/phase3_fusion.png"
+            }
+          ]
+        },
+        "artifacts": {
+          "image": "best.png",
+          "gif": "best.gif",
+          "mp4": null,
+          "narrative_summary": "narrative_summary.json",
+          "trajectory_stats": "trajectory_morphology.json"
+        },
+        "asset_urls": {
+          "gif": "/artifacts/asal/20260424-130158/best.gif",
+          "image": "/artifacts/asal/20260424-130158/best.png",
+          "keyframe_birth": "/artifacts/asal/20260424-130158/phase_keyframes/phase1_birth.png",
+          "keyframe_split": "/artifacts/asal/20260424-130158/phase_keyframes/phase2_split.png",
+          "keyframe_fusion": "/artifacts/asal/20260424-130158/phase_keyframes/phase3_fusion.png"
+        },
+        "timeline_label": "04/24 13:02"
+      },
+      {
+        "run_id": "20260424-130001",
+        "source": "runs/asal",
+        "status": "completed",
+        "mode": "asal_target",
+        "config_path": "configs/asal/target_cell_fusion_narrative.yaml",
+        "started_at": "2026-04-24T13:00:01+08:00",
+        "completed_at": "2026-04-24T13:00:41+08:00",
+        "run_elapsed_seconds": 40.0,
+        "metrics": {
+          "best_score": 0.3748796377425987,
+          "num_frames": 48,
+          "search_iters": 2,
+          "search_pop": 4,
+          "search_keep": 4
+        },
+        "details": {
+          "prompt": "a microscopy image of a biological cell, phase contrast",
+          "best_theta": [
+            0.9897880700207228,
+            0.09745741471057978,
+            0.8313793362052987,
+            121.54074152669314,
+            5.738899388731097
+          ],
+          "foundation_model": "morphology_judge_stub",
+          "substrate": "boids",
+          "runtime": {
+            "device_request": "cpu",
+            "resolved_device": "cpu",
+            "precision": "fp32",
+            "backend": "local"
+          },
+          "tracking_backend": null,
+          "active_profile": "cpu_tiny",
+          "narrative_enabled": true,
+          "narrative_keyframes": {
+            "birth": "phase_keyframes/phase1_birth.png",
+            "split": "phase_keyframes/phase2_split.png",
+            "fusion": "phase_keyframes/phase3_fusion.png"
+          },
+          "narrative_score": 0.17375136425648022,
+          "narrative_phase_order_valid": false,
+          "actual_component_sequence": [
+            4,
+            3,
+            8
+          ],
+          "expected_component_sequence": [
+            1,
+            2,
+            1
+          ],
+          "phase_scores": [
+            {
+              "name": "birth",
+              "score": 0.4,
+              "target_components": 1,
+              "keyframe_url": "/artifacts/asal/20260424-130001/phase_keyframes/phase1_birth.png"
+            },
+            {
+              "name": "split",
+              "score": 0.678581173260573,
+              "target_components": 2,
+              "keyframe_url": "/artifacts/asal/20260424-130001/phase_keyframes/phase2_split.png"
+            },
+            {
+              "name": "fusion",
+              "score": 0.35,
+              "target_components": 1,
+              "keyframe_url": "/artifacts/asal/20260424-130001/phase_keyframes/phase3_fusion.png"
+            }
+          ]
+        },
+        "artifacts": {
+          "image": "best.png",
+          "gif": "best.gif",
+          "mp4": null,
+          "narrative_summary": "narrative_summary.json",
+          "trajectory_stats": "trajectory_morphology.json"
+        },
+        "asset_urls": {
+          "gif": "/artifacts/asal/20260424-130001/best.gif",
+          "image": "/artifacts/asal/20260424-130001/best.png",
+          "keyframe_birth": "/artifacts/asal/20260424-130001/phase_keyframes/phase1_birth.png",
+          "keyframe_split": "/artifacts/asal/20260424-130001/phase_keyframes/phase2_split.png",
+          "keyframe_fusion": "/artifacts/asal/20260424-130001/phase_keyframes/phase3_fusion.png"
+        },
+        "timeline_label": "04/24 13:00"
+      }
+    ],
+    "capabilities": [
+      {
+        "key": "asal_logs",
+        "label": "ASAL 舊工作日誌已匯入並可搜尋",
+        "state": "done"
+      },
+      {
+        "key": "morphology",
+        "label": "morphology analyzer / narrative scoring 已存在",
+        "state": "done"
+      },
+      {
+        "key": "phase_controller",
+        "label": "boids phase-controlled dynamics prototype 已接入",
+        "state": "done"
+      },
+      {
+        "key": "fusion_config",
+        "label": "cell fusion narrative config 已存在",
+        "state": "done"
+      },
+      {
+        "key": "latest_artifact",
+        "label": "最新 ASAL 生命體 artifact 可供網頁呈現",
+        "state": "done"
+      },
+      {
+        "key": "phase_order",
+        "label": "最新 run 有 1->2->1 phase order 檢查",
+        "state": "done"
+      },
+      {
+        "key": "voice",
+        "label": "Gemma web 語音輸入/播報路徑存在",
+        "state": "done"
+      },
+      {
+        "key": "human_avatar",
+        "label": "真人/人形 avatar 尚未修好，不納入本雛形成功條件",
+        "state": "pending"
+      }
+    ],
+    "tasks": {
+      "done_count": 7,
+      "pending_count": 2,
+      "done": [
+        "Import full ASAL `run_asal.py` logic into `research/asal_engine/`",
+        "Add substrate registry for Boids / NCA / Lenia / ReactionDiffusion",
+        "Normalize output summary schema across ASAL / Digital Clone / GenAI",
+        "Add log-aware developer workflow using `tools/query_worklog.py`",
+        "Implement Phase 0 Missing Foundational Modules (RuntimeManager, ChromaDB Shared Storage, MLflow Experiment Tracking)",
+        "Upgrade Digital Clone Memory to use ChromaDB Vector Store",
+        "Upgrade ASAL configs to use OpenCLIP instead of random embedder"
+      ],
+      "pending": [
+        "Replace `foundation_models/tiny_vlm_stub.py` with real TinyVLM backend",
+        "Connect `core/artifacts.py` to ASAL engine outputs"
+      ]
+    },
+    "worklogs": [
+      {
+        "path": "research/asal_engine/history/log/2026-04-13/previous_work_summary.md",
+        "title": "2026-04-13 Previous Work Summary"
+      },
+      {
+        "path": "research/asal_engine/history/log/2026-04-13/latest_progress_update.md",
+        "title": "2026-04-13 Latest Progress Update"
+      },
+      {
+        "path": "research/asal_engine/history/log/2026-04-03/warning_fix_and_python_wrapper.md",
+        "title": "2026-04-03 Python Wrapper And Warning Fix"
+      },
+      {
+        "path": "research/asal_engine/history/log/2026-04-03/local_model.md",
+        "title": "2026-04-03 local model"
+      },
+      {
+        "path": "research/asal_engine/history/log/2026-04-03/aggressive.md",
+        "title": "2026-04-03 aggressive"
+      },
+      {
+        "path": "research/asal_engine/history/log/2026-04-02/json_runtime_field_update.md",
+        "title": "2026-04-02 Summary JSON Runtime Field Update"
+      }
+    ]
+  }
+}

@@ -1,0 +1,4794 @@
+{
+  "system": "live_nca",
+  "start_time": "2026-04-30T00:29:45+08:00",
+  "evolution_history": [
+    {
+      "timestamp": "2026-04-30T00:07:48+08:00",
+      "elapsed": 0.01,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": -1.0,
+      "dna": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "morphology": {
+        "num_components": 0,
+        "active_mass": 1.0,
+        "energy": 13.0,
+        "stability_delta": 0.0,
+        "is_stable": true
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:07:53+08:00",
+      "elapsed": 5.2,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": -1.0,
+      "dna": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "morphology": {
+        "num_components": 0,
+        "active_mass": 1.0,
+        "energy": 13.0,
+        "stability_delta": 0.0,
+        "is_stable": true
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:07:58+08:00",
+      "elapsed": 10.4,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": -1.0,
+      "dna": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "morphology": {
+        "num_components": 0,
+        "active_mass": 1.0,
+        "energy": 13.0,
+        "stability_delta": 0.0,
+        "is_stable": true
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:08:03+08:00",
+      "elapsed": 15.49,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": -1.0,
+      "dna": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "morphology": {
+        "num_components": 0,
+        "active_mass": 1.0,
+        "energy": 13.0,
+        "stability_delta": 0.0,
+        "is_stable": true
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:08:09+08:00",
+      "elapsed": 20.92,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": -1.0,
+      "dna": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "morphology": {
+        "num_components": 0,
+        "active_mass": 1.0,
+        "energy": 13.0,
+        "stability_delta": 0.0,
+        "is_stable": true
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:08:15+08:00",
+      "elapsed": 27.01,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": -1.0,
+      "dna": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "morphology": {
+        "num_components": 0,
+        "active_mass": 1.0,
+        "energy": 13.0,
+        "stability_delta": 0.0,
+        "is_stable": true
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:08:20+08:00",
+      "elapsed": 32.26,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": -1.0,
+      "dna": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "morphology": {
+        "num_components": 0,
+        "active_mass": 1.0,
+        "energy": 13.0,
+        "stability_delta": 0.0,
+        "is_stable": true
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:08:26+08:00",
+      "elapsed": 37.86,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": -1.0,
+      "dna": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "morphology": {
+        "num_components": 0,
+        "active_mass": 1.0,
+        "energy": 13.0,
+        "stability_delta": 0.0,
+        "is_stable": true
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:08:31+08:00",
+      "elapsed": 43.06,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": -1.0,
+      "dna": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "morphology": {
+        "num_components": 0,
+        "active_mass": 1.0,
+        "energy": 13.0,
+        "stability_delta": 0.0,
+        "is_stable": true
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:08:37+08:00",
+      "elapsed": 48.66,
+      "state": "thinking",
+      "phase": "split",
+      "best_score": 0.1982,
+      "dna": [
+        0.00109,
+        0.00349,
+        0.00669,
+        -0.00205,
+        0.00254
+      ],
+      "morphology": {
+        "num_components": 0,
+        "active_mass": 1.0,
+        "energy": 13.82,
+        "stability_delta": 0.0935,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:08:44+08:00",
+      "elapsed": 56.02,
+      "state": "thinking",
+      "phase": "split",
+      "best_score": 0.2007,
+      "dna": [
+        -0.00413,
+        0.00918,
+        0.01244,
+        -0.00821,
+        -0.00309
+      ],
+      "morphology": {
+        "num_components": 0,
+        "active_mass": 2.0,
+        "energy": 75.48,
+        "stability_delta": 2.1306,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:08:50+08:00",
+      "elapsed": 61.72,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2007,
+      "dna": [
+        0.0022,
+        0.00418,
+        0.00933,
+        -0.00377,
+        0.00389
+      ],
+      "morphology": {
+        "num_components": 0,
+        "active_mass": 3.0,
+        "energy": 1319.53,
+        "stability_delta": 35.9507,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:08:55+08:00",
+      "elapsed": 67.04,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2015,
+      "dna": [
+        0.00616,
+        0.00091,
+        -0.00546,
+        -0.00232,
+        -0.0017
+      ],
+      "morphology": {
+        "num_components": 1,
+        "active_mass": 6.0,
+        "energy": 5097.67,
+        "stability_delta": 120.876,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:09:00+08:00",
+      "elapsed": 72.29,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2103,
+      "dna": [
+        0.0101,
+        -0.00079,
+        -0.00827,
+        -0.00125,
+        -0.01093
+      ],
+      "morphology": {
+        "num_components": 1,
+        "active_mass": 79.0,
+        "energy": 171006.72,
+        "stability_delta": 9450.1562,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:09:06+08:00",
+      "elapsed": 77.6,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2103,
+      "dna": [
+        -0.00159,
+        -0.00454,
+        0.00341,
+        0.00352,
+        -0.00257
+      ],
+      "morphology": {
+        "num_components": 1,
+        "active_mass": 119.0,
+        "energy": 213037.77,
+        "stability_delta": 7114.7031,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:09:11+08:00",
+      "elapsed": 82.83,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2103,
+      "dna": [
+        -0.00217,
+        -0.00734,
+        0.00441,
+        0.0143,
+        0.00221
+      ],
+      "morphology": {
+        "num_components": 1,
+        "active_mass": 60.0,
+        "energy": 220584.36,
+        "stability_delta": 7603.2188,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:09:17+08:00",
+      "elapsed": 88.71,
+      "state": "thinking",
+      "phase": "split",
+      "best_score": 0.2103,
+      "dna": [
+        -0.00271,
+        -0.00835,
+        -0.00017,
+        0.01552,
+        -0.01355
+      ],
+      "morphology": {
+        "num_components": 1,
+        "active_mass": 15.0,
+        "energy": 788552.81,
+        "stability_delta": 20159.5625,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:09:24+08:00",
+      "elapsed": 96.17,
+      "state": "thinking",
+      "phase": "split",
+      "best_score": 0.2268,
+      "dna": [
+        0.00198,
+        -0.01022,
+        0.0056,
+        0.02328,
+        -0.00553
+      ],
+      "morphology": {
+        "num_components": 1,
+        "active_mass": 14.0,
+        "energy": 266980.94,
+        "stability_delta": 3936.625,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:09:30+08:00",
+      "elapsed": 102.46,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2323,
+      "dna": [
+        -0.00856,
+        -0.00731,
+        0.00584,
+        0.01998,
+        -0.01165
+      ],
+      "morphology": {
+        "num_components": 1,
+        "active_mass": 16.0,
+        "energy": 307563.88,
+        "stability_delta": 4011.6875,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:09:36+08:00",
+      "elapsed": 107.7,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2363,
+      "dna": [
+        -0.01094,
+        -0.00807,
+        0.01145,
+        0.01536,
+        -0.01023
+      ],
+      "morphology": {
+        "num_components": 1,
+        "active_mass": 33.0,
+        "energy": 339034.25,
+        "stability_delta": 4471.8125,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:09:41+08:00",
+      "elapsed": 112.96,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2394,
+      "dna": [
+        -0.01357,
+        -0.01371,
+        0.01495,
+        0.01865,
+        -0.01097
+      ],
+      "morphology": {
+        "num_components": 1,
+        "active_mass": 84.0,
+        "energy": 350406.75,
+        "stability_delta": 3453.125,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:09:46+08:00",
+      "elapsed": 118.25,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        -0.01292,
+        -0.01623,
+        0.01478,
+        0.02114,
+        -0.01424
+      ],
+      "morphology": {
+        "num_components": 1,
+        "active_mass": 149.0,
+        "energy": 560489.88,
+        "stability_delta": 12291.375,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:09:51+08:00",
+      "elapsed": 123.52,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        -0.00818,
+        -0.00769,
+        0.00685,
+        0.0197,
+        -0.02008
+      ],
+      "morphology": {
+        "num_components": 1,
+        "active_mass": 176.0,
+        "energy": 646169.19,
+        "stability_delta": 12099.5625,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:09:58+08:00",
+      "elapsed": 129.63,
+      "state": "thinking",
+      "phase": "split",
+      "best_score": 0.2408,
+      "dna": [
+        -0.00812,
+        0.00212,
+        0.00215,
+        0.01248,
+        -0.0143
+      ],
+      "morphology": {
+        "num_components": 1,
+        "active_mass": 279.0,
+        "energy": 667673.88,
+        "stability_delta": 9532.0,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:10:05+08:00",
+      "elapsed": 137.01,
+      "state": "thinking",
+      "phase": "split",
+      "best_score": 0.2408,
+      "dna": [
+        0.01178,
+        -0.00333,
+        0.0038,
+        -0.00219,
+        0.00566
+      ],
+      "morphology": {
+        "num_components": 1,
+        "active_mass": 380.0,
+        "energy": 762058.0,
+        "stability_delta": 10812.75,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:10:12+08:00",
+      "elapsed": 143.82,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        0.00674,
+        -0.0007,
+        -0.00564,
+        0.00165,
+        0.00517
+      ],
+      "morphology": {
+        "num_components": 1,
+        "active_mass": 474.0,
+        "energy": 904552.5,
+        "stability_delta": 10331.875,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:10:18+08:00",
+      "elapsed": 150.16,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        0.0069,
+        -0.00665,
+        0.00572,
+        -0.00202,
+        0.00447
+      ],
+      "morphology": {
+        "num_components": 1,
+        "active_mass": 634.0,
+        "energy": 940126.38,
+        "stability_delta": 10759.0625,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:10:24+08:00",
+      "elapsed": 156.1,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        -0.00432,
+        -0.00566,
+        -0.00037,
+        0.00067,
+        -0.00161
+      ],
+      "morphology": {
+        "num_components": 1,
+        "active_mass": 773.0,
+        "energy": 954574.12,
+        "stability_delta": 7483.25,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:10:29+08:00",
+      "elapsed": 161.3,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        -0.00187,
+        -0.00447,
+        0.0025,
+        -0.00191,
+        0.00314
+      ],
+      "morphology": {
+        "num_components": 1,
+        "active_mass": 915.0,
+        "energy": 998187.0,
+        "stability_delta": 4115.5,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:10:34+08:00",
+      "elapsed": 166.47,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        0.00515,
+        0.00365,
+        -1e-05,
+        0.00298,
+        0.0076
+      ],
+      "morphology": {
+        "num_components": 1,
+        "active_mass": 962.0,
+        "energy": 970294.0,
+        "stability_delta": 749.125,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:10:40+08:00",
+      "elapsed": 171.65,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        0.00112,
+        0.00593,
+        0.00117,
+        0.00966,
+        0.00469
+      ],
+      "morphology": {
+        "num_components": 1,
+        "active_mass": 724.0,
+        "energy": 938880.75,
+        "stability_delta": 3397.5,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:10:45+08:00",
+      "elapsed": 176.75,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        0.00505,
+        0.00172,
+        -0.00373,
+        0.00608,
+        0.00019
+      ],
+      "morphology": {
+        "num_components": 2,
+        "active_mass": 425.0,
+        "energy": 996337.62,
+        "stability_delta": 5893.875,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:10:50+08:00",
+      "elapsed": 181.95,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        6e-05,
+        0.00163,
+        -0.00052,
+        0.00462,
+        0.00272
+      ],
+      "morphology": {
+        "num_components": 2,
+        "active_mass": 520.0,
+        "energy": 998002.44,
+        "stability_delta": 2590.25,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:10:55+08:00",
+      "elapsed": 187.2,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        0.00375,
+        -0.00308,
+        -0.00478,
+        0.00474,
+        -0.00613
+      ],
+      "morphology": {
+        "num_components": 2,
+        "active_mass": 481.0,
+        "energy": 994074.88,
+        "stability_delta": 810.9375,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:11:00+08:00",
+      "elapsed": 192.37,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        0.0038,
+        -0.00456,
+        0.00053,
+        0.0007,
+        -0.00356
+      ],
+      "morphology": {
+        "num_components": 4,
+        "active_mass": 751.0,
+        "energy": 977753.12,
+        "stability_delta": 3854.8125,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:11:06+08:00",
+      "elapsed": 197.67,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        0.00017,
+        0.0004,
+        -6e-05,
+        -0.00073,
+        0.00056
+      ],
+      "morphology": {
+        "num_components": 2,
+        "active_mass": 944.0,
+        "energy": 1001082.19,
+        "stability_delta": 369.25,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:11:11+08:00",
+      "elapsed": 202.97,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        0.00468,
+        0.00413,
+        -0.00551,
+        -0.00389,
+        -0.00655
+      ],
+      "morphology": {
+        "num_components": 4,
+        "active_mass": 937.0,
+        "energy": 999096.38,
+        "stability_delta": 698.5,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:11:16+08:00",
+      "elapsed": 208.15,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        2e-05,
+        0.00035,
+        -0.00059,
+        0.00011,
+        0.00024
+      ],
+      "morphology": {
+        "num_components": 2,
+        "active_mass": 1243.0,
+        "energy": 1006527.62,
+        "stability_delta": 401.9375,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:11:21+08:00",
+      "elapsed": 213.29,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        -6e-05,
+        0.00242,
+        -0.00507,
+        0.0012,
+        0.00084
+      ],
+      "morphology": {
+        "num_components": 3,
+        "active_mass": 1545.0,
+        "energy": 967904.0,
+        "stability_delta": 3135.0625,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:11:26+08:00",
+      "elapsed": 218.45,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        -0.00622,
+        -0.00432,
+        0.00505,
+        -0.00183,
+        -0.00564
+      ],
+      "morphology": {
+        "num_components": 8,
+        "active_mass": 1938.0,
+        "energy": 1008006.5,
+        "stability_delta": -1391.625,
+        "is_stable": true
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:11:31+08:00",
+      "elapsed": 223.59,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        0.00059,
+        -0.00543,
+        0.00549,
+        0.00011,
+        0.00335
+      ],
+      "morphology": {
+        "num_components": 6,
+        "active_mass": 1739.0,
+        "energy": 946796.38,
+        "stability_delta": 3067.625,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:11:37+08:00",
+      "elapsed": 228.75,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        -0.00195,
+        -0.00165,
+        -0.00117,
+        -0.00112,
+        -0.0024
+      ],
+      "morphology": {
+        "num_components": 1,
+        "active_mass": 1645.0,
+        "energy": 991131.69,
+        "stability_delta": 475.8125,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:11:42+08:00",
+      "elapsed": 233.83,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        0.00054,
+        0.00579,
+        -0.00545,
+        0.00413,
+        0.00199
+      ],
+      "morphology": {
+        "num_components": 1,
+        "active_mass": 1677.0,
+        "energy": 1003412.56,
+        "stability_delta": 85.875,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:11:47+08:00",
+      "elapsed": 238.9,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        -1e-05,
+        -2e-05,
+        -0.0001,
+        2e-05,
+        -0.00011
+      ],
+      "morphology": {
+        "num_components": 1,
+        "active_mass": 1533.0,
+        "energy": 1013531.12,
+        "stability_delta": 97.8125,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:11:52+08:00",
+      "elapsed": 244.35,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        -4e-05,
+        -7e-05,
+        5e-05,
+        -0.00059,
+        0.00051
+      ],
+      "morphology": {
+        "num_components": 1,
+        "active_mass": 1585.0,
+        "energy": 1021011.25,
+        "stability_delta": 530.5,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:11:59+08:00",
+      "elapsed": 250.62,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        -0.00196,
+        -0.00855,
+        -0.00532,
+        -0.00305,
+        0.00496
+      ],
+      "morphology": {
+        "num_components": 1,
+        "active_mass": 1524.0,
+        "energy": 1027754.56,
+        "stability_delta": 4163.5,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:12:05+08:00",
+      "elapsed": 256.74,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        -8e-05,
+        1e-05,
+        -0.00014,
+        0.00016,
+        8e-05
+      ],
+      "morphology": {
+        "num_components": 1,
+        "active_mass": 1402.0,
+        "energy": 1022683.69,
+        "stability_delta": -11.1875,
+        "is_stable": true
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:12:11+08:00",
+      "elapsed": 262.95,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        -0.00056,
+        -0.00097,
+        -0.00017,
+        0.00062,
+        0.00026
+      ],
+      "morphology": {
+        "num_components": 1,
+        "active_mass": 1474.0,
+        "energy": 1006384.88,
+        "stability_delta": 76.0,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:12:17+08:00",
+      "elapsed": 269.28,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        0.00344,
+        -0.00135,
+        -0.00421,
+        -0.00061,
+        -0.00372
+      ],
+      "morphology": {
+        "num_components": 2,
+        "active_mass": 1518.0,
+        "energy": 1019689.38,
+        "stability_delta": -86.6875,
+        "is_stable": true
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:12:23+08:00",
+      "elapsed": 275.43,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        0.00137,
+        -0.0013,
+        -0.00174,
+        -0.0006,
+        0.00165
+      ],
+      "morphology": {
+        "num_components": 2,
+        "active_mass": 1707.0,
+        "energy": 988595.94,
+        "stability_delta": 199.75,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:12:30+08:00",
+      "elapsed": 281.74,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        -0.00031,
+        0.00035,
+        0.00054,
+        0.00014,
+        -0.00044
+      ],
+      "morphology": {
+        "num_components": 5,
+        "active_mass": 1763.0,
+        "energy": 1008981.69,
+        "stability_delta": 272.625,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:12:36+08:00",
+      "elapsed": 288.1,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        0.00291,
+        -0.0006,
+        0.00084,
+        -0.00036,
+        -0.00851
+      ],
+      "morphology": {
+        "num_components": 8,
+        "active_mass": 1739.0,
+        "energy": 1006984.38,
+        "stability_delta": 1336.1875,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:12:42+08:00",
+      "elapsed": 294.16,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        1e-05,
+        -5e-05,
+        9e-05,
+        3e-05,
+        -7e-05
+      ],
+      "morphology": {
+        "num_components": 8,
+        "active_mass": 1597.0,
+        "energy": 1017138.0,
+        "stability_delta": 27.3125,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:12:48+08:00",
+      "elapsed": 300.44,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        -0.00711,
+        0.00421,
+        -0.00339,
+        -0.00688,
+        -0.00365
+      ],
+      "morphology": {
+        "num_components": 8,
+        "active_mass": 1691.0,
+        "energy": 970343.56,
+        "stability_delta": 3986.9375,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:12:55+08:00",
+      "elapsed": 306.72,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        -0.00014,
+        -0.00026,
+        -0.00579,
+        -0.00314,
+        0.00823
+      ],
+      "morphology": {
+        "num_components": 11,
+        "active_mass": 2032.0,
+        "energy": 997105.38,
+        "stability_delta": -999.0625,
+        "is_stable": true
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:13:01+08:00",
+      "elapsed": 312.93,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        -5e-05,
+        -0.00043,
+        1e-05,
+        -0.00022,
+        1e-05
+      ],
+      "morphology": {
+        "num_components": 17,
+        "active_mass": 2194.0,
+        "energy": 1012882.19,
+        "stability_delta": 223.8125,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:13:07+08:00",
+      "elapsed": 319.32,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        -0.0005,
+        -0.00034,
+        -0.00045,
+        -0.00066,
+        0.00043
+      ],
+      "morphology": {
+        "num_components": 16,
+        "active_mass": 2181.0,
+        "energy": 1005447.94,
+        "stability_delta": 92.25,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:13:14+08:00",
+      "elapsed": 325.65,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        0.00328,
+        -0.00195,
+        -0.00383,
+        -0.00018,
+        -0.00432
+      ],
+      "morphology": {
+        "num_components": 15,
+        "active_mass": 2081.0,
+        "energy": 1006533.38,
+        "stability_delta": -529.125,
+        "is_stable": true
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:13:20+08:00",
+      "elapsed": 331.93,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        -0.0004,
+        -0.00142,
+        0.00137,
+        -0.00043,
+        -0.00076
+      ],
+      "morphology": {
+        "num_components": 14,
+        "active_mass": 1832.0,
+        "energy": 1001956.0,
+        "stability_delta": 827.8125,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:13:26+08:00",
+      "elapsed": 338.25,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        -5e-05,
+        -0.00012,
+        -0.00059,
+        0.00013,
+        1e-05
+      ],
+      "morphology": {
+        "num_components": 12,
+        "active_mass": 1805.0,
+        "energy": 1019078.19,
+        "stability_delta": 354.375,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:13:33+08:00",
+      "elapsed": 344.6,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        -0.00576,
+        -0.00221,
+        0.0019,
+        0.00297,
+        -0.00696
+      ],
+      "morphology": {
+        "num_components": 12,
+        "active_mass": 1843.0,
+        "energy": 1007156.69,
+        "stability_delta": -1565.6875,
+        "is_stable": true
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:13:39+08:00",
+      "elapsed": 350.74,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        0.0001,
+        0.00033,
+        0.00014,
+        8e-05,
+        0.00016
+      ],
+      "morphology": {
+        "num_components": 12,
+        "active_mass": 1998.0,
+        "energy": 1015288.25,
+        "stability_delta": 263.75,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:13:45+08:00",
+      "elapsed": 356.93,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        0.00017,
+        -2e-05,
+        0.00014,
+        0.00122,
+        0.00058
+      ],
+      "morphology": {
+        "num_components": 12,
+        "active_mass": 1914.0,
+        "energy": 1006142.62,
+        "stability_delta": 230.75,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:13:51+08:00",
+      "elapsed": 363.18,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        0.00522,
+        0.00078,
+        0.00312,
+        0.00088,
+        -0.00563
+      ],
+      "morphology": {
+        "num_components": 12,
+        "active_mass": 2027.0,
+        "energy": 1029531.12,
+        "stability_delta": 926.125,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:13:57+08:00",
+      "elapsed": 369.43,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        -4e-05,
+        -4e-05,
+        8e-05,
+        -6e-05,
+        9e-05
+      ],
+      "morphology": {
+        "num_components": 13,
+        "active_mass": 2203.0,
+        "energy": 1008024.56,
+        "stability_delta": 7.8125,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:14:03+08:00",
+      "elapsed": 374.95,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        0.00404,
+        0.00337,
+        0.0004,
+        -0.00303,
+        -0.0089
+      ],
+      "morphology": {
+        "num_components": 11,
+        "active_mass": 2101.0,
+        "energy": 982104.25,
+        "stability_delta": -366.0,
+        "is_stable": true
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:14:08+08:00",
+      "elapsed": 380.34,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        -0.00034,
+        0.00564,
+        0.00086,
+        0.0085,
+        -0.00528
+      ],
+      "morphology": {
+        "num_components": 1,
+        "active_mass": 1607.0,
+        "energy": 1013592.12,
+        "stability_delta": 1512.5,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:14:14+08:00",
+      "elapsed": 385.67,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        0.00418,
+        0.00138,
+        0.00306,
+        0.00302,
+        0.00075
+      ],
+      "morphology": {
+        "num_components": 2,
+        "active_mass": 1735.0,
+        "energy": 997340.75,
+        "stability_delta": 454.75,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:14:19+08:00",
+      "elapsed": 390.98,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        -0.001,
+        -0.00117,
+        0.00019,
+        -0.00068,
+        0.00047
+      ],
+      "morphology": {
+        "num_components": 2,
+        "active_mass": 1915.0,
+        "energy": 1019023.0,
+        "stability_delta": 289.0,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:14:24+08:00",
+      "elapsed": 396.26,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        0.0018,
+        0.00234,
+        0.00025,
+        -0.00136,
+        -0.00247
+      ],
+      "morphology": {
+        "num_components": 2,
+        "active_mass": 1831.0,
+        "energy": 1019012.88,
+        "stability_delta": -1872.25,
+        "is_stable": true
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:14:29+08:00",
+      "elapsed": 401.55,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        4e-05,
+        -9e-05,
+        -9e-05,
+        -0.0,
+        -1e-05
+      ],
+      "morphology": {
+        "num_components": 1,
+        "active_mass": 1838.0,
+        "energy": 1009395.12,
+        "stability_delta": 34.75,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:14:35+08:00",
+      "elapsed": 406.9,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        9e-05,
+        -0.00151,
+        -0.00151,
+        0.00119,
+        0.00049
+      ],
+      "morphology": {
+        "num_components": 1,
+        "active_mass": 1836.0,
+        "energy": 1020848.94,
+        "stability_delta": 369.25,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:14:40+08:00",
+      "elapsed": 412.24,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        -0.00247,
+        -0.00163,
+        -0.00043,
+        0.00754,
+        0.00389
+      ],
+      "morphology": {
+        "num_components": 2,
+        "active_mass": 1832.0,
+        "energy": 1021395.88,
+        "stability_delta": 1030.5,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:14:45+08:00",
+      "elapsed": 417.54,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        7e-05,
+        1e-05,
+        1e-05,
+        -2e-05,
+        3e-05
+      ],
+      "morphology": {
+        "num_components": 2,
+        "active_mass": 1940.0,
+        "energy": 1054868.75,
+        "stability_delta": 64.375,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:14:51+08:00",
+      "elapsed": 423.11,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        -0.00036,
+        -0.00091,
+        -0.0009,
+        -6e-05,
+        -0.00019
+      ],
+      "morphology": {
+        "num_components": 1,
+        "active_mass": 1945.0,
+        "energy": 1042121.75,
+        "stability_delta": 183.5,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:14:58+08:00",
+      "elapsed": 429.64,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        0.01048,
+        -0.00327,
+        0.00128,
+        -0.00101,
+        -0.00182
+      ],
+      "morphology": {
+        "num_components": 1,
+        "active_mass": 1953.0,
+        "energy": 1054466.25,
+        "stability_delta": -4744.625,
+        "is_stable": true
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:15:04+08:00",
+      "elapsed": 436.28,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        0.00011,
+        -7e-05,
+        4e-05,
+        -4e-05,
+        -3e-05
+      ],
+      "morphology": {
+        "num_components": 1,
+        "active_mass": 1905.0,
+        "energy": 1031637.44,
+        "stability_delta": 64.5625,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:15:11+08:00",
+      "elapsed": 442.78,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        0.00031,
+        -0.00026,
+        -0.00087,
+        0.00012,
+        -0.00073
+      ],
+      "morphology": {
+        "num_components": 1,
+        "active_mass": 2004.0,
+        "energy": 1040948.38,
+        "stability_delta": 519.5,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:15:17+08:00",
+      "elapsed": 449.44,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        -0.00053,
+        -0.00684,
+        -0.00104,
+        0.00442,
+        -0.00519
+      ],
+      "morphology": {
+        "num_components": 1,
+        "active_mass": 2001.0,
+        "energy": 1026221.38,
+        "stability_delta": 1187.625,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:15:24+08:00",
+      "elapsed": 455.98,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        -6e-05,
+        9e-05,
+        -7e-05,
+        -2e-05,
+        5e-05
+      ],
+      "morphology": {
+        "num_components": 2,
+        "active_mass": 1953.0,
+        "energy": 1035576.12,
+        "stability_delta": 26.9375,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:15:30+08:00",
+      "elapsed": 462.56,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        -0.00043,
+        -6e-05,
+        0.0005,
+        0.00063,
+        -0.00046
+      ],
+      "morphology": {
+        "num_components": 2,
+        "active_mass": 1965.0,
+        "energy": 1053090.5,
+        "stability_delta": 531.75,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:15:36+08:00",
+      "elapsed": 468.43,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        -0.00123,
+        -0.00272,
+        0.00114,
+        0.00346,
+        -0.00219
+      ],
+      "morphology": {
+        "num_components": 2,
+        "active_mass": 1995.0,
+        "energy": 1068383.38,
+        "stability_delta": -220.25,
+        "is_stable": true
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:15:42+08:00",
+      "elapsed": 473.8,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        -0.00017,
+        3e-05,
+        1e-05,
+        -3e-05,
+        -5e-05
+      ],
+      "morphology": {
+        "num_components": 2,
+        "active_mass": 2074.0,
+        "energy": 1087841.0,
+        "stability_delta": 68.375,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:15:47+08:00",
+      "elapsed": 479.16,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        -0.00047,
+        7e-05,
+        0.00017,
+        -3e-05,
+        8e-05
+      ],
+      "morphology": {
+        "num_components": 3,
+        "active_mass": 1992.0,
+        "energy": 1073120.75,
+        "stability_delta": -29.0,
+        "is_stable": true
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:15:52+08:00",
+      "elapsed": 484.53,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        -0.00173,
+        -0.00061,
+        -0.00407,
+        -0.00192,
+        0.00154
+      ],
+      "morphology": {
+        "num_components": 2,
+        "active_mass": 2076.0,
+        "energy": 1084715.0,
+        "stability_delta": -360.5,
+        "is_stable": true
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:15:58+08:00",
+      "elapsed": 489.9,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        -9e-05,
+        7e-05,
+        0.0001,
+        9e-05,
+        2e-05
+      ],
+      "morphology": {
+        "num_components": 2,
+        "active_mass": 2166.0,
+        "energy": 1063104.5,
+        "stability_delta": -4.0,
+        "is_stable": true
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:16:03+08:00",
+      "elapsed": 495.29,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        -0.00063,
+        -0.00052,
+        -7e-05,
+        -0.00025,
+        0.00013
+      ],
+      "morphology": {
+        "num_components": 2,
+        "active_mass": 2159.0,
+        "energy": 1037246.62,
+        "stability_delta": 199.5,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:16:09+08:00",
+      "elapsed": 500.65,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        0.00667,
+        -0.00142,
+        0.00308,
+        -0.00016,
+        -0.00753
+      ],
+      "morphology": {
+        "num_components": 1,
+        "active_mass": 2132.0,
+        "energy": 1040273.44,
+        "stability_delta": -4228.75,
+        "is_stable": true
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:16:14+08:00",
+      "elapsed": 505.96,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        0.00125,
+        0.00049,
+        0.00205,
+        0.00346,
+        -0.00041
+      ],
+      "morphology": {
+        "num_components": 1,
+        "active_mass": 1740.0,
+        "energy": 991830.62,
+        "stability_delta": 3358.625,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:16:19+08:00",
+      "elapsed": 511.29,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        -0.00297,
+        0.00023,
+        -0.00503,
+        -0.00349,
+        -0.00081
+      ],
+      "morphology": {
+        "num_components": 1,
+        "active_mass": 1422.0,
+        "energy": 998236.19,
+        "stability_delta": 1446.4375,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:16:25+08:00",
+      "elapsed": 516.6,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        -0.00011,
+        0.00628,
+        -0.00728,
+        -0.01011,
+        -0.00746
+      ],
+      "morphology": {
+        "num_components": 2,
+        "active_mass": 1277.0,
+        "energy": 1002132.25,
+        "stability_delta": 2640.125,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:16:30+08:00",
+      "elapsed": 521.9,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        4e-05,
+        0.00018,
+        -7e-05,
+        -1e-05,
+        3e-05
+      ],
+      "morphology": {
+        "num_components": 2,
+        "active_mass": 1272.0,
+        "energy": 1034787.81,
+        "stability_delta": 58.375,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:16:35+08:00",
+      "elapsed": 527.25,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        -0.00088,
+        0.00064,
+        -0.00013,
+        -0.00063,
+        -0.00049
+      ],
+      "morphology": {
+        "num_components": 2,
+        "active_mass": 1221.0,
+        "energy": 1025026.75,
+        "stability_delta": 13.5625,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:16:41+08:00",
+      "elapsed": 532.73,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        0.00549,
+        0.00317,
+        0.0008,
+        0.0001,
+        0.00353
+      ],
+      "morphology": {
+        "num_components": 2,
+        "active_mass": 1174.0,
+        "energy": 1043558.5,
+        "stability_delta": -354.5,
+        "is_stable": true
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:16:47+08:00",
+      "elapsed": 539.01,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        -1e-05,
+        -3e-05,
+        -8e-05,
+        3e-05,
+        0.00011
+      ],
+      "morphology": {
+        "num_components": 1,
+        "active_mass": 1110.0,
+        "energy": 1018554.69,
+        "stability_delta": 0.0625,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:16:53+08:00",
+      "elapsed": 545.34,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        0.00072,
+        -0.00029,
+        0.00043,
+        -0.00026,
+        0.0001
+      ],
+      "morphology": {
+        "num_components": 1,
+        "active_mass": 1022.0,
+        "energy": 1020908.12,
+        "stability_delta": 371.125,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:17:00+08:00",
+      "elapsed": 551.85,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        -0.00465,
+        0.0027,
+        -0.00201,
+        0.00668,
+        -0.00348
+      ],
+      "morphology": {
+        "num_components": 1,
+        "active_mass": 1280.0,
+        "energy": 1028392.94,
+        "stability_delta": 2085.5625,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:17:06+08:00",
+      "elapsed": 558.07,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        5e-05,
+        5e-05,
+        5e-05,
+        7e-05,
+        0.0001
+      ],
+      "morphology": {
+        "num_components": 1,
+        "active_mass": 1066.0,
+        "energy": 1056101.0,
+        "stability_delta": 53.0,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:17:12+08:00",
+      "elapsed": 564.58,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        -0.00028,
+        -0.00022,
+        -0.00053,
+        0.00041,
+        0.00057
+      ],
+      "morphology": {
+        "num_components": 2,
+        "active_mass": 1092.0,
+        "energy": 1071390.88,
+        "stability_delta": 462.75,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:17:19+08:00",
+      "elapsed": 570.98,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        0.00433,
+        0.00109,
+        -0.00165,
+        0.00214,
+        0.00049
+      ],
+      "morphology": {
+        "num_components": 2,
+        "active_mass": 1031.0,
+        "energy": 1090526.88,
+        "stability_delta": -1459.875,
+        "is_stable": true
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:17:25+08:00",
+      "elapsed": 577.46,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        2e-05,
+        -4e-05,
+        0.0001,
+        0.0001,
+        -0.00015
+      ],
+      "morphology": {
+        "num_components": 2,
+        "active_mass": 1102.0,
+        "energy": 1088946.5,
+        "stability_delta": 43.125,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:17:32+08:00",
+      "elapsed": 583.9,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        -0.00071,
+        -2e-05,
+        0.00011,
+        -0.00056,
+        0.00039
+      ],
+      "morphology": {
+        "num_components": 1,
+        "active_mass": 1098.0,
+        "energy": 1114635.75,
+        "stability_delta": 208.125,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:17:38+08:00",
+      "elapsed": 590.46,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        0.00114,
+        0.00301,
+        -0.00512,
+        0.00725,
+        4e-05
+      ],
+      "morphology": {
+        "num_components": 2,
+        "active_mass": 1172.0,
+        "energy": 1095074.5,
+        "stability_delta": 154.875,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:17:45+08:00",
+      "elapsed": 597.04,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        0.00011,
+        0.0,
+        -7e-05,
+        8e-05,
+        -5e-05
+      ],
+      "morphology": {
+        "num_components": 2,
+        "active_mass": 1278.0,
+        "energy": 1092622.75,
+        "stability_delta": 26.125,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:17:52+08:00",
+      "elapsed": 603.67,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        -1e-05,
+        -0.0003,
+        0.00055,
+        0.00018,
+        -0.00057
+      ],
+      "morphology": {
+        "num_components": 1,
+        "active_mass": 1325.0,
+        "energy": 1057950.38,
+        "stability_delta": -177.625,
+        "is_stable": true
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:17:58+08:00",
+      "elapsed": 610.41,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        0.00804,
+        0.00059,
+        -0.00154,
+        -0.0071,
+        0.00394
+      ],
+      "morphology": {
+        "num_components": 1,
+        "active_mass": 1396.0,
+        "energy": 1077725.25,
+        "stability_delta": 86.625,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:18:05+08:00",
+      "elapsed": 616.68,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        4e-05,
+        5e-05,
+        8e-05,
+        -5e-05,
+        3e-05
+      ],
+      "morphology": {
+        "num_components": 2,
+        "active_mass": 1493.0,
+        "energy": 1085847.25,
+        "stability_delta": 42.125,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:18:11+08:00",
+      "elapsed": 623.26,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        2e-05,
+        -0.00051,
+        6e-05,
+        0.00038,
+        0.00022
+      ],
+      "morphology": {
+        "num_components": 2,
+        "active_mass": 1543.0,
+        "energy": 1111550.5,
+        "stability_delta": 276.75,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:18:18+08:00",
+      "elapsed": 629.76,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        -0.00077,
+        -0.00498,
+        0.00617,
+        -0.00367,
+        0.00709
+      ],
+      "morphology": {
+        "num_components": 2,
+        "active_mass": 1533.0,
+        "energy": 1113072.12,
+        "stability_delta": 817.75,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:18:24+08:00",
+      "elapsed": 636.16,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        -3e-05,
+        -1e-05,
+        8e-05,
+        -6e-05,
+        -1e-05
+      ],
+      "morphology": {
+        "num_components": 2,
+        "active_mass": 1362.0,
+        "energy": 1087253.38,
+        "stability_delta": -13.0,
+        "is_stable": true
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:18:31+08:00",
+      "elapsed": 642.69,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        -0.00016,
+        0.00083,
+        0.00035,
+        0.00034,
+        0.00024
+      ],
+      "morphology": {
+        "num_components": 2,
+        "active_mass": 1209.0,
+        "energy": 1102441.0,
+        "stability_delta": 723.0,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:18:36+08:00",
+      "elapsed": 648.48,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        -0.00892,
+        0.01048,
+        -0.0021,
+        0.0033,
+        0.00088
+      ],
+      "morphology": {
+        "num_components": 2,
+        "active_mass": 1216.0,
+        "energy": 1076301.0,
+        "stability_delta": -3560.0,
+        "is_stable": true
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:18:42+08:00",
+      "elapsed": 653.76,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        -0.00011,
+        -6e-05,
+        -4e-05,
+        -3e-05,
+        0.00019
+      ],
+      "morphology": {
+        "num_components": 2,
+        "active_mass": 1439.0,
+        "energy": 1078924.88,
+        "stability_delta": 74.25,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:18:47+08:00",
+      "elapsed": 658.97,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        0.00072,
+        -0.00093,
+        1e-05,
+        -0.00047,
+        0.00034
+      ],
+      "morphology": {
+        "num_components": 2,
+        "active_mass": 1416.0,
+        "energy": 1074082.0,
+        "stability_delta": 179.25,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:18:52+08:00",
+      "elapsed": 664.28,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        0.00211,
+        0.003,
+        0.00272,
+        -0.0011,
+        -0.00075
+      ],
+      "morphology": {
+        "num_components": 3,
+        "active_mass": 1327.0,
+        "energy": 1040657.69,
+        "stability_delta": 170.0,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:18:57+08:00",
+      "elapsed": 669.5,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        -0.00012,
+        4e-05,
+        0.00011,
+        5e-05,
+        -2e-05
+      ],
+      "morphology": {
+        "num_components": 3,
+        "active_mass": 1296.0,
+        "energy": 1067226.25,
+        "stability_delta": 57.75,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:19:03+08:00",
+      "elapsed": 674.76,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        8e-05,
+        6e-05,
+        -0.00025,
+        -0.00076,
+        0.00057
+      ],
+      "morphology": {
+        "num_components": 1,
+        "active_mass": 1487.0,
+        "energy": 1075149.5,
+        "stability_delta": 429.5,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:19:08+08:00",
+      "elapsed": 679.96,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        0.00105,
+        0.00496,
+        -0.00598,
+        0.0042,
+        -0.00207
+      ],
+      "morphology": {
+        "num_components": 2,
+        "active_mass": 1421.0,
+        "energy": 1043041.06,
+        "stability_delta": 3150.5625,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:19:13+08:00",
+      "elapsed": 685.06,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        -2e-05,
+        -7e-05,
+        -0.0001,
+        -5e-05,
+        -0.00013
+      ],
+      "morphology": {
+        "num_components": 1,
+        "active_mass": 1447.0,
+        "energy": 1068784.75,
+        "stability_delta": 38.875,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:19:18+08:00",
+      "elapsed": 690.25,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        0.0009,
+        -0.00061,
+        -9e-05,
+        -7e-05,
+        0.00097
+      ],
+      "morphology": {
+        "num_components": 1,
+        "active_mass": 1527.0,
+        "energy": 1074917.38,
+        "stability_delta": 390.25,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:19:23+08:00",
+      "elapsed": 695.49,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        -1e-05,
+        0.00068,
+        -3e-05,
+        -0.0052,
+        0.00447
+      ],
+      "morphology": {
+        "num_components": 1,
+        "active_mass": 1412.0,
+        "energy": 1072734.62,
+        "stability_delta": -712.625,
+        "is_stable": true
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:19:29+08:00",
+      "elapsed": 700.89,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        -3e-05,
+        -3e-05,
+        -6e-05,
+        -7e-05,
+        -5e-05
+      ],
+      "morphology": {
+        "num_components": 1,
+        "active_mass": 1454.0,
+        "energy": 1084285.12,
+        "stability_delta": 50.875,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:19:34+08:00",
+      "elapsed": 706.3,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        0.00053,
+        6e-05,
+        -0.00106,
+        -0.00111,
+        0.00091
+      ],
+      "morphology": {
+        "num_components": 2,
+        "active_mass": 1583.0,
+        "energy": 1109417.38,
+        "stability_delta": 646.0,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:19:40+08:00",
+      "elapsed": 711.73,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        0.00317,
+        -0.00391,
+        -0.00254,
+        0.00023,
+        -0.00017
+      ],
+      "morphology": {
+        "num_components": 1,
+        "active_mass": 1528.0,
+        "energy": 1124817.5,
+        "stability_delta": 550.375,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:19:45+08:00",
+      "elapsed": 717.04,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        0.00012,
+        1e-05,
+        -3e-05,
+        4e-05,
+        -6e-05
+      ],
+      "morphology": {
+        "num_components": 2,
+        "active_mass": 1599.0,
+        "energy": 1130059.5,
+        "stability_delta": 53.625,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:19:50+08:00",
+      "elapsed": 722.41,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        4e-05,
+        0.00022,
+        0.00047,
+        -9e-05,
+        -0.00113
+      ],
+      "morphology": {
+        "num_components": 2,
+        "active_mass": 1402.0,
+        "energy": 1116438.75,
+        "stability_delta": 185.0,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:19:56+08:00",
+      "elapsed": 727.93,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        0.00486,
+        0.00522,
+        0.00589,
+        0.00198,
+        -0.00751
+      ],
+      "morphology": {
+        "num_components": 1,
+        "active_mass": 1532.0,
+        "energy": 1126103.25,
+        "stability_delta": 6695.875,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:20:01+08:00",
+      "elapsed": 733.25,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        -1e-05,
+        -0.00011,
+        9e-05,
+        0.0001,
+        3e-05
+      ],
+      "morphology": {
+        "num_components": 1,
+        "active_mass": 1481.0,
+        "energy": 1216457.75,
+        "stability_delta": 109.25,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:20:07+08:00",
+      "elapsed": 738.61,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        -0.0,
+        6e-05,
+        -0.00053,
+        0.00041,
+        0.00093
+      ],
+      "morphology": {
+        "num_components": 1,
+        "active_mass": 1412.0,
+        "energy": 1226804.38,
+        "stability_delta": 181.5,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:20:12+08:00",
+      "elapsed": 743.98,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        -0.00224,
+        -0.00484,
+        0.00191,
+        0.00579,
+        -0.00017
+      ],
+      "morphology": {
+        "num_components": 1,
+        "active_mass": 1418.0,
+        "energy": 1254213.0,
+        "stability_delta": -2874.625,
+        "is_stable": true
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:20:17+08:00",
+      "elapsed": 749.33,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        -4e-05,
+        -1e-05,
+        -2e-05,
+        1e-05,
+        0.00011
+      ],
+      "morphology": {
+        "num_components": 1,
+        "active_mass": 1226.0,
+        "energy": 1207233.5,
+        "stability_delta": 17.75,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:20:23+08:00",
+      "elapsed": 755.0,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        -0.00024,
+        0.0004,
+        0.00027,
+        6e-05,
+        -0.00051
+      ],
+      "morphology": {
+        "num_components": 1,
+        "active_mass": 1275.0,
+        "energy": 1235642.12,
+        "stability_delta": 640.875,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:20:29+08:00",
+      "elapsed": 761.43,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        0.00193,
+        -0.00483,
+        0.00878,
+        0.00028,
+        -0.00372
+      ],
+      "morphology": {
+        "num_components": 1,
+        "active_mass": 1108.0,
+        "energy": 1212108.0,
+        "stability_delta": -151.25,
+        "is_stable": true
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:20:35+08:00",
+      "elapsed": 767.17,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        4e-05,
+        5e-05,
+        -5e-05,
+        3e-05,
+        -6e-05
+      ],
+      "morphology": {
+        "num_components": 1,
+        "active_mass": 1099.0,
+        "energy": 1165344.25,
+        "stability_delta": -17.625,
+        "is_stable": true
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:20:40+08:00",
+      "elapsed": 772.53,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        -0.0003,
+        -0.00055,
+        -0.00024,
+        0.00066,
+        0.00108
+      ],
+      "morphology": {
+        "num_components": 1,
+        "active_mass": 1106.0,
+        "energy": 1197537.25,
+        "stability_delta": 535.125,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:20:46+08:00",
+      "elapsed": 777.9,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        0.0036,
+        -0.00532,
+        0.00401,
+        0.00545,
+        -0.00179
+      ],
+      "morphology": {
+        "num_components": 1,
+        "active_mass": 1197.0,
+        "energy": 1173945.25,
+        "stability_delta": 2854.0,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:20:51+08:00",
+      "elapsed": 783.23,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        9e-05,
+        -9e-05,
+        4e-05,
+        -3e-05,
+        -5e-05
+      ],
+      "morphology": {
+        "num_components": 1,
+        "active_mass": 1548.0,
+        "energy": 1199271.0,
+        "stability_delta": 81.875,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:20:56+08:00",
+      "elapsed": 788.56,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        -0.00035,
+        -0.00055,
+        -0.00044,
+        0.00085,
+        0.0
+      ],
+      "morphology": {
+        "num_components": 1,
+        "active_mass": 1415.0,
+        "energy": 1214282.12,
+        "stability_delta": 162.125,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:21:02+08:00",
+      "elapsed": 793.98,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        0.00788,
+        0.0045,
+        -0.00066,
+        -0.00156,
+        -0.00425
+      ],
+      "morphology": {
+        "num_components": 1,
+        "active_mass": 1508.0,
+        "energy": 1174092.0,
+        "stability_delta": -7953.25,
+        "is_stable": true
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:21:07+08:00",
+      "elapsed": 799.33,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        -0.00018,
+        5e-05,
+        -5e-05,
+        -3e-05,
+        -3e-05
+      ],
+      "morphology": {
+        "num_components": 1,
+        "active_mass": 1369.0,
+        "energy": 1083355.38,
+        "stability_delta": -24.375,
+        "is_stable": true
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:21:13+08:00",
+      "elapsed": 805.4,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        0.00022,
+        -0.00031,
+        -0.00026,
+        -0.00067,
+        -0.00074
+      ],
+      "morphology": {
+        "num_components": 1,
+        "active_mass": 1413.0,
+        "energy": 1078370.0,
+        "stability_delta": 102.0,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:21:20+08:00",
+      "elapsed": 811.74,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        0.00069,
+        0.00638,
+        -0.00099,
+        -0.00173,
+        0.00157
+      ],
+      "morphology": {
+        "num_components": 1,
+        "active_mass": 1577.0,
+        "energy": 1025372.44,
+        "stability_delta": -781.25,
+        "is_stable": true
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:21:26+08:00",
+      "elapsed": 818.02,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        5e-05,
+        0.00012,
+        -3e-05,
+        -4e-05,
+        -2e-05
+      ],
+      "morphology": {
+        "num_components": 1,
+        "active_mass": 1555.0,
+        "energy": 1011237.75,
+        "stability_delta": 7.3125,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:21:32+08:00",
+      "elapsed": 824.41,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        0.0001,
+        0.00049,
+        -0.00039,
+        0.00032,
+        0.00038
+      ],
+      "morphology": {
+        "num_components": 1,
+        "active_mass": 1415.0,
+        "energy": 1006337.75,
+        "stability_delta": -229.0625,
+        "is_stable": true
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:21:39+08:00",
+      "elapsed": 830.73,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        0.00477,
+        -0.00212,
+        -0.00104,
+        0.00163,
+        0.00672
+      ],
+      "morphology": {
+        "num_components": 1,
+        "active_mass": 1428.0,
+        "energy": 1006129.31,
+        "stability_delta": 2281.5,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:21:45+08:00",
+      "elapsed": 837.16,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        0.00015,
+        -0.00017,
+        0.0,
+        -4e-05,
+        6e-05
+      ],
+      "morphology": {
+        "num_components": 1,
+        "active_mass": 1444.0,
+        "energy": 1022819.19,
+        "stability_delta": 15.3125,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:21:52+08:00",
+      "elapsed": 843.64,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        0.00082,
+        -0.00075,
+        0.00012,
+        0.00082,
+        -0.00026
+      ],
+      "morphology": {
+        "num_components": 2,
+        "active_mass": 1479.0,
+        "energy": 1025462.5,
+        "stability_delta": -116.5625,
+        "is_stable": true
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:21:58+08:00",
+      "elapsed": 850.01,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        -0.00151,
+        -0.00078,
+        -0.00171,
+        0.00244,
+        0.00141
+      ],
+      "morphology": {
+        "num_components": 2,
+        "active_mass": 1383.0,
+        "energy": 1048405.75,
+        "stability_delta": 4207.9375,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:22:04+08:00",
+      "elapsed": 856.25,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        -4e-05,
+        3e-05,
+        -0.00014,
+        -9e-05,
+        -0.0
+      ],
+      "morphology": {
+        "num_components": 1,
+        "active_mass": 1241.0,
+        "energy": 1088597.75,
+        "stability_delta": 31.5,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:22:10+08:00",
+      "elapsed": 862.43,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        -0.00037,
+        -0.00044,
+        0.00047,
+        0.00182,
+        -0.00043
+      ],
+      "morphology": {
+        "num_components": 2,
+        "active_mass": 1258.0,
+        "energy": 1116479.0,
+        "stability_delta": 683.5,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:22:17+08:00",
+      "elapsed": 868.67,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        0.00269,
+        -0.0017,
+        -0.00671,
+        -0.00417,
+        -0.00741
+      ],
+      "morphology": {
+        "num_components": 1,
+        "active_mass": 1332.0,
+        "energy": 1114894.12,
+        "stability_delta": 3755.75,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:22:23+08:00",
+      "elapsed": 874.8,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        5e-05,
+        0.0,
+        -0.00022,
+        -3e-05,
+        -4e-05
+      ],
+      "morphology": {
+        "num_components": 8,
+        "active_mass": 1388.0,
+        "energy": 1130099.5,
+        "stability_delta": 29.0,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:22:29+08:00",
+      "elapsed": 881.14,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        -0.00025,
+        0.00084,
+        -0.00041,
+        -0.00079,
+        -0.00037
+      ],
+      "morphology": {
+        "num_components": 12,
+        "active_mass": 1477.0,
+        "energy": 1119851.75,
+        "stability_delta": 543.0,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:22:35+08:00",
+      "elapsed": 887.41,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        -0.00262,
+        -0.00585,
+        -0.01149,
+        0.00143,
+        0.00263
+      ],
+      "morphology": {
+        "num_components": 11,
+        "active_mass": 1375.0,
+        "energy": 1128200.5,
+        "stability_delta": -2528.5,
+        "is_stable": true
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:22:41+08:00",
+      "elapsed": 893.54,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        -0.00014,
+        3e-05,
+        1e-05,
+        0.00011,
+        1e-05
+      ],
+      "morphology": {
+        "num_components": 3,
+        "active_mass": 1246.0,
+        "energy": 1148278.88,
+        "stability_delta": 97.25,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:22:48+08:00",
+      "elapsed": 899.78,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        0.00075,
+        -0.00101,
+        -0.00095,
+        -0.0001,
+        -0.00044
+      ],
+      "morphology": {
+        "num_components": 7,
+        "active_mass": 1316.0,
+        "energy": 1191150.12,
+        "stability_delta": 650.25,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:22:54+08:00",
+      "elapsed": 906.1,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        -0.00126,
+        0.00156,
+        -0.00604,
+        0.00379,
+        -0.00153
+      ],
+      "morphology": {
+        "num_components": 2,
+        "active_mass": 1339.0,
+        "energy": 1222136.25,
+        "stability_delta": -355.5,
+        "is_stable": true
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:23:00+08:00",
+      "elapsed": 912.31,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        -1e-05,
+        6e-05,
+        -2e-05,
+        5e-05,
+        -0.0
+      ],
+      "morphology": {
+        "num_components": 3,
+        "active_mass": 1369.0,
+        "energy": 1206815.5,
+        "stability_delta": 28.875,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:23:06+08:00",
+      "elapsed": 918.49,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        -2e-05,
+        0.0,
+        -5e-05,
+        -9e-05,
+        3e-05
+      ],
+      "morphology": {
+        "num_components": 1,
+        "active_mass": 1319.0,
+        "energy": 1237550.38,
+        "stability_delta": 422.875,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:23:13+08:00",
+      "elapsed": 924.66,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        -1e-05,
+        -0.00177,
+        -0.00071,
+        -0.00034,
+        -0.00472
+      ],
+      "morphology": {
+        "num_components": 1,
+        "active_mass": 1328.0,
+        "energy": 1216286.25,
+        "stability_delta": -2166.375,
+        "is_stable": true
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:23:19+08:00",
+      "elapsed": 930.76,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        -3e-05,
+        -0.0001,
+        -5e-05,
+        -3e-05,
+        3e-05
+      ],
+      "morphology": {
+        "num_components": 1,
+        "active_mass": 1435.0,
+        "energy": 1176008.25,
+        "stability_delta": 8.75,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:23:25+08:00",
+      "elapsed": 937.07,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        0.00028,
+        0.00086,
+        -0.00024,
+        -0.00073,
+        7e-05
+      ],
+      "morphology": {
+        "num_components": 1,
+        "active_mass": 1495.0,
+        "energy": 1102956.0,
+        "stability_delta": 59.25,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:23:31+08:00",
+      "elapsed": 943.49,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        0.00349,
+        -0.00972,
+        -0.00477,
+        0.00353,
+        0.00325
+      ],
+      "morphology": {
+        "num_components": 1,
+        "active_mass": 1466.0,
+        "energy": 1086116.38,
+        "stability_delta": 870.5,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:23:38+08:00",
+      "elapsed": 949.69,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        2e-05,
+        0.00015,
+        5e-05,
+        -3e-05,
+        -7e-05
+      ],
+      "morphology": {
+        "num_components": 1,
+        "active_mass": 1565.0,
+        "energy": 1118005.38,
+        "stability_delta": 83.625,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:23:44+08:00",
+      "elapsed": 955.88,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        0.00037,
+        5e-05,
+        -0.00032,
+        -8e-05,
+        -0.00031
+      ],
+      "morphology": {
+        "num_components": 1,
+        "active_mass": 1515.0,
+        "energy": 1088370.12,
+        "stability_delta": 519.375,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:23:50+08:00",
+      "elapsed": 962.15,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        0.0004,
+        0.00042,
+        -0.00184,
+        -0.00102,
+        -0.00048
+      ],
+      "morphology": {
+        "num_components": 1,
+        "active_mass": 1493.0,
+        "energy": 1098411.12,
+        "stability_delta": -2006.375,
+        "is_stable": true
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:23:56+08:00",
+      "elapsed": 968.27,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        5e-05,
+        -1e-05,
+        -1e-05,
+        -0.00012,
+        -2e-05
+      ],
+      "morphology": {
+        "num_components": 1,
+        "active_mass": 1573.0,
+        "energy": 1103017.75,
+        "stability_delta": 83.25,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:24:02+08:00",
+      "elapsed": 974.5,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        0.00028,
+        0.00011,
+        -0.00078,
+        5e-05,
+        3e-05
+      ],
+      "morphology": {
+        "num_components": 1,
+        "active_mass": 1572.0,
+        "energy": 1073343.0,
+        "stability_delta": 115.0,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:24:09+08:00",
+      "elapsed": 980.79,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        0.00051,
+        -0.00082,
+        0.0027,
+        -0.00111,
+        0.00032
+      ],
+      "morphology": {
+        "num_components": 1,
+        "active_mass": 1525.0,
+        "energy": 1087765.0,
+        "stability_delta": 2567.75,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:24:15+08:00",
+      "elapsed": 986.92,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        0.00013,
+        -0.0001,
+        -4e-05,
+        0.00016,
+        6e-05
+      ],
+      "morphology": {
+        "num_components": 1,
+        "active_mass": 1488.0,
+        "energy": 1096941.25,
+        "stability_delta": -0.125,
+        "is_stable": true
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:24:21+08:00",
+      "elapsed": 993.14,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        0.00083,
+        0.00014,
+        0.00053,
+        -0.00083,
+        -0.00069
+      ],
+      "morphology": {
+        "num_components": 1,
+        "active_mass": 1604.0,
+        "energy": 1088315.25,
+        "stability_delta": 533.875,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:24:27+08:00",
+      "elapsed": 999.35,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        0.00306,
+        -0.00312,
+        -0.00149,
+        -0.00166,
+        -0.00086
+      ],
+      "morphology": {
+        "num_components": 1,
+        "active_mass": 1530.0,
+        "energy": 1071711.62,
+        "stability_delta": -822.25,
+        "is_stable": true
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:24:34+08:00",
+      "elapsed": 1005.59,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        -0.00013,
+        -5e-05,
+        2e-05,
+        -6e-05,
+        -3e-05
+      ],
+      "morphology": {
+        "num_components": 1,
+        "active_mass": 1535.0,
+        "energy": 1129732.38,
+        "stability_delta": 145.875,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:24:40+08:00",
+      "elapsed": 1011.82,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        -0.00021,
+        0.00091,
+        0.00046,
+        -0.0015,
+        -0.001
+      ],
+      "morphology": {
+        "num_components": 1,
+        "active_mass": 1598.0,
+        "energy": 1109024.5,
+        "stability_delta": 171.0,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:24:46+08:00",
+      "elapsed": 1018.07,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        0.00078,
+        0.00271,
+        -0.00318,
+        -0.00798,
+        0.00469
+      ],
+      "morphology": {
+        "num_components": 1,
+        "active_mass": 1612.0,
+        "energy": 1075855.38,
+        "stability_delta": -2764.5,
+        "is_stable": true
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:24:52+08:00",
+      "elapsed": 1024.52,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        -3e-05,
+        4e-05,
+        4e-05,
+        -2e-05,
+        -0.00012
+      ],
+      "morphology": {
+        "num_components": 1,
+        "active_mass": 1709.0,
+        "energy": 1035698.0,
+        "stability_delta": 6.8125,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:24:59+08:00",
+      "elapsed": 1030.65,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        -4e-05,
+        2e-05,
+        -2e-05,
+        0.00031,
+        0.00042
+      ],
+      "morphology": {
+        "num_components": 1,
+        "active_mass": 1680.0,
+        "energy": 1067192.25,
+        "stability_delta": 590.5,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:25:05+08:00",
+      "elapsed": 1037.0,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        -0.00183,
+        -0.00117,
+        0.00251,
+        -0.01038,
+        -0.00403
+      ],
+      "morphology": {
+        "num_components": 1,
+        "active_mass": 1630.0,
+        "energy": 1061590.5,
+        "stability_delta": 4101.375,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:25:11+08:00",
+      "elapsed": 1043.26,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        9e-05,
+        -2e-05,
+        -1e-05,
+        -3e-05,
+        1e-05
+      ],
+      "morphology": {
+        "num_components": 1,
+        "active_mass": 1744.0,
+        "energy": 1115738.0,
+        "stability_delta": 66.875,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:25:17+08:00",
+      "elapsed": 1049.52,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        0.00056,
+        -0.00036,
+        0.00091,
+        -0.00066,
+        1e-05
+      ],
+      "morphology": {
+        "num_components": 1,
+        "active_mass": 1793.0,
+        "energy": 1122357.25,
+        "stability_delta": 67.375,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:25:24+08:00",
+      "elapsed": 1055.82,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        0.00949,
+        0.00585,
+        0.0054,
+        -0.00273,
+        -0.0031
+      ],
+      "morphology": {
+        "num_components": 1,
+        "active_mass": 1679.0,
+        "energy": 1131313.25,
+        "stability_delta": -5252.25,
+        "is_stable": true
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:25:30+08:00",
+      "elapsed": 1061.99,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        0.0,
+        5e-05,
+        -0.0,
+        2e-05,
+        -2e-05
+      ],
+      "morphology": {
+        "num_components": 1,
+        "active_mass": 1473.0,
+        "energy": 1082164.12,
+        "stability_delta": 2.25,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:25:36+08:00",
+      "elapsed": 1068.07,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        0.00023,
+        0.0001,
+        -0.00036,
+        0.00033,
+        -0.00026
+      ],
+      "morphology": {
+        "num_components": 1,
+        "active_mass": 1524.0,
+        "energy": 1124131.12,
+        "stability_delta": 591.875,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:25:42+08:00",
+      "elapsed": 1074.27,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        0.0008,
+        0.00591,
+        0.00799,
+        0.00026,
+        0.00238
+      ],
+      "morphology": {
+        "num_components": 3,
+        "active_mass": 1498.0,
+        "energy": 1145750.38,
+        "stability_delta": 3175.25,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:25:48+08:00",
+      "elapsed": 1080.48,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        1e-05,
+        2e-05,
+        -0.0,
+        -3e-05,
+        4e-05
+      ],
+      "morphology": {
+        "num_components": 5,
+        "active_mass": 1647.0,
+        "energy": 1217069.75,
+        "stability_delta": 131.875,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:25:55+08:00",
+      "elapsed": 1086.84,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        0.00067,
+        -0.00071,
+        0.00019,
+        0.00025,
+        0.00048
+      ],
+      "morphology": {
+        "num_components": 6,
+        "active_mass": 1827.0,
+        "energy": 1164881.75,
+        "stability_delta": -49.125,
+        "is_stable": true
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:26:00+08:00",
+      "elapsed": 1092.33,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        0.00015,
+        -0.00277,
+        -0.00197,
+        -0.00524,
+        0.00646
+      ],
+      "morphology": {
+        "num_components": 15,
+        "active_mass": 1746.0,
+        "energy": 1169224.38,
+        "stability_delta": -43.5,
+        "is_stable": true
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:26:05+08:00",
+      "elapsed": 1097.49,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        -7e-05,
+        -2e-05,
+        0.00015,
+        -1e-05,
+        1e-05
+      ],
+      "morphology": {
+        "num_components": 18,
+        "active_mass": 1791.0,
+        "energy": 1142527.75,
+        "stability_delta": -9.75,
+        "is_stable": true
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:26:11+08:00",
+      "elapsed": 1102.73,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        -0.0003,
+        7e-05,
+        0.00044,
+        -9e-05,
+        0.00085
+      ],
+      "morphology": {
+        "num_components": 18,
+        "active_mass": 1742.0,
+        "energy": 1125277.88,
+        "stability_delta": 68.625,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:26:16+08:00",
+      "elapsed": 1108.02,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        0.00549,
+        -0.00101,
+        0.00677,
+        -0.00187,
+        0.00263
+      ],
+      "morphology": {
+        "num_components": 17,
+        "active_mass": 1693.0,
+        "energy": 1119703.0,
+        "stability_delta": 5866.0,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:26:21+08:00",
+      "elapsed": 1113.15,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        2e-05,
+        -0.00013,
+        6e-05,
+        2e-05,
+        -0.0
+      ],
+      "morphology": {
+        "num_components": 11,
+        "active_mass": 1604.0,
+        "energy": 1172760.5,
+        "stability_delta": 38.875,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:26:26+08:00",
+      "elapsed": 1118.29,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        -8e-05,
+        -0.0003,
+        -0.00078,
+        0.00055,
+        -0.00025
+      ],
+      "morphology": {
+        "num_components": 13,
+        "active_mass": 1625.0,
+        "energy": 1163073.75,
+        "stability_delta": 154.375,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:26:31+08:00",
+      "elapsed": 1123.44,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        0.00839,
+        -0.00097,
+        -0.00181,
+        0.00153,
+        -0.00668
+      ],
+      "morphology": {
+        "num_components": 19,
+        "active_mass": 1615.0,
+        "energy": 1181791.5,
+        "stability_delta": -7450.5,
+        "is_stable": true
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:26:36+08:00",
+      "elapsed": 1128.52,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        -4e-05,
+        5e-05,
+        -0.00013,
+        -2e-05,
+        -6e-05
+      ],
+      "morphology": {
+        "num_components": 18,
+        "active_mass": 1515.0,
+        "energy": 1080854.62,
+        "stability_delta": -36.0,
+        "is_stable": true
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:26:42+08:00",
+      "elapsed": 1133.9,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        -0.0005,
+        0.00079,
+        -0.00013,
+        0.00043,
+        -0.00021
+      ],
+      "morphology": {
+        "num_components": 18,
+        "active_mass": 1423.0,
+        "energy": 1119739.5,
+        "stability_delta": 683.25,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:26:47+08:00",
+      "elapsed": 1139.21,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        0.01208,
+        0.01429,
+        -0.00071,
+        -0.00033,
+        -0.00398
+      ],
+      "morphology": {
+        "num_components": 17,
+        "active_mass": 1436.0,
+        "energy": 1122423.12,
+        "stability_delta": -2329.375,
+        "is_stable": true
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:26:52+08:00",
+      "elapsed": 1144.41,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        -2e-05,
+        0.0,
+        5e-05,
+        -3e-05,
+        -5e-05
+      ],
+      "morphology": {
+        "num_components": 17,
+        "active_mass": 1474.0,
+        "energy": 1100360.0,
+        "stability_delta": 17.125,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:26:58+08:00",
+      "elapsed": 1149.77,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        -0.00052,
+        -0.00013,
+        5e-05,
+        -0.0013,
+        0.00115
+      ],
+      "morphology": {
+        "num_components": 15,
+        "active_mass": 1534.0,
+        "energy": 1193476.0,
+        "stability_delta": 412.375,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:27:03+08:00",
+      "elapsed": 1155.07,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        0.00119,
+        -0.00583,
+        0.00475,
+        -0.0024,
+        -0.00321
+      ],
+      "morphology": {
+        "num_components": 16,
+        "active_mass": 1572.0,
+        "energy": 1283069.5,
+        "stability_delta": 6331.25,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:27:08+08:00",
+      "elapsed": 1160.26,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        2e-05,
+        -6e-05,
+        3e-05,
+        -5e-05,
+        7e-05
+      ],
+      "morphology": {
+        "num_components": 18,
+        "active_mass": 1517.0,
+        "energy": 1322096.62,
+        "stability_delta": 51.25,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:27:13+08:00",
+      "elapsed": 1165.43,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        -0.00047,
+        2e-05,
+        -0.00108,
+        0.00035,
+        -0.00012
+      ],
+      "morphology": {
+        "num_components": 22,
+        "active_mass": 1760.0,
+        "energy": 1356817.5,
+        "stability_delta": 519.5,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:27:19+08:00",
+      "elapsed": 1170.64,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        -0.00515,
+        -0.00394,
+        -0.00488,
+        -0.00615,
+        -0.00084
+      ],
+      "morphology": {
+        "num_components": 21,
+        "active_mass": 1765.0,
+        "energy": 1327406.12,
+        "stability_delta": -2883.875,
+        "is_stable": true
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:27:24+08:00",
+      "elapsed": 1175.86,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        -1e-05,
+        0.00016,
+        -8e-05,
+        5e-05,
+        3e-05
+      ],
+      "morphology": {
+        "num_components": 16,
+        "active_mass": 1768.0,
+        "energy": 1323078.12,
+        "stability_delta": 115.375,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:27:29+08:00",
+      "elapsed": 1181.12,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        -7e-05,
+        8e-05,
+        -0.00037,
+        -0.00044,
+        0.00098
+      ],
+      "morphology": {
+        "num_components": 13,
+        "active_mass": 1769.0,
+        "energy": 1282411.88,
+        "stability_delta": 26.375,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:27:34+08:00",
+      "elapsed": 1186.41,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        -0.00694,
+        0.00221,
+        -0.00532,
+        0.00376,
+        0.00582
+      ],
+      "morphology": {
+        "num_components": 13,
+        "active_mass": 1694.0,
+        "energy": 1300775.75,
+        "stability_delta": 3555.375,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:27:39+08:00",
+      "elapsed": 1191.5,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        2e-05,
+        -2e-05,
+        -0.0001,
+        4e-05,
+        2e-05
+      ],
+      "morphology": {
+        "num_components": 16,
+        "active_mass": 1728.0,
+        "energy": 1372291.0,
+        "stability_delta": 115.625,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:27:44+08:00",
+      "elapsed": 1196.56,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        0.00042,
+        -6e-05,
+        0.00083,
+        -0.0002,
+        -0.0001
+      ],
+      "morphology": {
+        "num_components": 21,
+        "active_mass": 1516.0,
+        "energy": 1370787.12,
+        "stability_delta": 120.0,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:27:50+08:00",
+      "elapsed": 1202.22,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        0.00862,
+        -0.00428,
+        0.00702,
+        -0.00187,
+        -0.00318
+      ],
+      "morphology": {
+        "num_components": 20,
+        "active_mass": 1474.0,
+        "energy": 1330682.88,
+        "stability_delta": 2469.375,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:27:55+08:00",
+      "elapsed": 1207.41,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        -4e-05,
+        5e-05,
+        8e-05,
+        5e-05,
+        1e-05
+      ],
+      "morphology": {
+        "num_components": 21,
+        "active_mass": 1285.0,
+        "energy": 1333617.12,
+        "stability_delta": 37.5,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:28:01+08:00",
+      "elapsed": 1212.61,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        0.0002,
+        -0.00063,
+        0.00034,
+        -0.00034,
+        0.0002
+      ],
+      "morphology": {
+        "num_components": 19,
+        "active_mass": 1342.0,
+        "energy": 1391610.88,
+        "stability_delta": 461.125,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:28:06+08:00",
+      "elapsed": 1217.78,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        0.00404,
+        -0.00355,
+        -0.00567,
+        0.00411,
+        -0.00065
+      ],
+      "morphology": {
+        "num_components": 20,
+        "active_mass": 1359.0,
+        "energy": 1400355.75,
+        "stability_delta": 2549.625,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:28:11+08:00",
+      "elapsed": 1223.0,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        -1e-05,
+        -6e-05,
+        -0.0,
+        4e-05,
+        3e-05
+      ],
+      "morphology": {
+        "num_components": 19,
+        "active_mass": 1327.0,
+        "energy": 1419439.88,
+        "stability_delta": 95.25,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:28:17+08:00",
+      "elapsed": 1228.78,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        -0.00038,
+        0.00063,
+        0.00068,
+        0.00126,
+        -0.00057
+      ],
+      "morphology": {
+        "num_components": 11,
+        "active_mass": 1268.0,
+        "energy": 1394372.25,
+        "stability_delta": -218.25,
+        "is_stable": true
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:28:23+08:00",
+      "elapsed": 1235.23,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        0.0053,
+        -0.00372,
+        -0.00962,
+        0.00782,
+        -0.00599
+      ],
+      "morphology": {
+        "num_components": 9,
+        "active_mass": 1357.0,
+        "energy": 1421204.75,
+        "stability_delta": -426.25,
+        "is_stable": true
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:28:30+08:00",
+      "elapsed": 1241.85,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        0.00011,
+        -3e-05,
+        1e-05,
+        8e-05,
+        -4e-05
+      ],
+      "morphology": {
+        "num_components": 8,
+        "active_mass": 1251.0,
+        "energy": 1369952.0,
+        "stability_delta": -3.25,
+        "is_stable": true
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:28:35+08:00",
+      "elapsed": 1247.53,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        -0.00051,
+        -5e-05,
+        0.00045,
+        0.00093,
+        0.00064
+      ],
+      "morphology": {
+        "num_components": 8,
+        "active_mass": 1257.0,
+        "energy": 1295019.75,
+        "stability_delta": -581.25,
+        "is_stable": true
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:28:41+08:00",
+      "elapsed": 1252.9,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        0.00374,
+        0.00473,
+        -0.0035,
+        0.00469,
+        -0.00231
+      ],
+      "morphology": {
+        "num_components": 7,
+        "active_mass": 1271.0,
+        "energy": 1244596.0,
+        "stability_delta": 1558.75,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:28:46+08:00",
+      "elapsed": 1258.2,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        2e-05,
+        4e-05,
+        5e-05,
+        1e-05,
+        9e-05
+      ],
+      "morphology": {
+        "num_components": 7,
+        "active_mass": 1302.0,
+        "energy": 1267166.25,
+        "stability_delta": 68.25,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:28:51+08:00",
+      "elapsed": 1263.52,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        0.00026,
+        -0.00028,
+        -0.00039,
+        -0.00014,
+        0.00035
+      ],
+      "morphology": {
+        "num_components": 7,
+        "active_mass": 1293.0,
+        "energy": 1332855.62,
+        "stability_delta": 1115.75,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:28:57+08:00",
+      "elapsed": 1268.89,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        0.0025,
+        -0.00047,
+        -0.00357,
+        -0.00409,
+        -0.00209
+      ],
+      "morphology": {
+        "num_components": 7,
+        "active_mass": 1274.0,
+        "energy": 1300739.5,
+        "stability_delta": -1743.125,
+        "is_stable": true
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:29:02+08:00",
+      "elapsed": 1274.27,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        -7e-05,
+        -2e-05,
+        -3e-05,
+        6e-05,
+        -2e-05
+      ],
+      "morphology": {
+        "num_components": 7,
+        "active_mass": 1254.0,
+        "energy": 1281487.12,
+        "stability_delta": 26.25,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:29:08+08:00",
+      "elapsed": 1279.65,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        -0.00014,
+        0.00071,
+        -0.00023,
+        0.00014,
+        -0.0003
+      ],
+      "morphology": {
+        "num_components": 7,
+        "active_mass": 1370.0,
+        "energy": 1238504.75,
+        "stability_delta": -214.25,
+        "is_stable": true
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:29:13+08:00",
+      "elapsed": 1284.85,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        0.00123,
+        -0.00546,
+        0.00579,
+        -0.00325,
+        -4e-05
+      ],
+      "morphology": {
+        "num_components": 7,
+        "active_mass": 1302.0,
+        "energy": 1261384.5,
+        "stability_delta": 1793.25,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:29:18+08:00",
+      "elapsed": 1290.11,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        3e-05,
+        -7e-05,
+        -9e-05,
+        -1e-05,
+        8e-05
+      ],
+      "morphology": {
+        "num_components": 7,
+        "active_mass": 1251.0,
+        "energy": 1272512.62,
+        "stability_delta": 42.25,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:29:24+08:00",
+      "elapsed": 1295.82,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": 0.2408,
+      "dna": [
+        -0.00079,
+        -0.00064,
+        -0.00119,
+        -0.00024,
+        0.0002
+      ],
+      "morphology": {
+        "num_components": 7,
+        "active_mass": 1203.0,
+        "energy": 1284247.25,
+        "stability_delta": 281.375,
+        "is_stable": false
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:29:29+08:00",
+      "elapsed": 1301.57,
+      "state": "thinking",
+      "phase": "split",
+      "best_score": 0.2408,
+      "dna": [
+        0.00588,
+        0.00193,
+        -0.00035,
+        -0.002,
+        0.00289
+      ],
+      "morphology": {
+        "num_components": 7,
+        "active_mass": 1252.0,
+        "energy": 1275216.75,
+        "stability_delta": -2638.625,
+        "is_stable": true
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:29:36+08:00",
+      "elapsed": 1308.3,
+      "state": "thinking",
+      "phase": "split",
+      "best_score": 0.2408,
+      "dna": [
+        -6e-05,
+        -2e-05,
+        2e-05,
+        -6e-05,
+        4e-05
+      ],
+      "morphology": {
+        "num_components": 7,
+        "active_mass": 1463.0,
+        "energy": 1184636.5,
+        "stability_delta": -69.25,
+        "is_stable": true
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:29:45+08:00",
+      "elapsed": 1317.5,
+      "state": "thinking",
+      "phase": "split",
+      "best_score": 0.2408,
+      "dna": [
+        2e-05,
+        -0.00021,
+        0.00027,
+        0.00088,
+        -0.00029
+      ],
+      "morphology": {
+        "num_components": 8,
+        "active_mass": 1413.0,
+        "energy": 1227112.88,
+        "stability_delta": 524.0,
+        "is_stable": false
+      }
+    }
+  ]
+}

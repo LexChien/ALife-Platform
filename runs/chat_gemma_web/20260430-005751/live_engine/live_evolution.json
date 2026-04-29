@@ -1,0 +1,2007 @@
+{
+  "system": "live_nca",
+  "start_time": "2026-04-30T01:06:13+08:00",
+  "evolution_history": [
+    {
+      "timestamp": "2026-04-30T00:57:53+08:00",
+      "elapsed": 0.15,
+      "state": "idle",
+      "phase": "birth",
+      "semantic_score": 0.0,
+      "energy_penalty": 0.0,
+      "combined_score": -1.0,
+      "dna": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "morphology": {
+        "energy": 13.0,
+        "lyapunov_delta": 0.0,
+        "is_stable": true,
+        "active_mass": 1.0,
+        "num_components": 1
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:57:58+08:00",
+      "elapsed": 5.48,
+      "state": "idle",
+      "phase": "birth",
+      "semantic_score": 0.0,
+      "energy_penalty": 0.0,
+      "combined_score": -1.0,
+      "dna": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "morphology": {
+        "energy": 13.0,
+        "lyapunov_delta": 0.0,
+        "is_stable": true,
+        "active_mass": 1.0,
+        "num_components": 1
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:58:03+08:00",
+      "elapsed": 10.83,
+      "state": "idle",
+      "phase": "birth",
+      "semantic_score": 0.0,
+      "energy_penalty": 0.0,
+      "combined_score": -1.0,
+      "dna": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "morphology": {
+        "energy": 13.0,
+        "lyapunov_delta": 0.0,
+        "is_stable": true,
+        "active_mass": 1.0,
+        "num_components": 1
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:58:09+08:00",
+      "elapsed": 16.18,
+      "state": "idle",
+      "phase": "birth",
+      "semantic_score": 0.0,
+      "energy_penalty": 0.0,
+      "combined_score": -1.0,
+      "dna": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "morphology": {
+        "energy": 13.0,
+        "lyapunov_delta": 0.0,
+        "is_stable": true,
+        "active_mass": 1.0,
+        "num_components": 1
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:58:15+08:00",
+      "elapsed": 22.2,
+      "state": "idle",
+      "phase": "birth",
+      "semantic_score": 0.0,
+      "energy_penalty": 0.0,
+      "combined_score": -1.0,
+      "dna": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "morphology": {
+        "energy": 13.0,
+        "lyapunov_delta": 0.0,
+        "is_stable": true,
+        "active_mass": 1.0,
+        "num_components": 1
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:58:21+08:00",
+      "elapsed": 28.61,
+      "state": "idle",
+      "phase": "birth",
+      "semantic_score": 0.0,
+      "energy_penalty": 0.0,
+      "combined_score": -1.0,
+      "dna": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "morphology": {
+        "energy": 13.0,
+        "lyapunov_delta": 0.0,
+        "is_stable": true,
+        "active_mass": 1.0,
+        "num_components": 1
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:58:28+08:00",
+      "elapsed": 34.94,
+      "state": "idle",
+      "phase": "birth",
+      "semantic_score": 0.0,
+      "energy_penalty": 0.0,
+      "combined_score": -1.0,
+      "dna": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "morphology": {
+        "energy": 13.0,
+        "lyapunov_delta": 0.0,
+        "is_stable": true,
+        "active_mass": 1.0,
+        "num_components": 1
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:58:33+08:00",
+      "elapsed": 40.31,
+      "state": "idle",
+      "phase": "birth",
+      "semantic_score": 0.0,
+      "energy_penalty": 0.0,
+      "combined_score": -1.0,
+      "dna": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "morphology": {
+        "energy": 13.0,
+        "lyapunov_delta": 0.0,
+        "is_stable": true,
+        "active_mass": 1.0,
+        "num_components": 1
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:58:39+08:00",
+      "elapsed": 45.92,
+      "state": "idle",
+      "phase": "birth",
+      "semantic_score": 0.0,
+      "energy_penalty": 0.0,
+      "combined_score": -1.0,
+      "dna": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "morphology": {
+        "energy": 13.0,
+        "lyapunov_delta": 0.0,
+        "is_stable": true,
+        "active_mass": 1.0,
+        "num_components": 1
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:58:44+08:00",
+      "elapsed": 51.58,
+      "state": "idle",
+      "phase": "birth",
+      "semantic_score": 0.0,
+      "energy_penalty": 0.0,
+      "combined_score": -1.0,
+      "dna": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "morphology": {
+        "energy": 13.0,
+        "lyapunov_delta": 0.0,
+        "is_stable": true,
+        "active_mass": 1.0,
+        "num_components": 1
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:58:50+08:00",
+      "elapsed": 57.26,
+      "state": "thinking",
+      "phase": "split",
+      "semantic_score": 0.1958,
+      "energy_penalty": 0.1379,
+      "combined_score": 0.058,
+      "dna": [
+        0.00711,
+        0.00335,
+        -0.00144,
+        -0.00289,
+        0.00146
+      ],
+      "morphology": {
+        "energy": 9.840692520141602,
+        "lyapunov_delta": -0.1296863555908203,
+        "is_stable": true,
+        "active_mass": 1.0,
+        "num_components": 1
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:58:58+08:00",
+      "elapsed": 65.3,
+      "state": "thinking",
+      "phase": "split",
+      "semantic_score": 0.2051,
+      "energy_penalty": 0.139,
+      "combined_score": 0.066,
+      "dna": [
+        0.00487,
+        0.00126,
+        -0.00873,
+        -0.01039,
+        -0.00592
+      ],
+      "morphology": {
+        "energy": 14.130509376525879,
+        "lyapunov_delta": 0.14770030975341797,
+        "is_stable": true,
+        "active_mass": 2.0,
+        "num_components": 1
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:59:03+08:00",
+      "elapsed": 70.46,
+      "state": "idle",
+      "phase": "birth",
+      "semantic_score": 0.2034,
+      "energy_penalty": 0.13,
+      "combined_score": 0.0734,
+      "dna": [
+        0.009,
+        -8e-05,
+        -0.00908,
+        -0.00328,
+        -0.00355
+      ],
+      "morphology": {
+        "energy": 19.127132415771484,
+        "lyapunov_delta": 0.0,
+        "is_stable": true,
+        "active_mass": 0.0,
+        "num_components": 0
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:59:08+08:00",
+      "elapsed": 75.75,
+      "state": "idle",
+      "phase": "birth",
+      "semantic_score": 0.2034,
+      "energy_penalty": 0.13,
+      "combined_score": 0.0734,
+      "dna": [
+        0.009,
+        -8e-05,
+        -0.00908,
+        -0.00328,
+        -0.00355
+      ],
+      "morphology": {
+        "energy": 19.127132415771484,
+        "lyapunov_delta": 0.0,
+        "is_stable": true,
+        "active_mass": 0.0,
+        "num_components": 0
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:59:14+08:00",
+      "elapsed": 81.05,
+      "state": "idle",
+      "phase": "birth",
+      "semantic_score": 0.2034,
+      "energy_penalty": 0.13,
+      "combined_score": 0.0734,
+      "dna": [
+        0.009,
+        -8e-05,
+        -0.00908,
+        -0.00328,
+        -0.00355
+      ],
+      "morphology": {
+        "energy": 19.127132415771484,
+        "lyapunov_delta": 0.0,
+        "is_stable": true,
+        "active_mass": 0.0,
+        "num_components": 0
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:59:20+08:00",
+      "elapsed": 87.1,
+      "state": "thinking",
+      "phase": "split",
+      "semantic_score": 0.226,
+      "energy_penalty": 0.13,
+      "combined_score": 0.096,
+      "dna": [
+        0.01396,
+        0.00084,
+        -0.01018,
+        0.00057,
+        0.00247
+      ],
+      "morphology": {
+        "energy": 19.127132415771484,
+        "lyapunov_delta": 0.0,
+        "is_stable": true,
+        "active_mass": 0.0,
+        "num_components": 0
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:59:27+08:00",
+      "elapsed": 94.71,
+      "state": "thinking",
+      "phase": "split",
+      "semantic_score": 0.226,
+      "energy_penalty": 0.13,
+      "combined_score": 0.096,
+      "dna": [
+        0.01396,
+        0.00084,
+        -0.01018,
+        0.00057,
+        0.00247
+      ],
+      "morphology": {
+        "energy": 19.127132415771484,
+        "lyapunov_delta": 0.0,
+        "is_stable": true,
+        "active_mass": 0.0,
+        "num_components": 0
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:59:37+08:00",
+      "elapsed": 104.23,
+      "state": "thinking",
+      "phase": "split",
+      "semantic_score": 0.226,
+      "energy_penalty": 0.13,
+      "combined_score": 0.096,
+      "dna": [
+        0.01396,
+        0.00084,
+        -0.01018,
+        0.00057,
+        0.00247
+      ],
+      "morphology": {
+        "energy": 19.127132415771484,
+        "lyapunov_delta": 0.0,
+        "is_stable": true,
+        "active_mass": 0.0,
+        "num_components": 0
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:59:43+08:00",
+      "elapsed": 110.34,
+      "state": "idle",
+      "phase": "birth",
+      "semantic_score": 0.226,
+      "energy_penalty": 0.13,
+      "combined_score": 0.096,
+      "dna": [
+        0.01396,
+        0.00084,
+        -0.01018,
+        0.00057,
+        0.00247
+      ],
+      "morphology": {
+        "energy": 19.127132415771484,
+        "lyapunov_delta": 0.0,
+        "is_stable": true,
+        "active_mass": 0.0,
+        "num_components": 0
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:59:49+08:00",
+      "elapsed": 116.54,
+      "state": "idle",
+      "phase": "birth",
+      "semantic_score": 0.226,
+      "energy_penalty": 0.13,
+      "combined_score": 0.096,
+      "dna": [
+        0.01396,
+        0.00084,
+        -0.01018,
+        0.00057,
+        0.00247
+      ],
+      "morphology": {
+        "energy": 19.127132415771484,
+        "lyapunov_delta": 0.0,
+        "is_stable": true,
+        "active_mass": 0.0,
+        "num_components": 0
+      }
+    },
+    {
+      "timestamp": "2026-04-30T00:59:55+08:00",
+      "elapsed": 122.72,
+      "state": "idle",
+      "phase": "birth",
+      "semantic_score": 0.226,
+      "energy_penalty": 0.13,
+      "combined_score": 0.096,
+      "dna": [
+        0.01396,
+        0.00084,
+        -0.01018,
+        0.00057,
+        0.00247
+      ],
+      "morphology": {
+        "energy": 19.127132415771484,
+        "lyapunov_delta": 0.0,
+        "is_stable": true,
+        "active_mass": 0.0,
+        "num_components": 0
+      }
+    },
+    {
+      "timestamp": "2026-04-30T01:00:02+08:00",
+      "elapsed": 129.01,
+      "state": "idle",
+      "phase": "birth",
+      "semantic_score": 0.226,
+      "energy_penalty": 0.13,
+      "combined_score": 0.096,
+      "dna": [
+        0.01396,
+        0.00084,
+        -0.01018,
+        0.00057,
+        0.00247
+      ],
+      "morphology": {
+        "energy": 19.127132415771484,
+        "lyapunov_delta": 0.0,
+        "is_stable": true,
+        "active_mass": 0.0,
+        "num_components": 0
+      }
+    },
+    {
+      "timestamp": "2026-04-30T01:00:08+08:00",
+      "elapsed": 135.15,
+      "state": "idle",
+      "phase": "birth",
+      "semantic_score": 0.226,
+      "energy_penalty": 0.13,
+      "combined_score": 0.096,
+      "dna": [
+        0.01396,
+        0.00084,
+        -0.01018,
+        0.00057,
+        0.00247
+      ],
+      "morphology": {
+        "energy": 19.127132415771484,
+        "lyapunov_delta": 0.0,
+        "is_stable": true,
+        "active_mass": 0.0,
+        "num_components": 0
+      }
+    },
+    {
+      "timestamp": "2026-04-30T01:00:14+08:00",
+      "elapsed": 141.43,
+      "state": "idle",
+      "phase": "birth",
+      "semantic_score": 0.226,
+      "energy_penalty": 0.13,
+      "combined_score": 0.096,
+      "dna": [
+        0.01396,
+        0.00084,
+        -0.01018,
+        0.00057,
+        0.00247
+      ],
+      "morphology": {
+        "energy": 19.127132415771484,
+        "lyapunov_delta": 0.0,
+        "is_stable": true,
+        "active_mass": 0.0,
+        "num_components": 0
+      }
+    },
+    {
+      "timestamp": "2026-04-30T01:00:20+08:00",
+      "elapsed": 147.71,
+      "state": "idle",
+      "phase": "birth",
+      "semantic_score": 0.226,
+      "energy_penalty": 0.13,
+      "combined_score": 0.096,
+      "dna": [
+        0.01396,
+        0.00084,
+        -0.01018,
+        0.00057,
+        0.00247
+      ],
+      "morphology": {
+        "energy": 19.127132415771484,
+        "lyapunov_delta": 0.0,
+        "is_stable": true,
+        "active_mass": 0.0,
+        "num_components": 0
+      }
+    },
+    {
+      "timestamp": "2026-04-30T01:00:26+08:00",
+      "elapsed": 153.89,
+      "state": "idle",
+      "phase": "birth",
+      "semantic_score": 0.226,
+      "energy_penalty": 0.13,
+      "combined_score": 0.096,
+      "dna": [
+        0.01396,
+        0.00084,
+        -0.01018,
+        0.00057,
+        0.00247
+      ],
+      "morphology": {
+        "energy": 19.127132415771484,
+        "lyapunov_delta": 0.0,
+        "is_stable": true,
+        "active_mass": 0.0,
+        "num_components": 0
+      }
+    },
+    {
+      "timestamp": "2026-04-30T01:00:33+08:00",
+      "elapsed": 160.19,
+      "state": "idle",
+      "phase": "birth",
+      "semantic_score": 0.226,
+      "energy_penalty": 0.13,
+      "combined_score": 0.096,
+      "dna": [
+        0.01396,
+        0.00084,
+        -0.01018,
+        0.00057,
+        0.00247
+      ],
+      "morphology": {
+        "energy": 19.127132415771484,
+        "lyapunov_delta": 0.0,
+        "is_stable": true,
+        "active_mass": 0.0,
+        "num_components": 0
+      }
+    },
+    {
+      "timestamp": "2026-04-30T01:00:39+08:00",
+      "elapsed": 166.34,
+      "state": "idle",
+      "phase": "birth",
+      "semantic_score": 0.226,
+      "energy_penalty": 0.13,
+      "combined_score": 0.096,
+      "dna": [
+        0.01396,
+        0.00084,
+        -0.01018,
+        0.00057,
+        0.00247
+      ],
+      "morphology": {
+        "energy": 19.127132415771484,
+        "lyapunov_delta": 0.0,
+        "is_stable": true,
+        "active_mass": 0.0,
+        "num_components": 0
+      }
+    },
+    {
+      "timestamp": "2026-04-30T01:00:45+08:00",
+      "elapsed": 172.46,
+      "state": "idle",
+      "phase": "birth",
+      "semantic_score": 0.226,
+      "energy_penalty": 0.13,
+      "combined_score": 0.096,
+      "dna": [
+        0.01396,
+        0.00084,
+        -0.01018,
+        0.00057,
+        0.00247
+      ],
+      "morphology": {
+        "energy": 19.127132415771484,
+        "lyapunov_delta": 0.0,
+        "is_stable": true,
+        "active_mass": 0.0,
+        "num_components": 0
+      }
+    },
+    {
+      "timestamp": "2026-04-30T01:00:51+08:00",
+      "elapsed": 178.78,
+      "state": "idle",
+      "phase": "birth",
+      "semantic_score": 0.226,
+      "energy_penalty": 0.13,
+      "combined_score": 0.096,
+      "dna": [
+        0.01396,
+        0.00084,
+        -0.01018,
+        0.00057,
+        0.00247
+      ],
+      "morphology": {
+        "energy": 19.127132415771484,
+        "lyapunov_delta": 0.0,
+        "is_stable": true,
+        "active_mass": 0.0,
+        "num_components": 0
+      }
+    },
+    {
+      "timestamp": "2026-04-30T01:00:58+08:00",
+      "elapsed": 185.18,
+      "state": "idle",
+      "phase": "birth",
+      "semantic_score": 0.226,
+      "energy_penalty": 0.13,
+      "combined_score": 0.096,
+      "dna": [
+        0.01396,
+        0.00084,
+        -0.01018,
+        0.00057,
+        0.00247
+      ],
+      "morphology": {
+        "energy": 19.127132415771484,
+        "lyapunov_delta": 0.0,
+        "is_stable": true,
+        "active_mass": 0.0,
+        "num_components": 0
+      }
+    },
+    {
+      "timestamp": "2026-04-30T01:01:04+08:00",
+      "elapsed": 191.52,
+      "state": "idle",
+      "phase": "birth",
+      "semantic_score": 0.226,
+      "energy_penalty": 0.13,
+      "combined_score": 0.096,
+      "dna": [
+        0.01396,
+        0.00084,
+        -0.01018,
+        0.00057,
+        0.00247
+      ],
+      "morphology": {
+        "energy": 19.127132415771484,
+        "lyapunov_delta": 0.0,
+        "is_stable": true,
+        "active_mass": 0.0,
+        "num_components": 0
+      }
+    },
+    {
+      "timestamp": "2026-04-30T01:01:10+08:00",
+      "elapsed": 197.57,
+      "state": "idle",
+      "phase": "birth",
+      "semantic_score": 0.226,
+      "energy_penalty": 0.13,
+      "combined_score": 0.096,
+      "dna": [
+        0.01396,
+        0.00084,
+        -0.01018,
+        0.00057,
+        0.00247
+      ],
+      "morphology": {
+        "energy": 19.127132415771484,
+        "lyapunov_delta": 0.0,
+        "is_stable": true,
+        "active_mass": 0.0,
+        "num_components": 0
+      }
+    },
+    {
+      "timestamp": "2026-04-30T01:01:15+08:00",
+      "elapsed": 202.88,
+      "state": "idle",
+      "phase": "birth",
+      "semantic_score": 0.226,
+      "energy_penalty": 0.13,
+      "combined_score": 0.096,
+      "dna": [
+        0.01396,
+        0.00084,
+        -0.01018,
+        0.00057,
+        0.00247
+      ],
+      "morphology": {
+        "energy": 19.127132415771484,
+        "lyapunov_delta": 0.0,
+        "is_stable": true,
+        "active_mass": 0.0,
+        "num_components": 0
+      }
+    },
+    {
+      "timestamp": "2026-04-30T01:01:21+08:00",
+      "elapsed": 208.16,
+      "state": "idle",
+      "phase": "birth",
+      "semantic_score": 0.226,
+      "energy_penalty": 0.13,
+      "combined_score": 0.096,
+      "dna": [
+        0.01396,
+        0.00084,
+        -0.01018,
+        0.00057,
+        0.00247
+      ],
+      "morphology": {
+        "energy": 19.127132415771484,
+        "lyapunov_delta": 0.0,
+        "is_stable": true,
+        "active_mass": 0.0,
+        "num_components": 0
+      }
+    },
+    {
+      "timestamp": "2026-04-30T01:01:26+08:00",
+      "elapsed": 213.48,
+      "state": "idle",
+      "phase": "birth",
+      "semantic_score": 0.226,
+      "energy_penalty": 0.13,
+      "combined_score": 0.096,
+      "dna": [
+        0.01396,
+        0.00084,
+        -0.01018,
+        0.00057,
+        0.00247
+      ],
+      "morphology": {
+        "energy": 19.127132415771484,
+        "lyapunov_delta": 0.0,
+        "is_stable": true,
+        "active_mass": 0.0,
+        "num_components": 0
+      }
+    },
+    {
+      "timestamp": "2026-04-30T01:01:32+08:00",
+      "elapsed": 219.05,
+      "state": "idle",
+      "phase": "birth",
+      "semantic_score": 0.226,
+      "energy_penalty": 0.13,
+      "combined_score": 0.096,
+      "dna": [
+        0.01396,
+        0.00084,
+        -0.01018,
+        0.00057,
+        0.00247
+      ],
+      "morphology": {
+        "energy": 19.127132415771484,
+        "lyapunov_delta": 0.0,
+        "is_stable": true,
+        "active_mass": 0.0,
+        "num_components": 0
+      }
+    },
+    {
+      "timestamp": "2026-04-30T01:01:38+08:00",
+      "elapsed": 225.26,
+      "state": "idle",
+      "phase": "birth",
+      "semantic_score": 0.226,
+      "energy_penalty": 0.13,
+      "combined_score": 0.096,
+      "dna": [
+        0.01396,
+        0.00084,
+        -0.01018,
+        0.00057,
+        0.00247
+      ],
+      "morphology": {
+        "energy": 19.127132415771484,
+        "lyapunov_delta": 0.0,
+        "is_stable": true,
+        "active_mass": 0.0,
+        "num_components": 0
+      }
+    },
+    {
+      "timestamp": "2026-04-30T01:01:44+08:00",
+      "elapsed": 231.7,
+      "state": "idle",
+      "phase": "birth",
+      "semantic_score": 0.226,
+      "energy_penalty": 0.13,
+      "combined_score": 0.096,
+      "dna": [
+        0.01396,
+        0.00084,
+        -0.01018,
+        0.00057,
+        0.00247
+      ],
+      "morphology": {
+        "energy": 19.127132415771484,
+        "lyapunov_delta": 0.0,
+        "is_stable": true,
+        "active_mass": 0.0,
+        "num_components": 0
+      }
+    },
+    {
+      "timestamp": "2026-04-30T01:01:51+08:00",
+      "elapsed": 238.06,
+      "state": "idle",
+      "phase": "birth",
+      "semantic_score": 0.226,
+      "energy_penalty": 0.13,
+      "combined_score": 0.096,
+      "dna": [
+        0.01396,
+        0.00084,
+        -0.01018,
+        0.00057,
+        0.00247
+      ],
+      "morphology": {
+        "energy": 19.127132415771484,
+        "lyapunov_delta": 0.0,
+        "is_stable": true,
+        "active_mass": 0.0,
+        "num_components": 0
+      }
+    },
+    {
+      "timestamp": "2026-04-30T01:01:57+08:00",
+      "elapsed": 244.42,
+      "state": "idle",
+      "phase": "birth",
+      "semantic_score": 0.226,
+      "energy_penalty": 0.13,
+      "combined_score": 0.096,
+      "dna": [
+        0.01396,
+        0.00084,
+        -0.01018,
+        0.00057,
+        0.00247
+      ],
+      "morphology": {
+        "energy": 19.127132415771484,
+        "lyapunov_delta": 0.0,
+        "is_stable": true,
+        "active_mass": 0.0,
+        "num_components": 0
+      }
+    },
+    {
+      "timestamp": "2026-04-30T01:02:03+08:00",
+      "elapsed": 250.9,
+      "state": "idle",
+      "phase": "birth",
+      "semantic_score": 0.226,
+      "energy_penalty": 0.13,
+      "combined_score": 0.096,
+      "dna": [
+        0.01396,
+        0.00084,
+        -0.01018,
+        0.00057,
+        0.00247
+      ],
+      "morphology": {
+        "energy": 19.127132415771484,
+        "lyapunov_delta": 0.0,
+        "is_stable": true,
+        "active_mass": 0.0,
+        "num_components": 0
+      }
+    },
+    {
+      "timestamp": "2026-04-30T01:02:10+08:00",
+      "elapsed": 257.24,
+      "state": "idle",
+      "phase": "birth",
+      "semantic_score": 0.226,
+      "energy_penalty": 0.13,
+      "combined_score": 0.096,
+      "dna": [
+        0.01396,
+        0.00084,
+        -0.01018,
+        0.00057,
+        0.00247
+      ],
+      "morphology": {
+        "energy": 19.127132415771484,
+        "lyapunov_delta": 0.0,
+        "is_stable": true,
+        "active_mass": 0.0,
+        "num_components": 0
+      }
+    },
+    {
+      "timestamp": "2026-04-30T01:02:16+08:00",
+      "elapsed": 263.5,
+      "state": "idle",
+      "phase": "birth",
+      "semantic_score": 0.226,
+      "energy_penalty": 0.13,
+      "combined_score": 0.096,
+      "dna": [
+        0.01396,
+        0.00084,
+        -0.01018,
+        0.00057,
+        0.00247
+      ],
+      "morphology": {
+        "energy": 19.127132415771484,
+        "lyapunov_delta": 0.0,
+        "is_stable": true,
+        "active_mass": 0.0,
+        "num_components": 0
+      }
+    },
+    {
+      "timestamp": "2026-04-30T01:02:22+08:00",
+      "elapsed": 269.37,
+      "state": "idle",
+      "phase": "birth",
+      "semantic_score": 0.226,
+      "energy_penalty": 0.13,
+      "combined_score": 0.096,
+      "dna": [
+        0.01396,
+        0.00084,
+        -0.01018,
+        0.00057,
+        0.00247
+      ],
+      "morphology": {
+        "energy": 19.127132415771484,
+        "lyapunov_delta": 0.0,
+        "is_stable": true,
+        "active_mass": 0.0,
+        "num_components": 0
+      }
+    },
+    {
+      "timestamp": "2026-04-30T01:02:27+08:00",
+      "elapsed": 274.8,
+      "state": "idle",
+      "phase": "birth",
+      "semantic_score": 0.226,
+      "energy_penalty": 0.13,
+      "combined_score": 0.096,
+      "dna": [
+        0.01396,
+        0.00084,
+        -0.01018,
+        0.00057,
+        0.00247
+      ],
+      "morphology": {
+        "energy": 19.127132415771484,
+        "lyapunov_delta": 0.0,
+        "is_stable": true,
+        "active_mass": 0.0,
+        "num_components": 0
+      }
+    },
+    {
+      "timestamp": "2026-04-30T01:02:33+08:00",
+      "elapsed": 280.1,
+      "state": "idle",
+      "phase": "birth",
+      "semantic_score": 0.226,
+      "energy_penalty": 0.13,
+      "combined_score": 0.096,
+      "dna": [
+        0.01396,
+        0.00084,
+        -0.01018,
+        0.00057,
+        0.00247
+      ],
+      "morphology": {
+        "energy": 19.127132415771484,
+        "lyapunov_delta": 0.0,
+        "is_stable": true,
+        "active_mass": 0.0,
+        "num_components": 0
+      }
+    },
+    {
+      "timestamp": "2026-04-30T01:02:38+08:00",
+      "elapsed": 285.49,
+      "state": "idle",
+      "phase": "birth",
+      "semantic_score": 0.226,
+      "energy_penalty": 0.13,
+      "combined_score": 0.096,
+      "dna": [
+        0.01396,
+        0.00084,
+        -0.01018,
+        0.00057,
+        0.00247
+      ],
+      "morphology": {
+        "energy": 19.127132415771484,
+        "lyapunov_delta": 0.0,
+        "is_stable": true,
+        "active_mass": 0.0,
+        "num_components": 0
+      }
+    },
+    {
+      "timestamp": "2026-04-30T01:02:44+08:00",
+      "elapsed": 291.65,
+      "state": "idle",
+      "phase": "birth",
+      "semantic_score": 0.226,
+      "energy_penalty": 0.13,
+      "combined_score": 0.096,
+      "dna": [
+        0.01396,
+        0.00084,
+        -0.01018,
+        0.00057,
+        0.00247
+      ],
+      "morphology": {
+        "energy": 19.127132415771484,
+        "lyapunov_delta": 0.0,
+        "is_stable": true,
+        "active_mass": 0.0,
+        "num_components": 0
+      }
+    },
+    {
+      "timestamp": "2026-04-30T01:02:50+08:00",
+      "elapsed": 297.34,
+      "state": "idle",
+      "phase": "birth",
+      "semantic_score": 0.226,
+      "energy_penalty": 0.13,
+      "combined_score": 0.096,
+      "dna": [
+        0.01396,
+        0.00084,
+        -0.01018,
+        0.00057,
+        0.00247
+      ],
+      "morphology": {
+        "energy": 19.127132415771484,
+        "lyapunov_delta": 0.0,
+        "is_stable": true,
+        "active_mass": 0.0,
+        "num_components": 0
+      }
+    },
+    {
+      "timestamp": "2026-04-30T01:02:56+08:00",
+      "elapsed": 303.5,
+      "state": "idle",
+      "phase": "birth",
+      "semantic_score": 0.226,
+      "energy_penalty": 0.13,
+      "combined_score": 0.096,
+      "dna": [
+        0.01396,
+        0.00084,
+        -0.01018,
+        0.00057,
+        0.00247
+      ],
+      "morphology": {
+        "energy": 19.127132415771484,
+        "lyapunov_delta": 0.0,
+        "is_stable": true,
+        "active_mass": 0.0,
+        "num_components": 0
+      }
+    },
+    {
+      "timestamp": "2026-04-30T01:03:02+08:00",
+      "elapsed": 309.21,
+      "state": "idle",
+      "phase": "birth",
+      "semantic_score": 0.226,
+      "energy_penalty": 0.13,
+      "combined_score": 0.096,
+      "dna": [
+        0.01396,
+        0.00084,
+        -0.01018,
+        0.00057,
+        0.00247
+      ],
+      "morphology": {
+        "energy": 19.127132415771484,
+        "lyapunov_delta": 0.0,
+        "is_stable": true,
+        "active_mass": 0.0,
+        "num_components": 0
+      }
+    },
+    {
+      "timestamp": "2026-04-30T01:03:07+08:00",
+      "elapsed": 314.89,
+      "state": "idle",
+      "phase": "birth",
+      "semantic_score": 0.226,
+      "energy_penalty": 0.13,
+      "combined_score": 0.096,
+      "dna": [
+        0.01396,
+        0.00084,
+        -0.01018,
+        0.00057,
+        0.00247
+      ],
+      "morphology": {
+        "energy": 19.127132415771484,
+        "lyapunov_delta": 0.0,
+        "is_stable": true,
+        "active_mass": 0.0,
+        "num_components": 0
+      }
+    },
+    {
+      "timestamp": "2026-04-30T01:03:14+08:00",
+      "elapsed": 321.27,
+      "state": "idle",
+      "phase": "birth",
+      "semantic_score": 0.226,
+      "energy_penalty": 0.13,
+      "combined_score": 0.096,
+      "dna": [
+        0.01396,
+        0.00084,
+        -0.01018,
+        0.00057,
+        0.00247
+      ],
+      "morphology": {
+        "energy": 19.127132415771484,
+        "lyapunov_delta": 0.0,
+        "is_stable": true,
+        "active_mass": 0.0,
+        "num_components": 0
+      }
+    },
+    {
+      "timestamp": "2026-04-30T01:03:19+08:00",
+      "elapsed": 326.68,
+      "state": "idle",
+      "phase": "birth",
+      "semantic_score": 0.226,
+      "energy_penalty": 0.13,
+      "combined_score": 0.096,
+      "dna": [
+        0.01396,
+        0.00084,
+        -0.01018,
+        0.00057,
+        0.00247
+      ],
+      "morphology": {
+        "energy": 19.127132415771484,
+        "lyapunov_delta": 0.0,
+        "is_stable": true,
+        "active_mass": 0.0,
+        "num_components": 0
+      }
+    },
+    {
+      "timestamp": "2026-04-30T01:03:24+08:00",
+      "elapsed": 331.76,
+      "state": "idle",
+      "phase": "birth",
+      "semantic_score": 0.226,
+      "energy_penalty": 0.13,
+      "combined_score": 0.096,
+      "dna": [
+        0.01396,
+        0.00084,
+        -0.01018,
+        0.00057,
+        0.00247
+      ],
+      "morphology": {
+        "energy": 19.127132415771484,
+        "lyapunov_delta": 0.0,
+        "is_stable": true,
+        "active_mass": 0.0,
+        "num_components": 0
+      }
+    },
+    {
+      "timestamp": "2026-04-30T01:03:29+08:00",
+      "elapsed": 336.86,
+      "state": "idle",
+      "phase": "birth",
+      "semantic_score": 0.226,
+      "energy_penalty": 0.13,
+      "combined_score": 0.096,
+      "dna": [
+        0.01396,
+        0.00084,
+        -0.01018,
+        0.00057,
+        0.00247
+      ],
+      "morphology": {
+        "energy": 19.127132415771484,
+        "lyapunov_delta": 0.0,
+        "is_stable": true,
+        "active_mass": 0.0,
+        "num_components": 0
+      }
+    },
+    {
+      "timestamp": "2026-04-30T01:03:35+08:00",
+      "elapsed": 341.95,
+      "state": "idle",
+      "phase": "birth",
+      "semantic_score": 0.226,
+      "energy_penalty": 0.13,
+      "combined_score": 0.096,
+      "dna": [
+        0.01396,
+        0.00084,
+        -0.01018,
+        0.00057,
+        0.00247
+      ],
+      "morphology": {
+        "energy": 19.127132415771484,
+        "lyapunov_delta": 0.0,
+        "is_stable": true,
+        "active_mass": 0.0,
+        "num_components": 0
+      }
+    },
+    {
+      "timestamp": "2026-04-30T01:03:40+08:00",
+      "elapsed": 347.12,
+      "state": "idle",
+      "phase": "birth",
+      "semantic_score": 0.226,
+      "energy_penalty": 0.13,
+      "combined_score": 0.096,
+      "dna": [
+        0.01396,
+        0.00084,
+        -0.01018,
+        0.00057,
+        0.00247
+      ],
+      "morphology": {
+        "energy": 19.127132415771484,
+        "lyapunov_delta": 0.0,
+        "is_stable": true,
+        "active_mass": 0.0,
+        "num_components": 0
+      }
+    },
+    {
+      "timestamp": "2026-04-30T01:03:45+08:00",
+      "elapsed": 352.62,
+      "state": "idle",
+      "phase": "birth",
+      "semantic_score": 0.226,
+      "energy_penalty": 0.13,
+      "combined_score": 0.096,
+      "dna": [
+        0.01396,
+        0.00084,
+        -0.01018,
+        0.00057,
+        0.00247
+      ],
+      "morphology": {
+        "energy": 19.127132415771484,
+        "lyapunov_delta": 0.0,
+        "is_stable": true,
+        "active_mass": 0.0,
+        "num_components": 0
+      }
+    },
+    {
+      "timestamp": "2026-04-30T01:03:51+08:00",
+      "elapsed": 358.2,
+      "state": "idle",
+      "phase": "birth",
+      "semantic_score": 0.226,
+      "energy_penalty": 0.13,
+      "combined_score": 0.096,
+      "dna": [
+        0.01396,
+        0.00084,
+        -0.01018,
+        0.00057,
+        0.00247
+      ],
+      "morphology": {
+        "energy": 19.127132415771484,
+        "lyapunov_delta": 0.0,
+        "is_stable": true,
+        "active_mass": 0.0,
+        "num_components": 0
+      }
+    },
+    {
+      "timestamp": "2026-04-30T01:03:56+08:00",
+      "elapsed": 363.71,
+      "state": "idle",
+      "phase": "birth",
+      "semantic_score": 0.226,
+      "energy_penalty": 0.13,
+      "combined_score": 0.096,
+      "dna": [
+        0.01396,
+        0.00084,
+        -0.01018,
+        0.00057,
+        0.00247
+      ],
+      "morphology": {
+        "energy": 19.127132415771484,
+        "lyapunov_delta": 0.0,
+        "is_stable": true,
+        "active_mass": 0.0,
+        "num_components": 0
+      }
+    },
+    {
+      "timestamp": "2026-04-30T01:04:02+08:00",
+      "elapsed": 368.98,
+      "state": "idle",
+      "phase": "birth",
+      "semantic_score": 0.226,
+      "energy_penalty": 0.13,
+      "combined_score": 0.096,
+      "dna": [
+        0.01396,
+        0.00084,
+        -0.01018,
+        0.00057,
+        0.00247
+      ],
+      "morphology": {
+        "energy": 19.127132415771484,
+        "lyapunov_delta": 0.0,
+        "is_stable": true,
+        "active_mass": 0.0,
+        "num_components": 0
+      }
+    },
+    {
+      "timestamp": "2026-04-30T01:04:07+08:00",
+      "elapsed": 374.14,
+      "state": "idle",
+      "phase": "birth",
+      "semantic_score": 0.226,
+      "energy_penalty": 0.13,
+      "combined_score": 0.096,
+      "dna": [
+        0.01396,
+        0.00084,
+        -0.01018,
+        0.00057,
+        0.00247
+      ],
+      "morphology": {
+        "energy": 19.127132415771484,
+        "lyapunov_delta": 0.0,
+        "is_stable": true,
+        "active_mass": 0.0,
+        "num_components": 0
+      }
+    },
+    {
+      "timestamp": "2026-04-30T01:04:12+08:00",
+      "elapsed": 379.53,
+      "state": "idle",
+      "phase": "birth",
+      "semantic_score": 0.226,
+      "energy_penalty": 0.13,
+      "combined_score": 0.096,
+      "dna": [
+        0.01396,
+        0.00084,
+        -0.01018,
+        0.00057,
+        0.00247
+      ],
+      "morphology": {
+        "energy": 19.127132415771484,
+        "lyapunov_delta": 0.0,
+        "is_stable": true,
+        "active_mass": 0.0,
+        "num_components": 0
+      }
+    },
+    {
+      "timestamp": "2026-04-30T01:04:18+08:00",
+      "elapsed": 384.98,
+      "state": "idle",
+      "phase": "birth",
+      "semantic_score": 0.226,
+      "energy_penalty": 0.13,
+      "combined_score": 0.096,
+      "dna": [
+        0.01396,
+        0.00084,
+        -0.01018,
+        0.00057,
+        0.00247
+      ],
+      "morphology": {
+        "energy": 19.127132415771484,
+        "lyapunov_delta": 0.0,
+        "is_stable": true,
+        "active_mass": 0.0,
+        "num_components": 0
+      }
+    },
+    {
+      "timestamp": "2026-04-30T01:04:23+08:00",
+      "elapsed": 390.7,
+      "state": "idle",
+      "phase": "birth",
+      "semantic_score": 0.226,
+      "energy_penalty": 0.13,
+      "combined_score": 0.096,
+      "dna": [
+        0.01396,
+        0.00084,
+        -0.01018,
+        0.00057,
+        0.00247
+      ],
+      "morphology": {
+        "energy": 19.127132415771484,
+        "lyapunov_delta": 0.0,
+        "is_stable": true,
+        "active_mass": 0.0,
+        "num_components": 0
+      }
+    },
+    {
+      "timestamp": "2026-04-30T01:04:30+08:00",
+      "elapsed": 397.3,
+      "state": "idle",
+      "phase": "birth",
+      "semantic_score": 0.226,
+      "energy_penalty": 0.13,
+      "combined_score": 0.096,
+      "dna": [
+        0.01396,
+        0.00084,
+        -0.01018,
+        0.00057,
+        0.00247
+      ],
+      "morphology": {
+        "energy": 19.127132415771484,
+        "lyapunov_delta": 0.0,
+        "is_stable": true,
+        "active_mass": 0.0,
+        "num_components": 0
+      }
+    },
+    {
+      "timestamp": "2026-04-30T01:04:37+08:00",
+      "elapsed": 404.04,
+      "state": "idle",
+      "phase": "birth",
+      "semantic_score": 0.226,
+      "energy_penalty": 0.13,
+      "combined_score": 0.096,
+      "dna": [
+        0.01396,
+        0.00084,
+        -0.01018,
+        0.00057,
+        0.00247
+      ],
+      "morphology": {
+        "energy": 19.127132415771484,
+        "lyapunov_delta": 0.0,
+        "is_stable": true,
+        "active_mass": 0.0,
+        "num_components": 0
+      }
+    },
+    {
+      "timestamp": "2026-04-30T01:04:43+08:00",
+      "elapsed": 410.81,
+      "state": "idle",
+      "phase": "birth",
+      "semantic_score": 0.226,
+      "energy_penalty": 0.13,
+      "combined_score": 0.096,
+      "dna": [
+        0.01396,
+        0.00084,
+        -0.01018,
+        0.00057,
+        0.00247
+      ],
+      "morphology": {
+        "energy": 19.127132415771484,
+        "lyapunov_delta": 0.0,
+        "is_stable": true,
+        "active_mass": 0.0,
+        "num_components": 0
+      }
+    },
+    {
+      "timestamp": "2026-04-30T01:04:49+08:00",
+      "elapsed": 416.61,
+      "state": "idle",
+      "phase": "birth",
+      "semantic_score": 0.226,
+      "energy_penalty": 0.13,
+      "combined_score": 0.096,
+      "dna": [
+        0.01396,
+        0.00084,
+        -0.01018,
+        0.00057,
+        0.00247
+      ],
+      "morphology": {
+        "energy": 19.127132415771484,
+        "lyapunov_delta": 0.0,
+        "is_stable": true,
+        "active_mass": 0.0,
+        "num_components": 0
+      }
+    },
+    {
+      "timestamp": "2026-04-30T01:04:54+08:00",
+      "elapsed": 421.87,
+      "state": "idle",
+      "phase": "birth",
+      "semantic_score": 0.226,
+      "energy_penalty": 0.13,
+      "combined_score": 0.096,
+      "dna": [
+        0.01396,
+        0.00084,
+        -0.01018,
+        0.00057,
+        0.00247
+      ],
+      "morphology": {
+        "energy": 19.127132415771484,
+        "lyapunov_delta": 0.0,
+        "is_stable": true,
+        "active_mass": 0.0,
+        "num_components": 0
+      }
+    },
+    {
+      "timestamp": "2026-04-30T01:05:00+08:00",
+      "elapsed": 427.02,
+      "state": "idle",
+      "phase": "birth",
+      "semantic_score": 0.226,
+      "energy_penalty": 0.13,
+      "combined_score": 0.096,
+      "dna": [
+        0.01396,
+        0.00084,
+        -0.01018,
+        0.00057,
+        0.00247
+      ],
+      "morphology": {
+        "energy": 19.127132415771484,
+        "lyapunov_delta": 0.0,
+        "is_stable": true,
+        "active_mass": 0.0,
+        "num_components": 0
+      }
+    },
+    {
+      "timestamp": "2026-04-30T01:05:05+08:00",
+      "elapsed": 432.09,
+      "state": "idle",
+      "phase": "birth",
+      "semantic_score": 0.226,
+      "energy_penalty": 0.13,
+      "combined_score": 0.096,
+      "dna": [
+        0.01396,
+        0.00084,
+        -0.01018,
+        0.00057,
+        0.00247
+      ],
+      "morphology": {
+        "energy": 19.127132415771484,
+        "lyapunov_delta": 0.0,
+        "is_stable": true,
+        "active_mass": 0.0,
+        "num_components": 0
+      }
+    },
+    {
+      "timestamp": "2026-04-30T01:05:10+08:00",
+      "elapsed": 437.19,
+      "state": "idle",
+      "phase": "birth",
+      "semantic_score": 0.226,
+      "energy_penalty": 0.13,
+      "combined_score": 0.096,
+      "dna": [
+        0.01396,
+        0.00084,
+        -0.01018,
+        0.00057,
+        0.00247
+      ],
+      "morphology": {
+        "energy": 19.127132415771484,
+        "lyapunov_delta": 0.0,
+        "is_stable": true,
+        "active_mass": 0.0,
+        "num_components": 0
+      }
+    },
+    {
+      "timestamp": "2026-04-30T01:05:15+08:00",
+      "elapsed": 442.3,
+      "state": "idle",
+      "phase": "birth",
+      "semantic_score": 0.226,
+      "energy_penalty": 0.13,
+      "combined_score": 0.096,
+      "dna": [
+        0.01396,
+        0.00084,
+        -0.01018,
+        0.00057,
+        0.00247
+      ],
+      "morphology": {
+        "energy": 19.127132415771484,
+        "lyapunov_delta": 0.0,
+        "is_stable": true,
+        "active_mass": 0.0,
+        "num_components": 0
+      }
+    },
+    {
+      "timestamp": "2026-04-30T01:05:20+08:00",
+      "elapsed": 447.35,
+      "state": "idle",
+      "phase": "birth",
+      "semantic_score": 0.226,
+      "energy_penalty": 0.13,
+      "combined_score": 0.096,
+      "dna": [
+        0.01396,
+        0.00084,
+        -0.01018,
+        0.00057,
+        0.00247
+      ],
+      "morphology": {
+        "energy": 19.127132415771484,
+        "lyapunov_delta": 0.0,
+        "is_stable": true,
+        "active_mass": 0.0,
+        "num_components": 0
+      }
+    },
+    {
+      "timestamp": "2026-04-30T01:05:25+08:00",
+      "elapsed": 452.44,
+      "state": "idle",
+      "phase": "birth",
+      "semantic_score": 0.226,
+      "energy_penalty": 0.13,
+      "combined_score": 0.096,
+      "dna": [
+        0.01396,
+        0.00084,
+        -0.01018,
+        0.00057,
+        0.00247
+      ],
+      "morphology": {
+        "energy": 19.127132415771484,
+        "lyapunov_delta": 0.0,
+        "is_stable": true,
+        "active_mass": 0.0,
+        "num_components": 0
+      }
+    },
+    {
+      "timestamp": "2026-04-30T01:05:30+08:00",
+      "elapsed": 457.55,
+      "state": "idle",
+      "phase": "birth",
+      "semantic_score": 0.226,
+      "energy_penalty": 0.13,
+      "combined_score": 0.096,
+      "dna": [
+        0.01396,
+        0.00084,
+        -0.01018,
+        0.00057,
+        0.00247
+      ],
+      "morphology": {
+        "energy": 19.127132415771484,
+        "lyapunov_delta": 0.0,
+        "is_stable": true,
+        "active_mass": 0.0,
+        "num_components": 0
+      }
+    },
+    {
+      "timestamp": "2026-04-30T01:05:35+08:00",
+      "elapsed": 462.62,
+      "state": "idle",
+      "phase": "birth",
+      "semantic_score": 0.226,
+      "energy_penalty": 0.13,
+      "combined_score": 0.096,
+      "dna": [
+        0.01396,
+        0.00084,
+        -0.01018,
+        0.00057,
+        0.00247
+      ],
+      "morphology": {
+        "energy": 19.127132415771484,
+        "lyapunov_delta": 0.0,
+        "is_stable": true,
+        "active_mass": 0.0,
+        "num_components": 0
+      }
+    },
+    {
+      "timestamp": "2026-04-30T01:05:41+08:00",
+      "elapsed": 468.1,
+      "state": "idle",
+      "phase": "birth",
+      "semantic_score": 0.226,
+      "energy_penalty": 0.13,
+      "combined_score": 0.096,
+      "dna": [
+        0.01396,
+        0.00084,
+        -0.01018,
+        0.00057,
+        0.00247
+      ],
+      "morphology": {
+        "energy": 19.127132415771484,
+        "lyapunov_delta": 0.0,
+        "is_stable": true,
+        "active_mass": 0.0,
+        "num_components": 0
+      }
+    },
+    {
+      "timestamp": "2026-04-30T01:05:46+08:00",
+      "elapsed": 473.63,
+      "state": "idle",
+      "phase": "birth",
+      "semantic_score": 0.226,
+      "energy_penalty": 0.13,
+      "combined_score": 0.096,
+      "dna": [
+        0.01396,
+        0.00084,
+        -0.01018,
+        0.00057,
+        0.00247
+      ],
+      "morphology": {
+        "energy": 19.127132415771484,
+        "lyapunov_delta": 0.0,
+        "is_stable": true,
+        "active_mass": 0.0,
+        "num_components": 0
+      }
+    },
+    {
+      "timestamp": "2026-04-30T01:05:52+08:00",
+      "elapsed": 479.1,
+      "state": "idle",
+      "phase": "birth",
+      "semantic_score": 0.226,
+      "energy_penalty": 0.13,
+      "combined_score": 0.096,
+      "dna": [
+        0.01396,
+        0.00084,
+        -0.01018,
+        0.00057,
+        0.00247
+      ],
+      "morphology": {
+        "energy": 19.127132415771484,
+        "lyapunov_delta": 0.0,
+        "is_stable": true,
+        "active_mass": 0.0,
+        "num_components": 0
+      }
+    },
+    {
+      "timestamp": "2026-04-30T01:05:57+08:00",
+      "elapsed": 484.57,
+      "state": "idle",
+      "phase": "birth",
+      "semantic_score": 0.226,
+      "energy_penalty": 0.13,
+      "combined_score": 0.096,
+      "dna": [
+        0.01396,
+        0.00084,
+        -0.01018,
+        0.00057,
+        0.00247
+      ],
+      "morphology": {
+        "energy": 19.127132415771484,
+        "lyapunov_delta": 0.0,
+        "is_stable": true,
+        "active_mass": 0.0,
+        "num_components": 0
+      }
+    },
+    {
+      "timestamp": "2026-04-30T01:06:03+08:00",
+      "elapsed": 489.94,
+      "state": "idle",
+      "phase": "birth",
+      "semantic_score": 0.226,
+      "energy_penalty": 0.13,
+      "combined_score": 0.096,
+      "dna": [
+        0.01396,
+        0.00084,
+        -0.01018,
+        0.00057,
+        0.00247
+      ],
+      "morphology": {
+        "energy": 19.127132415771484,
+        "lyapunov_delta": 0.0,
+        "is_stable": true,
+        "active_mass": 0.0,
+        "num_components": 0
+      }
+    },
+    {
+      "timestamp": "2026-04-30T01:06:08+08:00",
+      "elapsed": 495.31,
+      "state": "idle",
+      "phase": "birth",
+      "semantic_score": 0.226,
+      "energy_penalty": 0.13,
+      "combined_score": 0.096,
+      "dna": [
+        0.01396,
+        0.00084,
+        -0.01018,
+        0.00057,
+        0.00247
+      ],
+      "morphology": {
+        "energy": 19.127132415771484,
+        "lyapunov_delta": 0.0,
+        "is_stable": true,
+        "active_mass": 0.0,
+        "num_components": 0
+      }
+    },
+    {
+      "timestamp": "2026-04-30T01:06:13+08:00",
+      "elapsed": 500.42,
+      "state": "idle",
+      "phase": "birth",
+      "semantic_score": 0.226,
+      "energy_penalty": 0.13,
+      "combined_score": 0.096,
+      "dna": [
+        0.01396,
+        0.00084,
+        -0.01018,
+        0.00057,
+        0.00247
+      ],
+      "morphology": {
+        "energy": 19.127132415771484,
+        "lyapunov_delta": 0.0,
+        "is_stable": true,
+        "active_mass": 0.0,
+        "num_components": 0
+      }
+    }
+  ]
+}
