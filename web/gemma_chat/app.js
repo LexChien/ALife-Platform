@@ -22,6 +22,8 @@ const lifeSummary = document.getElementById("lifeSummary");
 const lifeRunStatus = document.getElementById("lifeRunStatus");
 const lifeScore = document.getElementById("lifeScore");
 const lifePhase = document.getElementById("lifePhase");
+const lifeLikeness = document.getElementById("lifeLikeness");
+const coEvoAction = document.getElementById("coEvoAction");
 const lifeMilestones = document.getElementById("lifeMilestones");
 const lifePhases = document.getElementById("lifePhases");
 const lifeRuns = document.getElementById("lifeRuns");
@@ -210,6 +212,29 @@ function renderLife(payload) {
       lifeVisual.src = `data:image/png;base64,${payload.live_frame}`;
       lifeVisual.hidden = false;
       if (lifeFallback) lifeFallback.hidden = true;
+    }
+    
+    // Update Co-Evolution Metrics (Phase H1 & H2)
+    if (lifeLikeness && payload.life_likeness !== undefined) {
+      lifeLikeness.textContent = `L ${formatScore(payload.life_likeness)}`;
+    }
+    if (coEvoAction && payload.co_evolution_action) {
+      coEvoAction.textContent = `ACTION: ${payload.co_evolution_action}`;
+    }
+    
+    // Physical-Mind Narrative Sync (Phase H1)
+    if (window.avatarNarrative && payload.live_state) {
+      const targetState = window.avatarNarrative.getAvatarState(payload.live_state);
+      const intensity = window.avatarNarrative.calculateIntensity({
+        energy: payload.energy,
+        num_components: payload.num_components
+      });
+      
+      // Update avatar state and pulse intensity
+      setAvatarState(targetState);
+      if (avatarWrap) {
+        avatarWrap.style.setProperty("--pulse-intensity", intensity);
+      }
     }
   }
 

@@ -1,0 +1,22 @@
+# configs/humanoid/narrative_avatar.yaml
+# Phase H1: Humanoid Foundation Configuration
+
+avatar:
+  name: "Lumen"
+  persona_id: "humanoid_v1"
+  visual_prototype: "Asian_Woman_Long_Black_Hair"
+  
+  phase_mapping:
+    birth: "idle"
+    split: "thinking"
+    fusion: "speaking"
+    
+  animation_rules:
+    intensity_scale: 1.2
+    pulse_enabled: true
+    
+prompt_injection:
+  enabled: true
+  template: |
+    [Physical Embodiment Status]
+    {{life_context_string}}

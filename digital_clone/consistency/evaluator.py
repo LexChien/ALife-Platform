@@ -1,3 +1,4 @@
+from typing import Any, Dict
 from evaluation.heuristics import contains_all, contains_any, make_result
 
 
@@ -23,3 +24,29 @@ class ConsistencyEvaluator:
             ) if persona.facts and ask_memory_sensitive else True,
         }
         return make_result(checks)
+
+    def evaluate_life_drift(
+        self,
+        persona: Dict[str, Any],
+        current_life_phase: str,
+        life_likeness: float,
+    ) -> Dict[str, Any]:
+        """
+        新增：計算 life_drift
+        若 persona 與當前 ASAL 生命階段不符 → drift 上升
+        """
+        expected_tone = {
+            "birth": "calm, nurturing",
+            "split": "analytical, exploratory",
+            "fusion": "integrated, reflective",
+        }.get(current_life_phase, "neutral")
+
+        actual_tone = persona.get("tone", "")
+        tone_match = 1.0 if expected_tone in actual_tone else 0.6
+
+        drift = (1.0 - tone_match) * 0.5 + (abs(life_likeness - 0.5) * 0.5)
+        return {
+            "life_drift": round(float(drift), 4),
+            "tone_match": float(tone_match),
+            "expected_tone": expected_tone,
+        }

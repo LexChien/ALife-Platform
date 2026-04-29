@@ -63,9 +63,35 @@ class NCA:
 
     def render(self):
         with torch.no_grad():
+            # PLAN 36 Visual Mapping:
+            # - Skin: White/Pink tones
+            # - Hair: Jet Black / Blue highlights
+            # - Lips: Coral Red
+            
+            # Map hidden channels to specific humanoid features
+            # channel 0-2: RGB, channel 3: Alpha
+            # We can use channels 4-6 to modulate the skin/hair/lip colors
+            
             rgb = self.state[0, :3, :, :].permute(1, 2, 0).cpu().numpy()
+            alpha = self.state[0, 3, :, :].cpu().numpy()
+            
+            # Base NCA rendering
             img = np.clip(rgb, 0, 1)
-            return Image.fromarray((img * 255).astype(np.uint8))
+            
+            # Apply color grading based on PLAN 36
+            # (Simplification: mix base NCA with humanoid palette)
+            humanoid_palette = np.zeros_like(img)
+            humanoid_palette[..., 0] = 0.95  # Coral Red (R)
+            humanoid_palette[..., 1] = 0.50  # Coral Red (G)
+            humanoid_palette[..., 2] = 0.45  # Coral Red (B)
+            
+            # Blend based on channel 4 (Lip/Vitality channel)
+            mask = self.state[0, 4, :, :].cpu().numpy()
+            mask = np.clip(mask, 0, 1)[..., None]
+            
+            final_img = (1 - mask) * img + mask * humanoid_palette
+            
+            return Image.fromarray((np.clip(final_img, 0, 1) * 255).astype(np.uint8))
 
     def stats(self):
         with torch.no_grad():
