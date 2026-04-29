@@ -22,8 +22,6 @@ const lifeSummary = document.getElementById("lifeSummary");
 const lifeRunStatus = document.getElementById("lifeRunStatus");
 const lifeScore = document.getElementById("lifeScore");
 const lifePhase = document.getElementById("lifePhase");
-const lifeLikeness = document.getElementById("lifeLikeness");
-const coEvoAction = document.getElementById("coEvoAction");
 const lifeMilestones = document.getElementById("lifeMilestones");
 const lifePhases = document.getElementById("lifePhases");
 const lifeRuns = document.getElementById("lifeRuns");
@@ -204,38 +202,6 @@ function renderLife(payload) {
       lifeSummary.textContent = payload?.summary || "ASAL 進度整合未啟用";
     }
     return;
-  }
-
-  // Handle live frame from LiveLifeManager
-  if (payload.live_frame) {
-    if (lifeVisual) {
-      lifeVisual.src = `data:image/png;base64,${payload.live_frame}`;
-      lifeVisual.hidden = false;
-      if (lifeFallback) lifeFallback.hidden = true;
-    }
-    
-    // Update Co-Evolution Metrics (Phase H1 & H2)
-    if (lifeLikeness && payload.life_likeness !== undefined) {
-      lifeLikeness.textContent = `L ${formatScore(payload.life_likeness)}`;
-    }
-    if (coEvoAction && payload.co_evolution_action) {
-      coEvoAction.textContent = `ACTION: ${payload.co_evolution_action}`;
-    }
-    
-    // Physical-Mind Narrative Sync (Phase H1)
-    if (window.avatarNarrative && payload.live_state) {
-      const targetState = window.avatarNarrative.getAvatarState(payload.live_state);
-      const intensity = window.avatarNarrative.calculateIntensity({
-        energy: payload.energy,
-        num_components: payload.num_components
-      });
-      
-      // Update avatar state and pulse intensity
-      setAvatarState(targetState);
-      if (avatarWrap) {
-        avatarWrap.style.setProperty("--pulse-intensity", intensity);
-      }
-    }
   }
 
   const latest = payload.latest_run || {};
@@ -814,21 +780,6 @@ for (const button of quickButtons) {
 }
 
 appendSystemMessage("Gemma 4 網頁對話已就緒。你可以打字，或按麥克風直接說話。");
-async function pollLiveLife() {
-  try {
-    const response = await fetch("/api/life");
-    const payload = await response.json();
-    if (payload.ok) {
-      renderLife(payload);
-    }
-  } catch (err) {
-    // Silent fail for polling
-  }
-}
-
-// Start polling for live frames
-setInterval(pollLiveLife, 150);
-
 fetchHealth();
 syncAvatarState();
 messageInput.focus();

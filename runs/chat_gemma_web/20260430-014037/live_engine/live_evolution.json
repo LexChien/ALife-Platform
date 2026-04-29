@@ -1,0 +1,58 @@
+{
+  "system": "live_nca",
+  "start_time": "2026-04-30T01:40:45+08:00",
+  "evolution_history": [
+    {
+      "timestamp": "2026-04-30T01:40:39+08:00",
+      "elapsed": 0.17,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": -1.0,
+      "best_combined": -1.0,
+      "semantic_score": 0.0,
+      "energy_penalty": 0.0,
+      "dna": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "morphology": {
+        "energy": 13.0,
+        "lyapunov_delta": 0.0,
+        "clamped": false,
+        "is_stable": true,
+        "active_mass": 1.0,
+        "mass_ratio": 0.0001,
+        "num_components": 1
+      }
+    },
+    {
+      "timestamp": "2026-04-30T01:40:45+08:00",
+      "elapsed": 6.48,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": -1.0,
+      "best_combined": -1.0,
+      "semantic_score": 0.0,
+      "energy_penalty": 0.0,
+      "dna": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "morphology": {
+        "energy": 13.0,
+        "lyapunov_delta": 0.0,
+        "clamped": false,
+        "is_stable": true,
+        "active_mass": 1.0,
+        "mass_ratio": 0.0001,
+        "num_components": 1
+      }
+    }
+  ]
+}

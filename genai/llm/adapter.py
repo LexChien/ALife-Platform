@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-import json
 from abc import ABC, abstractmethod
 from dataclasses import dataclass, field
 from typing import Any
@@ -11,7 +10,6 @@ class LLMRequest:
     prompt: str
     context: str | None = None
     system: str | None = None
-    life_context: dict[str, Any] | None = None  # 新增：ASAL metrics
     max_tokens: int | None = None
     temperature: float | None = None
     stop: list[str] | None = None
@@ -52,11 +50,8 @@ class BaseLLMAdapter(ABC):
     def build_prompt(self, request: LLMRequest) -> str:
         parts = []
         if request.system:
-            parts.append(f"<|system|>\n{request.system}")
-        if request.life_context:
-            life_str = json.dumps(request.life_context, ensure_ascii=False)
-            parts.append(f"<|life_context|>\n{life_str}")
+            parts.append(f"[SYSTEM]\n{request.system}")
         if request.context:
-            parts.append(f"<|context|>\n{request.context}")
-        parts.append(f"<|user|>\n{request.prompt}")
+            parts.append(f"[CONTEXT]\n{request.context}")
+        parts.append(f"[USER]\n{request.prompt}")
         return "\n\n".join(parts)

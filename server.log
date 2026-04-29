@@ -1,0 +1,46 @@
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 59530)
+Traceback (most recent call last):
+  File "/Users/lexchien/Documents/AI/ALife-Platform/apps/gemma_web.py", line 65, in do_POST
+    response = self.app.chat(
+  File "/Users/lexchien/Documents/AI/ALife-Platform/genai/web/service.py", line 126, in chat
+    response = self.adapter.generate(request)
+  File "/Users/lexchien/Documents/AI/ALife-Platform/genai/llm/backends/llama_cpp.py", line 406, in generate
+    text, out, driver = self._generate_once(request)
+  File "/Users/lexchien/Documents/AI/ALife-Platform/genai/llm/backends/llama_cpp.py", line 346, in _generate_once
+    proc = subprocess.run(
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/subprocess.py", line 507, in run
+    stdout, stderr = process.communicate(input, timeout=timeout)
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/subprocess.py", line 1134, in communicate
+    stdout, stderr = self._communicate(input, endtime, timeout)
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/subprocess.py", line 1972, in _communicate
+    self._check_timeout(endtime, orig_timeout,
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/subprocess.py", line 1178, in _check_timeout
+    raise TimeoutExpired(
+subprocess.TimeoutExpired: Command '['tools/llama_completion', '-m', 'models/gemma/gemma.gguf', '-c', '4096', '-n', '256', '--temp', '0.7', '--no-display-prompt', '-ngl', '0', '-p', 'USER: 你是誰\nASSISTANT:']' timed out after 180 seconds
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/socketserver.py", line 683, in process_request_thread
+    self.finish_request(request, client_address)
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/socketserver.py", line 360, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/socketserver.py", line 747, in __init__
+    self.handle()
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/http/server.py", line 434, in handle
+    self.handle_one_request()
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/http/server.py", line 422, in handle_one_request
+    method()
+  File "/Users/lexchien/Documents/AI/ALife-Platform/apps/gemma_web.py", line 85, in do_POST
+    self._send_json(
+  File "/Users/lexchien/Documents/AI/ALife-Platform/apps/gemma_web.py", line 153, in _send_json
+    self.end_headers()
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/http/server.py", line 536, in end_headers
+    self.flush_headers()
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/http/server.py", line 540, in flush_headers
+    self.wfile.write(b"".join(self._headers_buffer))
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/socketserver.py", line 826, in write
+    self._sock.sendall(b)
+BrokenPipeError: [Errno 32] Broken pipe
+----------------------------------------

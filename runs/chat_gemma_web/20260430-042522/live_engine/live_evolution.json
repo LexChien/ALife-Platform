@@ -1,0 +1,6175 @@
+{
+  "system": "live_nca",
+  "start_time": "2026-04-30T04:47:14+08:00",
+  "evolution_history": [
+    {
+      "timestamp": "2026-04-30T04:25:24+08:00",
+      "elapsed": 0.13,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": -1.0,
+      "best_combined": -1.0,
+      "semantic_score": 0.0,
+      "energy_penalty": 0.0,
+      "dna": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "morphology": {
+        "energy": 4280.0,
+        "lyapunov_delta": 0.0,
+        "clamped": false,
+        "is_stable": true,
+        "active_mass": 320.0,
+        "mass_ratio": 0.0195,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 320.0,
+          "hair_mass": 440.0,
+          "lip_vitality": 0.01953125
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:25:31+08:00",
+      "elapsed": 6.79,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": -1.0,
+      "best_combined": -1.0,
+      "semantic_score": 0.0,
+      "energy_penalty": 0.0,
+      "dna": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "morphology": {
+        "energy": 4280.0,
+        "lyapunov_delta": 0.0,
+        "clamped": false,
+        "is_stable": true,
+        "active_mass": 320.0,
+        "mass_ratio": 0.0195,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 320.0,
+          "hair_mass": 440.0,
+          "lip_vitality": 0.01953125
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:25:38+08:00",
+      "elapsed": 14.15,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": -1.0,
+      "best_combined": -1.0,
+      "semantic_score": 0.0,
+      "energy_penalty": 0.0,
+      "dna": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "morphology": {
+        "energy": 4280.0,
+        "lyapunov_delta": 0.0,
+        "clamped": false,
+        "is_stable": true,
+        "active_mass": 320.0,
+        "mass_ratio": 0.0195,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 320.0,
+          "hair_mass": 440.0,
+          "lip_vitality": 0.01953125
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:25:44+08:00",
+      "elapsed": 20.46,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": -1.0,
+      "best_combined": -1.0,
+      "semantic_score": 0.0,
+      "energy_penalty": 0.0,
+      "dna": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "morphology": {
+        "energy": 4280.0,
+        "lyapunov_delta": 0.0,
+        "clamped": false,
+        "is_stable": true,
+        "active_mass": 320.0,
+        "mass_ratio": 0.0195,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 320.0,
+          "hair_mass": 440.0,
+          "lip_vitality": 0.01953125
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:25:51+08:00",
+      "elapsed": 27.35,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": -1.0,
+      "best_combined": -1.0,
+      "semantic_score": 0.0,
+      "energy_penalty": 0.0,
+      "dna": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "morphology": {
+        "energy": 4280.0,
+        "lyapunov_delta": 0.0,
+        "clamped": false,
+        "is_stable": true,
+        "active_mass": 320.0,
+        "mass_ratio": 0.0195,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 320.0,
+          "hair_mass": 440.0,
+          "lip_vitality": 0.01953125
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:25:58+08:00",
+      "elapsed": 34.28,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": -1.0,
+      "best_combined": -1.0,
+      "semantic_score": 0.0,
+      "energy_penalty": 0.0,
+      "dna": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "morphology": {
+        "energy": 4280.0,
+        "lyapunov_delta": 0.0,
+        "clamped": false,
+        "is_stable": true,
+        "active_mass": 320.0,
+        "mass_ratio": 0.0195,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 320.0,
+          "hair_mass": 440.0,
+          "lip_vitality": 0.01953125
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:26:05+08:00",
+      "elapsed": 41.66,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": -1.0,
+      "best_combined": -1.0,
+      "semantic_score": 0.0,
+      "energy_penalty": 0.0,
+      "dna": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "morphology": {
+        "energy": 4280.0,
+        "lyapunov_delta": 0.0,
+        "clamped": false,
+        "is_stable": true,
+        "active_mass": 320.0,
+        "mass_ratio": 0.0195,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 320.0,
+          "hair_mass": 440.0,
+          "lip_vitality": 0.01953125
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:26:12+08:00",
+      "elapsed": 48.36,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": -1.0,
+      "best_combined": -1.0,
+      "semantic_score": 0.0,
+      "energy_penalty": 0.0,
+      "dna": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "morphology": {
+        "energy": 4280.0,
+        "lyapunov_delta": 0.0,
+        "clamped": false,
+        "is_stable": true,
+        "active_mass": 320.0,
+        "mass_ratio": 0.0195,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 320.0,
+          "hair_mass": 440.0,
+          "lip_vitality": 0.01953125
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:26:18+08:00",
+      "elapsed": 54.59,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": -1.0,
+      "best_combined": -1.0,
+      "semantic_score": 0.0,
+      "energy_penalty": 0.0,
+      "dna": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "morphology": {
+        "energy": 4280.0,
+        "lyapunov_delta": 0.0,
+        "clamped": false,
+        "is_stable": true,
+        "active_mass": 320.0,
+        "mass_ratio": 0.0195,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 320.0,
+          "hair_mass": 440.0,
+          "lip_vitality": 0.01953125
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:26:25+08:00",
+      "elapsed": 60.79,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": -1.0,
+      "best_combined": -1.0,
+      "semantic_score": 0.0,
+      "energy_penalty": 0.0,
+      "dna": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "morphology": {
+        "energy": 4280.0,
+        "lyapunov_delta": 0.0,
+        "clamped": false,
+        "is_stable": true,
+        "active_mass": 320.0,
+        "mass_ratio": 0.0195,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 320.0,
+          "hair_mass": 440.0,
+          "lip_vitality": 0.01953125
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:26:31+08:00",
+      "elapsed": 67.06,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": -1.0,
+      "best_combined": -1.0,
+      "semantic_score": 0.0,
+      "energy_penalty": 0.0,
+      "dna": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "morphology": {
+        "energy": 4280.0,
+        "lyapunov_delta": 0.0,
+        "clamped": false,
+        "is_stable": true,
+        "active_mass": 320.0,
+        "mass_ratio": 0.0195,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 320.0,
+          "hair_mass": 440.0,
+          "lip_vitality": 0.01953125
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:26:37+08:00",
+      "elapsed": 73.11,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": -1.0,
+      "best_combined": -1.0,
+      "semantic_score": 0.0,
+      "energy_penalty": 0.0,
+      "dna": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "morphology": {
+        "energy": 4280.0,
+        "lyapunov_delta": 0.0,
+        "clamped": false,
+        "is_stable": true,
+        "active_mass": 320.0,
+        "mass_ratio": 0.0195,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 320.0,
+          "hair_mass": 440.0,
+          "lip_vitality": 0.01953125
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:26:43+08:00",
+      "elapsed": 79.13,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": -1.0,
+      "best_combined": -1.0,
+      "semantic_score": 0.0,
+      "energy_penalty": 0.0,
+      "dna": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "morphology": {
+        "energy": 4280.0,
+        "lyapunov_delta": 0.0,
+        "clamped": false,
+        "is_stable": true,
+        "active_mass": 320.0,
+        "mass_ratio": 0.0195,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 320.0,
+          "hair_mass": 440.0,
+          "lip_vitality": 0.01953125
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:26:49+08:00",
+      "elapsed": 85.2,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": -1.0,
+      "best_combined": -1.0,
+      "semantic_score": 0.0,
+      "energy_penalty": 0.0,
+      "dna": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "morphology": {
+        "energy": 4280.0,
+        "lyapunov_delta": 0.0,
+        "clamped": false,
+        "is_stable": true,
+        "active_mass": 320.0,
+        "mass_ratio": 0.0195,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 320.0,
+          "hair_mass": 440.0,
+          "lip_vitality": 0.01953125
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:26:55+08:00",
+      "elapsed": 91.29,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": -1.0,
+      "best_combined": -1.0,
+      "semantic_score": 0.0,
+      "energy_penalty": 0.0,
+      "dna": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "morphology": {
+        "energy": 4280.0,
+        "lyapunov_delta": 0.0,
+        "clamped": false,
+        "is_stable": true,
+        "active_mass": 320.0,
+        "mass_ratio": 0.0195,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 320.0,
+          "hair_mass": 440.0,
+          "lip_vitality": 0.01953125
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:27:01+08:00",
+      "elapsed": 97.36,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": -1.0,
+      "best_combined": -1.0,
+      "semantic_score": 0.0,
+      "energy_penalty": 0.0,
+      "dna": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "morphology": {
+        "energy": 4280.0,
+        "lyapunov_delta": 0.0,
+        "clamped": false,
+        "is_stable": true,
+        "active_mass": 320.0,
+        "mass_ratio": 0.0195,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 320.0,
+          "hair_mass": 440.0,
+          "lip_vitality": 0.01953125
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:27:07+08:00",
+      "elapsed": 103.41,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": -1.0,
+      "best_combined": -1.0,
+      "semantic_score": 0.0,
+      "energy_penalty": 0.0,
+      "dna": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "morphology": {
+        "energy": 4280.0,
+        "lyapunov_delta": 0.0,
+        "clamped": false,
+        "is_stable": true,
+        "active_mass": 320.0,
+        "mass_ratio": 0.0195,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 320.0,
+          "hair_mass": 440.0,
+          "lip_vitality": 0.01953125
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:27:13+08:00",
+      "elapsed": 109.46,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": -1.0,
+      "best_combined": -1.0,
+      "semantic_score": 0.0,
+      "energy_penalty": 0.0,
+      "dna": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "morphology": {
+        "energy": 4280.0,
+        "lyapunov_delta": 0.0,
+        "clamped": false,
+        "is_stable": true,
+        "active_mass": 320.0,
+        "mass_ratio": 0.0195,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 320.0,
+          "hair_mass": 440.0,
+          "lip_vitality": 0.01953125
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:27:19+08:00",
+      "elapsed": 115.57,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": -1.0,
+      "best_combined": -1.0,
+      "semantic_score": 0.0,
+      "energy_penalty": 0.0,
+      "dna": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "morphology": {
+        "energy": 4280.0,
+        "lyapunov_delta": 0.0,
+        "clamped": false,
+        "is_stable": true,
+        "active_mass": 320.0,
+        "mass_ratio": 0.0195,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 320.0,
+          "hair_mass": 440.0,
+          "lip_vitality": 0.01953125
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:27:26+08:00",
+      "elapsed": 121.91,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": -1.0,
+      "best_combined": -1.0,
+      "semantic_score": 0.0,
+      "energy_penalty": 0.0,
+      "dna": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "morphology": {
+        "energy": 4280.0,
+        "lyapunov_delta": 0.0,
+        "clamped": false,
+        "is_stable": true,
+        "active_mass": 320.0,
+        "mass_ratio": 0.0195,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 320.0,
+          "hair_mass": 440.0,
+          "lip_vitality": 0.01953125
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:27:32+08:00",
+      "elapsed": 128.21,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": -1.0,
+      "best_combined": -1.0,
+      "semantic_score": 0.0,
+      "energy_penalty": 0.0,
+      "dna": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "morphology": {
+        "energy": 4280.0,
+        "lyapunov_delta": 0.0,
+        "clamped": false,
+        "is_stable": true,
+        "active_mass": 320.0,
+        "mass_ratio": 0.0195,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 320.0,
+          "hair_mass": 440.0,
+          "lip_vitality": 0.01953125
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:27:38+08:00",
+      "elapsed": 134.53,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": -1.0,
+      "best_combined": -1.0,
+      "semantic_score": 0.0,
+      "energy_penalty": 0.0,
+      "dna": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "morphology": {
+        "energy": 4280.0,
+        "lyapunov_delta": 0.0,
+        "clamped": false,
+        "is_stable": true,
+        "active_mass": 320.0,
+        "mass_ratio": 0.0195,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 320.0,
+          "hair_mass": 440.0,
+          "lip_vitality": 0.01953125
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:27:45+08:00",
+      "elapsed": 140.87,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": -1.0,
+      "best_combined": -1.0,
+      "semantic_score": 0.0,
+      "energy_penalty": 0.0,
+      "dna": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "morphology": {
+        "energy": 4280.0,
+        "lyapunov_delta": 0.0,
+        "clamped": false,
+        "is_stable": true,
+        "active_mass": 320.0,
+        "mass_ratio": 0.0195,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 320.0,
+          "hair_mass": 440.0,
+          "lip_vitality": 0.01953125
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:27:52+08:00",
+      "elapsed": 147.88,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": -1.0,
+      "best_combined": -1.0,
+      "semantic_score": 0.0,
+      "energy_penalty": 0.0,
+      "dna": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "morphology": {
+        "energy": 4280.0,
+        "lyapunov_delta": 0.0,
+        "clamped": false,
+        "is_stable": true,
+        "active_mass": 320.0,
+        "mass_ratio": 0.0195,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 320.0,
+          "hair_mass": 440.0,
+          "lip_vitality": 0.01953125
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:27:59+08:00",
+      "elapsed": 155.4,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": -1.0,
+      "best_combined": -1.0,
+      "semantic_score": 0.0,
+      "energy_penalty": 0.0,
+      "dna": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "morphology": {
+        "energy": 4280.0,
+        "lyapunov_delta": 0.0,
+        "clamped": false,
+        "is_stable": true,
+        "active_mass": 320.0,
+        "mass_ratio": 0.0195,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 320.0,
+          "hair_mass": 440.0,
+          "lip_vitality": 0.01953125
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:28:07+08:00",
+      "elapsed": 162.99,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": -1.0,
+      "best_combined": -1.0,
+      "semantic_score": 0.0,
+      "energy_penalty": 0.0,
+      "dna": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "morphology": {
+        "energy": 4280.0,
+        "lyapunov_delta": 0.0,
+        "clamped": false,
+        "is_stable": true,
+        "active_mass": 320.0,
+        "mass_ratio": 0.0195,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 320.0,
+          "hair_mass": 440.0,
+          "lip_vitality": 0.01953125
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:28:14+08:00",
+      "elapsed": 169.99,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": -1.0,
+      "best_combined": -1.0,
+      "semantic_score": 0.0,
+      "energy_penalty": 0.0,
+      "dna": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "morphology": {
+        "energy": 4280.0,
+        "lyapunov_delta": 0.0,
+        "clamped": false,
+        "is_stable": true,
+        "active_mass": 320.0,
+        "mass_ratio": 0.0195,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 320.0,
+          "hair_mass": 440.0,
+          "lip_vitality": 0.01953125
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:28:21+08:00",
+      "elapsed": 176.86,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": -1.0,
+      "best_combined": -1.0,
+      "semantic_score": 0.0,
+      "energy_penalty": 0.0,
+      "dna": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "morphology": {
+        "energy": 4280.0,
+        "lyapunov_delta": 0.0,
+        "clamped": false,
+        "is_stable": true,
+        "active_mass": 320.0,
+        "mass_ratio": 0.0195,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 320.0,
+          "hair_mass": 440.0,
+          "lip_vitality": 0.01953125
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:28:27+08:00",
+      "elapsed": 183.14,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": -1.0,
+      "best_combined": -1.0,
+      "semantic_score": 0.0,
+      "energy_penalty": 0.0,
+      "dna": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "morphology": {
+        "energy": 4280.0,
+        "lyapunov_delta": 0.0,
+        "clamped": false,
+        "is_stable": true,
+        "active_mass": 320.0,
+        "mass_ratio": 0.0195,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 320.0,
+          "hair_mass": 440.0,
+          "lip_vitality": 0.01953125
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:28:33+08:00",
+      "elapsed": 189.39,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": -1.0,
+      "best_combined": -1.0,
+      "semantic_score": 0.0,
+      "energy_penalty": 0.0,
+      "dna": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "morphology": {
+        "energy": 4280.0,
+        "lyapunov_delta": 0.0,
+        "clamped": false,
+        "is_stable": true,
+        "active_mass": 320.0,
+        "mass_ratio": 0.0195,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 320.0,
+          "hair_mass": 440.0,
+          "lip_vitality": 0.01953125
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:28:39+08:00",
+      "elapsed": 195.63,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": -1.0,
+      "best_combined": -1.0,
+      "semantic_score": 0.0,
+      "energy_penalty": 0.0,
+      "dna": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "morphology": {
+        "energy": 4280.0,
+        "lyapunov_delta": 0.0,
+        "clamped": false,
+        "is_stable": true,
+        "active_mass": 320.0,
+        "mass_ratio": 0.0195,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 320.0,
+          "hair_mass": 440.0,
+          "lip_vitality": 0.01953125
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:28:46+08:00",
+      "elapsed": 201.89,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": -1.0,
+      "best_combined": -1.0,
+      "semantic_score": 0.0,
+      "energy_penalty": 0.0,
+      "dna": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "morphology": {
+        "energy": 4280.0,
+        "lyapunov_delta": 0.0,
+        "clamped": false,
+        "is_stable": true,
+        "active_mass": 320.0,
+        "mass_ratio": 0.0195,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 320.0,
+          "hair_mass": 440.0,
+          "lip_vitality": 0.01953125
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:28:52+08:00",
+      "elapsed": 208.33,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": -1.0,
+      "best_combined": -1.0,
+      "semantic_score": 0.0,
+      "energy_penalty": 0.0,
+      "dna": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "morphology": {
+        "energy": 4280.0,
+        "lyapunov_delta": 0.0,
+        "clamped": false,
+        "is_stable": true,
+        "active_mass": 320.0,
+        "mass_ratio": 0.0195,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 320.0,
+          "hair_mass": 440.0,
+          "lip_vitality": 0.01953125
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:28:58+08:00",
+      "elapsed": 214.73,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": -1.0,
+      "best_combined": -1.0,
+      "semantic_score": 0.0,
+      "energy_penalty": 0.0,
+      "dna": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "morphology": {
+        "energy": 4280.0,
+        "lyapunov_delta": 0.0,
+        "clamped": false,
+        "is_stable": true,
+        "active_mass": 320.0,
+        "mass_ratio": 0.0195,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 320.0,
+          "hair_mass": 440.0,
+          "lip_vitality": 0.01953125
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:29:05+08:00",
+      "elapsed": 221.13,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": -1.0,
+      "best_combined": -1.0,
+      "semantic_score": 0.0,
+      "energy_penalty": 0.0,
+      "dna": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "morphology": {
+        "energy": 4280.0,
+        "lyapunov_delta": 0.0,
+        "clamped": false,
+        "is_stable": true,
+        "active_mass": 320.0,
+        "mass_ratio": 0.0195,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 320.0,
+          "hair_mass": 440.0,
+          "lip_vitality": 0.01953125
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:29:11+08:00",
+      "elapsed": 227.48,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": -1.0,
+      "best_combined": -1.0,
+      "semantic_score": 0.0,
+      "energy_penalty": 0.0,
+      "dna": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "morphology": {
+        "energy": 4280.0,
+        "lyapunov_delta": 0.0,
+        "clamped": false,
+        "is_stable": true,
+        "active_mass": 320.0,
+        "mass_ratio": 0.0195,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 320.0,
+          "hair_mass": 440.0,
+          "lip_vitality": 0.01953125
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:29:18+08:00",
+      "elapsed": 233.77,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": -1.0,
+      "best_combined": -1.0,
+      "semantic_score": 0.0,
+      "energy_penalty": 0.0,
+      "dna": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "morphology": {
+        "energy": 4280.0,
+        "lyapunov_delta": 0.0,
+        "clamped": false,
+        "is_stable": true,
+        "active_mass": 320.0,
+        "mass_ratio": 0.0195,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 320.0,
+          "hair_mass": 440.0,
+          "lip_vitality": 0.01953125
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:29:24+08:00",
+      "elapsed": 239.87,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": -1.0,
+      "best_combined": -1.0,
+      "semantic_score": 0.0,
+      "energy_penalty": 0.0,
+      "dna": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "morphology": {
+        "energy": 4280.0,
+        "lyapunov_delta": 0.0,
+        "clamped": false,
+        "is_stable": true,
+        "active_mass": 320.0,
+        "mass_ratio": 0.0195,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 320.0,
+          "hair_mass": 440.0,
+          "lip_vitality": 0.01953125
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:29:30+08:00",
+      "elapsed": 246.0,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": -1.0,
+      "best_combined": -1.0,
+      "semantic_score": 0.0,
+      "energy_penalty": 0.0,
+      "dna": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "morphology": {
+        "energy": 4280.0,
+        "lyapunov_delta": 0.0,
+        "clamped": false,
+        "is_stable": true,
+        "active_mass": 320.0,
+        "mass_ratio": 0.0195,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 320.0,
+          "hair_mass": 440.0,
+          "lip_vitality": 0.01953125
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:29:36+08:00",
+      "elapsed": 252.16,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": -1.0,
+      "best_combined": -1.0,
+      "semantic_score": 0.0,
+      "energy_penalty": 0.0,
+      "dna": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "morphology": {
+        "energy": 4280.0,
+        "lyapunov_delta": 0.0,
+        "clamped": false,
+        "is_stable": true,
+        "active_mass": 320.0,
+        "mass_ratio": 0.0195,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 320.0,
+          "hair_mass": 440.0,
+          "lip_vitality": 0.01953125
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:29:42+08:00",
+      "elapsed": 258.23,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": -1.0,
+      "best_combined": -1.0,
+      "semantic_score": 0.0,
+      "energy_penalty": 0.0,
+      "dna": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "morphology": {
+        "energy": 4280.0,
+        "lyapunov_delta": 0.0,
+        "clamped": false,
+        "is_stable": true,
+        "active_mass": 320.0,
+        "mass_ratio": 0.0195,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 320.0,
+          "hair_mass": 440.0,
+          "lip_vitality": 0.01953125
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:29:48+08:00",
+      "elapsed": 264.31,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": -1.0,
+      "best_combined": -1.0,
+      "semantic_score": 0.0,
+      "energy_penalty": 0.0,
+      "dna": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "morphology": {
+        "energy": 4280.0,
+        "lyapunov_delta": 0.0,
+        "clamped": false,
+        "is_stable": true,
+        "active_mass": 320.0,
+        "mass_ratio": 0.0195,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 320.0,
+          "hair_mass": 440.0,
+          "lip_vitality": 0.01953125
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:29:54+08:00",
+      "elapsed": 270.4,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": -1.0,
+      "best_combined": -1.0,
+      "semantic_score": 0.0,
+      "energy_penalty": 0.0,
+      "dna": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "morphology": {
+        "energy": 4280.0,
+        "lyapunov_delta": 0.0,
+        "clamped": false,
+        "is_stable": true,
+        "active_mass": 320.0,
+        "mass_ratio": 0.0195,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 320.0,
+          "hair_mass": 440.0,
+          "lip_vitality": 0.01953125
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:30:00+08:00",
+      "elapsed": 276.54,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": -1.0,
+      "best_combined": -1.0,
+      "semantic_score": 0.0,
+      "energy_penalty": 0.0,
+      "dna": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "morphology": {
+        "energy": 4280.0,
+        "lyapunov_delta": 0.0,
+        "clamped": false,
+        "is_stable": true,
+        "active_mass": 320.0,
+        "mass_ratio": 0.0195,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 320.0,
+          "hair_mass": 440.0,
+          "lip_vitality": 0.01953125
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:30:07+08:00",
+      "elapsed": 283.0,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": -1.0,
+      "best_combined": -1.0,
+      "semantic_score": 0.0,
+      "energy_penalty": 0.0,
+      "dna": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "morphology": {
+        "energy": 4280.0,
+        "lyapunov_delta": 0.0,
+        "clamped": false,
+        "is_stable": true,
+        "active_mass": 320.0,
+        "mass_ratio": 0.0195,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 320.0,
+          "hair_mass": 440.0,
+          "lip_vitality": 0.01953125
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:30:14+08:00",
+      "elapsed": 290.65,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": -1.0,
+      "best_combined": -1.0,
+      "semantic_score": 0.0,
+      "energy_penalty": 0.0,
+      "dna": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "morphology": {
+        "energy": 4280.0,
+        "lyapunov_delta": 0.0,
+        "clamped": false,
+        "is_stable": true,
+        "active_mass": 320.0,
+        "mass_ratio": 0.0195,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 320.0,
+          "hair_mass": 440.0,
+          "lip_vitality": 0.01953125
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:30:22+08:00",
+      "elapsed": 298.25,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": -1.0,
+      "best_combined": -1.0,
+      "semantic_score": 0.0,
+      "energy_penalty": 0.0,
+      "dna": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "morphology": {
+        "energy": 4280.0,
+        "lyapunov_delta": 0.0,
+        "clamped": false,
+        "is_stable": true,
+        "active_mass": 320.0,
+        "mass_ratio": 0.0195,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 320.0,
+          "hair_mass": 440.0,
+          "lip_vitality": 0.01953125
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:30:30+08:00",
+      "elapsed": 305.84,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": -1.0,
+      "best_combined": -1.0,
+      "semantic_score": 0.0,
+      "energy_penalty": 0.0,
+      "dna": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "morphology": {
+        "energy": 4280.0,
+        "lyapunov_delta": 0.0,
+        "clamped": false,
+        "is_stable": true,
+        "active_mass": 320.0,
+        "mass_ratio": 0.0195,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 320.0,
+          "hair_mass": 440.0,
+          "lip_vitality": 0.01953125
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:30:37+08:00",
+      "elapsed": 313.0,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": -1.0,
+      "best_combined": -1.0,
+      "semantic_score": 0.0,
+      "energy_penalty": 0.0,
+      "dna": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "morphology": {
+        "energy": 4280.0,
+        "lyapunov_delta": 0.0,
+        "clamped": false,
+        "is_stable": true,
+        "active_mass": 320.0,
+        "mass_ratio": 0.0195,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 320.0,
+          "hair_mass": 440.0,
+          "lip_vitality": 0.01953125
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:30:43+08:00",
+      "elapsed": 319.18,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": -1.0,
+      "best_combined": -1.0,
+      "semantic_score": 0.0,
+      "energy_penalty": 0.0,
+      "dna": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "morphology": {
+        "energy": 4280.0,
+        "lyapunov_delta": 0.0,
+        "clamped": false,
+        "is_stable": true,
+        "active_mass": 320.0,
+        "mass_ratio": 0.0195,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 320.0,
+          "hair_mass": 440.0,
+          "lip_vitality": 0.01953125
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:30:49+08:00",
+      "elapsed": 325.32,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": -1.0,
+      "best_combined": -1.0,
+      "semantic_score": 0.0,
+      "energy_penalty": 0.0,
+      "dna": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "morphology": {
+        "energy": 4280.0,
+        "lyapunov_delta": 0.0,
+        "clamped": false,
+        "is_stable": true,
+        "active_mass": 320.0,
+        "mass_ratio": 0.0195,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 320.0,
+          "hair_mass": 440.0,
+          "lip_vitality": 0.01953125
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:30:55+08:00",
+      "elapsed": 331.45,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": -1.0,
+      "best_combined": -1.0,
+      "semantic_score": 0.0,
+      "energy_penalty": 0.0,
+      "dna": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "morphology": {
+        "energy": 4280.0,
+        "lyapunov_delta": 0.0,
+        "clamped": false,
+        "is_stable": true,
+        "active_mass": 320.0,
+        "mass_ratio": 0.0195,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 320.0,
+          "hair_mass": 440.0,
+          "lip_vitality": 0.01953125
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:31:01+08:00",
+      "elapsed": 337.52,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": -1.0,
+      "best_combined": -1.0,
+      "semantic_score": 0.0,
+      "energy_penalty": 0.0,
+      "dna": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "morphology": {
+        "energy": 4280.0,
+        "lyapunov_delta": 0.0,
+        "clamped": false,
+        "is_stable": true,
+        "active_mass": 320.0,
+        "mass_ratio": 0.0195,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 320.0,
+          "hair_mass": 440.0,
+          "lip_vitality": 0.01953125
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:31:07+08:00",
+      "elapsed": 343.61,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": -1.0,
+      "best_combined": -1.0,
+      "semantic_score": 0.0,
+      "energy_penalty": 0.0,
+      "dna": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "morphology": {
+        "energy": 4280.0,
+        "lyapunov_delta": 0.0,
+        "clamped": false,
+        "is_stable": true,
+        "active_mass": 320.0,
+        "mass_ratio": 0.0195,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 320.0,
+          "hair_mass": 440.0,
+          "lip_vitality": 0.01953125
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:31:14+08:00",
+      "elapsed": 349.8,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": -1.0,
+      "best_combined": -1.0,
+      "semantic_score": 0.0,
+      "energy_penalty": 0.0,
+      "dna": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "morphology": {
+        "energy": 4280.0,
+        "lyapunov_delta": 0.0,
+        "clamped": false,
+        "is_stable": true,
+        "active_mass": 320.0,
+        "mass_ratio": 0.0195,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 320.0,
+          "hair_mass": 440.0,
+          "lip_vitality": 0.01953125
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:31:20+08:00",
+      "elapsed": 355.86,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": -1.0,
+      "best_combined": -1.0,
+      "semantic_score": 0.0,
+      "energy_penalty": 0.0,
+      "dna": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "morphology": {
+        "energy": 4280.0,
+        "lyapunov_delta": 0.0,
+        "clamped": false,
+        "is_stable": true,
+        "active_mass": 320.0,
+        "mass_ratio": 0.0195,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 320.0,
+          "hair_mass": 440.0,
+          "lip_vitality": 0.01953125
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:31:26+08:00",
+      "elapsed": 361.98,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": -1.0,
+      "best_combined": -1.0,
+      "semantic_score": 0.0,
+      "energy_penalty": 0.0,
+      "dna": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "morphology": {
+        "energy": 4280.0,
+        "lyapunov_delta": 0.0,
+        "clamped": false,
+        "is_stable": true,
+        "active_mass": 320.0,
+        "mass_ratio": 0.0195,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 320.0,
+          "hair_mass": 440.0,
+          "lip_vitality": 0.01953125
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:31:32+08:00",
+      "elapsed": 368.34,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": -1.0,
+      "best_combined": -1.0,
+      "semantic_score": 0.0,
+      "energy_penalty": 0.0,
+      "dna": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "morphology": {
+        "energy": 4280.0,
+        "lyapunov_delta": 0.0,
+        "clamped": false,
+        "is_stable": true,
+        "active_mass": 320.0,
+        "mass_ratio": 0.0195,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 320.0,
+          "hair_mass": 440.0,
+          "lip_vitality": 0.01953125
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:31:38+08:00",
+      "elapsed": 374.74,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": -1.0,
+      "best_combined": -1.0,
+      "semantic_score": 0.0,
+      "energy_penalty": 0.0,
+      "dna": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "morphology": {
+        "energy": 4280.0,
+        "lyapunov_delta": 0.0,
+        "clamped": false,
+        "is_stable": true,
+        "active_mass": 320.0,
+        "mass_ratio": 0.0195,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 320.0,
+          "hair_mass": 440.0,
+          "lip_vitality": 0.01953125
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:31:46+08:00",
+      "elapsed": 381.95,
+      "state": "thinking",
+      "phase": "split",
+      "current_combined": 0.2119,
+      "best_combined": 0.2119,
+      "semantic_score": 0.2152,
+      "energy_penalty": 0.0034,
+      "dna": [
+        0.00421,
+        0.00217,
+        -0.00561,
+        0.00244,
+        -0.00336
+      ],
+      "morphology": {
+        "energy": 4280.0,
+        "lyapunov_delta": 0.0,
+        "clamped": false,
+        "is_stable": true,
+        "active_mass": 320.0,
+        "mass_ratio": 0.0195,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 320.0,
+          "hair_mass": 440.0,
+          "lip_vitality": 0.01953125
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:31:55+08:00",
+      "elapsed": 391.25,
+      "state": "thinking",
+      "phase": "split",
+      "current_combined": 0.2048,
+      "best_combined": 0.2119,
+      "semantic_score": 0.2252,
+      "energy_penalty": 0.0204,
+      "dna": [
+        0.00421,
+        0.00217,
+        -0.00561,
+        0.00244,
+        -0.00336
+      ],
+      "morphology": {
+        "energy": 12807.2158203125,
+        "lyapunov_delta": 90.361328125,
+        "clamped": false,
+        "is_stable": false,
+        "active_mass": 45.0,
+        "mass_ratio": 0.0027,
+        "num_components": 15,
+        "humanoid_metrics": {
+          "skin_mass": 322.0,
+          "hair_mass": 492.0,
+          "lip_vitality": 0.021712832152843475
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:32:04+08:00",
+      "elapsed": 399.77,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.2169,
+      "best_combined": 0.2169,
+      "semantic_score": 0.2181,
+      "energy_penalty": 0.0013,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 4716.98388671875,
+        "lyapunov_delta": 30.05322265625,
+        "clamped": false,
+        "is_stable": true,
+        "active_mass": 320.0,
+        "mass_ratio": 0.0195,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 320.0,
+          "hair_mass": 456.0,
+          "lip_vitality": 0.020206540822982788
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:32:11+08:00",
+      "elapsed": 406.75,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.2152,
+      "best_combined": 0.2169,
+      "semantic_score": 0.2158,
+      "energy_penalty": 0.0006,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 4861.10888671875,
+        "lyapunov_delta": 36.21044921875,
+        "clamped": false,
+        "is_stable": true,
+        "active_mass": 330.0,
+        "mass_ratio": 0.0201,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 320.0,
+          "hair_mass": 440.0,
+          "lip_vitality": 0.01798555999994278
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:32:18+08:00",
+      "elapsed": 413.9,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.2135,
+      "best_combined": 0.2169,
+      "semantic_score": 0.2135,
+      "energy_penalty": 0.0,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 4989.78662109375,
+        "lyapunov_delta": 35.97021484375,
+        "clamped": false,
+        "is_stable": true,
+        "active_mass": 337.0,
+        "mass_ratio": 0.0206,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 320.0,
+          "hair_mass": 440.0,
+          "lip_vitality": 0.01762528344988823
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:32:25+08:00",
+      "elapsed": 420.91,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.2077,
+      "best_combined": 0.2169,
+      "semantic_score": 0.2084,
+      "energy_penalty": 0.0006,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 5150.0732421875,
+        "lyapunov_delta": 42.912109375,
+        "clamped": false,
+        "is_stable": true,
+        "active_mass": 337.0,
+        "mass_ratio": 0.0206,
+        "num_components": 3,
+        "humanoid_metrics": {
+          "skin_mass": 320.0,
+          "hair_mass": 440.0,
+          "lip_vitality": 0.01714351400732994
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:32:32+08:00",
+      "elapsed": 428.36,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.2109,
+      "best_combined": 0.2169,
+      "semantic_score": 0.2122,
+      "energy_penalty": 0.0013,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 5314.8876953125,
+        "lyapunov_delta": 49.4697265625,
+        "clamped": false,
+        "is_stable": true,
+        "active_mass": 341.0,
+        "mass_ratio": 0.0208,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 320.0,
+          "hair_mass": 440.0,
+          "lip_vitality": 0.01659999042749405
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:32:40+08:00",
+      "elapsed": 436.24,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.2089,
+      "best_combined": 0.2169,
+      "semantic_score": 0.2107,
+      "energy_penalty": 0.0018,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 5442.9384765625,
+        "lyapunov_delta": 52.7373046875,
+        "clamped": false,
+        "is_stable": false,
+        "active_mass": 342.0,
+        "mass_ratio": 0.0209,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 320.0,
+          "hair_mass": 442.0,
+          "lip_vitality": 0.01620379649102688
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:32:47+08:00",
+      "elapsed": 443.68,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.1999,
+      "best_combined": 0.2169,
+      "semantic_score": 0.2024,
+      "energy_penalty": 0.0025,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 5616.794921875,
+        "lyapunov_delta": 60.01416015625,
+        "clamped": false,
+        "is_stable": false,
+        "active_mass": 342.0,
+        "mass_ratio": 0.0209,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 320.0,
+          "hair_mass": 441.0,
+          "lip_vitality": 0.01571337692439556
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:32:55+08:00",
+      "elapsed": 451.17,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.2023,
+      "best_combined": 0.2169,
+      "semantic_score": 0.2055,
+      "energy_penalty": 0.0032,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 5788.9521484375,
+        "lyapunov_delta": 56.470703125,
+        "clamped": false,
+        "is_stable": false,
+        "active_mass": 346.0,
+        "mass_ratio": 0.0211,
+        "num_components": 3,
+        "humanoid_metrics": {
+          "skin_mass": 319.0,
+          "hair_mass": 443.0,
+          "lip_vitality": 0.015200567431747913
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:33:02+08:00",
+      "elapsed": 458.32,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.2026,
+      "best_combined": 0.2169,
+      "semantic_score": 0.2065,
+      "energy_penalty": 0.0039,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 5970.74072265625,
+        "lyapunov_delta": 59.82666015625,
+        "clamped": false,
+        "is_stable": false,
+        "active_mass": 350.0,
+        "mass_ratio": 0.0214,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 316.0,
+          "hair_mass": 447.0,
+          "lip_vitality": 0.01467921119183302
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:33:08+08:00",
+      "elapsed": 464.64,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.2077,
+      "best_combined": 0.2169,
+      "semantic_score": 0.2126,
+      "energy_penalty": 0.0048,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 6247.67822265625,
+        "lyapunov_delta": 68.75146484375,
+        "clamped": false,
+        "is_stable": false,
+        "active_mass": 351.0,
+        "mass_ratio": 0.0214,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 317.0,
+          "hair_mass": 453.0,
+          "lip_vitality": 0.013889288529753685
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:33:15+08:00",
+      "elapsed": 470.99,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.2018,
+      "best_combined": 0.2169,
+      "semantic_score": 0.2072,
+      "energy_penalty": 0.0055,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 6429.052734375,
+        "lyapunov_delta": 77.5263671875,
+        "clamped": false,
+        "is_stable": false,
+        "active_mass": 353.0,
+        "mass_ratio": 0.0215,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 308.0,
+          "hair_mass": 454.0,
+          "lip_vitality": 0.013363959267735481
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:33:21+08:00",
+      "elapsed": 477.34,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.1888,
+      "best_combined": 0.2169,
+      "semantic_score": 0.1952,
+      "energy_penalty": 0.0064,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 6716.05126953125,
+        "lyapunov_delta": 81.1884765625,
+        "clamped": false,
+        "is_stable": false,
+        "active_mass": 353.0,
+        "mass_ratio": 0.0215,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 308.0,
+          "hair_mass": 454.0,
+          "lip_vitality": 0.012502513825893402
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:33:28+08:00",
+      "elapsed": 483.75,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.1903,
+      "best_combined": 0.2169,
+      "semantic_score": 0.1972,
+      "energy_penalty": 0.0069,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 6883.115234375,
+        "lyapunov_delta": 84.01904296875,
+        "clamped": false,
+        "is_stable": false,
+        "active_mass": 351.0,
+        "mass_ratio": 0.0214,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 306.0,
+          "hair_mass": 454.0,
+          "lip_vitality": 0.012056455947458744
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:33:34+08:00",
+      "elapsed": 490.16,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.1885,
+      "best_combined": 0.2169,
+      "semantic_score": 0.1962,
+      "energy_penalty": 0.0077,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 7134.7744140625,
+        "lyapunov_delta": 89.53759765625,
+        "clamped": false,
+        "is_stable": false,
+        "active_mass": 354.0,
+        "mass_ratio": 0.0216,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 303.0,
+          "hair_mass": 454.0,
+          "lip_vitality": 0.011330710723996162
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:33:40+08:00",
+      "elapsed": 496.5,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.1892,
+      "best_combined": 0.2169,
+      "semantic_score": 0.1976,
+      "energy_penalty": 0.0085,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 7379.9814453125,
+        "lyapunov_delta": 86.6064453125,
+        "clamped": false,
+        "is_stable": false,
+        "active_mass": 356.0,
+        "mass_ratio": 0.0217,
+        "num_components": 2,
+        "humanoid_metrics": {
+          "skin_mass": 300.0,
+          "hair_mass": 456.0,
+          "lip_vitality": 0.010614635422825813
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:33:47+08:00",
+      "elapsed": 502.81,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.1948,
+      "best_combined": 0.2169,
+      "semantic_score": 0.2043,
+      "energy_penalty": 0.0095,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 7730.8876953125,
+        "lyapunov_delta": 92.4091796875,
+        "clamped": false,
+        "is_stable": false,
+        "active_mass": 360.0,
+        "mass_ratio": 0.022,
+        "num_components": 2,
+        "humanoid_metrics": {
+          "skin_mass": 301.0,
+          "hair_mass": 456.0,
+          "lip_vitality": 0.00974050909280777
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:33:53+08:00",
+      "elapsed": 509.16,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.1963,
+      "best_combined": 0.2169,
+      "semantic_score": 0.2067,
+      "energy_penalty": 0.0104,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 8084.4697265625,
+        "lyapunov_delta": 110.099609375,
+        "clamped": false,
+        "is_stable": false,
+        "active_mass": 361.0,
+        "mass_ratio": 0.022,
+        "num_components": 2,
+        "humanoid_metrics": {
+          "skin_mass": 302.0,
+          "hair_mass": 456.0,
+          "lip_vitality": 0.0087041687220335
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:33:59+08:00",
+      "elapsed": 515.49,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.1814,
+      "best_combined": 0.2169,
+      "semantic_score": 0.1928,
+      "energy_penalty": 0.0113,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 8423.8017578125,
+        "lyapunov_delta": 103.5498046875,
+        "clamped": false,
+        "is_stable": false,
+        "active_mass": 363.0,
+        "mass_ratio": 0.0222,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 301.0,
+          "hair_mass": 456.0,
+          "lip_vitality": 0.007866804488003254
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:34:06+08:00",
+      "elapsed": 521.75,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.1854,
+      "best_combined": 0.2169,
+      "semantic_score": 0.1975,
+      "energy_penalty": 0.0121,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 8722.33984375,
+        "lyapunov_delta": 102.0732421875,
+        "clamped": false,
+        "is_stable": false,
+        "active_mass": 371.0,
+        "mass_ratio": 0.0226,
+        "num_components": 2,
+        "humanoid_metrics": {
+          "skin_mass": 298.0,
+          "hair_mass": 456.0,
+          "lip_vitality": 0.007116431370377541
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:34:12+08:00",
+      "elapsed": 527.99,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.197,
+      "best_combined": 0.2169,
+      "semantic_score": 0.2098,
+      "energy_penalty": 0.0128,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 9003.3095703125,
+        "lyapunov_delta": 117.89453125,
+        "clamped": false,
+        "is_stable": false,
+        "active_mass": 367.0,
+        "mass_ratio": 0.0224,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 296.0,
+          "hair_mass": 456.0,
+          "lip_vitality": 0.006338507868349552
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:34:18+08:00",
+      "elapsed": 534.24,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.1982,
+      "best_combined": 0.2169,
+      "semantic_score": 0.2116,
+      "energy_penalty": 0.0134,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 9250.4306640625,
+        "lyapunov_delta": 127.6416015625,
+        "clamped": false,
+        "is_stable": false,
+        "active_mass": 368.0,
+        "mass_ratio": 0.0225,
+        "num_components": 2,
+        "humanoid_metrics": {
+          "skin_mass": 290.0,
+          "hair_mass": 456.0,
+          "lip_vitality": 0.0057311393320560455
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:34:25+08:00",
+      "elapsed": 540.79,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.1895,
+      "best_combined": 0.2169,
+      "semantic_score": 0.2034,
+      "energy_penalty": 0.0139,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 9493.4765625,
+        "lyapunov_delta": 116.46875,
+        "clamped": false,
+        "is_stable": false,
+        "active_mass": 379.0,
+        "mass_ratio": 0.0231,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 285.0,
+          "hair_mass": 456.0,
+          "lip_vitality": 0.005086093209683895
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:34:32+08:00",
+      "elapsed": 547.85,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.195,
+      "best_combined": 0.2169,
+      "semantic_score": 0.2099,
+      "energy_penalty": 0.0149,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 9911.380859375,
+        "lyapunov_delta": 141.763671875,
+        "clamped": false,
+        "is_stable": false,
+        "active_mass": 381.0,
+        "mass_ratio": 0.0233,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 268.0,
+          "hair_mass": 457.0,
+          "lip_vitality": 0.0040283650159835815
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:34:39+08:00",
+      "elapsed": 554.98,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.1951,
+      "best_combined": 0.2169,
+      "semantic_score": 0.211,
+      "energy_penalty": 0.0159,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 10410.1201171875,
+        "lyapunov_delta": 143.65625,
+        "clamped": false,
+        "is_stable": false,
+        "active_mass": 385.0,
+        "mass_ratio": 0.0235,
+        "num_components": 2,
+        "humanoid_metrics": {
+          "skin_mass": 237.0,
+          "hair_mass": 457.0,
+          "lip_vitality": 0.0028864869382232428
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:34:46+08:00",
+      "elapsed": 562.55,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.1894,
+      "best_combined": 0.2169,
+      "semantic_score": 0.2064,
+      "energy_penalty": 0.0169,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 10906.2021484375,
+        "lyapunov_delta": 150.3759765625,
+        "clamped": false,
+        "is_stable": false,
+        "active_mass": 384.0,
+        "mass_ratio": 0.0234,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 216.0,
+          "hair_mass": 457.0,
+          "lip_vitality": 0.0018035576213151217
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:34:53+08:00",
+      "elapsed": 569.66,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.1833,
+      "best_combined": 0.2169,
+      "semantic_score": 0.201,
+      "energy_penalty": 0.0177,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 11297.09375,
+        "lyapunov_delta": 142.8779296875,
+        "clamped": false,
+        "is_stable": false,
+        "active_mass": 391.0,
+        "mass_ratio": 0.0239,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 194.0,
+          "hair_mass": 457.0,
+          "lip_vitality": 0.0008308076066896319
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:35:01+08:00",
+      "elapsed": 577.07,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.1831,
+      "best_combined": 0.2169,
+      "semantic_score": 0.2016,
+      "energy_penalty": 0.0185,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 11740.587890625,
+        "lyapunov_delta": 150.583984375,
+        "clamped": false,
+        "is_stable": false,
+        "active_mass": 390.0,
+        "mass_ratio": 0.0238,
+        "num_components": 2,
+        "humanoid_metrics": {
+          "skin_mass": 170.0,
+          "hair_mass": 458.0,
+          "lip_vitality": -0.00015109838568605483
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:35:08+08:00",
+      "elapsed": 584.57,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.1871,
+      "best_combined": 0.2169,
+      "semantic_score": 0.206,
+      "energy_penalty": 0.019,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 11993.1845703125,
+        "lyapunov_delta": 161.3193359375,
+        "clamped": false,
+        "is_stable": false,
+        "active_mass": 393.0,
+        "mass_ratio": 0.024,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 142.0,
+          "hair_mass": 457.0,
+          "lip_vitality": -0.0007484481320716441
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:35:16+08:00",
+      "elapsed": 592.11,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.1873,
+      "best_combined": 0.2169,
+      "semantic_score": 0.2072,
+      "energy_penalty": 0.02,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 12549.080078125,
+        "lyapunov_delta": 157.513671875,
+        "clamped": false,
+        "is_stable": false,
+        "active_mass": 395.0,
+        "mass_ratio": 0.0241,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 116.0,
+          "hair_mass": 457.0,
+          "lip_vitality": -0.002034093253314495
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:35:23+08:00",
+      "elapsed": 599.56,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.183,
+      "best_combined": 0.2169,
+      "semantic_score": 0.2036,
+      "energy_penalty": 0.0206,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 12906.115234375,
+        "lyapunov_delta": 172.55078125,
+        "clamped": false,
+        "is_stable": false,
+        "active_mass": 398.0,
+        "mass_ratio": 0.0243,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 91.0,
+          "hair_mass": 457.0,
+          "lip_vitality": -0.0027260887436568737
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:35:31+08:00",
+      "elapsed": 607.15,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.1858,
+      "best_combined": 0.2169,
+      "semantic_score": 0.2076,
+      "energy_penalty": 0.0218,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 13619.509765625,
+        "lyapunov_delta": 197.158203125,
+        "clamped": false,
+        "is_stable": false,
+        "active_mass": 400.0,
+        "mass_ratio": 0.0244,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 92.0,
+          "hair_mass": 459.0,
+          "lip_vitality": -0.0042462036944925785
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:35:38+08:00",
+      "elapsed": 614.17,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.1821,
+      "best_combined": 0.2169,
+      "semantic_score": 0.2045,
+      "energy_penalty": 0.0224,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 14058.421875,
+        "lyapunov_delta": 186.9091796875,
+        "clamped": false,
+        "is_stable": false,
+        "active_mass": 402.0,
+        "mass_ratio": 0.0245,
+        "num_components": 2,
+        "humanoid_metrics": {
+          "skin_mass": 73.0,
+          "hair_mass": 458.0,
+          "lip_vitality": -0.005235932767391205
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:35:45+08:00",
+      "elapsed": 621.01,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.1823,
+      "best_combined": 0.2169,
+      "semantic_score": 0.2056,
+      "energy_penalty": 0.0233,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 14634.861328125,
+        "lyapunov_delta": 185.2080078125,
+        "clamped": false,
+        "is_stable": false,
+        "active_mass": 404.0,
+        "mass_ratio": 0.0247,
+        "num_components": 2,
+        "humanoid_metrics": {
+          "skin_mass": 61.0,
+          "hair_mass": 462.0,
+          "lip_vitality": -0.006367127876728773
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:35:51+08:00",
+      "elapsed": 627.55,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.2006,
+      "best_combined": 0.2169,
+      "semantic_score": 0.2038,
+      "energy_penalty": 0.0032,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 4312.06689453125,
+        "lyapunov_delta": 15.33935546875,
+        "clamped": false,
+        "is_stable": true,
+        "active_mass": 320.0,
+        "mass_ratio": 0.0195,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 320.0,
+          "hair_mass": 440.0,
+          "lip_vitality": 0.019482946023344994
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:35:58+08:00",
+      "elapsed": 633.97,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.2126,
+      "best_combined": 0.2169,
+      "semantic_score": 0.2155,
+      "energy_penalty": 0.0029,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 4374.462890625,
+        "lyapunov_delta": 19.6796875,
+        "clamped": false,
+        "is_stable": true,
+        "active_mass": 320.0,
+        "mass_ratio": 0.0195,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 320.0,
+          "hair_mass": 440.0,
+          "lip_vitality": 0.019344810396432877
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:36:04+08:00",
+      "elapsed": 640.41,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.2119,
+      "best_combined": 0.2169,
+      "semantic_score": 0.2144,
+      "energy_penalty": 0.0025,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 4454.9716796875,
+        "lyapunov_delta": 24.18994140625,
+        "clamped": false,
+        "is_stable": true,
+        "active_mass": 320.0,
+        "mass_ratio": 0.0195,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 320.0,
+          "hair_mass": 440.0,
+          "lip_vitality": 0.01917131617665291
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:36:10+08:00",
+      "elapsed": 646.65,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.2122,
+      "best_combined": 0.2169,
+      "semantic_score": 0.2143,
+      "energy_penalty": 0.0021,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 4543.041015625,
+        "lyapunov_delta": 29.4091796875,
+        "clamped": false,
+        "is_stable": true,
+        "active_mass": 321.0,
+        "mass_ratio": 0.0196,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 320.0,
+          "hair_mass": 440.0,
+          "lip_vitality": 0.01893654838204384
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:36:17+08:00",
+      "elapsed": 652.89,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.2136,
+      "best_combined": 0.2169,
+      "semantic_score": 0.2154,
+      "energy_penalty": 0.0018,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 4608.38232421875,
+        "lyapunov_delta": 25.01220703125,
+        "clamped": false,
+        "is_stable": true,
+        "active_mass": 321.0,
+        "mass_ratio": 0.0196,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 320.0,
+          "hair_mass": 440.0,
+          "lip_vitality": 0.01875515840947628
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:36:23+08:00",
+      "elapsed": 659.23,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.211,
+      "best_combined": 0.2169,
+      "semantic_score": 0.2123,
+      "energy_penalty": 0.0013,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 4701.6337890625,
+        "lyapunov_delta": 32.3681640625,
+        "clamped": false,
+        "is_stable": true,
+        "active_mass": 325.0,
+        "mass_ratio": 0.0198,
+        "num_components": 2,
+        "humanoid_metrics": {
+          "skin_mass": 320.0,
+          "hair_mass": 440.0,
+          "lip_vitality": 0.018473265692591667
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:36:29+08:00",
+      "elapsed": 665.48,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.2126,
+      "best_combined": 0.2169,
+      "semantic_score": 0.2135,
+      "energy_penalty": 0.0009,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 4790.43994140625,
+        "lyapunov_delta": 37.03173828125,
+        "clamped": false,
+        "is_stable": true,
+        "active_mass": 328.0,
+        "mass_ratio": 0.02,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 320.0,
+          "hair_mass": 440.0,
+          "lip_vitality": 0.018210671842098236
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:36:36+08:00",
+      "elapsed": 671.78,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.2144,
+      "best_combined": 0.2169,
+      "semantic_score": 0.2149,
+      "energy_penalty": 0.0005,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 4880.14697265625,
+        "lyapunov_delta": 37.23583984375,
+        "clamped": false,
+        "is_stable": true,
+        "active_mass": 331.0,
+        "mass_ratio": 0.0202,
+        "num_components": 2,
+        "humanoid_metrics": {
+          "skin_mass": 320.0,
+          "hair_mass": 440.0,
+          "lip_vitality": 0.01792028360068798
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:36:42+08:00",
+      "elapsed": 678.05,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.2134,
+      "best_combined": 0.2169,
+      "semantic_score": 0.2134,
+      "energy_penalty": 0.0001,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 4985.7177734375,
+        "lyapunov_delta": 38.50048828125,
+        "clamped": false,
+        "is_stable": true,
+        "active_mass": 335.0,
+        "mass_ratio": 0.0204,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 320.0,
+          "hair_mass": 440.0,
+          "lip_vitality": 0.01764083281159401
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:36:48+08:00",
+      "elapsed": 684.3,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.213,
+      "best_combined": 0.2169,
+      "semantic_score": 0.2133,
+      "energy_penalty": 0.0003,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 5072.9130859375,
+        "lyapunov_delta": 42.794921875,
+        "clamped": false,
+        "is_stable": true,
+        "active_mass": 341.0,
+        "mass_ratio": 0.0208,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 320.0,
+          "hair_mass": 440.0,
+          "lip_vitality": 0.0173519104719162
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:36:54+08:00",
+      "elapsed": 690.55,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.2131,
+      "best_combined": 0.2169,
+      "semantic_score": 0.214,
+      "energy_penalty": 0.0009,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 5206.06640625,
+        "lyapunov_delta": 46.7734375,
+        "clamped": false,
+        "is_stable": true,
+        "active_mass": 342.0,
+        "mass_ratio": 0.0209,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 320.0,
+          "hair_mass": 440.0,
+          "lip_vitality": 0.016933536157011986
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:37:01+08:00",
+      "elapsed": 696.8,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.2086,
+      "best_combined": 0.2169,
+      "semantic_score": 0.2102,
+      "energy_penalty": 0.0016,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 5393.76953125,
+        "lyapunov_delta": 52.89697265625,
+        "clamped": false,
+        "is_stable": false,
+        "active_mass": 345.0,
+        "mass_ratio": 0.0211,
+        "num_components": 2,
+        "humanoid_metrics": {
+          "skin_mass": 320.0,
+          "hair_mass": 441.0,
+          "lip_vitality": 0.016351014375686646
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:37:07+08:00",
+      "elapsed": 703.06,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.2097,
+      "best_combined": 0.2169,
+      "semantic_score": 0.2119,
+      "energy_penalty": 0.0022,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 5544.0283203125,
+        "lyapunov_delta": 53.830078125,
+        "clamped": false,
+        "is_stable": false,
+        "active_mass": 346.0,
+        "mass_ratio": 0.0211,
+        "num_components": 3,
+        "humanoid_metrics": {
+          "skin_mass": 320.0,
+          "hair_mass": 443.0,
+          "lip_vitality": 0.015917981043457985
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:37:13+08:00",
+      "elapsed": 709.35,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.2082,
+      "best_combined": 0.2169,
+      "semantic_score": 0.2111,
+      "energy_penalty": 0.0029,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 5719.83349609375,
+        "lyapunov_delta": 51.220703125,
+        "clamped": false,
+        "is_stable": false,
+        "active_mass": 345.0,
+        "mass_ratio": 0.0211,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 320.0,
+          "hair_mass": 444.0,
+          "lip_vitality": 0.015416489914059639
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:37:19+08:00",
+      "elapsed": 715.57,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.2016,
+      "best_combined": 0.2169,
+      "semantic_score": 0.2054,
+      "energy_penalty": 0.0038,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 5950.68212890625,
+        "lyapunov_delta": 63.52587890625,
+        "clamped": false,
+        "is_stable": false,
+        "active_mass": 350.0,
+        "mass_ratio": 0.0214,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 319.0,
+          "hair_mass": 446.0,
+          "lip_vitality": 0.014703542925417423
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:37:26+08:00",
+      "elapsed": 721.85,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.204,
+      "best_combined": 0.2169,
+      "semantic_score": 0.2086,
+      "energy_penalty": 0.0045,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 6162.6708984375,
+        "lyapunov_delta": 67.29248046875,
+        "clamped": false,
+        "is_stable": false,
+        "active_mass": 351.0,
+        "mass_ratio": 0.0214,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 315.0,
+          "hair_mass": 451.0,
+          "lip_vitality": 0.014115224592387676
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:37:32+08:00",
+      "elapsed": 728.08,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.1966,
+      "best_combined": 0.2169,
+      "semantic_score": 0.2018,
+      "energy_penalty": 0.0052,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 6365.400390625,
+        "lyapunov_delta": 73.212890625,
+        "clamped": false,
+        "is_stable": false,
+        "active_mass": 352.0,
+        "mass_ratio": 0.0215,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 313.0,
+          "hair_mass": 453.0,
+          "lip_vitality": 0.013522523455321789
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:37:38+08:00",
+      "elapsed": 734.42,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.1877,
+      "best_combined": 0.2169,
+      "semantic_score": 0.1938,
+      "energy_penalty": 0.0062,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 6642.05224609375,
+        "lyapunov_delta": 84.7802734375,
+        "clamped": false,
+        "is_stable": false,
+        "active_mass": 351.0,
+        "mass_ratio": 0.0214,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 308.0,
+          "hair_mass": 455.0,
+          "lip_vitality": 0.012730462476611137
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:37:45+08:00",
+      "elapsed": 740.74,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.1986,
+      "best_combined": 0.2169,
+      "semantic_score": 0.2055,
+      "energy_penalty": 0.0069,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 6886.1875,
+        "lyapunov_delta": 76.58349609375,
+        "clamped": false,
+        "is_stable": false,
+        "active_mass": 354.0,
+        "mass_ratio": 0.0216,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 307.0,
+          "hair_mass": 455.0,
+          "lip_vitality": 0.012011691927909851
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:37:51+08:00",
+      "elapsed": 747.24,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.1824,
+      "best_combined": 0.2169,
+      "semantic_score": 0.1903,
+      "energy_penalty": 0.0078,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 7169.9111328125,
+        "lyapunov_delta": 88.1904296875,
+        "clamped": false,
+        "is_stable": false,
+        "active_mass": 356.0,
+        "mass_ratio": 0.0217,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 305.0,
+          "hair_mass": 455.0,
+          "lip_vitality": 0.011198041960597038
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:37:57+08:00",
+      "elapsed": 753.69,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.1926,
+      "best_combined": 0.2169,
+      "semantic_score": 0.201,
+      "energy_penalty": 0.0083,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 7342.6552734375,
+        "lyapunov_delta": 91.568359375,
+        "clamped": false,
+        "is_stable": false,
+        "active_mass": 354.0,
+        "mass_ratio": 0.0216,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 301.0,
+          "hair_mass": 456.0,
+          "lip_vitality": 0.010753960348665714
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:38:04+08:00",
+      "elapsed": 760.01,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.1859,
+      "best_combined": 0.2169,
+      "semantic_score": 0.195,
+      "energy_penalty": 0.0091,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 7594.57421875,
+        "lyapunov_delta": 100.75390625,
+        "clamped": false,
+        "is_stable": false,
+        "active_mass": 358.0,
+        "mass_ratio": 0.0219,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 300.0,
+          "hair_mass": 456.0,
+          "lip_vitality": 0.010074010118842125
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:38:10+08:00",
+      "elapsed": 766.3,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.1932,
+      "best_combined": 0.2169,
+      "semantic_score": 0.2031,
+      "energy_penalty": 0.0099,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 7879.2265625,
+        "lyapunov_delta": 93.59716796875,
+        "clamped": false,
+        "is_stable": false,
+        "active_mass": 357.0,
+        "mass_ratio": 0.0218,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 300.0,
+          "hair_mass": 456.0,
+          "lip_vitality": 0.00930690672248602
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:38:17+08:00",
+      "elapsed": 773.18,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.1903,
+      "best_combined": 0.2169,
+      "semantic_score": 0.2011,
+      "energy_penalty": 0.0108,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 8218.3916015625,
+        "lyapunov_delta": 98.6826171875,
+        "clamped": false,
+        "is_stable": false,
+        "active_mass": 361.0,
+        "mass_ratio": 0.022,
+        "num_components": 2,
+        "humanoid_metrics": {
+          "skin_mass": 300.0,
+          "hair_mass": 456.0,
+          "lip_vitality": 0.008451885543763638
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:38:24+08:00",
+      "elapsed": 780.06,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.1935,
+      "best_combined": 0.2169,
+      "semantic_score": 0.205,
+      "energy_penalty": 0.0116,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 8512.337890625,
+        "lyapunov_delta": 108.1640625,
+        "clamped": false,
+        "is_stable": false,
+        "active_mass": 368.0,
+        "mass_ratio": 0.0225,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 300.0,
+          "hair_mass": 456.0,
+          "lip_vitality": 0.007707889657467604
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:38:30+08:00",
+      "elapsed": 786.39,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.1993,
+      "best_combined": 0.2169,
+      "semantic_score": 0.2117,
+      "energy_penalty": 0.0124,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 8865.00390625,
+        "lyapunov_delta": 117.46484375,
+        "clamped": false,
+        "is_stable": false,
+        "active_mass": 371.0,
+        "mass_ratio": 0.0226,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 296.0,
+          "hair_mass": 456.0,
+          "lip_vitality": 0.0066966949962079525
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:38:37+08:00",
+      "elapsed": 792.85,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.1923,
+      "best_combined": 0.2169,
+      "semantic_score": 0.2054,
+      "energy_penalty": 0.0132,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 9162.9423828125,
+        "lyapunov_delta": 111.3544921875,
+        "clamped": false,
+        "is_stable": false,
+        "active_mass": 376.0,
+        "mass_ratio": 0.0229,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 292.0,
+          "hair_mass": 457.0,
+          "lip_vitality": 0.006005624774843454
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:38:43+08:00",
+      "elapsed": 799.22,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.1844,
+      "best_combined": 0.2169,
+      "semantic_score": 0.1984,
+      "energy_penalty": 0.014,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 9538.0107421875,
+        "lyapunov_delta": 123.703125,
+        "clamped": false,
+        "is_stable": false,
+        "active_mass": 381.0,
+        "mass_ratio": 0.0233,
+        "num_components": 2,
+        "humanoid_metrics": {
+          "skin_mass": 289.0,
+          "hair_mass": 456.0,
+          "lip_vitality": 0.004923933185636997
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:38:49+08:00",
+      "elapsed": 805.57,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.1888,
+      "best_combined": 0.2169,
+      "semantic_score": 0.2037,
+      "energy_penalty": 0.0148,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 9904.58203125,
+        "lyapunov_delta": 127.255859375,
+        "clamped": false,
+        "is_stable": false,
+        "active_mass": 380.0,
+        "mass_ratio": 0.0232,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 264.0,
+          "hair_mass": 456.0,
+          "lip_vitality": 0.004004483111202717
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:38:56+08:00",
+      "elapsed": 811.98,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.1962,
+      "best_combined": 0.2169,
+      "semantic_score": 0.2117,
+      "energy_penalty": 0.0156,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 10234.3330078125,
+        "lyapunov_delta": 147.5009765625,
+        "clamped": false,
+        "is_stable": false,
+        "active_mass": 374.0,
+        "mass_ratio": 0.0228,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 253.0,
+          "hair_mass": 456.0,
+          "lip_vitality": 0.0033707667607814074
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:39:02+08:00",
+      "elapsed": 818.24,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.1822,
+      "best_combined": 0.2169,
+      "semantic_score": 0.1986,
+      "energy_penalty": 0.0164,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 10654.33984375,
+        "lyapunov_delta": 144.8779296875,
+        "clamped": false,
+        "is_stable": false,
+        "active_mass": 383.0,
+        "mass_ratio": 0.0234,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 223.0,
+          "hair_mass": 457.0,
+          "lip_vitality": 0.0023769321851432323
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:39:08+08:00",
+      "elapsed": 824.54,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.187,
+      "best_combined": 0.2169,
+      "semantic_score": 0.2045,
+      "energy_penalty": 0.0174,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 11160.7509765625,
+        "lyapunov_delta": 167.80078125,
+        "clamped": false,
+        "is_stable": false,
+        "active_mass": 388.0,
+        "mass_ratio": 0.0237,
+        "num_components": 3,
+        "humanoid_metrics": {
+          "skin_mass": 202.0,
+          "hair_mass": 457.0,
+          "lip_vitality": 0.0012276481138542295
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:39:15+08:00",
+      "elapsed": 830.83,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.1906,
+      "best_combined": 0.2169,
+      "semantic_score": 0.2091,
+      "energy_penalty": 0.0185,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 11735.59375,
+        "lyapunov_delta": 175.658203125,
+        "clamped": false,
+        "is_stable": false,
+        "active_mass": 390.0,
+        "mass_ratio": 0.0238,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 159.0,
+          "hair_mass": 457.0,
+          "lip_vitality": -0.00018488409114070237
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:39:21+08:00",
+      "elapsed": 837.13,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.189,
+      "best_combined": 0.2169,
+      "semantic_score": 0.2084,
+      "energy_penalty": 0.0194,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 12208.126953125,
+        "lyapunov_delta": 172.205078125,
+        "clamped": false,
+        "is_stable": false,
+        "active_mass": 394.0,
+        "mass_ratio": 0.024,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 135.0,
+          "hair_mass": 457.0,
+          "lip_vitality": -0.0011697537265717983
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:39:27+08:00",
+      "elapsed": 843.38,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.177,
+      "best_combined": 0.2169,
+      "semantic_score": 0.1975,
+      "energy_penalty": 0.0205,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 12830.7451171875,
+        "lyapunov_delta": 175.7138671875,
+        "clamped": false,
+        "is_stable": false,
+        "active_mass": 396.0,
+        "mass_ratio": 0.0242,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 95.0,
+          "hair_mass": 458.0,
+          "lip_vitality": -0.002578799147158861
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:39:33+08:00",
+      "elapsed": 849.65,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.1833,
+      "best_combined": 0.2169,
+      "semantic_score": 0.2045,
+      "energy_penalty": 0.0213,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 13313.00390625,
+        "lyapunov_delta": 182.5322265625,
+        "clamped": false,
+        "is_stable": false,
+        "active_mass": 395.0,
+        "mass_ratio": 0.0241,
+        "num_components": 2,
+        "humanoid_metrics": {
+          "skin_mass": 75.0,
+          "hair_mass": 460.0,
+          "lip_vitality": -0.0035745699424296618
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:39:40+08:00",
+      "elapsed": 855.91,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.1908,
+      "best_combined": 0.2169,
+      "semantic_score": 0.2127,
+      "energy_penalty": 0.0219,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 13722.6796875,
+        "lyapunov_delta": 200.861328125,
+        "clamped": false,
+        "is_stable": false,
+        "active_mass": 399.0,
+        "mass_ratio": 0.0244,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 82.0,
+          "hair_mass": 458.0,
+          "lip_vitality": -0.0045629325322806835
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:39:46+08:00",
+      "elapsed": 862.22,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.174,
+      "best_combined": 0.2169,
+      "semantic_score": 0.1968,
+      "energy_penalty": 0.0228,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 14291.154296875,
+        "lyapunov_delta": 176.291015625,
+        "clamped": false,
+        "is_stable": false,
+        "active_mass": 405.0,
+        "mass_ratio": 0.0247,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 71.0,
+          "hair_mass": 460.0,
+          "lip_vitality": -0.005762515589594841
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:39:52+08:00",
+      "elapsed": 868.64,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.1844,
+      "best_combined": 0.2169,
+      "semantic_score": 0.2083,
+      "energy_penalty": 0.0238,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 14992.6455078125,
+        "lyapunov_delta": 203.6484375,
+        "clamped": false,
+        "is_stable": false,
+        "active_mass": 408.0,
+        "mass_ratio": 0.0249,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 59.0,
+          "hair_mass": 466.0,
+          "lip_vitality": -0.007310807704925537
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:39:59+08:00",
+      "elapsed": 875.31,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.2023,
+      "best_combined": 0.2169,
+      "semantic_score": 0.2055,
+      "energy_penalty": 0.0032,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 4313.5419921875,
+        "lyapunov_delta": 17.4619140625,
+        "clamped": false,
+        "is_stable": true,
+        "active_mass": 320.0,
+        "mass_ratio": 0.0195,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 320.0,
+          "hair_mass": 440.0,
+          "lip_vitality": 0.019487326964735985
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:40:06+08:00",
+      "elapsed": 881.9,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.212,
+      "best_combined": 0.2169,
+      "semantic_score": 0.2149,
+      "energy_penalty": 0.0029,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 4372.9560546875,
+        "lyapunov_delta": 20.96435546875,
+        "clamped": false,
+        "is_stable": true,
+        "active_mass": 320.0,
+        "mass_ratio": 0.0195,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 320.0,
+          "hair_mass": 440.0,
+          "lip_vitality": 0.01936529390513897
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:40:12+08:00",
+      "elapsed": 888.45,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.2126,
+      "best_combined": 0.2169,
+      "semantic_score": 0.2152,
+      "energy_penalty": 0.0026,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 4438.5517578125,
+        "lyapunov_delta": 22.33056640625,
+        "clamped": false,
+        "is_stable": true,
+        "active_mass": 320.0,
+        "mass_ratio": 0.0195,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 320.0,
+          "hair_mass": 440.0,
+          "lip_vitality": 0.019222432747483253
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:40:20+08:00",
+      "elapsed": 895.74,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.211,
+      "best_combined": 0.2169,
+      "semantic_score": 0.2132,
+      "energy_penalty": 0.0021,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 4531.21142578125,
+        "lyapunov_delta": 25.734375,
+        "clamped": false,
+        "is_stable": true,
+        "active_mass": 320.0,
+        "mass_ratio": 0.0195,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 320.0,
+          "hair_mass": 440.0,
+          "lip_vitality": 0.018979396671056747
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:40:27+08:00",
+      "elapsed": 903.3,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.2113,
+      "best_combined": 0.2169,
+      "semantic_score": 0.213,
+      "energy_penalty": 0.0017,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 4626.06884765625,
+        "lyapunov_delta": 27.39697265625,
+        "clamped": false,
+        "is_stable": true,
+        "active_mass": 322.0,
+        "mass_ratio": 0.0197,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 320.0,
+          "hair_mass": 440.0,
+          "lip_vitality": 0.018708843737840652
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:40:35+08:00",
+      "elapsed": 910.92,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.214,
+      "best_combined": 0.2169,
+      "semantic_score": 0.2153,
+      "energy_penalty": 0.0013,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 4712.86474609375,
+        "lyapunov_delta": 32.43896484375,
+        "clamped": false,
+        "is_stable": true,
+        "active_mass": 324.0,
+        "mass_ratio": 0.0198,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 320.0,
+          "hair_mass": 440.0,
+          "lip_vitality": 0.018465682864189148
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:40:42+08:00",
+      "elapsed": 918.44,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.2107,
+      "best_combined": 0.2169,
+      "semantic_score": 0.2116,
+      "energy_penalty": 0.0009,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 4807.40673828125,
+        "lyapunov_delta": 34.8759765625,
+        "clamped": false,
+        "is_stable": true,
+        "active_mass": 331.0,
+        "mass_ratio": 0.0202,
+        "num_components": 2,
+        "humanoid_metrics": {
+          "skin_mass": 320.0,
+          "hair_mass": 440.0,
+          "lip_vitality": 0.018158717080950737
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:40:49+08:00",
+      "elapsed": 925.13,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.214,
+      "best_combined": 0.2169,
+      "semantic_score": 0.2144,
+      "energy_penalty": 0.0004,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 4907.068359375,
+        "lyapunov_delta": 39.0859375,
+        "clamped": false,
+        "is_stable": true,
+        "active_mass": 334.0,
+        "mass_ratio": 0.0204,
+        "num_components": 2,
+        "humanoid_metrics": {
+          "skin_mass": 320.0,
+          "hair_mass": 440.0,
+          "lip_vitality": 0.017876645550131798
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:40:56+08:00",
+      "elapsed": 932.23,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.2151,
+      "best_combined": 0.2169,
+      "semantic_score": 0.2155,
+      "energy_penalty": 0.0004,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 5087.53076171875,
+        "lyapunov_delta": 39.53271484375,
+        "clamped": false,
+        "is_stable": true,
+        "active_mass": 339.0,
+        "mass_ratio": 0.0207,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 320.0,
+          "hair_mass": 440.0,
+          "lip_vitality": 0.017330173403024673
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:41:04+08:00",
+      "elapsed": 940.18,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.2138,
+      "best_combined": 0.2169,
+      "semantic_score": 0.2149,
+      "energy_penalty": 0.0011,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 5269.4306640625,
+        "lyapunov_delta": 49.2080078125,
+        "clamped": false,
+        "is_stable": true,
+        "active_mass": 342.0,
+        "mass_ratio": 0.0209,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 320.0,
+          "hair_mass": 440.0,
+          "lip_vitality": 0.016753152012825012
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:41:11+08:00",
+      "elapsed": 947.67,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.2092,
+      "best_combined": 0.2169,
+      "semantic_score": 0.211,
+      "energy_penalty": 0.0018,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 5427.6884765625,
+        "lyapunov_delta": 48.541015625,
+        "clamped": false,
+        "is_stable": true,
+        "active_mass": 346.0,
+        "mass_ratio": 0.0211,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 320.0,
+          "hair_mass": 441.0,
+          "lip_vitality": 0.016269899904727936
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:41:19+08:00",
+      "elapsed": 955.15,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.2085,
+      "best_combined": 0.2169,
+      "semantic_score": 0.2109,
+      "energy_penalty": 0.0024,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 5590.8388671875,
+        "lyapunov_delta": 55.1845703125,
+        "clamped": false,
+        "is_stable": false,
+        "active_mass": 346.0,
+        "mass_ratio": 0.0211,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 319.0,
+          "hair_mass": 442.0,
+          "lip_vitality": 0.015774788334965706
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:41:26+08:00",
+      "elapsed": 962.5,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.2032,
+      "best_combined": 0.2169,
+      "semantic_score": 0.2063,
+      "energy_penalty": 0.0031,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 5766.37890625,
+        "lyapunov_delta": 57.5234375,
+        "clamped": false,
+        "is_stable": false,
+        "active_mass": 348.0,
+        "mass_ratio": 0.0212,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 318.0,
+          "hair_mass": 446.0,
+          "lip_vitality": 0.01521291397511959
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:41:34+08:00",
+      "elapsed": 970.0,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.2032,
+      "best_combined": 0.2169,
+      "semantic_score": 0.2072,
+      "energy_penalty": 0.004,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 6008.4326171875,
+        "lyapunov_delta": 66.23828125,
+        "clamped": false,
+        "is_stable": false,
+        "active_mass": 350.0,
+        "mass_ratio": 0.0214,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 317.0,
+          "hair_mass": 447.0,
+          "lip_vitality": 0.014522275887429714
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:41:40+08:00",
+      "elapsed": 976.47,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.1989,
+      "best_combined": 0.2169,
+      "semantic_score": 0.2036,
+      "energy_penalty": 0.0048,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 6226.81005859375,
+        "lyapunov_delta": 69.28076171875,
+        "clamped": false,
+        "is_stable": false,
+        "active_mass": 351.0,
+        "mass_ratio": 0.0214,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 318.0,
+          "hair_mass": 450.0,
+          "lip_vitality": 0.013885902240872383
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:41:47+08:00",
+      "elapsed": 982.86,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.2,
+      "best_combined": 0.2169,
+      "semantic_score": 0.2056,
+      "energy_penalty": 0.0056,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 6472.322265625,
+        "lyapunov_delta": 72.185546875,
+        "clamped": false,
+        "is_stable": false,
+        "active_mass": 351.0,
+        "mass_ratio": 0.0214,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 312.0,
+          "hair_mass": 452.0,
+          "lip_vitality": 0.013175511732697487
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:41:53+08:00",
+      "elapsed": 989.32,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.1985,
+      "best_combined": 0.2169,
+      "semantic_score": 0.2051,
+      "energy_penalty": 0.0066,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 6777.64453125,
+        "lyapunov_delta": 75.9052734375,
+        "clamped": false,
+        "is_stable": false,
+        "active_mass": 354.0,
+        "mass_ratio": 0.0216,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 311.0,
+          "hair_mass": 456.0,
+          "lip_vitality": 0.01231673825532198
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:42:00+08:00",
+      "elapsed": 995.77,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.1908,
+      "best_combined": 0.2169,
+      "semantic_score": 0.1983,
+      "energy_penalty": 0.0075,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 7052.55712890625,
+        "lyapunov_delta": 84.31201171875,
+        "clamped": false,
+        "is_stable": false,
+        "active_mass": 353.0,
+        "mass_ratio": 0.0215,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 304.0,
+          "hair_mass": 454.0,
+          "lip_vitality": 0.011592814698815346
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:42:06+08:00",
+      "elapsed": 1002.08,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.1961,
+      "best_combined": 0.2169,
+      "semantic_score": 0.2048,
+      "energy_penalty": 0.0087,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 7456.4365234375,
+        "lyapunov_delta": 88.19189453125,
+        "clamped": false,
+        "is_stable": false,
+        "active_mass": 354.0,
+        "mass_ratio": 0.0216,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 300.0,
+          "hair_mass": 455.0,
+          "lip_vitality": 0.01046273484826088
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:42:12+08:00",
+      "elapsed": 1008.38,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.186,
+      "best_combined": 0.2169,
+      "semantic_score": 0.1951,
+      "energy_penalty": 0.0091,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 7600.08203125,
+        "lyapunov_delta": 88.22509765625,
+        "clamped": false,
+        "is_stable": false,
+        "active_mass": 359.0,
+        "mass_ratio": 0.0219,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 302.0,
+          "hair_mass": 456.0,
+          "lip_vitality": 0.010046298615634441
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:42:18+08:00",
+      "elapsed": 1014.68,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.1804,
+      "best_combined": 0.2169,
+      "semantic_score": 0.1903,
+      "energy_penalty": 0.0099,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 7876.275390625,
+        "lyapunov_delta": 103.748046875,
+        "clamped": false,
+        "is_stable": false,
+        "active_mass": 359.0,
+        "mass_ratio": 0.0219,
+        "num_components": 2,
+        "humanoid_metrics": {
+          "skin_mass": 302.0,
+          "hair_mass": 456.0,
+          "lip_vitality": 0.009361913427710533
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:42:25+08:00",
+      "elapsed": 1020.95,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.1834,
+      "best_combined": 0.2169,
+      "semantic_score": 0.1943,
+      "energy_penalty": 0.0109,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 8252.109375,
+        "lyapunov_delta": 95.0595703125,
+        "clamped": false,
+        "is_stable": false,
+        "active_mass": 364.0,
+        "mass_ratio": 0.0222,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 299.0,
+          "hair_mass": 456.0,
+          "lip_vitality": 0.008307167328894138
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:42:31+08:00",
+      "elapsed": 1027.27,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.1917,
+      "best_combined": 0.2169,
+      "semantic_score": 0.2036,
+      "energy_penalty": 0.0119,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 8644.3359375,
+        "lyapunov_delta": 116.509765625,
+        "clamped": false,
+        "is_stable": false,
+        "active_mass": 366.0,
+        "mass_ratio": 0.0223,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 296.0,
+          "hair_mass": 456.0,
+          "lip_vitality": 0.007268719375133514
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:42:37+08:00",
+      "elapsed": 1033.51,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.1948,
+      "best_combined": 0.2169,
+      "semantic_score": 0.2077,
+      "energy_penalty": 0.0129,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 9063.564453125,
+        "lyapunov_delta": 119.8583984375,
+        "clamped": false,
+        "is_stable": false,
+        "active_mass": 373.0,
+        "mass_ratio": 0.0228,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 294.0,
+          "hair_mass": 456.0,
+          "lip_vitality": 0.00618347991257906
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:42:44+08:00",
+      "elapsed": 1039.82,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.1942,
+      "best_combined": 0.2169,
+      "semantic_score": 0.2076,
+      "energy_penalty": 0.0134,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 9268.0859375,
+        "lyapunov_delta": 117.42578125,
+        "clamped": false,
+        "is_stable": false,
+        "active_mass": 377.0,
+        "mass_ratio": 0.023,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 289.0,
+          "hair_mass": 456.0,
+          "lip_vitality": 0.005555519834160805
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:42:50+08:00",
+      "elapsed": 1046.1,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.1868,
+      "best_combined": 0.2169,
+      "semantic_score": 0.2012,
+      "energy_penalty": 0.0144,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 9696.32421875,
+        "lyapunov_delta": 119.0908203125,
+        "clamped": false,
+        "is_stable": false,
+        "active_mass": 378.0,
+        "mass_ratio": 0.0231,
+        "num_components": 3,
+        "humanoid_metrics": {
+          "skin_mass": 274.0,
+          "hair_mass": 457.0,
+          "lip_vitality": 0.00458867009729147
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:42:56+08:00",
+      "elapsed": 1052.37,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.196,
+      "best_combined": 0.2169,
+      "semantic_score": 0.2113,
+      "energy_penalty": 0.0154,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 10160.6005859375,
+        "lyapunov_delta": 147.4375,
+        "clamped": false,
+        "is_stable": false,
+        "active_mass": 382.0,
+        "mass_ratio": 0.0233,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 260.0,
+          "hair_mass": 456.0,
+          "lip_vitality": 0.003472433425486088
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:43:02+08:00",
+      "elapsed": 1058.65,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.1898,
+      "best_combined": 0.2169,
+      "semantic_score": 0.2064,
+      "energy_penalty": 0.0166,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 10739.951171875,
+        "lyapunov_delta": 141.7294921875,
+        "clamped": false,
+        "is_stable": false,
+        "active_mass": 389.0,
+        "mass_ratio": 0.0237,
+        "num_components": 2,
+        "humanoid_metrics": {
+          "skin_mass": 222.0,
+          "hair_mass": 456.0,
+          "lip_vitality": 0.00217234855517745
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:43:09+08:00",
+      "elapsed": 1064.97,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.186,
+      "best_combined": 0.2169,
+      "semantic_score": 0.2036,
+      "energy_penalty": 0.0177,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 11275.6181640625,
+        "lyapunov_delta": 180.3310546875,
+        "clamped": false,
+        "is_stable": false,
+        "active_mass": 389.0,
+        "mass_ratio": 0.0237,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 182.0,
+          "hair_mass": 456.0,
+          "lip_vitality": 0.0008663711487315595
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:43:15+08:00",
+      "elapsed": 1071.45,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.1862,
+      "best_combined": 0.2169,
+      "semantic_score": 0.2047,
+      "energy_penalty": 0.0185,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 11736.361328125,
+        "lyapunov_delta": 155.134765625,
+        "clamped": false,
+        "is_stable": false,
+        "active_mass": 384.0,
+        "mass_ratio": 0.0234,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 168.0,
+          "hair_mass": 456.0,
+          "lip_vitality": -0.00012239371426403522
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:43:22+08:00",
+      "elapsed": 1078.0,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.19,
+      "best_combined": 0.2169,
+      "semantic_score": 0.2092,
+      "energy_penalty": 0.0192,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 12117.2470703125,
+        "lyapunov_delta": 170.7412109375,
+        "clamped": false,
+        "is_stable": false,
+        "active_mass": 397.0,
+        "mass_ratio": 0.0242,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 137.0,
+          "hair_mass": 457.0,
+          "lip_vitality": -0.0010675173252820969
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:43:28+08:00",
+      "elapsed": 1084.51,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.1843,
+      "best_combined": 0.2169,
+      "semantic_score": 0.2042,
+      "energy_penalty": 0.0198,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 12473.470703125,
+        "lyapunov_delta": 184.0126953125,
+        "clamped": false,
+        "is_stable": false,
+        "active_mass": 393.0,
+        "mass_ratio": 0.024,
+        "num_components": 2,
+        "humanoid_metrics": {
+          "skin_mass": 115.0,
+          "hair_mass": 457.0,
+          "lip_vitality": -0.0017871700692921877
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:43:35+08:00",
+      "elapsed": 1090.95,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.1829,
+      "best_combined": 0.2169,
+      "semantic_score": 0.2039,
+      "energy_penalty": 0.021,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 13131.216796875,
+        "lyapunov_delta": 185.763671875,
+        "clamped": false,
+        "is_stable": false,
+        "active_mass": 405.0,
+        "mass_ratio": 0.0247,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 99.0,
+          "hair_mass": 458.0,
+          "lip_vitality": -0.003299241652712226
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:43:41+08:00",
+      "elapsed": 1097.18,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.1774,
+      "best_combined": 0.2169,
+      "semantic_score": 0.1994,
+      "energy_penalty": 0.022,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 13768.4130859375,
+        "lyapunov_delta": 196.140625,
+        "clamped": false,
+        "is_stable": false,
+        "active_mass": 400.0,
+        "mass_ratio": 0.0244,
+        "num_components": 2,
+        "humanoid_metrics": {
+          "skin_mass": 79.0,
+          "hair_mass": 461.0,
+          "lip_vitality": -0.004509029444307089
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:43:47+08:00",
+      "elapsed": 1103.42,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.1995,
+      "best_combined": 0.2169,
+      "semantic_score": 0.2223,
+      "energy_penalty": 0.0228,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 14269.09765625,
+        "lyapunov_delta": 206.0498046875,
+        "clamped": false,
+        "is_stable": false,
+        "active_mass": 405.0,
+        "mass_ratio": 0.0247,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 62.0,
+          "hair_mass": 458.0,
+          "lip_vitality": -0.00566113693639636
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:43:54+08:00",
+      "elapsed": 1109.93,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.2108,
+      "best_combined": 0.2169,
+      "semantic_score": 0.2141,
+      "energy_penalty": 0.0033,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 4294.740234375,
+        "lyapunov_delta": 14.740234375,
+        "clamped": false,
+        "is_stable": true,
+        "active_mass": 320.0,
+        "mass_ratio": 0.0195,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 320.0,
+          "hair_mass": 440.0,
+          "lip_vitality": 0.019512586295604706
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:44:00+08:00",
+      "elapsed": 1116.47,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.2121,
+      "best_combined": 0.2169,
+      "semantic_score": 0.2152,
+      "energy_penalty": 0.0031,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 4331.29833984375,
+        "lyapunov_delta": 18.43896484375,
+        "clamped": false,
+        "is_stable": true,
+        "active_mass": 320.0,
+        "mass_ratio": 0.0195,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 320.0,
+          "hair_mass": 440.0,
+          "lip_vitality": 0.019450044259428978
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:44:07+08:00",
+      "elapsed": 1123.61,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.2126,
+      "best_combined": 0.2169,
+      "semantic_score": 0.2153,
+      "energy_penalty": 0.0027,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 4413.61181640625,
+        "lyapunov_delta": 21.23193359375,
+        "clamped": false,
+        "is_stable": true,
+        "active_mass": 320.0,
+        "mass_ratio": 0.0195,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 320.0,
+          "hair_mass": 440.0,
+          "lip_vitality": 0.01927359029650688
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:44:15+08:00",
+      "elapsed": 1131.12,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.2122,
+      "best_combined": 0.2169,
+      "semantic_score": 0.2146,
+      "energy_penalty": 0.0024,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 4481.3486328125,
+        "lyapunov_delta": 24.677734375,
+        "clamped": false,
+        "is_stable": true,
+        "active_mass": 320.0,
+        "mass_ratio": 0.0195,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 320.0,
+          "hair_mass": 440.0,
+          "lip_vitality": 0.019112778827548027
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:44:22+08:00",
+      "elapsed": 1137.87,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.2121,
+      "best_combined": 0.2169,
+      "semantic_score": 0.2141,
+      "energy_penalty": 0.002,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 4559.72705078125,
+        "lyapunov_delta": 28.98193359375,
+        "clamped": false,
+        "is_stable": true,
+        "active_mass": 322.0,
+        "mass_ratio": 0.0197,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 320.0,
+          "hair_mass": 440.0,
+          "lip_vitality": 0.018893050029873848
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:44:28+08:00",
+      "elapsed": 1144.61,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.2131,
+      "best_combined": 0.2169,
+      "semantic_score": 0.2147,
+      "energy_penalty": 0.0016,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 4642.34765625,
+        "lyapunov_delta": 31.1513671875,
+        "clamped": false,
+        "is_stable": true,
+        "active_mass": 324.0,
+        "mass_ratio": 0.0198,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 320.0,
+          "hair_mass": 440.0,
+          "lip_vitality": 0.018640726804733276
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:44:35+08:00",
+      "elapsed": 1151.23,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.2124,
+      "best_combined": 0.2169,
+      "semantic_score": 0.2136,
+      "energy_penalty": 0.0012,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 4720.7001953125,
+        "lyapunov_delta": 33.16943359375,
+        "clamped": false,
+        "is_stable": true,
+        "active_mass": 328.0,
+        "mass_ratio": 0.02,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 320.0,
+          "hair_mass": 440.0,
+          "lip_vitality": 0.018405742943286896
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:44:41+08:00",
+      "elapsed": 1157.56,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.2109,
+      "best_combined": 0.2169,
+      "semantic_score": 0.2117,
+      "energy_penalty": 0.0008,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 4811.8232421875,
+        "lyapunov_delta": 33.6845703125,
+        "clamped": false,
+        "is_stable": true,
+        "active_mass": 329.0,
+        "mass_ratio": 0.0201,
+        "num_components": 2,
+        "humanoid_metrics": {
+          "skin_mass": 320.0,
+          "hair_mass": 440.0,
+          "lip_vitality": 0.018151838332414627
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:44:48+08:00",
+      "elapsed": 1163.86,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.2115,
+      "best_combined": 0.2169,
+      "semantic_score": 0.2119,
+      "energy_penalty": 0.0004,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 4906.22119140625,
+        "lyapunov_delta": 33.67822265625,
+        "clamped": false,
+        "is_stable": true,
+        "active_mass": 337.0,
+        "mass_ratio": 0.0206,
+        "num_components": 2,
+        "humanoid_metrics": {
+          "skin_mass": 320.0,
+          "hair_mass": 440.0,
+          "lip_vitality": 0.017866678535938263
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:44:54+08:00",
+      "elapsed": 1170.18,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.2113,
+      "best_combined": 0.2169,
+      "semantic_score": 0.2113,
+      "energy_penalty": 0.0001,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 5018.287109375,
+        "lyapunov_delta": 38.943359375,
+        "clamped": false,
+        "is_stable": true,
+        "active_mass": 341.0,
+        "mass_ratio": 0.0208,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 320.0,
+          "hair_mass": 440.0,
+          "lip_vitality": 0.01750754565000534
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:45:00+08:00",
+      "elapsed": 1176.46,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.2144,
+      "best_combined": 0.2169,
+      "semantic_score": 0.2151,
+      "energy_penalty": 0.0007,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 5165.5322265625,
+        "lyapunov_delta": 41.59912109375,
+        "clamped": false,
+        "is_stable": true,
+        "active_mass": 341.0,
+        "mass_ratio": 0.0208,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 320.0,
+          "hair_mass": 441.0,
+          "lip_vitality": 0.017020950093865395
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:45:07+08:00",
+      "elapsed": 1182.76,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.2124,
+      "best_combined": 0.2169,
+      "semantic_score": 0.2135,
+      "energy_penalty": 0.0012,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 5283.89697265625,
+        "lyapunov_delta": 44.95556640625,
+        "clamped": false,
+        "is_stable": true,
+        "active_mass": 343.0,
+        "mass_ratio": 0.0209,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 320.0,
+          "hair_mass": 440.0,
+          "lip_vitality": 0.01663743145763874
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:45:13+08:00",
+      "elapsed": 1189.08,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.2118,
+      "best_combined": 0.2169,
+      "semantic_score": 0.2136,
+      "energy_penalty": 0.0018,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 5442.3408203125,
+        "lyapunov_delta": 52.642578125,
+        "clamped": false,
+        "is_stable": false,
+        "active_mass": 343.0,
+        "mass_ratio": 0.0209,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 320.0,
+          "hair_mass": 441.0,
+          "lip_vitality": 0.016218120232224464
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:45:19+08:00",
+      "elapsed": 1195.37,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.206,
+      "best_combined": 0.2169,
+      "semantic_score": 0.2085,
+      "energy_penalty": 0.0025,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 5600.6484375,
+        "lyapunov_delta": 52.703125,
+        "clamped": false,
+        "is_stable": false,
+        "active_mass": 345.0,
+        "mass_ratio": 0.0211,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 320.0,
+          "hair_mass": 442.0,
+          "lip_vitality": 0.015716269612312317
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:45:25+08:00",
+      "elapsed": 1201.66,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.208,
+      "best_combined": 0.2169,
+      "semantic_score": 0.2111,
+      "energy_penalty": 0.0031,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 5764.50341796875,
+        "lyapunov_delta": 55.07568359375,
+        "clamped": false,
+        "is_stable": false,
+        "active_mass": 344.0,
+        "mass_ratio": 0.021,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 319.0,
+          "hair_mass": 443.0,
+          "lip_vitality": 0.01528142113238573
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:45:32+08:00",
+      "elapsed": 1208.1,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.201,
+      "best_combined": 0.2169,
+      "semantic_score": 0.2048,
+      "energy_penalty": 0.0038,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 5963.9248046875,
+        "lyapunov_delta": 66.279296875,
+        "clamped": false,
+        "is_stable": false,
+        "active_mass": 345.0,
+        "mass_ratio": 0.0211,
+        "num_components": 2,
+        "humanoid_metrics": {
+          "skin_mass": 318.0,
+          "hair_mass": 448.0,
+          "lip_vitality": 0.014673320576548576
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:45:39+08:00",
+      "elapsed": 1215.23,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.1921,
+      "best_combined": 0.2169,
+      "semantic_score": 0.1968,
+      "energy_penalty": 0.0047,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 6207.1181640625,
+        "lyapunov_delta": 62.35009765625,
+        "clamped": false,
+        "is_stable": false,
+        "active_mass": 351.0,
+        "mass_ratio": 0.0214,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 316.0,
+          "hair_mass": 451.0,
+          "lip_vitality": 0.013975648209452629
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:45:47+08:00",
+      "elapsed": 1222.85,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.2013,
+      "best_combined": 0.2169,
+      "semantic_score": 0.2068,
+      "energy_penalty": 0.0055,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 6442.26171875,
+        "lyapunov_delta": 71.197265625,
+        "clamped": false,
+        "is_stable": false,
+        "active_mass": 352.0,
+        "mass_ratio": 0.0215,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 310.0,
+          "hair_mass": 453.0,
+          "lip_vitality": 0.013334189541637897
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:45:54+08:00",
+      "elapsed": 1230.41,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.1888,
+      "best_combined": 0.2169,
+      "semantic_score": 0.1952,
+      "energy_penalty": 0.0064,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 6712.87109375,
+        "lyapunov_delta": 75.4306640625,
+        "clamped": false,
+        "is_stable": false,
+        "active_mass": 353.0,
+        "mass_ratio": 0.0215,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 309.0,
+          "hair_mass": 454.0,
+          "lip_vitality": 0.012534471228718758
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:46:02+08:00",
+      "elapsed": 1238.08,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.1963,
+      "best_combined": 0.2169,
+      "semantic_score": 0.2032,
+      "energy_penalty": 0.007,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 6889.33056640625,
+        "lyapunov_delta": 76.73974609375,
+        "clamped": false,
+        "is_stable": false,
+        "active_mass": 352.0,
+        "mass_ratio": 0.0215,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 305.0,
+          "hair_mass": 456.0,
+          "lip_vitality": 0.012027397751808167
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:46:09+08:00",
+      "elapsed": 1245.66,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.1959,
+      "best_combined": 0.2169,
+      "semantic_score": 0.2036,
+      "energy_penalty": 0.0078,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 7148.0302734375,
+        "lyapunov_delta": 83.828125,
+        "clamped": false,
+        "is_stable": false,
+        "active_mass": 354.0,
+        "mass_ratio": 0.0216,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 304.0,
+          "hair_mass": 455.0,
+          "lip_vitality": 0.011285913176834583
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:46:16+08:00",
+      "elapsed": 1252.71,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.1881,
+      "best_combined": 0.2169,
+      "semantic_score": 0.1966,
+      "energy_penalty": 0.0085,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 7387.6162109375,
+        "lyapunov_delta": 93.658203125,
+        "clamped": false,
+        "is_stable": false,
+        "active_mass": 360.0,
+        "mass_ratio": 0.022,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 301.0,
+          "hair_mass": 456.0,
+          "lip_vitality": 0.01061793603003025
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:46:23+08:00",
+      "elapsed": 1259.32,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.1871,
+      "best_combined": 0.2169,
+      "semantic_score": 0.1962,
+      "energy_penalty": 0.0091,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 7618.09912109375,
+        "lyapunov_delta": 98.91015625,
+        "clamped": false,
+        "is_stable": false,
+        "active_mass": 359.0,
+        "mass_ratio": 0.0219,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 302.0,
+          "hair_mass": 455.0,
+          "lip_vitality": 0.010021977126598358
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:46:30+08:00",
+      "elapsed": 1265.92,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.1927,
+      "best_combined": 0.2169,
+      "semantic_score": 0.2024,
+      "energy_penalty": 0.0097,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 7804.40087890625,
+        "lyapunov_delta": 88.7060546875,
+        "clamped": false,
+        "is_stable": false,
+        "active_mass": 364.0,
+        "mass_ratio": 0.0222,
+        "num_components": 2,
+        "humanoid_metrics": {
+          "skin_mass": 301.0,
+          "hair_mass": 456.0,
+          "lip_vitality": 0.009451821446418762
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:46:36+08:00",
+      "elapsed": 1272.48,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.1874,
+      "best_combined": 0.2169,
+      "semantic_score": 0.1981,
+      "energy_penalty": 0.0107,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 8172.3154296875,
+        "lyapunov_delta": 107.423828125,
+        "clamped": false,
+        "is_stable": false,
+        "active_mass": 366.0,
+        "mass_ratio": 0.0223,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 301.0,
+          "hair_mass": 456.0,
+          "lip_vitality": 0.008521134965121746
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:46:43+08:00",
+      "elapsed": 1278.87,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.1826,
+      "best_combined": 0.2169,
+      "semantic_score": 0.1942,
+      "energy_penalty": 0.0116,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 8531.083984375,
+        "lyapunov_delta": 105.6357421875,
+        "clamped": false,
+        "is_stable": false,
+        "active_mass": 363.0,
+        "mass_ratio": 0.0222,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 300.0,
+          "hair_mass": 455.0,
+          "lip_vitality": 0.007620736490935087
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:46:49+08:00",
+      "elapsed": 1285.32,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.1815,
+      "best_combined": 0.2169,
+      "semantic_score": 0.1939,
+      "energy_penalty": 0.0124,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 8870.9013671875,
+        "lyapunov_delta": 112.9697265625,
+        "clamped": false,
+        "is_stable": false,
+        "active_mass": 369.0,
+        "mass_ratio": 0.0225,
+        "num_components": 2,
+        "humanoid_metrics": {
+          "skin_mass": 294.0,
+          "hair_mass": 456.0,
+          "lip_vitality": 0.00673249363899231
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:46:56+08:00",
+      "elapsed": 1291.78,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.1761,
+      "best_combined": 0.2169,
+      "semantic_score": 0.1892,
+      "energy_penalty": 0.0131,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 9147.5166015625,
+        "lyapunov_delta": 115.0634765625,
+        "clamped": false,
+        "is_stable": false,
+        "active_mass": 374.0,
+        "mass_ratio": 0.0228,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 286.0,
+          "hair_mass": 456.0,
+          "lip_vitality": 0.00597262941300869
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:47:02+08:00",
+      "elapsed": 1298.03,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.1909,
+      "best_combined": 0.2169,
+      "semantic_score": 0.205,
+      "energy_penalty": 0.0141,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 9587.494140625,
+        "lyapunov_delta": 125.203125,
+        "clamped": false,
+        "is_stable": false,
+        "active_mass": 371.0,
+        "mass_ratio": 0.0226,
+        "num_components": 2,
+        "humanoid_metrics": {
+          "skin_mass": 276.0,
+          "hair_mass": 456.0,
+          "lip_vitality": 0.004975041374564171
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:47:08+08:00",
+      "elapsed": 1304.28,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.1836,
+      "best_combined": 0.2169,
+      "semantic_score": 0.1983,
+      "energy_penalty": 0.0147,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 9821.0625,
+        "lyapunov_delta": 140.044921875,
+        "clamped": false,
+        "is_stable": false,
+        "active_mass": 377.0,
+        "mass_ratio": 0.023,
+        "num_components": 3,
+        "humanoid_metrics": {
+          "skin_mass": 269.0,
+          "hair_mass": 457.0,
+          "lip_vitality": 0.0042963698506355286
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-30T04:47:14+08:00",
+      "elapsed": 1310.54,
+      "state": "idle",
+      "phase": "birth",
+      "current_combined": 0.1975,
+      "best_combined": 0.2169,
+      "semantic_score": 0.213,
+      "energy_penalty": 0.0154,
+      "dna": [
+        0.0033,
+        0.00373,
+        -0.01551,
+        0.00736,
+        -0.00173
+      ],
+      "morphology": {
+        "energy": 10185.546875,
+        "lyapunov_delta": 134.6806640625,
+        "clamped": false,
+        "is_stable": false,
+        "active_mass": 381.0,
+        "mass_ratio": 0.0233,
+        "num_components": 1,
+        "humanoid_metrics": {
+          "skin_mass": 252.0,
+          "hair_mass": 456.0,
+          "lip_vitality": 0.003325451398268342
+        }
+      }
+    }
+  ]
+}

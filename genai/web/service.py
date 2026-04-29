@@ -11,11 +11,7 @@ from digital_clone.persona.model import PersonaModel
 from genai.llm.adapter import LLMRequest
 from genai.llm.factory import create_llm_adapter
 from genai.web.avatar import DEFAULT_AVATAR_CONFIG, DEFAULT_VOICE_CONFIG, merge_web_runtime_config
-from genai.web.life_engine import LiveLifeManager
 from genai.web.life_state import ASALProgressIndex
-from genai.web.life_state_bridge import LifeStateBridge
-from core.co_evolution import LifeMindFeedbackLoop
-from digital_clone.consistency.evaluator import ConsistencyEvaluator
 from genai.web.session_store import ChatSession, ChatSessionStore, SESSION_SCHEMA_VERSION
 from genai.web.stt import MacOSSpeechTranscriber
 from tools.chat_gemma import _build_turn_context, _strict_cleanup_with_retry
@@ -47,26 +43,6 @@ class GemmaWebService:
         self.life_cfg = self.cfg.get("life", {})
         self.life_enabled = bool(self.life_cfg.get("enabled", False))
         self.life_index = ASALProgressIndex(root=ROOT, config=self.life_cfg)
-        self.life_bridge = LifeStateBridge(ROOT)
-        
-        self.run_dir = make_run_dir(run_base)
-        self.live_life = None
-        self.co_evolution = None
-        
-        if self.life_enabled:
-            self.live_life = LiveLifeManager(self.life_cfg, self.run_dir / "live_engine")
-            self.live_life.start()
-            
-            co_evo_cfg = self.cfg.get("co_evolution", {})
-            if co_evo_cfg.get("enabled", True):
-                self.co_evolution = LifeMindFeedbackLoop(
-                    config=co_evo_cfg,
-                    artifact_dir=self.run_dir / "co_evolution",
-                    clone_evaluator=ConsistencyEvaluator(),
-                    llm_adapter=self.adapter,
-                    rollback_fn=self.live_life._apply_rollback if hasattr(self.live_life, "_apply_rollback") else None
-                )
-
         self.voice_cfg = merge_web_runtime_config(self.cfg.get("voice"), DEFAULT_VOICE_CONFIG)
         self.avatar_cfg = merge_web_runtime_config(self.cfg.get("avatar"), DEFAULT_AVATAR_CONFIG)
         self.clone_persona = self._build_clone_persona()
@@ -85,6 +61,7 @@ class GemmaWebService:
         self.temperature = llm_cfg.get("temperature")
         self.profile = self.cfg.get("_active_profile")
         self.store = ChatSessionStore()
+        self.run_dir = make_run_dir(run_base)
         self.sessions_dir = self.run_dir / "sessions"
         self.transcriptions_dir = self.run_dir / "transcriptions"
         self.sessions_dir.mkdir(parents=True, exist_ok=True)
@@ -167,27 +144,6 @@ class GemmaWebService:
             }
         payload = self.life_index.snapshot()
         payload["ok"] = True
-        if self.live_life:
-            stats = self.live_life.substrate.stats()
-            payload["live_frame"] = self.live_life.get_latest_frame_b64()
-            payload["live_state"] = self.live_life.current_state
-            payload["energy"] = stats.get("energy", 0.0)
-            payload["num_components"] = stats.get("num_components", 0)
-            payload["clamped"] = stats.get("clamped", False)
-            payload["is_stable"] = stats.get("is_stable", True)
-            
-            # Co-evolution specific metrics
-            payload["life_likeness"] = (
-                self.live_life.current_combined_score 
-                if hasattr(self.live_life, "current_combined_score") 
-                else 0.5
-            )
-            if self.co_evolution:
-                payload["co_evolution_action"] = (
-                    self.co_evolution.history[-1].action 
-                    if hasattr(self.co_evolution, "history") and self.co_evolution.history 
-                    else "CONTINUE"
-                )
         return payload
 
     def read_life_artifact(self, run_id: str, asset: str) -> tuple[bytes, str]:
@@ -228,9 +184,6 @@ class GemmaWebService:
         if not user_message:
             raise ValueError("message is required")
 
-        if self.live_life:
-            self.live_life.set_state("thinking", prompt=user_message)
-
         session = self.store.get_or_create(session_id)
         transcript = session.transcript_pairs()
         selected_transcript = transcript[-self.history_turns:] if self.history_turns > 0 else transcript
@@ -264,37 +217,17 @@ class GemmaWebService:
             prompt=user_message,
             context=turn_context,
             system=request_system,
-            life_context=self.life_bridge.get_narrative_context(life_snapshot) if self.life_enabled else None,
             max_tokens=self.max_tokens,
             temperature=self.temperature,
             metadata={"transcript": selected_transcript},
         )
         with self._generate_lock:
-            if self.live_life:
-                self.live_life.set_state("thinking")
             response = self.adapter.generate(request)
-            if self.live_life:
-                self.live_life.set_state("speaking")
             cleaned_text, cleanup_meta = _strict_cleanup_with_retry(
                 self.adapter,
                 request,
                 response.text,
             )
-        
-        if self.live_life:
-            self.live_life.set_state("idle")
-
-        if self.co_evolution:
-            # P1: Heart-Body Resonance Test via co-evolution loop
-            asal_stats = self.live_life.substrate.stats() if self.live_life else {}
-            # Simplified clone state for feedback
-            clone_state = {
-                "persona_drift": 0.0, # To be calculated via evaluator
-                "persona": self.clone_persona.to_dict()
-            }
-            genai_output = {"input": user_message, "output": cleaned_text}
-            self.co_evolution.step(asal_stats, clone_state, genai_output)
-
         session.append("user", user_message)
         session.append("assistant", cleaned_text)
         if self.life_enabled:

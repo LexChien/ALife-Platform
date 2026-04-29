@@ -359,3 +359,88 @@ button {
     margin-right: 0;
   }
 }
+
+/* Humanoid Avatar Display (PLAN 36) */
+.humanoid-avatar-container {
+  width: 100%;
+  height: 280px;
+  background: #000;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 20px;
+  border: 1px solid rgba(255, 127, 80, 0.3); /* Subtle Coral border */
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.humanoid-viewport {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.humanoid-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.humanoid-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 20px;
+  background: linear-gradient(transparent, rgba(0,0,0,0.8));
+  display: flex;
+  flex-direction: column;
+}
+
+.humanoid-name {
+  color: #fff;
+  font-weight: 600;
+  letter-spacing: 2px;
+  font-size: 1.1rem;
+}
+
+.humanoid-tag {
+  color: #FF7F50; /* Coral */
+  font-size: 0.7rem;
+  font-weight: 200;
+  letter-spacing: 1px;
+}
+
+/* Grid alignment for Recent Runs and Tasks */
+.life-detail-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 15px;
+  margin-top: 15px;
+  padding: 10px 0;
+  border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+.life-metrics-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  font-family: var(--mono-font);
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.7);
+  margin-bottom: 10px;
+}
+
+.highlight-l {
+  color: #00FFCC; /* Cyan highlight for L value */
+}
+
+.highlight-action {
+  color: #FF7F50; /* Coral highlight for Co-Evo Action */
+}
+
+.life-summary {
+  font-size: 0.85rem;
+  line-height: 1.4;
+  margin-bottom: 15px;
+  color: #fff;
+}
