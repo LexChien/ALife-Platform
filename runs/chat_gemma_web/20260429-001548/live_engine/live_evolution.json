@@ -1,0 +1,26 @@
+{
+  "system": "live_asal",
+  "start_time": "2026-04-29T00:15:49+08:00",
+  "evolution_history": [
+    {
+      "timestamp": "2026-04-29T00:15:49+08:00",
+      "elapsed": 0.03,
+      "state": "idle",
+      "phase": "birth",
+      "best_score": -1.0,
+      "morphology": {
+        "num_components": 1,
+        "dominant_num": 1,
+        "largest_area": 96.0,
+        "mass_ratio": 1.0
+      },
+      "dna": [
+        1.0,
+        1.0,
+        1.0,
+        5.0,
+        2.0
+      ]
+    }
+  ]
+}
