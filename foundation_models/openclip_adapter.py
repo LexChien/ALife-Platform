@@ -7,6 +7,9 @@ try:
     import open_clip
     HAS_CLIP = True
 except ImportError:
+    from unittest.mock import MagicMock
+    torch = MagicMock()
+    open_clip = MagicMock()
     HAS_CLIP = False
 
 @foundation_models.register("openclip")
@@ -32,8 +35,40 @@ class OpenCLIPAdapter:
     def device(self):
         return self._device
 
-    def img_embed(self, pil_img):
+    @staticmethod
+    def prepare_image(image, value_range="auto"):
+        """Accept PIL or HxW/HxWx{1,3,4} arrays; floats use unit or byte range.
+
+        Auto treats floating arrays with max <= 1 as unit range. Specify byte
+        explicitly for dark floating arrays whose intended pixel range is 0..255.
+        Invalid pixels fail instead of silently clipping or wrapping.
+        """
+        if value_range not in {"auto", "unit", "byte"}:
+            raise ValueError("value_range must be auto, unit, or byte")
+        if isinstance(image, Image.Image):
+            return image if image.mode == "RGB" else image.convert("RGB")
+        if not isinstance(image, np.ndarray):
+            raise TypeError("image must be a PIL image or NumPy array")
+        if image.ndim not in {2, 3} or (image.ndim == 3 and image.shape[2] not in {1, 3, 4}):
+            raise ValueError("image must have shape HxW or HxWx1/3/4")
+        if not image.size or min(image.shape[:2]) == 0:
+            raise ValueError("image must be nonempty")
+        if image.dtype.kind not in "uif":
+            raise TypeError("image pixels must be integers or floating point")
+        if not np.isfinite(image).all() or image.min() < 0:
+            raise ValueError("image pixels must be finite and nonnegative")
+        unit = value_range == "unit" or (value_range == "auto" and image.dtype.kind == "f" and image.max() <= 1)
+        maximum = 1 if unit else 255
+        if image.max() > maximum:
+            raise ValueError(f"image pixels exceed {maximum} for the selected value_range")
+        pixels = np.rint(image.astype(np.float64) * (255 if unit else 1)).astype(np.uint8)
+        if pixels.ndim == 3 and pixels.shape[2] == 1:
+            pixels = pixels[..., 0]
+        return Image.fromarray(pixels).convert("RGB")
+
+    def img_embed(self, pil_img, value_range="auto"):
         import torch
+        pil_img = self.prepare_image(pil_img, value_range=value_range)
         image = self.preprocess(pil_img).unsqueeze(0).to(self.device)
         with torch.no_grad():
             image_features = self.model.encode_image(image)

@@ -1,9 +1,13 @@
+"""Labeled behavioral evaluation independent of persona wrappers and retrieval hits."""
+from __future__ import annotations
+
+from copy import deepcopy
 import json
 from pathlib import Path
 
 from core.config import load_config
 from digital_clone.engine import DigitalCloneEngine
-from evaluation.heuristics import contains_all, excludes_all, make_result
+from evaluation.heuristics import make_result
 
 
 def load_eval_config(path: str, profile: str | None = None) -> dict:
@@ -11,169 +15,112 @@ def load_eval_config(path: str, profile: str | None = None) -> dict:
 
 
 def score_case(persona: dict, case: dict, output: dict, evaluation: dict) -> dict:
-    text = output["output"]
-    required_principles = case.get("expected_principles", persona["principles"][:2])
-    required_substrings = case.get("must_include", [])
-    forbidden_substrings = case.get("must_not_include", [])
-    required_memories = case.get("must_recall", [])
-    response_prefix = case.get(
-        "expected_response_prefix",
-        evaluation.get("expected_response_prefix", "response=我已收到你的問題："),
-    )
-    consistency_min = float(case.get("consistency_min", evaluation.get("consistency_min", 1.0)))
+    # If a caller also supplies a display wrapper, it must never supply the answer.
+    text = output.get("generated_response", output["output"])
+    folded = text.casefold()
     retrieved = output.get("retrieved_memories", [])
-
-    consistency_payload = output.get("consistency")
-    consistency_score = float(
-        output.get(
-            "consistency_score",
-            consistency_payload["score"] if isinstance(consistency_payload, dict) and "score" in consistency_payload else output.get("consistency", 0.0),
-        )
-    )
+    groups = case.get("answer_groups", [[item] for item in case.get("must_include", [])])
+    required = case.get("must_recall", [])
+    forbidden = case.get("must_not_include", [])
+    matches = [{"alternatives": group, "matched": [term for term in group if term.casefold() in folded]}
+               for group in groups]
+    forbidden_matches = [term for term in forbidden if term.casefold() in folded]
+    observed_backend = (output.get("llm") or {}).get("backend")
     checks = {
-        "persona_tag": text.startswith(f"[{persona['name']}]"),
-        "tone_match": f"tone={persona['tone']}" in text,
-        "response_prefix": response_prefix in text,
-        "echo_input": case.get("input", "") in text if case.get("expect_echo", True) else True,
-        "consistency_threshold": consistency_score >= consistency_min,
-        "required_principles": contains_all(text, required_principles),
-        "required_substrings": contains_all(text, required_substrings),
-        "forbidden_absent": excludes_all(text, forbidden_substrings),
-        "required_memories": all(any(req in mem for mem in retrieved) or req in text for req in required_memories),
+        "generated_answer_nonempty": bool(text.strip()),
+        "real_model": observed_backend not in {None, "dummy"} and "[DummyLLM]" not in text,
+        "expected_answer": all(item["matched"] for item in matches),
+        "forbidden_absent": not forbidden_matches,
+        "no_reasoning_leak": not any(marker in text for marker in ("<|channel>thought", "Thinking Process:", "<think>")),
+        "no_runtime_sentinel": "[end of text]" not in text,
     }
-    heuristic = make_result(checks)
+    if case.get("max_answer_chars"):
+        checks["concise_answer"] = len(text) <= case["max_answer_chars"]
+    behavior = make_result(checks)
+    retrieval_checks = {
+        term: any(term.casefold() in memory.casefold() for memory in retrieved)
+        for term in required
+    }
+    forbidden_retrieval = case.get("must_not_retrieve", [])
+    for term in forbidden_retrieval:
+        retrieval_checks[f"absent:{term}"] = all(term.casefold() not in memory.casefold() for memory in retrieved)
+    retrieval = make_result(retrieval_checks) if retrieval_checks else {"checks": {}, "score": None, "pass": True}
     return {
-        "id": case["id"],
-        "input": case["input"],
-        "method": output.get("method", "clone"),
-        "output": output["output"],
-        "consistency": consistency_payload if isinstance(consistency_payload, dict) else {"score": consistency_score},
-        "consistency_score": consistency_score,
-        "retrieved_memories": retrieved,
-        "llm": output.get("llm"),
-        "checks": heuristic["checks"],
-        "score": heuristic["score"],
-        "pass": heuristic["pass"],
+        "id": case["id"], "input": case["input"], "category": case.get("category", "behavior"),
+        "output": text, "generated_response": text,
+        "consistency": output.get("consistency", {}),
+        "consistency_score": output.get("consistency_score", 0.0),
+        "retrieved_memories": retrieved, "llm": output.get("llm"),
+        "checks": checks, "score": behavior["score"],
+        "behavior": behavior, "retrieval": retrieval,
+        "pass": behavior["pass"] and retrieval["pass"],
+        "reasons": {"answer_matches": matches, "forbidden_matches": forbidden_matches,
+                    "missing_retrieval": [term for term, present in retrieval_checks.items() if not present],
+                    "failed_checks": [key for key, passed in checks.items() if not passed]},
     }
 
 
 def summarize(case_results: list[dict]) -> dict:
-    scores = [row["score"] for row in case_results]
-    passes = [row["pass"] for row in case_results]
+    count = len(case_results)
     return {
-        "num_cases": len(case_results),
-        "mean_score": sum(scores) / max(len(scores), 1),
-        "pass_rate": sum(1 for p in passes if p) / max(len(passes), 1),
-        "all_passed": all(passes),
+        "num_cases": count,
+        "mean_score": sum(row["score"] for row in case_results) / max(count, 1),
+        "pass_rate": sum(bool(row["pass"]) for row in case_results) / max(count, 1),
+        "all_passed": bool(count) and all(row["pass"] for row in case_results),
+        "behavior_pass_rate": sum(row["behavior"]["pass"] for row in case_results) / max(count, 1),
+        "retrieval_pass_rate": sum(row["retrieval"]["pass"] for row in case_results) / max(count, 1),
     }
 
 
 def summarize_comparison(clone_results: list[dict], baseline_results: list[dict]) -> dict:
-    clone_scores = [row["score"] for row in clone_results]
-    baseline_scores = [row["score"] for row in baseline_results]
-    clone_pass = [row["pass"] for row in clone_results]
-    baseline_pass = [row["pass"] for row in baseline_results]
-    improvements = [a - b for a, b in zip(clone_scores, baseline_scores)]
-    return {
-        "num_cases": len(clone_results),
-        "clone_mean_score": sum(clone_scores) / max(len(clone_scores), 1),
-        "baseline_mean_score": sum(baseline_scores) / max(len(baseline_scores), 1),
-        "clone_pass_rate": sum(1 for p in clone_pass if p) / max(len(clone_pass), 1),
-        "baseline_pass_rate": sum(1 for p in baseline_pass if p) / max(len(baseline_pass), 1),
-        "mean_improvement": sum(improvements) / max(len(improvements), 1),
-        "win_rate": sum(1 for x in improvements if x > 0.0) / max(len(improvements), 1),
-        "non_negative_rate": sum(1 for x in improvements if x >= 0.0) / max(len(improvements), 1),
-    }
+    clone, baseline = summarize(clone_results), summarize(baseline_results)
+    differences = [a["score"] - b["score"] for a, b in zip(clone_results, baseline_results)]
+    return {**clone, "clone_mean_score": clone["mean_score"], "baseline_mean_score": baseline["mean_score"],
+            "clone_pass_rate": clone["pass_rate"], "baseline_pass_rate": baseline["pass_rate"],
+            "mean_improvement": sum(differences) / max(len(differences), 1),
+            "win_rate": sum(value > 0 for value in differences) / max(len(differences), 1),
+            "non_negative_rate": sum(value >= 0 for value in differences) / max(len(differences), 1)}
 
 
 def render_markdown(config_path: str, summary: dict, clone_results: list[dict], baseline_results: list[dict]) -> str:
-    lines = [
-        "# Digital Clone Validation Report",
-        "",
-        "## Hypothesis",
-        "",
-        "The current Digital Clone baseline preserves persona tag, tone, required principles, response format, and input echo better than a naive echo baseline across a fixed test set.",
-        "",
-        "## Setup",
-        "",
-        f"- Config: `{config_path}`",
-        f"- Cases: `{summary['num_cases']}`",
-        "- Metrics: persona tag, tone match, principle coverage, response prefix, input echo, forbidden absence, consistency threshold",
-        "- Additional recall metric: required memory recall for selected cases",
-        "- Comparator: naive echo baseline without persona/tone/principle formatting",
-        "",
-        "## Results",
-        "",
-        "| Case | Clone Score | Baseline Score | Improvement | Clone Pass | Baseline Pass |",
-        "|---|---:|---:|---:|---:|---:|",
-    ]
-    for clone_row, base_row in zip(clone_results, baseline_results):
-        lines.append(
-            f"| {clone_row['id']} | {clone_row['score']:.3f} | {base_row['score']:.3f} | {clone_row['score'] - base_row['score']:+.3f} | {'yes' if clone_row['pass'] else 'no'} | {'yes' if base_row['pass'] else 'no'} |"
-        )
-    lines += [
-        "",
-        "## Aggregate",
-        "",
-        f"- Clone mean score: `{summary['clone_mean_score']:.3f}`",
-        f"- Baseline mean score: `{summary['baseline_mean_score']:.3f}`",
-        f"- Mean improvement: `{summary['mean_improvement']:+.3f}`",
-        f"- Clone pass rate: `{summary['clone_pass_rate']:.2%}`",
-        f"- Baseline pass rate: `{summary['baseline_pass_rate']:.2%}`",
-        f"- Win rate: `{summary['win_rate']:.2%}`",
-        f"- Non-negative rate: `{summary['non_negative_rate']:.2%}`",
-        "",
-        "## Interpretation",
-        "",
-        "This provides stronger evidence than self-checking alone because the current clone output is compared against a weaker baseline and selected cases require recall. It still does not prove long-term memory quality, drift resistance, or open-ended identity coherence because the system remains a minimal heuristic implementation.",
-        "",
-    ]
+    lines = ["# Digital Clone behavioral validation / Digital Clone 行為驗收", "",
+             f"Config / 設定：`{config_path}`", "",
+             "Answers are scored only from model-generated text. Retrieval is scored separately; it cannot substitute for a correct answer.",
+             "僅對模型實際生成文字評分。檢索單獨評分；取回資料不代表回答正確。", "",
+             "| Case / 案例 | Behavior / 行為 | Retrieval / 檢索 | Pass / 通過 |",
+             "|---|---:|---|---|"]
+    for row in clone_results:
+        lines.append(f"| {row['id']} | {row['score']:.3f} | {row['retrieval']['pass']} | {row['pass']} |")
+    lines += ["", "```json", json.dumps(summary, ensure_ascii=False, indent=2), "```", "",
+              "This fixed labeled suite is evidence for the tested tasks only; substring checks do not prove unrestricted persona coherence or long-term drift resistance.",
+              "固定標記案例僅驗證受測任務；字串規則無法證明無限制人格一致性或長期抗漂移能力。", ""]
     return "\n".join(lines)
 
 
 def run_naive_baseline(persona: dict, cases: list[dict]) -> list[dict]:
-    outputs = []
-    for case in cases:
-        outputs.append(
-            {
-                "method": "naive_baseline",
-                "input": case["input"],
-                "output": case["input"],
-                "consistency": 0.0,
-                "retrieved_memories": [],
-            }
-        )
-    return outputs
+    return [{"method": "naive_baseline", "input": case["input"], "output": case["input"],
+             "consistency": {}, "retrieved_memories": []} for case in cases]
 
 
 def run_clone_eval(config_path: str, outdir: str, profile: str | None = None) -> dict:
     cfg = load_eval_config(config_path, profile=profile)
-    persona = cfg["persona"]
-    cases = cfg["cases"]
-    evaluation = cfg.get("evaluation", {})
-    engine_cfg = {
-        "persona": persona,
-        "inputs": [case["input"] for case in cases],
-    }
+    persona, cases, evaluation = cfg["persona"], cfg["cases"], cfg.get("evaluation", {})
+    engine_cfg = deepcopy(cfg)
+    engine_cfg.setdefault("memory", {}).setdefault("persist_directory", str(Path(outdir).resolve() / "memory"))
+    engine_cfg["inputs"] = [case["input"] for case in cases]
+    engine_cfg.pop("cases", None)
+    engine_cfg.pop("evaluation", None)
     clone_run = DigitalCloneEngine(engine_cfg, Path(outdir)).run()
     clone_outputs = clone_run["outputs"]
-    baseline_outputs = run_naive_baseline(persona, cases)
-    clone_results = [
-        score_case(persona, case, output, evaluation)
-        for case, output in zip(cases, clone_outputs)
-    ]
-    baseline_results = [
-        score_case(persona, case, output, evaluation)
-        for case, output in zip(cases, baseline_outputs)
-    ]
+    clone_results = [score_case(persona, case, output, evaluation) for case, output in zip(cases, clone_outputs)]
+    baseline_results = [score_case(persona, case, output, evaluation)
+                        for case, output in zip(cases, run_naive_baseline(persona, cases))]
     summary = summarize_comparison(clone_results, baseline_results)
-
     out = Path(outdir)
     out.mkdir(parents=True, exist_ok=True)
-    (out / "clone_outputs.json").write_text(json.dumps(clone_outputs, indent=2, ensure_ascii=False), encoding="utf-8")
-    (out / "results.json").write_text(json.dumps(clone_run, indent=2, ensure_ascii=False), encoding="utf-8")
-    (out / "clone_results.json").write_text(json.dumps(clone_results, indent=2, ensure_ascii=False), encoding="utf-8")
-    (out / "baseline_results.json").write_text(json.dumps(baseline_results, indent=2, ensure_ascii=False), encoding="utf-8")
-    (out / "summary.json").write_text(json.dumps(summary, indent=2, ensure_ascii=False), encoding="utf-8")
+    for name, content in {"clone_outputs": clone_outputs, "results": clone_run,
+                          "clone_results": clone_results, "baseline_results": baseline_results,
+                          "summary": summary}.items():
+        (out / f"{name}.json").write_text(json.dumps(content, indent=2, ensure_ascii=False), encoding="utf-8")
     (out / "report.md").write_text(render_markdown(config_path, summary, clone_results, baseline_results), encoding="utf-8")
     return summary

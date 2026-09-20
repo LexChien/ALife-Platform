@@ -4,6 +4,10 @@
     "status": "stub",
     "text": "[DummyLLM] prompt=Generate a futuristic AI cell organism concept context=prototype baseline system=none"
   },
+  "image": {
+    "status": "stub",
+    "backend": "dummy"
+  },
   "prompt": "Generate a futuristic AI cell organism concept",
   "context": "prototype baseline",
   "system": null,

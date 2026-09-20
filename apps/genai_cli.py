@@ -36,10 +36,12 @@ def main():
             "has_context": result["summary"]["has_context"],
             "has_audio": result["summary"]["has_audio"],
             "has_image": result["summary"]["has_image"],
+            "real_image": result["summary"]["real_image"],
         },
         artifacts={
             "image": "generated.png",
             "output": "genai_output.json",
+            "audio": "speech.wav" if result["summary"]["has_audio"] else None,
         },
         details={
             "prompt": result["summary"]["prompt"],
@@ -47,6 +49,8 @@ def main():
             "llm_model_family": result["summary"]["llm_model_family"],
             "llm_runtime": result["summary"]["llm_runtime"],
             "llm_healthcheck": result["summary"]["llm_healthcheck"],
+            "image_backend": result["summary"]["image_backend"],
+            "audio_backend": result["summary"]["audio_backend"],
             "runtime": runtime.to_dict(),
             "tracking_backend": cfg.get("tracking", {}).get("backend") if tracker else None,
             "active_profile": cfg.get("_active_profile"),

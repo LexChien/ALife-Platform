@@ -12,6 +12,7 @@ defaults:
     max_tokens: 256
 
 persona:
+  id: lex_clone_v1
   name: "Lex Clone"
   tone: "calm, analytical"
   principles:

@@ -42,7 +42,14 @@ def create_llm_adapter(cfg: dict):
     llm_cfg = _resolve_llm_config(cfg)
     backend = llm_cfg.get("backend", "dummy")
     if backend == "dummy":
-        return DummyLLMAdapter(model_family=llm_cfg.get("model_family", "dummy"))
+        return DummyLLMAdapter(
+            model_family=llm_cfg.get("model_family", "dummy"),
+            backend_name=llm_cfg.get("backend_name", "dummy"),
+            mock_responses=llm_cfg.get("mock_responses", False),
+        )
     if backend == "llama_cpp":
         return LlamaCppAdapter.from_config(llm_cfg)
+    if backend == "transformers_local":
+        from genai.llm.backends.transformers_local import TransformersLocalAdapter
+        return TransformersLocalAdapter.from_config(llm_cfg)
     raise ValueError(f"Unsupported llm backend: {backend}")

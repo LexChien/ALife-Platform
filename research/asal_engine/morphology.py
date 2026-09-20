@@ -87,6 +87,7 @@ def analyze_frame(
     stats = sorted((_component_stats(coords) for coords in components), key=lambda item: item["area"], reverse=True)
 
     total_foreground = float(sum(item["area"] for item in stats))
+    raw_foreground = float(mask.sum())
     largest = stats[0] if stats else None
     second = stats[1] if len(stats) > 1 else None
     dominant_threshold = 0.0
@@ -111,6 +112,13 @@ def analyze_frame(
         "second_centroid": second["centroid"] if second else None,
         "centroid_distance": centroid_distance,
         "foreground_fraction": float(total_foreground / mask.size),
+        "raw_foreground_area": raw_foreground,
+        "raw_foreground_fraction": float(raw_foreground / mask.size),
+        "filtered_foreground_area": total_foreground,
+        "discarded_foreground_area": raw_foreground - total_foreground,
+        "discarded_fragment_fraction": float(
+            (raw_foreground - total_foreground) / raw_foreground
+        ) if raw_foreground else 0.0,
         "largest_radius": float(largest["radius"]) if largest else 0.0,
         "largest_circularity_proxy": float(largest["circularity_proxy"]) if largest else 0.0,
         "dominant_component_threshold": float(dominant_threshold),

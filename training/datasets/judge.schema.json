@@ -1,0 +1,49 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "JudgeTrainingRow",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "image_metadata": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "num_components": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "largest_circularity_proxy": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        }
+      },
+      "required": [
+        "num_components",
+        "largest_circularity_proxy"
+      ]
+    },
+    "rubric": {
+      "type": "string",
+      "minLength": 1
+    },
+    "score": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "feedback": {
+      "type": "string",
+      "minLength": 1,
+      "not": {
+        "pattern": "^score="
+      }
+    }
+  },
+  "required": [
+    "image_metadata",
+    "rubric",
+    "score",
+    "feedback"
+  ]
+}

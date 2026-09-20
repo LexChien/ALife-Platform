@@ -12,5 +12,8 @@ lineage:
   tuning_type: none
   dataset: bootstrap_runtime_only
   version: "0.1"
-  notes: "Initial local Gemma bootstrap path for GenAI and Digital Clone."
-
+  artifact_sha256: 9446a58374502af449cb8e6ba3bc997791351ec3a7ff7ad13ef8b9ed3d820d98
+  observed_architecture: gemma4
+  observed_size_label: 4.6B
+  source_repository: unverified
+  notes: "本機 GGUF metadata 標示 gemma4／4.6B，上游來源未確認。Local GGUF metadata reports gemma4/4.6B; upstream source is unverified."

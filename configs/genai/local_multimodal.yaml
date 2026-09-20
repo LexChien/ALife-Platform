@@ -1,0 +1,33 @@
+defaults:
+  runtime_profile:
+    device: cpu
+  tracking:
+    enabled: false
+  llm:
+    model_id: gemma_bootstrap_v1
+    cli_path: third_party/llama.cpp/build/bin/llama-completion
+    context_length: 1024
+    temperature: 0.2
+    max_tokens: 96
+    n_gpu_layers: 0
+    verbose: false
+  image:
+    backend: diffusers
+    model_path: models/segmind_tiny_sd
+    device: cuda
+    size: 256
+    steps: 20
+    seed: 42
+    guidance_scale: 7.5
+  voice:
+    backend: espeak_ng
+    voice: en
+    rate: 165
+system: "Describe the visual concept in one short English sentence. Return only the sentence."
+prompt: "A translucent blue biological cell with a bright round nucleus, microscopy photograph, dark background"
+profiles:
+  media_validation:
+    llm:
+      model_id: null
+      backend: dummy
+      model_family: dummy

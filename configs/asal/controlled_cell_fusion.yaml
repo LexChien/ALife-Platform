@@ -1,0 +1,54 @@
+# Controlled particle mechanics / 受控粒子力學；不是自主生物分裂。
+runtime_profile:
+  device: cpu
+  precision: fp32
+  backend: local
+tracking:
+  enabled: false
+prompt: "a microscopy image of a biological cell, phase contrast"
+foundation_model:
+  name: morphology_judge_stub
+  params: {}
+substrate:
+  name: controlled_cells
+  params:
+    num_particles: 120
+    width: 128
+    height: 128
+    blur_sigma: 2.8
+runtime:
+  steps: 90
+  substeps: 1
+search:
+  iters: 1
+  pop: 2
+  keep: 2
+  sigma: 0.02
+  seed: 11
+  theta_low: [0.16, 0.70, 0.045, 24.0, 0.01]
+  theta_high: [0.20, 0.90, 0.075, 26.0, 0.025]
+narrative:
+  enabled: true
+  weight: 0.8
+  semantic_weight: 0.2
+  acceptance:
+    min_sustain_ratio: 0.25
+    min_consecutive_ratio: 0.25
+    min_consecutive_frames: 2
+    max_fragment_fraction: 0.35
+    max_centroid_jump_fraction: 0.20
+    min_mass_retention: 0.60
+    min_total_score: 0.50
+  phases:
+    - name: birth
+      frame_range: [0, 29]
+      target_components: 1
+      weight: 0.3
+    - name: split
+      frame_range: [30, 59]
+      target_components: 2
+      weight: 0.4
+    - name: fusion
+      frame_range: [60, 89]
+      target_components: 1
+      weight: 0.3

@@ -1,0 +1,1 @@
+{"instruction":"Plan a cell division search over 60 frames.","expected_phases":[{"phase":"birth","steps":20,"target_components":1},{"phase":"split","steps":40,"target_components":2}],"hyperparameters":{"theta_low":[0,0,0,18,1],"theta_high":[2,2,2,128,6.5]},"next_step":"Validate the configuration, run fixed-seed search, then inspect lossless trajectories."}

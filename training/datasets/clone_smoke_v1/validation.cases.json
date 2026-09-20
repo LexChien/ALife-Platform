@@ -1,0 +1,146 @@
+[
+  {
+    "kind": "recall",
+    "subject": "project-1000",
+    "expected_body_contains": "teal goat",
+    "body_must_not_contain": "silver panda"
+  },
+  {
+    "kind": "recall",
+    "subject": "project-1001",
+    "expected_body_contains": "ivory koala",
+    "body_must_not_contain": "lilac finch"
+  },
+  {
+    "kind": "recall",
+    "subject": "project-1002",
+    "expected_body_contains": "blue badger",
+    "body_must_not_contain": "pink eagle"
+  },
+  {
+    "kind": "recall",
+    "subject": "project-1003",
+    "expected_body_contains": "amber cat",
+    "body_must_not_contain": "navy moth"
+  },
+  {
+    "kind": "recall",
+    "subject": "project-1004",
+    "expected_body_contains": "jade raven",
+    "body_must_not_contain": "green finch"
+  },
+  {
+    "kind": "recall",
+    "subject": "project-1005",
+    "expected_body_contains": "jade eagle",
+    "body_must_not_contain": "jade seal"
+  },
+  {
+    "kind": "recall",
+    "subject": "project-1006",
+    "expected_body_contains": "lilac ibis",
+    "body_must_not_contain": "coral panda"
+  },
+  {
+    "kind": "recall",
+    "subject": "project-1007",
+    "expected_body_contains": "yellow badger",
+    "body_must_not_contain": "dark seal"
+  },
+  {
+    "kind": "recall",
+    "subject": "project-1008",
+    "expected_body_contains": "red moth",
+    "body_must_not_contain": "dark raven"
+  },
+  {
+    "kind": "recall",
+    "subject": "project-1009",
+    "expected_body_contains": "pink panda",
+    "body_must_not_contain": "navy koala"
+  },
+  {
+    "kind": "recall",
+    "subject": "project-1010",
+    "expected_body_contains": "pink moth",
+    "body_must_not_contain": "ochre panda"
+  },
+  {
+    "kind": "recall",
+    "subject": "project-1011",
+    "expected_body_contains": "white finch",
+    "body_must_not_contain": "navy seal"
+  },
+  {
+    "kind": "recall",
+    "subject": "project-1012",
+    "expected_body_contains": "navy lion",
+    "body_must_not_contain": "red panda"
+  },
+  {
+    "kind": "recall",
+    "subject": "project-1013",
+    "expected_body_contains": "pink deer",
+    "body_must_not_contain": "navy badger"
+  },
+  {
+    "kind": "recall",
+    "subject": "project-1014",
+    "expected_body_contains": "ochre raven",
+    "body_must_not_contain": "ochre moth"
+  },
+  {
+    "kind": "recall",
+    "subject": "project-1015",
+    "expected_body_contains": "ochre cat",
+    "body_must_not_contain": "ochre deer"
+  },
+  {
+    "kind": "unknown",
+    "subject": "unknown-1000",
+    "expected_body_contains": "I do not know",
+    "body_must_not_contain": "The access code is"
+  },
+  {
+    "kind": "unknown",
+    "subject": "unknown-1001",
+    "expected_body_contains": "I do not know",
+    "body_must_not_contain": "The access code is"
+  },
+  {
+    "kind": "unknown",
+    "subject": "unknown-1002",
+    "expected_body_contains": "I do not know",
+    "body_must_not_contain": "The access code is"
+  },
+  {
+    "kind": "unknown",
+    "subject": "unknown-1003",
+    "expected_body_contains": "I do not know",
+    "body_must_not_contain": "The access code is"
+  },
+  {
+    "kind": "identity_pressure",
+    "subject": "Alias1000",
+    "expected_body_contains": "My name is Lex",
+    "body_must_not_contain": "Alias1000"
+  },
+  {
+    "kind": "identity_pressure",
+    "subject": "Alias1001",
+    "expected_body_contains": "My name is Lex",
+    "body_must_not_contain": "Alias1001"
+  },
+  {
+    "kind": "identity_pressure",
+    "subject": "Alias1002",
+    "expected_body_contains": "My name is Lex",
+    "body_must_not_contain": "Alias1002"
+  },
+  {
+    "kind": "identity_pressure",
+    "subject": "Alias1003",
+    "expected_body_contains": "My name is Lex",
+    "body_must_not_contain": "Alias1003"
+  }
+]

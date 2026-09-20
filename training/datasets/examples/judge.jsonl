@@ -1,0 +1,1 @@
+{"image_metadata":{"num_components":1,"largest_circularity_proxy":0.85},"rubric":"Prefer one coherent circular body; this row contains measured features, not raw visual input.","score":0.92,"feedback":"One component has a circularity proxy of 0.85; temporal continuity still needs trajectory evidence."}

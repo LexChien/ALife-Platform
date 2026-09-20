@@ -6,7 +6,7 @@ class ReactionDiffusion:
         self.size = size
         self.reset([0.16, 0.08, 0.06, 0.062, 1.0])
 
-    def reset(self, theta):
+    def reset(self, theta, seed=None):
         Du, Dv, F, k, _ = theta
         self.theta = [float(Du), float(Dv), float(F), float(k), 1.0]
         s = self.size

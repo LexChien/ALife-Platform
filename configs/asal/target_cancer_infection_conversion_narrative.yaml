@@ -1,0 +1,396 @@
+# Malignant contact-conversion narrative / 惡性接觸轉化敘事
+# Visual metaphor of cancerous cells converting neighboring normal cells.
+# NOT viral infection biology; NOT a clinical model.
+# Blue/cyan = normal tissue; orange/red = malignant (converted).
+# Outputs under runs/asal/.
+#
+defaults:
+  runtime_profile:
+    device: cpu
+    precision: fp32
+    backend: local
+  tracking:
+    enabled: false
+prompt: 'malignant contact-conversion of normal tissue: healthy field, malignant seeding,
+  neighbor conversion, tissue takeover (visual metaphor; not viral infection biology)'
+foundation_model:
+  name: morphology_judge_stub
+  params: {}
+substrate:
+  name: boids
+  params:
+    num_boids: 160
+    width: 128
+    height: 128
+    keep_largest_component: false
+    narrative_controller:
+      enabled: true
+      seed_mode: center_cluster
+      seed_spread: 6.0
+      initial_speed_scale: 0.15
+      split_axis: horizontal
+      base_center_pull: 0.012
+      base_velocity_damping: 0.04
+      phases:
+      - name: healthy_tissue
+        num_cohorts: 1
+        conversion_rate: 0.0
+        conversion_radius: 11.0
+        separation_scale: 0.18
+        alignment_scale: 1.1
+        cohesion_scale: 2.2
+        center_pull: 0.04
+        global_pull: 0.08
+        damping: 0.28
+        speed_scale: 0.55
+        max_step_displacement: 2.5
+      - name: malignant_seeding
+        num_cohorts: 1
+        conversion_rate: 0.08
+        conversion_radius: 12.0
+        separation_scale: 0.22
+        alignment_scale: 1.05
+        cohesion_scale: 1.8
+        center_pull: 0.02
+        global_pull: 0.05
+        damping: 0.18
+        speed_scale: 0.7
+        max_step_displacement: 3.0
+      - name: contact_conversion
+        num_cohorts: 1
+        conversion_rate: 0.16
+        conversion_radius: 12.0
+        separation_scale: 0.25
+        alignment_scale: 1.0
+        cohesion_scale: 1.5
+        center_pull: 0.0
+        global_pull: 0.02
+        damping: 0.12
+        speed_scale: 0.85
+        max_step_displacement: 3.5
+      - name: tissue_takeover
+        num_cohorts: 1
+        conversion_rate: 0.32
+        conversion_radius: 14.0
+        separation_scale: 0.2
+        alignment_scale: 1.05
+        cohesion_scale: 1.7
+        center_pull: 0.01
+        global_pull: 0.04
+        damping: 0.16
+        speed_scale: 0.75
+        max_step_displacement: 3.5
+      max_step_displacement: 4.0
+      num_cohorts: 1
+      infection:
+        enabled: true
+        seed_malignant_fraction: 0.05
+        tissue_spread: 30.0
+        conversion_radius: 11.0
+        conversion_rate: 0.0
+runtime:
+  steps: 180
+  substeps: 1
+search:
+  iters: 18
+  pop: 20
+  keep: 20
+  sigma: 0.14
+  seed: 11
+  theta_low:
+  - 0.0
+  - 0.0
+  - 0.0
+  - 18.0
+  - 1.0
+  theta_high:
+  - 2.0
+  - 2.0
+  - 2.0
+  - 128.0
+  - 6.5
+narrative:
+  enabled: true
+  weight: 0.8
+  semantic_weight: 0.2
+  phases:
+  - name: healthy_tissue
+    frame_range:
+    - 0
+    - 15
+    weight: 0.15
+    target_fraction_range:
+    - 0.0
+    - 0.1
+  - name: malignant_seeding
+    frame_range:
+    - 16
+    - 31
+    weight: 0.25
+    target_fraction_range:
+    - 0.06
+    - 0.28
+  - name: contact_conversion
+    frame_range:
+    - 32
+    - 47
+    weight: 0.3
+    target_fraction_range:
+    - 0.25
+    - 0.7
+  - name: tissue_takeover
+    frame_range:
+    - 48
+    - 63
+    weight: 0.3
+    target_fraction_range:
+    - 0.6
+    - 0.95
+  acceptance:
+    min_sustain_ratio: 0.2
+    min_consecutive_ratio: 0.2
+    min_consecutive_frames: 2
+    max_fragment_fraction: 0.45
+    max_centroid_jump_fraction: 0.35
+    min_mass_retention: 0.45
+    min_total_score: 0.35
+profiles:
+  cpu_smoke:
+    runtime:
+      steps: 64
+    search:
+      iters: 6
+      pop: 8
+      keep: 8
+    narrative:
+      phases:
+      - name: healthy_tissue
+        frame_range:
+        - 0
+        - 15
+        weight: 0.15
+        target_fraction_range:
+        - 0.0
+        - 0.1
+      - name: malignant_seeding
+        frame_range:
+        - 16
+        - 31
+        weight: 0.25
+        target_fraction_range:
+        - 0.06
+        - 0.28
+      - name: contact_conversion
+        frame_range:
+        - 32
+        - 47
+        weight: 0.3
+        target_fraction_range:
+        - 0.25
+        - 0.7
+      - name: tissue_takeover
+        frame_range:
+        - 48
+        - 63
+        weight: 0.3
+        target_fraction_range:
+        - 0.6
+        - 0.95
+      enabled: true
+      acceptance:
+        min_sustain_ratio: 0.2
+        min_consecutive_ratio: 0.2
+        min_consecutive_frames: 2
+        max_fragment_fraction: 0.45
+        max_centroid_jump_fraction: 0.35
+        min_mass_retention: 0.45
+        min_total_score: 0.35
+    substrate:
+      params:
+        narrative_controller:
+          enabled: true
+          seed_mode: center_cluster
+          seed_spread: 6.0
+          initial_speed_scale: 0.15
+          split_axis: horizontal
+          base_center_pull: 0.012
+          base_velocity_damping: 0.04
+          phases:
+          - name: healthy_tissue
+            num_cohorts: 1
+            conversion_rate: 0.0
+            conversion_radius: 11.0
+            separation_scale: 0.18
+            alignment_scale: 1.1
+            cohesion_scale: 2.2
+            center_pull: 0.04
+            global_pull: 0.08
+            damping: 0.28
+            speed_scale: 0.55
+            max_step_displacement: 2.5
+          - name: malignant_seeding
+            num_cohorts: 1
+            conversion_rate: 0.08
+            conversion_radius: 12.0
+            separation_scale: 0.22
+            alignment_scale: 1.05
+            cohesion_scale: 1.8
+            center_pull: 0.02
+            global_pull: 0.05
+            damping: 0.18
+            speed_scale: 0.7
+            max_step_displacement: 3.0
+          - name: contact_conversion
+            num_cohorts: 1
+            conversion_rate: 0.16
+            conversion_radius: 12.0
+            separation_scale: 0.25
+            alignment_scale: 1.0
+            cohesion_scale: 1.5
+            center_pull: 0.0
+            global_pull: 0.02
+            damping: 0.12
+            speed_scale: 0.85
+            max_step_displacement: 3.5
+          - name: tissue_takeover
+            num_cohorts: 1
+            conversion_rate: 0.32
+            conversion_radius: 14.0
+            separation_scale: 0.2
+            alignment_scale: 1.05
+            cohesion_scale: 1.7
+            center_pull: 0.01
+            global_pull: 0.04
+            damping: 0.16
+            speed_scale: 0.75
+            max_step_displacement: 3.5
+          max_step_displacement: 4.0
+          num_cohorts: 1
+          infection:
+            enabled: true
+            seed_malignant_fraction: 0.05
+            tissue_spread: 30.0
+            conversion_radius: 11.0
+            conversion_rate: 0.0
+        keep_largest_component: false
+        num_boids: 160
+  cpu_tiny:
+    runtime:
+      steps: 64
+    search:
+      iters: 2
+      pop: 4
+      keep: 4
+      sigma: 0.1
+    narrative:
+      phases:
+      - name: healthy_tissue
+        frame_range:
+        - 0
+        - 15
+        weight: 0.15
+        target_fraction_range:
+        - 0.0
+        - 0.1
+      - name: malignant_seeding
+        frame_range:
+        - 16
+        - 31
+        weight: 0.25
+        target_fraction_range:
+        - 0.06
+        - 0.28
+      - name: contact_conversion
+        frame_range:
+        - 32
+        - 47
+        weight: 0.3
+        target_fraction_range:
+        - 0.25
+        - 0.7
+      - name: tissue_takeover
+        frame_range:
+        - 48
+        - 63
+        weight: 0.3
+        target_fraction_range:
+        - 0.6
+        - 0.95
+      enabled: true
+      acceptance:
+        min_sustain_ratio: 0.2
+        min_consecutive_ratio: 0.2
+        min_consecutive_frames: 2
+        max_fragment_fraction: 0.45
+        max_centroid_jump_fraction: 0.35
+        min_mass_retention: 0.45
+        min_total_score: 0.35
+    substrate:
+      params:
+        narrative_controller:
+          enabled: true
+          seed_mode: center_cluster
+          seed_spread: 6.0
+          initial_speed_scale: 0.15
+          split_axis: horizontal
+          base_center_pull: 0.01
+          base_velocity_damping: 0.04
+          phases:
+          - name: healthy_tissue
+            num_cohorts: 1
+            conversion_rate: 0.0
+            conversion_radius: 11.0
+            separation_scale: 0.18
+            alignment_scale: 1.1
+            cohesion_scale: 2.2
+            center_pull: 0.04
+            global_pull: 0.08
+            damping: 0.28
+            speed_scale: 0.55
+            max_step_displacement: 2.5
+          - name: malignant_seeding
+            num_cohorts: 1
+            conversion_rate: 0.08
+            conversion_radius: 12.0
+            separation_scale: 0.22
+            alignment_scale: 1.05
+            cohesion_scale: 1.8
+            center_pull: 0.02
+            global_pull: 0.05
+            damping: 0.18
+            speed_scale: 0.7
+            max_step_displacement: 3.0
+          - name: contact_conversion
+            num_cohorts: 1
+            conversion_rate: 0.16
+            conversion_radius: 12.0
+            separation_scale: 0.25
+            alignment_scale: 1.0
+            cohesion_scale: 1.5
+            center_pull: 0.0
+            global_pull: 0.02
+            damping: 0.12
+            speed_scale: 0.85
+            max_step_displacement: 3.5
+          - name: tissue_takeover
+            num_cohorts: 1
+            conversion_rate: 0.32
+            conversion_radius: 14.0
+            separation_scale: 0.2
+            alignment_scale: 1.05
+            cohesion_scale: 1.7
+            center_pull: 0.01
+            global_pull: 0.04
+            damping: 0.16
+            speed_scale: 0.75
+            max_step_displacement: 3.5
+          max_step_displacement: 4.0
+          num_cohorts: 1
+          infection:
+            enabled: true
+            seed_malignant_fraction: 0.05
+            tissue_spread: 30.0
+            conversion_radius: 11.0
+            conversion_rate: 0.0
+        keep_largest_component: false
+        num_boids: 160

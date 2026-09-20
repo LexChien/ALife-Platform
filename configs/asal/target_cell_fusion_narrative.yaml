@@ -5,13 +5,10 @@ defaults:
     backend: local
   tracking:
     enabled: false
-
-prompt: "a microscopy image of a biological cell, phase contrast"
-
+prompt: a microscopy image of a biological cell, phase contrast
 foundation_model:
   name: morphology_judge_stub
   params: {}
-
 substrate:
   name: boids
   params:
@@ -22,70 +19,89 @@ substrate:
     narrative_controller:
       enabled: true
       seed_mode: center_cluster
-      seed_spread: 6.0
-      initial_speed_scale: 0.22
+      seed_spread: 4.0
+      initial_speed_scale: 0.1
       split_axis: horizontal
       base_center_pull: 0.012
       base_velocity_damping: 0.04
       phases:
-        - name: birth
-          separation_scale: 0.30
-          alignment_scale: 1.10
-          cohesion_scale: 1.85
-          center_pull: 0.060
-          global_pull: 0.070
-          damping: 0.20
-        - name: split
-          separation_scale: 0.70
-          alignment_scale: 1.00
-          cohesion_scale: 0.85
-          center_pull: 0.004
-          split_push: 0.085
-          cohort_pull: 0.070
-          cohort_locality: true
-          cohort_global_pull: 0.060
-          cross_cohort_repulsion: 0.22
-          split_offset: 24.0
-          damping: 0.04
-        - name: fusion
-          separation_scale: 0.28
-          alignment_scale: 1.05
-          cohesion_scale: 1.75
-          center_pull: 0.070
-          global_pull: 0.085
-          damping: 0.22
-
+      - name: birth
+        separation_scale: 0.16
+        alignment_scale: 1.15
+        cohesion_scale: 2.4
+        center_pull: 0.12
+        global_pull: 0.14
+        damping: 0.36
+        speed_scale: 0.75
+        max_step_displacement: 3.0
+      - name: split
+        separation_scale: 0.52
+        alignment_scale: 1.05
+        cohesion_scale: 1.2
+        center_pull: 0.002
+        split_push: 0.07
+        cohort_pull: 0.13
+        cohort_locality: true
+        cohort_global_pull: 0.11
+        cross_cohort_repulsion: 0.34
+        split_offset: 24.0
+        damping: 0.08
+        speed_scale: 0.8
+        max_step_displacement: 4.0
+      - name: fusion
+        separation_scale: 0.12
+        alignment_scale: 1.1
+        cohesion_scale: 2.3
+        center_pull: 0.13
+        global_pull: 0.16
+        damping: 0.38
+        speed_scale: 0.7
+        max_step_displacement: 3.0
+      max_step_displacement: 4.0
 runtime:
   steps: 180
   substeps: 1
-
 search:
   iters: 18
   pop: 20
   keep: 20
   sigma: 0.14
   seed: 11
-  theta_low: [0.0, 0.0, 0.0, 18.0, 1.0]
-  theta_high: [2.0, 2.0, 2.0, 128.0, 6.5]
-
+  theta_low:
+  - 0.0
+  - 0.0
+  - 0.0
+  - 18.0
+  - 1.0
+  theta_high:
+  - 2.0
+  - 2.0
+  - 2.0
+  - 128.0
+  - 6.5
 narrative:
   enabled: true
   weight: 0.8
   semantic_weight: 0.2
   phases:
-    - name: birth
-      frame_range: [0, 50]
-      target_components: 1
-      weight: 0.3
-    - name: split
-      frame_range: [51, 110]
-      target_components: 2
-      weight: 0.4
-    - name: fusion
-      frame_range: [111, 179]
-      target_components: 1
-      weight: 0.3
-
+  - name: birth
+    frame_range:
+    - 0
+    - 50
+    target_components: 1
+    weight: 0.3
+  - name: split
+    frame_range:
+    - 51
+    - 110
+    target_components: 2
+    weight: 0.4
+  - name: fusion
+    frame_range:
+    - 111
+    - 179
+    target_components: 1
+    weight: 0.3
 profiles:
   cpu_smoke:
     runtime:
@@ -96,55 +112,68 @@ profiles:
       keep: 8
     narrative:
       phases:
-        - name: birth
-          frame_range: [0, 24]
-          target_components: 1
-          weight: 0.3
-        - name: split
-          frame_range: [25, 54]
-          target_components: 2
-          weight: 0.4
-        - name: fusion
-          frame_range: [55, 89]
-          target_components: 1
-          weight: 0.3
+      - name: birth
+        frame_range:
+        - 0
+        - 24
+        target_components: 1
+        weight: 0.3
+      - name: split
+        frame_range:
+        - 25
+        - 54
+        target_components: 2
+        weight: 0.4
+      - name: fusion
+        frame_range:
+        - 55
+        - 89
+        target_components: 1
+        weight: 0.3
     substrate:
       params:
         narrative_controller:
           enabled: true
           seed_mode: center_cluster
-          seed_spread: 5.0
-          initial_speed_scale: 0.20
+          seed_spread: 4.0
+          initial_speed_scale: 0.1
           split_axis: horizontal
           base_center_pull: 0.012
           base_velocity_damping: 0.04
           phases:
-            - name: birth
-              separation_scale: 0.28
-              alignment_scale: 1.10
-              cohesion_scale: 1.95
-              center_pull: 0.070
-              global_pull: 0.085
-              damping: 0.22
-            - name: split
-              separation_scale: 0.82
-              alignment_scale: 1.00
-              cohesion_scale: 0.88
-              center_pull: 0.004
-              split_push: 0.095
-              cohort_pull: 0.080
-              cohort_locality: true
-              cohort_global_pull: 0.070
-              cross_cohort_repulsion: 0.25
-              split_offset: 26.0
-              damping: 0.04
-            - name: fusion
-              separation_scale: 0.18
-              alignment_scale: 1.05
-              cohesion_scale: 1.85
-              center_pull: 0.080
-              global_pull: 0.100
-              damping: 0.24
+          - name: birth
+            separation_scale: 0.16
+            alignment_scale: 1.15
+            cohesion_scale: 2.4
+            center_pull: 0.12
+            global_pull: 0.14
+            damping: 0.36
+            speed_scale: 0.75
+            max_step_displacement: 3.0
+          - name: split
+            separation_scale: 0.52
+            alignment_scale: 1.05
+            cohesion_scale: 1.2
+            center_pull: 0.002
+            split_push: 0.07
+            cohort_pull: 0.13
+            cohort_locality: true
+            cohort_global_pull: 0.11
+            cross_cohort_repulsion: 0.34
+            split_offset: 24.0
+            damping: 0.08
+            speed_scale: 0.8
+            max_step_displacement: 4.0
+          - name: fusion
+            separation_scale: 0.12
+            alignment_scale: 1.1
+            cohesion_scale: 2.3
+            center_pull: 0.13
+            global_pull: 0.16
+            damping: 0.38
+            speed_scale: 0.7
+            max_step_displacement: 3.0
+          max_step_displacement: 4.0
   cpu_tiny:
     runtime:
       steps: 48
@@ -155,52 +184,65 @@ profiles:
       sigma: 0.1
     narrative:
       phases:
-        - name: birth
-          frame_range: [0, 15]
-          target_components: 1
-          weight: 0.3
-        - name: split
-          frame_range: [16, 31]
-          target_components: 2
-          weight: 0.4
-        - name: fusion
-          frame_range: [32, 47]
-          target_components: 1
-          weight: 0.3
+      - name: birth
+        frame_range:
+        - 0
+        - 15
+        target_components: 1
+        weight: 0.3
+      - name: split
+        frame_range:
+        - 16
+        - 31
+        target_components: 2
+        weight: 0.4
+      - name: fusion
+        frame_range:
+        - 32
+        - 47
+        target_components: 1
+        weight: 0.3
     substrate:
       params:
         narrative_controller:
           enabled: true
           seed_mode: center_cluster
           seed_spread: 4.0
-          initial_speed_scale: 0.16
+          initial_speed_scale: 0.1
           split_axis: horizontal
-          base_center_pull: 0.010
+          base_center_pull: 0.01
           base_velocity_damping: 0.04
           phases:
-            - name: birth
-              separation_scale: 0.25
-              alignment_scale: 1.08
-              cohesion_scale: 2.05
-              center_pull: 0.085
-              global_pull: 0.100
-              damping: 0.26
-            - name: split
-              separation_scale: 0.78
-              alignment_scale: 1.00
-              cohesion_scale: 0.86
-              center_pull: 0.003
-              split_push: 0.110
-              cohort_pull: 0.095
-              cohort_locality: true
-              cohort_global_pull: 0.085
-              cross_cohort_repulsion: 0.30
-              split_offset: 28.0
-              damping: 0.03
-            - name: fusion
-              separation_scale: 0.16
-              alignment_scale: 1.05
-              cohesion_scale: 1.95
-              center_pull: 0.095
-              global_pull: 0.120
-              damping: 0.28
+          - name: birth
+            separation_scale: 0.16
+            alignment_scale: 1.15
+            cohesion_scale: 2.4
+            center_pull: 0.12
+            global_pull: 0.14
+            damping: 0.36
+            speed_scale: 0.75
+            max_step_displacement: 3.0
+          - name: split
+            separation_scale: 0.52
+            alignment_scale: 1.05
+            cohesion_scale: 1.2
+            center_pull: 0.002
+            split_push: 0.07
+            cohort_pull: 0.13
+            cohort_locality: true
+            cohort_global_pull: 0.11
+            cross_cohort_repulsion: 0.34
+            split_offset: 24.0
+            damping: 0.08
+            speed_scale: 0.8
+            max_step_displacement: 4.0
+          - name: fusion
+            separation_scale: 0.12
+            alignment_scale: 1.1
+            cohesion_scale: 2.3
+            center_pull: 0.13
+            global_pull: 0.16
+            damping: 0.38
+            speed_scale: 0.7
+            max_step_displacement: 3.0
+          max_step_displacement: 4.0

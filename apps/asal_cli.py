@@ -114,6 +114,8 @@ def main():
             "search_iters": result["search_iters"],
             "search_pop": result["search_pop"],
             "search_keep": result["search_keep"],
+            "replay_matches": result["replay_matches"],
+            "narrative_accepted": result.get("narrative_accepted"),
         },
         artifacts={
             "image": "best.png",
@@ -121,6 +123,12 @@ def main():
             "mp4": result["mp4"],
             "narrative_summary": result.get("narrative_summary"),
             "trajectory_stats": result.get("trajectory_stats"),
+            "raw_trajectory": result["raw_trajectory"],
+            "simulation_states": result.get("simulation_states"),
+            "substrate_stats": result.get("substrate_stats"),
+            "resolved_config": result["resolved_config"],
+            "scores": result["scores"],
+            "replay_manifest": result["replay_manifest"],
         },
         details={
             "prompt": result["prompt"],
@@ -134,6 +142,11 @@ def main():
             "narrative_keyframes": result.get("narrative_keyframes"),
             "narrative_score": result.get("narrative_score"),
             "narrative_phase_order_valid": result.get("narrative_phase_order_valid"),
+            "narrative_failure_reasons": result.get("narrative_failure_reasons"),
+            "seed": result["seed"],
+            "score_components": result["score_components"],
+            "mp4_error": result.get("mp4_error"),
+            "substrate_final_stats": result.get("substrate_final_stats"),
         },
     )
     save_json(run_dir / "summary.json", summary)

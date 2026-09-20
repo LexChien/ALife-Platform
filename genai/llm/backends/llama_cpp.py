@@ -1,11 +1,9 @@
 from __future__ import annotations
 
-import os
 from pathlib import Path
 import re
 import shutil
 import subprocess
-import tempfile
 from typing import Any
 
 from genai.llm.adapter import BaseLLMAdapter, LLMRequest, LLMResponse
@@ -14,8 +12,6 @@ try:
     from llama_cpp import Llama
 except ImportError:
     Llama = None
-
-ROOT = Path(__file__).resolve().parents[3]
 
 
 class LlamaCppAdapter(BaseLLMAdapter):
@@ -31,6 +27,13 @@ class LlamaCppAdapter(BaseLLMAdapter):
         verbose: bool = False,
         driver: str = "auto",
         cli_path: str = "llama-completion",
+        prompt_profile: str | None = None,
+        lineage: dict[str, Any] | None = None,
+        batch_size: int = 512,
+        ubatch_size: int = 512,
+        repack: bool = True,
+        seed: int = 42,
+        subprocess_timeout: int = 120,
     ):
         self._model_family = model_family
         self.model_path = model_path
@@ -42,7 +45,13 @@ class LlamaCppAdapter(BaseLLMAdapter):
         self.verbose = verbose
         self.driver = driver
         self.cli_path = cli_path
-        self.subprocess_timeout = 180
+        self.prompt_profile = prompt_profile
+        self.lineage = lineage or {}
+        self.batch_size = batch_size
+        self.ubatch_size = ubatch_size
+        self.repack = repack
+        self.seed = seed
+        self.subprocess_timeout = subprocess_timeout
         self._llm = None
 
     @property
@@ -66,19 +75,16 @@ class LlamaCppAdapter(BaseLLMAdapter):
             verbose=cfg.get("verbose", False),
             driver=cfg.get("driver", "auto"),
             cli_path=cfg.get("cli_path", "llama-completion"),
+            prompt_profile=cfg.get("prompt_profile"),
+            lineage=cfg.get("lineage"),
+            batch_size=cfg.get("batch_size", 512),
+            ubatch_size=cfg.get("ubatch_size", 512),
+            repack=cfg.get("repack", True),
+            seed=cfg.get("seed", 42),
+            subprocess_timeout=cfg.get("subprocess_timeout", 120),
         )
 
     def _cli_resolved_path(self) -> str | None:
-        cli = Path(self.cli_path)
-        if cli.is_absolute() and cli.exists():
-            return str(cli)
-        if len(cli.parts) > 1:
-            cwd_candidate = Path.cwd() / cli
-            if cwd_candidate.exists():
-                return str(cwd_candidate)
-            repo_candidate = ROOT / cli
-            if repo_candidate.exists():
-                return str(repo_candidate)
         return shutil.which(self.cli_path)
 
     def _binding_available(self) -> bool:
@@ -109,12 +115,27 @@ class LlamaCppAdapter(BaseLLMAdapter):
             n_gpu_layers=self.n_gpu_layers,
             chat_format=self.chat_format,
             verbose=self.verbose,
+            n_batch=self.batch_size,
+            n_ubatch=self.ubatch_size,
+            seed=self.seed,
         )
 
+    def _effective_system_prompt(self, request: LLMRequest) -> str:
+        system_prompt = request.system or ""
+        formats = {
+            "clone": "[Name] tone=[Tone] principles=[Principles] response=[Response]",
+            "judge": "score=[Score] feedback=[Feedback]",
+            "planner": "plan=[Plan] next_step=[NextStep]",
+        }
+        if not request.metadata.get("disable_prompt_profile") and self.prompt_profile in formats:
+            system_prompt += "\nFormat requirements: " + formats[self.prompt_profile]
+        return system_prompt.strip()
+
     def build_prompt(self, request: LLMRequest) -> str:
+        system_prompt = self._effective_system_prompt(request)
         parts = []
-        if request.system:
-            parts.append(f"<system>\n{request.system}")
+        if system_prompt:
+            parts.append(f"<system>\n{system_prompt}")
         if request.context:
             parts.append(f"<context>\n{request.context}")
         parts.append(f"<user>\n{request.prompt}")
@@ -122,17 +143,17 @@ class LlamaCppAdapter(BaseLLMAdapter):
 
     def _subprocess_prompt(self, request: LLMRequest) -> str:
         if request.context:
-            return f"上下文:\n{request.context}\n\n使用者:\n{request.prompt}"
+            return f"Context:\n{request.context}\n\nUser request:\n{request.prompt}"
         return request.prompt
 
     def _subprocess_system(self, request: LLMRequest) -> str:
-        base = request.system.strip() if request.system else "你是 Gemma 4，一位親切的助理。"
-        return (
-            f"{base}\n"
-            "請只輸出給使用者看的最終答案。"
-            "不要輸出推理過程、分析步驟、草稿、系統提示或 channel 標記。"
-            "使用繁體中文，回答要自然、簡潔、可直接朗讀。"
+        base = self._effective_system_prompt(request) or "You are a helpful assistant."
+        suffix = (
+            " Return only the final answer. "
+            "Do not reveal chain-of-thought. "
+            "Do not emit reasoning channels, hidden analysis, or thought tags."
         )
+        return f"{base}{suffix}"
 
     def _reasoning_markers(self) -> tuple[str, ...]:
         return (
@@ -142,79 +163,27 @@ class LlamaCppAdapter(BaseLLMAdapter):
             "Analyze the Request:",
             "Deconstruct Key Terms:",
             "Brainstorm Core Concepts",
-            "Original user request:",
-            "I received the request",
-            "I need to provide",
-            "I will directly output",
-            "Rewrite the following draft as the final answer only.",
-            "我收到的請求是",
-            "原始用戶請求是",
-            "我需要提供",
-            "我將直接輸出",
-            "最終答案應該是",
-            "我收到的上一個請求是",
-            "我必須只輸出",
-            "根據上下文和指令",
-            "Context:",
-            "Conversation history:",
-            "The previous interaction",
-            "The core interaction",
-            "The current interaction",
-            "<channel|>",
-            "[end of text]",
         )
 
     def _has_reasoning_leak(self, text: str) -> bool:
         stripped = text.strip()
         if any(marker in stripped for marker in self._reasoning_markers()):
             return True
-        if re.match(r"^(我收到的.*請求是|I received .*request)", stripped):
-            return True
-        if re.search(r"(我必須只輸出|根據上下文和指令|I must output only|Based on the context and instructions)", stripped):
-            return True
-        if "Context:" in stripped and ("Draft:" in stripped or "Conversation history:" in stripped):
-            return True
-        if "User asks" in stripped and "The assistant" in stripped:
-            return True
         return bool(re.match(r"^1\.\s+\*\*Analyze", stripped))
 
-    def _normalize_channel_noise(self, text: str) -> str:
-        cleaned = text.strip()
-        if "<channel|>" in cleaned:
-            head, tail = cleaned.rsplit("<channel|>", 1)
-            cleaned = tail.strip() if len(tail.strip()) >= 8 else cleaned.replace("<channel|>", " ")
-        if "[end of text]" in cleaned:
-            cleaned = cleaned.split("[end of text]", 1)[0].strip()
-        return cleaned
-
-    def _looks_invalid_final_answer(self, text: str) -> bool:
-        stripped = text.strip()
-        if not stripped:
-            return True
-        if len(stripped) <= 2:
-            return True
-        if re.fullmatch(r"[\W\d_]+", stripped):
-            return True
-        return False
-
     def _heuristic_extract_final_answer(self, text: str) -> str:
-        cleaned = self._normalize_channel_noise(text)
-        for marker in ("Final Answer:", "Final Response:", "Answer:"):
+        cleaned = text.strip()
+        for marker in ("Final Answer:", "Final Response:", "Answer:", "最終答案:", "答案:"):
             if marker in cleaned:
                 tail = cleaned.split(marker, 1)[-1].strip()
-                if tail:
-                    return tail
-        for marker in ("最終答案應該是：", "最終答案應該是:", "最終答案：", "最終答案:"):
-            if marker in cleaned:
-                tail = cleaned.split(marker, 1)[-1].strip()
-                if tail:
+                if tail and not self._has_reasoning_leak(tail):
                     return tail
 
         lines = [line.rstrip() for line in cleaned.splitlines()]
         kept: list[str] = []
         started = False
         for line in lines:
-            stripped = self._normalize_channel_noise(line.strip())
+            stripped = line.strip()
             if not stripped:
                 if started and kept and kept[-1] != "":
                     kept.append("")
@@ -225,36 +194,58 @@ class LlamaCppAdapter(BaseLLMAdapter):
                 continue
             if stripped.startswith("*   **") or stripped.startswith("- **"):
                 continue
-            if stripped.startswith((
-                "User request:",
-                "Original user request:",
-                "原始用戶請求是：",
-                "原始用戶請求是:",
-                "Context:",
-                "Conversation history:",
-                "Conversation history",
-                "Draft:",
-                "我收到的上一個請求是",
-                "我必須只輸出",
-                "根據上下文和指令",
-                "The previous interaction",
-                "The core interaction",
-                "The current interaction",
-            )):
+            if (stripped.startswith("*   ") or stripped.startswith("- ")) and not started:
                 continue
-
-            if stripped.startswith(("* ", "- ", "*   ", "• ")):
-                if any(m in stripped for m in ("Context:", "Conversation", "Interaction", "The assistant", "The core", "The previous", "The current")):
-                    continue
-                if ":" in stripped and len(stripped) < 120:
-                    continue
-
             if not started and re.match(r"^\d+\.\s+", stripped):
                 continue
             started = True
             kept.append(stripped)
 
-        candidate = "\n".join(kept).strip()
+        candidate = chr(10).join(kept).strip()
+        codes = re.findall(r"\b[A-Z]{2,}(?:-[A-Z0-9]{2,})+\b", cleaned)
+        best_code = max(codes, key=len) if codes else ""
+        if candidate and not self._has_reasoning_leak(candidate):
+            # If we stripped a reasoning dump down to a single residual sentence that
+            # still only exists to mention a code token, return the token itself.
+            if (
+                best_code
+                and self._has_reasoning_leak(cleaned)
+                and best_code in candidate
+                and (len(candidate) < 120 or candidate.count(chr(10)) == 0)
+            ):
+                return best_code
+            return candidate
+        if best_code:
+            return best_code
+        if self._has_reasoning_leak(cleaned):
+            salvaged: list[str] = []
+            refuse_re = re.compile(
+                r"(will not|won't|cannot|must not|disagree|refuse|不同意|原則|保持|拒絕)",
+                flags=re.I,
+            )
+            for line in cleaned.splitlines():
+                stripped = line.strip()
+                if not stripped:
+                    continue
+                if any(marker in stripped for marker in self._reasoning_markers()):
+                    continue
+                # Drop outline numbering but keep the sentence body.
+                body = re.sub(r"^\d+\.\s+(\*\*)?", "", stripped)
+                body = re.sub(r"^\*\*", "", body)
+                body = body.strip(" *:.-")
+                if not body:
+                    continue
+                if stripped.startswith(("*", "-", "•")) and not refuse_re.search(body):
+                    continue
+                if refuse_re.search(body) or re.search(r"[\u4e00-\u9fff]", body):
+                    salvaged.append(body if refuse_re.search(body) or re.search(r"[\u4e00-\u9fff]", body) else body)
+            # Prefer refusal-bearing lines.
+            refused = [s for s in salvaged if refuse_re.search(s)]
+            if refused:
+                return chr(10).join(refused).strip()
+            if salvaged:
+                return chr(10).join(salvaged).strip()
+            return ""
         return candidate or cleaned
 
     def _looks_fragmented(self, text: str) -> bool:
@@ -278,15 +269,34 @@ class LlamaCppAdapter(BaseLLMAdapter):
             return True
         return False
 
+    def _is_compact_factual_answer(self, text: str) -> bool:
+        stripped = text.strip()
+        if not stripped or chr(10) in stripped or chr(13) in stripped:
+            return False
+        if stripped.startswith(("*", "-", "•")):
+            return False
+        if re.fullmatch(r"[A-Z]{2,}(?:-[A-Z0-9]{2,})+", stripped):
+            return True
+        if re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9\-_]{1,64}", stripped):
+            return True
+        # short single-sentence factual reply without outline bullets
+        if len(stripped) <= 96 and not stripped.startswith(("1.", "2.")):
+            return True
+        return False
+
     def _should_apply_fallback(self, original: str, candidate: str) -> tuple[bool, str | None]:
         original = original.strip()
         candidate = candidate.strip()
         if not candidate:
             return False, "empty_candidate"
-        if self._looks_invalid_final_answer(candidate):
-            return False, "candidate_invalid"
         if candidate == original:
             return False, "no_change"
+        # Prefer a cleaned non-leak over a reasoning dump, including short factual
+        # answers (e.g. a passphrase). Still reject outline/bullet fragments.
+        if self._has_reasoning_leak(original) and not self._has_reasoning_leak(candidate):
+            if self._looks_fragmented(candidate) and not self._is_compact_factual_answer(candidate):
+                return False, "candidate_fragmented"
+            return True, None
         if self._looks_fragmented(candidate) and not self._looks_fragmented(original):
             return False, "candidate_fragmented"
         if len(original) >= 160 and len(candidate) < max(80, int(len(original) * 0.4)):
@@ -314,11 +324,12 @@ class LlamaCppAdapter(BaseLLMAdapter):
             ),
             temperature=min(
                 request.temperature if request.temperature is not None else self.default_temperature,
-                0.1,
+                0.2,
             ),
             stop=request.stop,
             json_mode=request.json_mode,
-            metadata={**request.metadata, "disable_reasoning_extractor": True},
+            metadata={**request.metadata, "disable_reasoning_extractor": True,
+                      "disable_prompt_profile": True},
         )
 
     def _generate_once(self, request: LLMRequest) -> tuple[str, Any, str]:
@@ -346,82 +357,55 @@ class LlamaCppAdapter(BaseLLMAdapter):
             if not Path(self.model_path).exists():
                 raise FileNotFoundError(f"GGUF model not found: {self.model_path}")
             cli_prompt = self._subprocess_prompt(request)
-
             cmd = [
                 cli_path,
                 "-m",
                 self.model_path,
                 "-c",
                 str(self.context_length),
+                "-ngl",
+                str(self.n_gpu_layers),
+                "-b",
+                str(self.batch_size),
+                "-ub",
+                str(self.ubatch_size),
+                "--seed",
+                str(self.seed),
                 "-n",
                 str(max_tokens),
                 "--temp",
                 str(temperature),
-                "-ngl",
-                str(self.n_gpu_layers),
-                "-sys",
-                self._subprocess_system(request),
-                "-p",
-                cli_prompt,
-                "--jinja",
-                "-st",
                 "--simple-io",
                 "--no-display-prompt",
+                "--jinja",
                 "-rea",
                 "off",
                 "--reasoning-budget",
                 "0",
+                "-st",
+                "-p",
+                cli_prompt,
             ]
-            if self.n_gpu_layers <= 0:
-                cmd.extend(
-                    [
-                        "-dev",
-                        "none",
-                        "-fit",
-                        "off",
-                        "--no-op-offload",
-                        "--no-kv-offload",
-                    ]
-                )
-
+            if not self.repack:
+                cmd.append("--no-repack")
+            cmd.extend(["-sys", self._subprocess_system(request)])
             proc = subprocess.run(
                 cmd,
                 capture_output=True,
+                text=True,
                 check=True,
                 timeout=self.subprocess_timeout,
             )
-            stdout = self._decode_subprocess_bytes(proc.stdout)
-            stderr = self._decode_subprocess_bytes(proc.stderr)
-            out = {"stdout": stdout, "stderr": stderr, "cmd": cmd}
-            text = self._clean_subprocess_output(stdout, prompt=cli_prompt)
+            out = {"stdout": proc.stdout, "stderr": proc.stderr, "cmd": cmd}
+            text = self._clean_subprocess_output(proc.stdout)
         else:
             raise RuntimeError(
                 "No usable llama.cpp runtime found. Install llama-cpp-python or provide a llama.cpp CLI binary."
             )
         return text, out, driver
 
-    @staticmethod
-    def _decode_subprocess_bytes(data: bytes | str | None) -> str:
-        if data is None:
-            return ""
-        if isinstance(data, str):
-            return data
-        return data.decode("utf-8", errors="replace")
-
-    def _clean_subprocess_output(self, text: str, prompt: str | None = None) -> str:
-        cleaned = text.replace("\x08", "").replace("\r", "").strip()
-        if "\nExiting..." in cleaned:
-            cleaned = cleaned.split("\nExiting...", 1)[0].strip()
-        if "\n[ Prompt:" in cleaned:
-            cleaned = cleaned.rsplit("\n[ Prompt:", 1)[0].strip()
-        if "available commands:" in cleaned and "\n> " in cleaned:
-            cleaned = cleaned.rsplit("\n> ", 1)[-1].strip()
-        if prompt:
-            normalized_prompt = prompt.strip()
-            if cleaned.startswith(normalized_prompt):
-                cleaned = cleaned[len(normalized_prompt) :].strip()
-            elif normalized_prompt in cleaned:
-                cleaned = cleaned.rsplit(normalized_prompt, 1)[-1].strip()
+    def _clean_subprocess_output(self, text: str) -> str:
+        cleaned = text.strip()
         if "\nmodel\n" in cleaned:
             cleaned = cleaned.rsplit("\nmodel\n", 1)[-1].strip()
         if cleaned.startswith("model\n"):
@@ -439,6 +423,7 @@ class LlamaCppAdapter(BaseLLMAdapter):
                 count=1,
             ).strip()
         cleaned = re.sub(r"^<\|channel\>[a-z_]+\n", "", cleaned).strip()
+        cleaned = re.sub(r"(?:\s*\[end of text\])+\s*$", "", cleaned).strip()
         return cleaned
 
     def healthcheck(self) -> dict[str, object]:
@@ -492,29 +477,49 @@ class LlamaCppAdapter(BaseLLMAdapter):
             try:
                 extracted_text, extracted_out, _ = self._generate_once(extractor_request)
                 if extracted_text:
-                    text = extracted_text
-                    out = {
-                        "primary": out,
-                        "extractor": extracted_out,
-                    }
-                    postprocess["extractor_applied"] = True
-                    postprocess["reasoning_leak_detected"] = self._has_reasoning_leak(text)
-                    if postprocess["reasoning_leak_detected"]:
-                        fallback_text = self._heuristic_extract_final_answer(text)
-                        should_apply, skip_reason = self._should_apply_fallback(text, fallback_text)
-                        if should_apply:
-                            text = fallback_text
-                            postprocess["heuristic_fallback_applied"] = True
-                            postprocess["reasoning_leak_detected"] = self._has_reasoning_leak(text)
-                        else:
-                            postprocess["heuristic_fallback_skipped"] = True
-                            postprocess["heuristic_fallback_skip_reason"] = skip_reason
+                    extracted_clean = extracted_text
+                    if self._has_reasoning_leak(extracted_clean):
+                        extracted_clean = self._heuristic_extract_final_answer(extracted_clean) or extracted_clean
+                    # Never replace a cleaner primary with a still-leaking extractor draft.
+                    if self._has_reasoning_leak(extracted_clean) and not self._has_reasoning_leak(text):
+                        postprocess["extractor_error"] = "extractor_still_leaking_kept_primary"
+                    else:
+                        text = extracted_clean
+                        out = {
+                            "primary": out,
+                            "extractor": extracted_out,
+                        }
+                        postprocess["extractor_applied"] = True
+                        postprocess["reasoning_leak_detected"] = self._has_reasoning_leak(text)
+                        if postprocess["reasoning_leak_detected"]:
+                            fallback_text = self._heuristic_extract_final_answer(text)
+                            should_apply, skip_reason = self._should_apply_fallback(text, fallback_text)
+                            if should_apply:
+                                text = fallback_text
+                                postprocess["heuristic_fallback_applied"] = True
+                                postprocess["reasoning_leak_detected"] = self._has_reasoning_leak(text)
+                            else:
+                                postprocess["heuristic_fallback_skipped"] = True
+                                postprocess["heuristic_fallback_skip_reason"] = skip_reason
             except subprocess.TimeoutExpired as exc:
                 postprocess["extractor_error"] = f"timeout: {exc.timeout}s"
             except subprocess.CalledProcessError as exc:
                 postprocess["extractor_error"] = f"called_process_error: {exc.returncode}"
             except Exception as exc:
                 postprocess["extractor_error"] = f"{type(exc).__name__}: {exc}"
+        # Final hard strip: never hand a reasoning channel to callers.
+        if self._has_reasoning_leak(text):
+            hard = self._heuristic_extract_final_answer(text)
+            if hard and not self._has_reasoning_leak(hard):
+                text = hard
+                postprocess["heuristic_fallback_applied"] = True
+                postprocess["reasoning_leak_detected"] = False
+            else:
+                # Drop the dump rather than returning Thinking Process to product callers.
+                text = hard or ""
+                postprocess["reasoning_leak_detected"] = bool(text) and self._has_reasoning_leak(text)
+                postprocess["hard_strip_emptied"] = not bool(text)
+
         return LLMResponse(
             text=text,
             model_family=self.model_family,
@@ -523,12 +528,20 @@ class LlamaCppAdapter(BaseLLMAdapter):
                 "model_path": self.model_path,
                 "context_length": self.context_length,
                 "n_gpu_layers": self.n_gpu_layers,
+                "batch_size": self.batch_size,
+                "ubatch_size": self.ubatch_size,
+                "repack": self.repack if driver == "subprocess" else None,
+                "seed": self.seed,
                 "temperature": temperature,
                 "max_tokens": max_tokens,
                 "chat_format": self.chat_format,
                 "driver": driver,
                 "cli_path": self._cli_resolved_path(),
                 "postprocess": postprocess,
+                "lineage": self.lineage,
+                "prompt_profile": self.prompt_profile,
+                "prompt_profile_applied": self.prompt_profile in {"clone", "judge", "planner"}
+                and not request.metadata.get("disable_prompt_profile", False),
             },
             raw=out,
         )

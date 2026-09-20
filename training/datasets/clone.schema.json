@@ -1,0 +1,28 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "DigitalCloneTrainingRow",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "system": {
+      "type": "string",
+      "minLength": 1
+    },
+    "context": {
+      "type": "string"
+    },
+    "prompt": {
+      "type": "string",
+      "minLength": 1
+    },
+    "response": {
+      "type": "string",
+      "pattern": "^\\[[^\\]\\r\\n]+\\] tone=.+ principles=.+ response=.+$"
+    }
+  },
+  "required": [
+    "system",
+    "prompt",
+    "response"
+  ]
+}

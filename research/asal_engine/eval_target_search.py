@@ -66,6 +66,7 @@ def run_evolution(config: dict, seed: int) -> dict:
         keep=search["keep"],
         sigma=search["sigma"],
         bounds=(low, high),
+        seed=seed,
     )
     return {
         "method": "evolution",

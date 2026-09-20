@@ -1,0 +1,16 @@
+# Untrained neural CA / 未訓練的神經細胞自動機。
+# Theta: diffusion, growth, decay, neural gain, fire rate / 擴散、生長、衰減、神經增益、更新率。
+runtime_profile: {device: cpu, precision: fp32, backend: local}
+tracking: {enabled: false}
+prompt: "a biological cell"
+foundation_model: {name: morphology_judge_stub, params: {}}
+substrate: {name: nca, params: {size: 64, channels: 8, hidden: 12, rule_seed: 0}}
+runtime: {steps: 100, substeps: 1}
+search:
+  seed: 11
+  iters: 2
+  pop: 4
+  keep: 4
+  sigma: 0.01
+  theta_low: [0.10, 0.04, 0.002, 0.005, 0.75]
+  theta_high: [0.20, 0.08, 0.010, 0.030, 1.00]

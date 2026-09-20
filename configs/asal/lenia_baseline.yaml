@@ -1,0 +1,15 @@
+# Theta: mu, sigma, dt, radius/size, density / 生長均值、標準差、步長、半徑比、密度。
+runtime_profile: {device: cpu, precision: fp32, backend: local}
+tracking: {enabled: false}
+prompt: "a biological cell"
+foundation_model: {name: morphology_judge_stub, params: {}}
+substrate: {name: lenia, params: {size: 64}}
+runtime: {steps: 100, substeps: 1}
+search:
+  seed: 11
+  iters: 2
+  pop: 4
+  keep: 4
+  sigma: 0.005
+  theta_low: [0.12, 0.025, 0.05, 0.12, 0.40]
+  theta_high: [0.20, 0.055, 0.10, 0.20, 0.70]

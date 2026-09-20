@@ -1,0 +1,345 @@
+# ASAL cancer multicohort narrative (1→2→3→4) — visual metaphor only / 視覺隱喻
+# Requires boids narrative_controller num_cohorts>=4 with per-phase num_cohorts.
+# NOT a biomedical cancer model. Outputs under runs/asal/.
+#
+defaults:
+  runtime_profile:
+    device: cpu
+    precision: fp32
+    backend: local
+  tracking:
+    enabled: false
+prompt: 'cancer cell multicohort progression: one transformed mass becomes many colonies
+  (initiation→proliferation→colony_expansion→metastasis); visual metaphor only'
+foundation_model:
+  name: morphology_judge_stub
+  params: {}
+substrate:
+  name: boids
+  params:
+    num_boids: 100
+    width: 128
+    height: 128
+    keep_largest_component: false
+    narrative_controller:
+      enabled: true
+      seed_mode: center_cluster
+      seed_spread: 4.0
+      initial_speed_scale: 0.1
+      split_axis: horizontal
+      base_center_pull: 0.01
+      base_velocity_damping: 0.04
+      phases:
+      - name: initiation
+        num_cohorts: 1
+        separation_scale: 0.14
+        alignment_scale: 1.15
+        cohesion_scale: 2.55
+        center_pull: 0.15
+        global_pull: 0.16
+        damping: 0.42
+        speed_scale: 0.65
+        max_step_displacement: 3.0
+      - name: proliferation
+        num_cohorts: 2
+        separation_scale: 0.48
+        alignment_scale: 1.05
+        cohesion_scale: 1.2
+        center_pull: 0.0
+        split_push: 0.08
+        cohort_pull: 0.14
+        cohort_locality: true
+        cohort_global_pull: 0.12
+        cross_cohort_repulsion: 0.36
+        split_offset: 20.0
+        damping: 0.08
+        speed_scale: 0.85
+        max_step_displacement: 4.0
+      - name: colony_expansion
+        num_cohorts: 3
+        separation_scale: 0.55
+        alignment_scale: 1.0
+        cohesion_scale: 1.25
+        center_pull: 0.0
+        split_push: 0.09
+        cohort_pull: 0.15
+        cohort_locality: true
+        cohort_global_pull: 0.13
+        cross_cohort_repulsion: 0.4
+        split_offset: 28.0
+        damping: 0.07
+        speed_scale: 0.95
+        max_step_displacement: 4.5
+      - name: metastasis
+        num_cohorts: 4
+        separation_scale: 0.58
+        alignment_scale: 1.05
+        cohesion_scale: 1.35
+        center_pull: 0.0
+        split_push: 0.08
+        cohort_pull: 0.16
+        cohort_locality: true
+        cohort_global_pull: 0.14
+        cross_cohort_repulsion: 0.45
+        split_offset: 36.0
+        damping: 0.1
+        speed_scale: 0.9
+        max_step_displacement: 5.0
+      max_step_displacement: 5.0
+      num_cohorts: 4
+runtime:
+  steps: 180
+  substeps: 1
+search:
+  iters: 18
+  pop: 20
+  keep: 20
+  sigma: 0.14
+  seed: 11
+  theta_low:
+  - 0.0
+  - 0.0
+  - 0.0
+  - 18.0
+  - 1.0
+  theta_high:
+  - 2.0
+  - 2.0
+  - 2.0
+  - 128.0
+  - 6.5
+narrative:
+  enabled: true
+  weight: 0.8
+  semantic_weight: 0.2
+  phases:
+  - name: initiation
+    frame_range:
+    - 0
+    - 15
+    target_components: 1
+    weight: 0.2
+  - name: proliferation
+    frame_range:
+    - 16
+    - 31
+    target_components: 2
+    weight: 0.25
+  - name: colony_expansion
+    frame_range:
+    - 32
+    - 47
+    target_components: 3
+    weight: 0.25
+  - name: metastasis
+    frame_range:
+    - 48
+    - 63
+    target_components: 4
+    weight: 0.3
+profiles:
+  cpu_smoke:
+    runtime:
+      steps: 90
+    search:
+      iters: 6
+      pop: 8
+      keep: 8
+    narrative:
+      phases:
+      - name: initiation
+        frame_range:
+        - 0
+        - 15
+        target_components: 1
+        weight: 0.2
+      - name: proliferation
+        frame_range:
+        - 16
+        - 31
+        target_components: 2
+        weight: 0.25
+      - name: colony_expansion
+        frame_range:
+        - 32
+        - 47
+        target_components: 3
+        weight: 0.25
+      - name: metastasis
+        frame_range:
+        - 48
+        - 63
+        target_components: 4
+        weight: 0.3
+    substrate:
+      params:
+        narrative_controller:
+          enabled: true
+          seed_mode: center_cluster
+          seed_spread: 4.0
+          initial_speed_scale: 0.1
+          split_axis: horizontal
+          base_center_pull: 0.01
+          base_velocity_damping: 0.04
+          phases:
+          - name: initiation
+            num_cohorts: 1
+            separation_scale: 0.14
+            alignment_scale: 1.15
+            cohesion_scale: 2.55
+            center_pull: 0.15
+            global_pull: 0.16
+            damping: 0.42
+            speed_scale: 0.65
+            max_step_displacement: 3.0
+          - name: proliferation
+            num_cohorts: 2
+            separation_scale: 0.48
+            alignment_scale: 1.05
+            cohesion_scale: 1.2
+            center_pull: 0.0
+            split_push: 0.08
+            cohort_pull: 0.14
+            cohort_locality: true
+            cohort_global_pull: 0.12
+            cross_cohort_repulsion: 0.36
+            split_offset: 20.0
+            damping: 0.08
+            speed_scale: 0.85
+            max_step_displacement: 4.0
+          - name: colony_expansion
+            num_cohorts: 3
+            separation_scale: 0.55
+            alignment_scale: 1.0
+            cohesion_scale: 1.25
+            center_pull: 0.0
+            split_push: 0.09
+            cohort_pull: 0.15
+            cohort_locality: true
+            cohort_global_pull: 0.13
+            cross_cohort_repulsion: 0.4
+            split_offset: 28.0
+            damping: 0.07
+            speed_scale: 0.95
+            max_step_displacement: 4.5
+          - name: metastasis
+            num_cohorts: 4
+            separation_scale: 0.58
+            alignment_scale: 1.05
+            cohesion_scale: 1.35
+            center_pull: 0.0
+            split_push: 0.08
+            cohort_pull: 0.16
+            cohort_locality: true
+            cohort_global_pull: 0.14
+            cross_cohort_repulsion: 0.45
+            split_offset: 36.0
+            damping: 0.1
+            speed_scale: 0.9
+            max_step_displacement: 5.0
+          max_step_displacement: 5.0
+          num_cohorts: 4
+        keep_largest_component: false
+  cpu_tiny:
+    runtime:
+      steps: 64
+    search:
+      iters: 2
+      pop: 4
+      keep: 4
+      sigma: 0.1
+    narrative:
+      phases:
+      - name: initiation
+        frame_range:
+        - 0
+        - 15
+        target_components: 1
+        weight: 0.2
+      - name: proliferation
+        frame_range:
+        - 16
+        - 31
+        target_components: 2
+        weight: 0.25
+      - name: colony_expansion
+        frame_range:
+        - 32
+        - 47
+        target_components: 3
+        weight: 0.25
+      - name: metastasis
+        frame_range:
+        - 48
+        - 63
+        target_components: 4
+        weight: 0.3
+    substrate:
+      params:
+        narrative_controller:
+          enabled: true
+          seed_mode: center_cluster
+          seed_spread: 4.0
+          initial_speed_scale: 0.1
+          split_axis: horizontal
+          base_center_pull: 0.01
+          base_velocity_damping: 0.04
+          phases:
+          - name: initiation
+            num_cohorts: 1
+            separation_scale: 0.14
+            alignment_scale: 1.15
+            cohesion_scale: 2.55
+            center_pull: 0.15
+            global_pull: 0.16
+            damping: 0.42
+            speed_scale: 0.65
+            max_step_displacement: 3.0
+          - name: proliferation
+            num_cohorts: 2
+            separation_scale: 0.48
+            alignment_scale: 1.05
+            cohesion_scale: 1.2
+            center_pull: 0.0
+            split_push: 0.08
+            cohort_pull: 0.14
+            cohort_locality: true
+            cohort_global_pull: 0.12
+            cross_cohort_repulsion: 0.36
+            split_offset: 20.0
+            damping: 0.08
+            speed_scale: 0.85
+            max_step_displacement: 4.0
+          - name: colony_expansion
+            num_cohorts: 3
+            separation_scale: 0.55
+            alignment_scale: 1.0
+            cohesion_scale: 1.25
+            center_pull: 0.0
+            split_push: 0.09
+            cohort_pull: 0.15
+            cohort_locality: true
+            cohort_global_pull: 0.13
+            cross_cohort_repulsion: 0.4
+            split_offset: 28.0
+            damping: 0.07
+            speed_scale: 0.95
+            max_step_displacement: 4.5
+          - name: metastasis
+            num_cohorts: 4
+            separation_scale: 0.58
+            alignment_scale: 1.05
+            cohesion_scale: 1.35
+            center_pull: 0.0
+            split_push: 0.08
+            cohort_pull: 0.16
+            cohort_locality: true
+            cohort_global_pull: 0.14
+            cross_cohort_repulsion: 0.45
+            split_offset: 36.0
+            damping: 0.1
+            speed_scale: 0.9
+            max_step_displacement: 5.0
+          max_step_displacement: 5.0
+          num_cohorts: 4
+        keep_largest_component: false

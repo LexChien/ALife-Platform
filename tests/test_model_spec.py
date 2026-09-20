@@ -31,6 +31,27 @@ class ModelSpecTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             ModelSpec.from_dict({"model_id": "broken"})
 
+    def test_llama_cpp_adapter_consumes_prompt_profile_and_lineage(self):
+        from genai.llm.backends.llama_cpp import LlamaCppAdapter
+        from genai.llm.adapter import LLMRequest
+        
+        lineage = {"base_model": "test_base", "version": "1.0"}
+        adapter = LlamaCppAdapter(
+            model_family="gemma",
+            model_path="dummy_path.gguf",
+            prompt_profile="clone",
+            lineage=lineage
+        )
+        
+        self.assertEqual(adapter.prompt_profile, "clone")
+        self.assertEqual(adapter.lineage, lineage)
+        
+        # Verify prompt building formats with clone profile rules
+        req = LLMRequest(prompt="Hello", system="You are Lex.")
+        prompt_built = adapter.build_prompt(req)
+        self.assertIn("Format requirements: [Name] tone=[Tone]", prompt_built)
+        self.assertIn("<system>\nYou are Lex.\nFormat requirements: [Name] tone=[Tone]", prompt_built)
+
 
 if __name__ == "__main__":
     unittest.main()

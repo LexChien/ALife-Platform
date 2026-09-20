@@ -1,7 +1,12 @@
 # ALife-Platform
 
-`ALife-Platform` is a local-first artificial-life and generative-AI integration
-repository.
+## Local progress as of 2026-09-21 / 本機進度
+
+ZH：本機文件入口見 [最新進度](docs/STATUS.md)、[待辦](context/TASKS.md)。9/20：101 tests OK、HTTP 3/3、NCA/Lenia 4/4、接觸轉化敘事 3/3。Mac 已推送 heartbeat／DNA／`gemma_web` launcher（`ad5371d`）；本合併把 Linux Plan 23–25 進度疊上該遠端基底。
+
+EN: See STATUS and TASKS for local docs. Sep 20: 101 tests OK, HTTP 3/3, NCA/Lenia 4/4, contact-conversion 3/3. Mac pushed heartbeat/DNA/gemma launcher (`ad5371d`); this merge rebases Linux Plan 23–25 progress onto that remote base.
+
+`ALife-Platform` is a local-first research and integration repository that combines:
 
 It currently combines:
 
@@ -36,32 +41,17 @@ Working now:
 
 Still incomplete:
 
-- The visible body is currently ASAL organism artifacts, not a finished
-  human-like avatar.
-- Digital Clone is still a lightweight local memory/persona layer, not a
-  production identity system.
-- Voice input depends on browser/macOS runtime support.
-- The ASAL narrative organism is a validated prototype, not a final artificial
-  life model.
+- The visible body is currently ASAL organism artifacts, not a finished human-like avatar.
+- Digital Clone is still a lightweight local memory/persona layer, not a production identity system.
+- Many subsystems remain baseline-quality; ASAL substrate coverage is still narrow.
+- GenAI includes local image/speech adapters; media-quality acceptance remains incomplete.
+- Voice input depends on browser/OS runtime support.
 
 ## Public Repository Rules
 
-`runs/` artifacts are part of the public project state. If a run is used for
-validation, demo behavior, or handoff of current progress, it should be tracked
-and pushed.
+`runs/` validation/demo artifacts may be tracked when they prove current progress.
 
-`docs/` and `log/` are local planning and handoff areas. They are not part of
-the public GitHub tracking scope unless the user explicitly names a specific
-file as an exception.
-
-Do not publish local-only runtime payloads such as:
-
-- `.venv/`
-- `.chroma_db/`
-- `models/**/*.gguf`
-- `third_party/llama.cpp/` build outputs
-- `server.log`
-- `__pycache__/` and `.pycache/`
+`docs/` and `log/` are local planning/handoff areas (often via `.git/info/exclude`). Do not publish `.venv/`, `.chroma_db/`, `models/**/*.gguf`, `third_party/llama.cpp/` build outputs, or `__pycache__/`.
 
 ## Repository Layout
 

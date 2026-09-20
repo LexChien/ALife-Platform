@@ -1,25 +1,36 @@
-from evaluation.heuristics import contains_all, contains_any, make_result
+"""Observable response checks; no claim of general persona or tone understanding."""
+from evaluation.heuristics import make_result
 
 
 class ConsistencyEvaluator:
     def score(self, persona, text, user_text="", retrieved_memories=None, prompt_components=None):
-        retrieved_memories = retrieved_memories or []
-        prompt_components = prompt_components or {}
-        context = prompt_components.get("context")
-        memory_lines = context.splitlines() if context else []
-        ask_memory_sensitive = any(key in user_text for key in ["記憶", "memory", "風格", "特徵"])
-
+        memories = retrieved_memories or []
         checks = {
-            "persona_tag": text.startswith(f"[{persona.name}]"),
-            "tone_match": f"tone={persona.tone}" in text,
-            "principle_presence": contains_all(text, persona.principles[:2]),
-            "user_echo": user_text in text if user_text else True,
-            "prompt_context_hit": contains_any(text, memory_lines) if memory_lines else True,
-            "retrieval_grounding": contains_any(text, retrieved_memories) if retrieved_memories else True,
-            "memory_sensitive_answer": (
-                contains_any(text, persona.facts[:2])
-                or persona.tone in text
-                or contains_any(text, retrieved_memories)
-            ) if persona.facts and ask_memory_sensitive else True,
+            "nonempty_answer": bool(text.strip()),
+            "not_dummy_echo": "[DummyLLM]" not in text,
+            "no_reasoning_channel": not any(marker in text for marker in
+                ("<|channel>thought", "Thinking Process:", "<think>")),
         }
-        return make_result(checks)
+        result = make_result(checks)
+        result["method"] = "observable_response_checks_v2"
+        result["scope"] = "Sanity checks only; behavioral persona fidelity requires labeled evaluation cases."
+        # Correct paraphrases need not repeat an entire archived message verbatim.
+        def _grounded(answer: str, memory_list) -> bool:
+            answer_l = (answer or "").lower()
+            for memory in memory_list:
+                content = str(memory or "")
+                if not content:
+                    continue
+                if content in answer:
+                    return True
+                # Token overlap for distinctive codes (e.g. BLUE-ORBIT-7741).
+                tokens = [tok for tok in content.replace("，", " ").replace(",", " ").split() if len(tok) >= 6]
+                if tokens and any(tok.lower() in answer_l for tok in tokens):
+                    return True
+            return False
+
+        result["evidence"] = {
+            "retrieval_grounding": _grounded(text, memories),
+            "retrieved_count": len(memories),
+        }
+        return result
