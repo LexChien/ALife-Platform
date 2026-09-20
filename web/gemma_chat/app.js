@@ -30,6 +30,13 @@ const quickButtons = Array.from(document.querySelectorAll(".quick-button"));
 
 const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 const storageKey = "gemma-web-session-id";
+const audioCaptureConstraints = {
+  audio: {
+    echoCancellation: true,
+    noiseSuppression: true,
+    autoGainControl: true,
+  },
+};
 
 let sessionId = localStorage.getItem(storageKey) || crypto.randomUUID();
 let recognition = null;
@@ -38,6 +45,12 @@ let mediaRecorder = null;
 let mediaRecorderChunks = [];
 let mediaRecorderStream = null;
 let mediaRecorderActive = false;
+let mediaRecorderStartedAt = 0;
+let mediaRecorderPeakLevel = 0;
+let audioMonitorContext = null;
+let audioMonitorSource = null;
+let audioMonitorTimer = null;
+let audioMonitorData = null;
 let microphonePermission = "unknown";
 let cameraStream = null;
 let cameraActive = false;
@@ -174,7 +187,7 @@ function formatMicError(error) {
   if (typeof error === "string") {
     return error;
   }
-  return error.name || error.message || String(error);
+  return error.message || error.name || String(error);
 }
 
 function formatScore(value) {
@@ -315,7 +328,7 @@ async function queryMicrophonePermission() {
   }
 }
 
-async function ensureMicrophoneAccess(promptUser = false) {
+async function ensureMicrophoneAccess(promptUser = false, keepStream = false) {
   if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
     return { ok: false, reason: "media_devices_unavailable" };
   }
@@ -326,7 +339,11 @@ async function ensureMicrophoneAccess(promptUser = false) {
   }
 
   try {
-    const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+    const stream = await navigator.mediaDevices.getUserMedia(audioCaptureConstraints);
+    if (keepStream) {
+      microphonePermission = "granted";
+      return { ok: true, reason: "granted", stream };
+    }
     stream.getTracks().forEach((track) => track.stop());
     microphonePermission = "granted";
     return { ok: true, reason: "granted" };
@@ -357,6 +374,7 @@ async function uploadRecordingForTranscription(blob) {
 }
 
 function cleanupRecorderStream() {
+  stopAudioLevelMonitor();
   if (mediaRecorderStream) {
     mediaRecorderStream.getTracks().forEach((track) => track.stop());
   }
@@ -364,6 +382,62 @@ function cleanupRecorderStream() {
   mediaRecorder = null;
   mediaRecorderChunks = [];
   mediaRecorderActive = false;
+  mediaRecorderStartedAt = 0;
+  mediaRecorderPeakLevel = 0;
+}
+
+function stopAudioLevelMonitor() {
+  if (audioMonitorTimer) {
+    window.clearInterval(audioMonitorTimer);
+  }
+  audioMonitorTimer = null;
+  audioMonitorSource = null;
+  audioMonitorData = null;
+  if (audioMonitorContext) {
+    audioMonitorContext.close().catch(() => {});
+  }
+  audioMonitorContext = null;
+}
+
+function startAudioLevelMonitor(stream) {
+  stopAudioLevelMonitor();
+  const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+  if (!AudioContextClass) {
+    return;
+  }
+  audioMonitorContext = new AudioContextClass();
+  audioMonitorContext.resume().catch(() => {});
+  audioMonitorSource = audioMonitorContext.createMediaStreamSource(stream);
+  const analyser = audioMonitorContext.createAnalyser();
+  analyser.fftSize = 1024;
+  audioMonitorData = new Uint8Array(analyser.fftSize);
+  audioMonitorSource.connect(analyser);
+  mediaRecorderPeakLevel = 0;
+  audioMonitorTimer = window.setInterval(() => {
+    analyser.getByteTimeDomainData(audioMonitorData);
+    let sum = 0;
+    for (const sample of audioMonitorData) {
+      const centered = (sample - 128) / 128;
+      sum += centered * centered;
+    }
+    const rms = Math.sqrt(sum / audioMonitorData.length);
+    mediaRecorderPeakLevel = Math.max(mediaRecorderPeakLevel, rms);
+    if (micState === "mic_listening") {
+      const signal = rms >= 0.012 ? "收到聲音" : "收音偏弱";
+      micHint.textContent = `正在錄音：${signal}，說完後再按一次停止`;
+    }
+  }, 180);
+}
+
+function hasEnoughRecordedSignal() {
+  const elapsedMs = mediaRecorderStartedAt ? Date.now() - mediaRecorderStartedAt : 0;
+  if (elapsedMs < 700) {
+    return true;
+  }
+  if (!audioMonitorContext) {
+    return true;
+  }
+  return mediaRecorderPeakLevel >= 0.008;
 }
 
 async function startServerRecording() {
@@ -373,7 +447,7 @@ async function startServerRecording() {
     return;
   }
 
-  const micAccess = await ensureMicrophoneAccess(true);
+  const micAccess = await ensureMicrophoneAccess(true, true);
   if (!micAccess.ok) {
     micHint.textContent = `麥克風權限或裝置不可用：${micAccess.reason}`;
     setMicState("mic_error");
@@ -382,7 +456,8 @@ async function startServerRecording() {
 
   const mimeType = preferredRecordingMimeType();
   mediaRecorderChunks = [];
-  mediaRecorderStream = await navigator.mediaDevices.getUserMedia({ audio: true });
+  mediaRecorderStream = micAccess.stream;
+  startAudioLevelMonitor(mediaRecorderStream);
   mediaRecorder = mimeType
     ? new MediaRecorder(mediaRecorderStream, { mimeType })
     : new MediaRecorder(mediaRecorderStream);
@@ -395,6 +470,7 @@ async function startServerRecording() {
 
   mediaRecorder.onstart = () => {
     mediaRecorderActive = true;
+    mediaRecorderStartedAt = Date.now();
     stopSpeechPlayback();
     clearErrorState();
     micButton.textContent = "⏹️ 停止錄音";
@@ -412,7 +488,14 @@ async function startServerRecording() {
     micButton.textContent = "🎙️ 語音輸入";
     setMicState("mic_processing");
     try {
+      const hadSignal = hasEnoughRecordedSignal();
       const blob = new Blob(mediaRecorderChunks, { type: mediaRecorder.mimeType || mimeType || "audio/webm" });
+      if (!hadSignal) {
+        cleanupRecorderStream();
+        micHint.textContent = "錄音幾乎是靜音，沒有送出轉寫。請檢查麥克風輸入來源，或靠近麥克風再錄一次。";
+        setMicState("mic_error");
+        return;
+      }
       const payload = await uploadRecordingForTranscription(blob);
       messageInput.value = payload.transcript || "";
       const shouldAutoSubmit = Boolean(autoSubmitToggle.checked);

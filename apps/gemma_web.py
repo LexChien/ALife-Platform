@@ -26,6 +26,8 @@ def _read_static_asset(name: str) -> tuple[bytes, str]:
         content_type = "application/javascript; charset=utf-8"
     elif name.endswith(".css"):
         content_type = "text/css; charset=utf-8"
+    elif name.endswith(".mp4"):
+        content_type = "video/mp4"
     else:
         content_type = "application/octet-stream"
     return path.read_bytes(), content_type
@@ -49,6 +51,9 @@ class GemmaWebHandler(BaseHTTPRequestHandler):
             return
         if path == "/styles.css":
             self._serve_static("styles.css")
+            return
+        if path == "/generated_video-3.mp4":
+            self._serve_static("generated_video-3.mp4")
             return
         if path == "/api/health":
             self._send_json(self.app.health_payload())
@@ -140,6 +145,7 @@ class GemmaWebHandler(BaseHTTPRequestHandler):
         self.send_response(HTTPStatus.OK)
         self.send_header("Content-Type", content_type)
         self.send_header("Content-Length", str(len(body)))
+        self.send_header("Cache-Control", "no-store")
         self.end_headers()
         self.wfile.write(body)
 

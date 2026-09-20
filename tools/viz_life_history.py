@@ -2,6 +2,7 @@ import json
 import sys
 import time
 from pathlib import Path
+from datetime import datetime
 
 def visualize_history(json_path, follow=False):
     if not Path(json_path).exists():
@@ -9,60 +10,82 @@ def visualize_history(json_path, follow=False):
         return
 
     last_entry_count = 0
+    
     while True:
         try:
             with open(json_path, 'r', encoding='utf-8') as f:
                 data = json.load(f)
         except (json.JSONDecodeError, OSError):
-            time.sleep(0.5); continue
+            # If file is being written to, wait a bit
+            time.sleep(0.5)
+            continue
 
         history = data.get("evolution_history", [])
-        system_type = data.get("system", "unknown")
         if not history:
-            if not follow: return
-            time.sleep(1); continue
+            if not follow:
+                print("No evolution data found.")
+                return
+            time.sleep(1)
+            continue
 
+        # Print header only the first time
         if last_entry_count == 0:
-            print("\n" + "="*190)
-            print(f" ARTIFICIAL LIFE MONITORING | System: {system_type} | Started at: {data.get('start_time', 'N/A')}")
-            print("="*190 + "\n")
-            print(f"{'TIME (s)':<8} | {'STATE':<10} | {'PHASE':<8} | {'SEMANTIC':<8} | {'PENALTY':<8} | {'CURR_COMB':<10} | {'BEST_COMB':<10} | {'COMP/MASS':<12} | {'ENERGY':<10} | {'STABILITY':<12}")
-            print("-" * 190)
+            print("\n" + "="*80)
+            print(f" ARTIFICIAL LIFE EVOLUTIONARY HISTORY & HEARTBEAT LOG")
+            print(f" System: {data.get('system', 'unknown')} | Started at: {data.get('start_time', 'N/A')}")
+            print("="*80 + "\n")
+            print(f"{'TIME (s)':<10} | {'STATE':<10} | {'PHASE':<8} | {'SCORE':<8} | {'MORPHOLOGY (Comp/Area)':<20} | {'DNA (Theta) Snippet'}")
+            print("-" * 110)
 
+        # Print only new entries
         new_entries = history[last_entry_count:]
-        
+        def _score(e):
+            return e.get("best_score", e.get("best_combined", e.get("current_combined", 0.0)))
+        last_score = -1.0 if last_entry_count == 0 else _score(history[last_entry_count-1])
+
         for entry in new_entries:
             elapsed = entry.get("elapsed", 0.0)
             state = entry.get("state", "idle")
             phase = entry.get("phase", "N/A")
-            
-            sem_score = entry.get("semantic_score", 0.0)
-            penalty = entry.get("energy_penalty", 0.0)
-            curr_comb = entry.get("current_combined", 0.0)
-            best_comb = entry.get("best_combined", 0.0)
-            
-            comb_str = f"{curr_comb:.4f}"
-            if curr_comb >= best_comb and best_comb > -1.0:
-                comb_str = f"\033[92m{comb_str} *\033[0m" # Highlight best
-
+            score = entry.get("best_score", entry.get("best_combined", entry.get("current_combined", 0.0)))
             morph = entry.get("morphology", {})
-            comp_mass = f"{morph.get('num_components', 0)} / {int(morph.get('active_mass', 0))}"
-            energy = f"{morph.get('energy', 0.0):.1f}"
+            dna = entry.get("dna", [])
             
-            if morph.get("clamped", False):
-                status = "\033[91mCLAMPED\033[0m"
-            elif morph.get("is_stable", True):
-                status = "\033[94mSTABLE\033[0m"
+            # Highlight evolution progress
+            score_str = f"{score:.4f}"
+            if score > last_score and last_score != -1.0:
+                score_str = f"\033[92m{score_str} ↑\033[0m" # Green for improvement
+            last_score = max(score, last_score)
+
+            area = morph.get('largest_area', morph.get('active_mass', morph.get('area', 0)))
+            morph_str = f"{morph.get('num_components', 0)} / {int(area or 0)}"
+            if isinstance(dna, (list, tuple)) and dna:
+                dna_snippet = ", ".join([f"{float(v):.2f}" for v in dna[:3]]) + "..."
             else:
-                status = "\033[93mDRIFTING\033[0m"
-            
-            print(f"{elapsed:<8.1f} | {state:<10} | {phase:<8} | {sem_score:<8.4f} | {penalty:<8.4f} | {comb_str:<10} | {best_comb:<10.4f} | {comp_mass:<12} | {energy:<10} | {status:<21}")
+                dna_snippet = "..."
+            thought = (entry.get("thought") or "").strip()
+            if thought:
+                dna_snippet = dna_snippet + f" | THINK: {thought[:48]}"
+
+            print(f"{elapsed:<10.1f} | {state:<10} | {phase:<8} | {score_str:<8} | {morph_str:<20} | [{dna_snippet}]")
 
         last_entry_count = len(history)
-        if not follow: break
-        time.sleep(1.5)
+
+        if not follow:
+            print("\n" + "="*80)
+            print(f" SUMMARY: Total Pulses: {len(history)} | Peak Semantic Score: {last_score:.4f}")
+            print("="*80 + "\n")
+            break
+        
+        time.sleep(2) # Wait for next update
 
 if __name__ == "__main__":
-    follow_mode = "-f" in sys.argv
-    path = [a for a in sys.argv[1:] if a != "-f"][0] if len(sys.argv) > 1 else "runs/chat_gemma_web/latest/live_engine/live_evolution.json"
+    follow_mode = False
+    args = sys.argv[1:]
+    
+    if "-f" in args:
+        follow_mode = True
+        args.remove("-f")
+    
+    path = args[0] if args else "runs/chat_gemma_web/latest/live_engine/live_evolution.json"
     visualize_history(path, follow=follow_mode)
