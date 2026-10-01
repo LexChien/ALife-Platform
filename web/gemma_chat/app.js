@@ -401,6 +401,47 @@ function playServerAudio(url, fallbackText) {
   }
 }
 
+// Plan 37 R2: play sentence chunks in order; chunk 0 is ready immediately, later chunks are
+// synthesized server-side while earlier ones play (GET waits until a pending chunk exists).
+function playServerAudioQueue(urls, fallbackText) {
+  if (currentAudio) {
+    currentAudio.pause();
+  }
+  let index = 0;
+  const playNext = () => {
+    if (index >= urls.length) {
+      setSpeechState(speakToggle.checked ? "speech_ready" : "speech_disabled");
+      setConversationState("ready");
+      return;
+    }
+    const audio = new Audio(urls[index]);
+    currentAudio = audio;
+    if (index === 0) {
+      audio.onplay = () => {
+        setConversationState("reply_received");
+        setSpeechState("speech_playing");
+      };
+    }
+    audio.onended = () => {
+      index += 1;
+      playNext();
+    };
+    audio.onerror = () => {
+      if (index === 0) {
+        speakText(fallbackText);
+      } else {
+        index += 1;
+        playNext();
+      }
+    };
+    const playing = audio.play();
+    if (playing && playing.catch) {
+      playing.catch(() => (index === 0 ? speakText(fallbackText) : null));
+    }
+  };
+  playNext();
+}
+
 function deliverReply(payload) {
   appendMessage("assistant", payload.reply);
   renderLife(payload.life);
@@ -409,7 +450,9 @@ function deliverReply(payload) {
     sessionStatus.textContent = payload.session_id;
   }
   if (speakToggle.checked) {
-    if (payload.tts && payload.tts.ok && payload.tts.url) {
+    if (payload.tts && payload.tts.ok && Array.isArray(payload.tts.chunks) && payload.tts.chunks.length > 1) {
+      playServerAudioQueue(payload.tts.chunks.map((c) => c.url), payload.reply);
+    } else if (payload.tts && payload.tts.ok && payload.tts.url) {
       playServerAudio(payload.tts.url, payload.reply);
     } else {
       speakText(payload.reply);

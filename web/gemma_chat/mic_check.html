@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<title>ALife 麥克風自我檢測 / Mic self-check</title>
+<style>
+ body{font-family:-apple-system,"PingFang TC",sans-serif;background:#0d1117;color:#e6edf3;max-width:760px;margin:24px auto;padding:0 16px}
+ h1{font-size:20px} .ref{font-size:22px;background:#161b22;padding:12px;border-radius:8px;margin:8px 0}
+ button{font-size:16px;padding:10px 18px;border-radius:8px;border:0;background:#2f81f7;color:#fff;cursor:pointer}
+ button:disabled{background:#30363d} #meter{height:14px;background:#161b22;border-radius:7px;overflow:hidden;margin:10px 0}
+ #bar{height:100%;width:0;background:#3fb950} table{border-collapse:collapse;width:100%;margin-top:12px}
+ td{border-bottom:1px solid #30363d;padding:6px;vertical-align:top} td:first-child{color:#8b949e;width:34%}
+ .pass{color:#3fb950}.fail{color:#f85149}.muted{color:#8b949e;font-size:13px}
+</style>
+</head>
+<body>
+<h1>麥克風一鍵自我檢測 / One-step real-mic self-check</h1>
+<p class="muted">按下按鈕後請在 5 秒內清楚唸出下面這句話。音訊只送到本機 gemma_web（127.0.0.1），經離線 STT → 真實 Gemma → 本機 TTS；結果會存到本機 run 目錄的 mic_checks/。<br>
+Press the button and read the sentence within 5 s. Audio goes only to the local gemma_web (offline STT → real Gemma → local TTS); the result is saved under the run dir mic_checks/.</p>
+<div class="ref" id="ref"></div>
+<button id="next">換一句 / Next sentence</button>
+<button id="go">開始錄音 5 秒 / Record 5 s</button>
+<div id="meter"><div id="bar"></div></div>
+<div id="status" class="muted">idle</div>
+<table id="out"></table>
+<script>
+const REFS = ["我好擔心明天的報告，怎麼辦？", "今天天氣很好，我想出去走走。", "請幫我記住我的研究暗語是藍色軌道。", "氣死我了，客戶又改需求了。"];
+let refIdx = 0;
+const $ = (id) => document.getElementById(id);
+$("ref").textContent = REFS[refIdx];
+$("next").onclick = () => { refIdx = (refIdx + 1) % REFS.length; $("ref").textContent = REFS[refIdx]; };
+const clean = (s) => (s || "").replace(/[\s\p{P}\p{S}_]+/gu, "");
+function cer(r, h) {
+  const a = [...clean(r)], b = [...clean(h)]; let d = [...Array(b.length + 1).keys()];
+  for (let i = 1; i <= a.length; i++) { let prev = d[0]; d[0] = i;
+    for (let j = 1; j <= b.length; j++) { const cur = d[j]; d[j] = Math.min(d[j] + 1, d[j - 1] + 1, prev + (a[i - 1] !== b[j - 1] ? 1 : 0)); prev = cur; } }
+  return d[b.length] / Math.max(1, a.length);
+}
+function row(k, v, cls) { const tr = document.createElement("tr"); tr.innerHTML = `<td>${k}</td><td class="${cls || ""}"></td>`; tr.lastChild.textContent = v; $("out").appendChild(tr); }
+function pick() { for (const m of ["audio/webm;codecs=opus", "audio/webm", "audio/mp4"]) if (MediaRecorder.isTypeSupported(m)) return m; return ""; }
+async function playQueue(urls) { for (const u of urls) { await new Promise((res) => { const a = new Audio(u); a.onended = res; a.onerror = res; a.play().catch(res); }); } }
+$("go").onclick = async () => {
+  $("go").disabled = true; $("out").innerHTML = ""; const ref = REFS[refIdx]; let peak = 0; const t0 = performance.now();
+  try {
+    $("status").textContent = "requesting microphone…";
+    const stream = await navigator.mediaDevices.getUserMedia({ audio: { echoCancellation: true, noiseSuppression: true } });
+    const ctx = new AudioContext(); const src = ctx.createMediaStreamSource(stream); const an = ctx.createAnalyser(); an.fftSize = 1024; src.connect(an);
+    const buf = new Float32Array(an.fftSize); let raf;
+    const tick = () => { an.getFloatTimeDomainData(buf); let m = 0; for (const x of buf) m = Math.max(m, Math.abs(x)); peak = Math.max(peak, m); $("bar").style.width = Math.min(100, m * 140) + "%"; raf = requestAnimationFrame(tick); }; tick();
+    const mime = pick(); const rec = mime ? new MediaRecorder(stream, { mimeType: mime }) : new MediaRecorder(stream); const chunks = [];
+    rec.ondataavailable = (e) => e.data.size && chunks.push(e.data);
+    const stopped = new Promise((r) => (rec.onstop = r)); rec.start();
+    for (let s = 5; s > 0; s--) { $("status").textContent = `錄音中 recording… ${s}s  — 請唸 / read: ${ref}`; await new Promise((r) => setTimeout(r, 1000)); }
+    rec.stop(); await stopped; cancelAnimationFrame(raf); stream.getTracks().forEach((t) => t.stop()); ctx.close();
+    const blob = new Blob(chunks, { type: rec.mimeType || mime || "audio/webm" });
+    const peakDb = peak > 0 ? 20 * Math.log10(peak) : -120;
+    $("status").textContent = "uploading → STT → Gemma → TTS …"; const t1 = performance.now();
+    const resp = await fetch("/api/voice_chat", { method: "POST", headers: { "Content-Type": blob.type, "X-Session-ID": "mic-check-" + Date.now() }, body: blob });
+    const p = await resp.json(); const rtt = (performance.now() - t1) / 1000;
+    const c = p.transcript ? cer(ref, p.transcript) : 1; const ok = p.ok && c <= 0.15 && peakDb > -40;
+    row("結果 / verdict", ok ? "PASS（CER ≤ 0.15 且有收音）" : "FAIL — 見下方細節", ok ? "pass" : "fail");
+    row("參考句 / reference", ref); row("辨識 / transcript", p.transcript || `(none) ${p.error || ""}`);
+    row("CER", c.toFixed(3), c <= 0.15 ? "pass" : "fail"); row("收音峰值 / mic peak dBFS", peakDb.toFixed(1), peakDb > -40 ? "pass" : "fail");
+    row("STT provider", p.stt_provider || "-"); row("timings (server)", JSON.stringify(p.timings || {}));
+    row("往返 / browser round trip", rtt.toFixed(2) + " s");
+    row("語音特徵 / voice features", JSON.stringify((p.emotion || {}).voice_features || {}));
+    row("情緒 / emotion state", ((p.emotion || {}).state || {}).label || "-"); row("回覆 / reply", p.reply || "-");
+    const urls = p.tts && p.tts.chunks ? p.tts.chunks.map((x) => x.url) : (p.tts && p.tts.url ? [p.tts.url] : []);
+    const log = { reference: ref, transcript: p.transcript || null, cer: c, mic_peak_dbfs: peakDb, verdict: ok ? "PASS" : "FAIL",
+      browser_round_trip_s: rtt, server: { ok: p.ok, error: p.error || null, timings: p.timings || null, stt_provider: p.stt_provider || null,
+      emotion: p.emotion || null, reply: p.reply || null, tts: p.tts || null }, mime: blob.type, bytes: blob.size, user_agent: navigator.userAgent };
+    const saved = await (await fetch("/api/mic_check_log", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(log) })).json();
+    row("已存檔 / saved", saved.path || JSON.stringify(saved));
+    $("status").textContent = "playing reply audio…"; await playQueue(urls); $("status").textContent = "done";
+  } catch (e) { row("錯誤 / error", String(e), "fail"); $("status").textContent = "error"; }
+  $("go").disabled = false;
+};
+</script>
+</body>
+</html>

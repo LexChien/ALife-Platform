@@ -58,6 +58,9 @@ class GemmaWebHandler(BaseHTTPRequestHandler):
         if path == "/avatar.jpg":
             self._serve_static("avatar.jpg")
             return
+        if path in {"/mic_check", "/mic_check.html"}:
+            self._serve_static("mic_check.html")
+            return
         if path == "/api/health":
             self._send_json(self.app.health_payload())
             return
@@ -108,6 +111,9 @@ class GemmaWebHandler(BaseHTTPRequestHandler):
                     want_tts=bool(payload.get("tts", False)),
                 )
                 self._send_json(response)
+                return
+            if self.path == "/api/mic_check_log":
+                self._send_json(self.app.save_mic_check(payload))
                 return
             if self.path == "/api/tts":
                 self._send_json(self.app.synthesize(payload.get("session_id"), payload.get("text", "")))
