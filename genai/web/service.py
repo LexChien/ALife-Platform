@@ -55,10 +55,12 @@ class GemmaWebService:
         self.avatar_cfg = merge_web_runtime_config(self.cfg.get("avatar"), DEFAULT_AVATAR_CONFIG)
         self.clone_persona = self._build_clone_persona()
         memory_cfg = self.life_cfg.get("memory", {}) if isinstance(self.life_cfg.get("memory"), dict) else {}
+        # MemoryStore auto-enables Chroma when available; it does not take use_vector_db.
+        # vector_db=true in config => require persistent Chroma (fail loud if missing).
         self.clone_memory = MemoryStore(
             collection_name=memory_cfg.get("collection_name", "gemma_web_life"),
-            use_vector_db=bool(memory_cfg.get("vector_db", False)),
             persist_directory=memory_cfg.get("persist_directory", ".chroma_db"),
+            require_persistence=bool(memory_cfg.get("vector_db", False)),
         )
         self.clone_prompt_builder = ClonePromptBuilder()
         self.transcriber = None

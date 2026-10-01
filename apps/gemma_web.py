@@ -55,6 +55,9 @@ class GemmaWebHandler(BaseHTTPRequestHandler):
         if path == "/generated_video-3.mp4":
             self._serve_static("generated_video-3.mp4")
             return
+        if path == "/avatar.jpg":
+            self._serve_static("avatar.jpg")
+            return
         if path == "/api/health":
             self._send_json(self.app.health_payload())
             return
