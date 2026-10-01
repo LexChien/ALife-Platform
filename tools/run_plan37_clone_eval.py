@@ -194,7 +194,7 @@ def main() -> int:
     ap.add_argument("--embedding", default=None, help="e.g. intfloat/multilingual-e5-small (default: chroma default)")
     ap.add_argument("--gpu-layers", type=int, default=99 if sys.platform == "darwin" else 0)
     args = ap.parse_args()
-    outdir = Path(args.outdir) if args.outdir else ROOT / "runs/plan37/clone_d2" / f"{time.strftime('%Y%m%d-%H%M%S')}_{args.mode}_{args.suite}_{'e5' if args.embedding else 'default'}_seed{args.seed}"
+    outdir = Path(args.outdir) if args.outdir else ROOT / "runs/plan37/clone_d2" / f"{time.strftime('%Y%m%d-%H%M%S')}_{args.mode}_{args.suite}_{(args.embedding.split('/')[-1].replace('-', '').replace('.', '').lower()) if args.embedding else 'default'}_seed{args.seed}"
     outdir.mkdir(parents=True, exist_ok=True)
     db_dir = outdir / "chroma_db"
     if args.phase in ("write", "recall"):
