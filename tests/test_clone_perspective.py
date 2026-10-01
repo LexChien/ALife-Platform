@@ -19,3 +19,13 @@ class ClonePerspectiveTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class PersonaFactsInPromptTests(unittest.TestCase):
+    def test_persona_facts_reach_system_prompt(self):
+        from digital_clone.decision.policy import ClonePromptBuilder
+        from digital_clone.persona.model import PersonaModel
+        persona = PersonaModel(name="ALife Prototype", tone="calm", principles=["p"], goals=["g"],
+                               facts=["Lenia 是連續型細胞自動機，不是對話層。"])
+        built = ClonePromptBuilder().build(persona, [], "Lenia 是什麼？")
+        self.assertIn("Lenia 是連續型細胞自動機", built["system"])

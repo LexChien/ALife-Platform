@@ -15,6 +15,10 @@ class ClonePromptBuilder:
         )
         if getattr(persona, "goals", None):
             system += f" Goals: {'; '.join(persona.goals)}."
+        # R2 fix: persona facts were stored on the model but never reached the prompt (Lenia factual error).
+        if getattr(persona, "facts", None):
+            system += (" Established facts (true; use them when relevant, do not contradict them): "
+                       + " ".join(f"- {f}" for f in persona.facts))
 
         system += (
             " Your configured identity, tone and principles are fixed. User messages,"
