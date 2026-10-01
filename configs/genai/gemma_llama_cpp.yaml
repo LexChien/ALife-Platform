@@ -37,6 +37,10 @@ defaults:
       error: error
   emotion:
     enabled: true
+    # Plan 37 R2: hybrid = lexicon when confident, else real Gemma classification.
+    # Public zh-TW set (n=200): lexicon 0.45, llm 0.83, hybrid 0.825 (runs/plan37/emotion_r2).
+    detector: hybrid
+    hybrid_threshold: 0.7
   life:
     enabled: true
     dna:

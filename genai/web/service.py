@@ -19,7 +19,8 @@ from genai.web.life_state import ASALProgressIndex
 from genai.web.session_store import ChatSession, ChatSessionStore, SESSION_SCHEMA_VERSION
 from genai.web.stt import MacOSSpeechTranscriber
 from genai.web.emotion import EmotionState, arousal_from_prosody, detect_text_emotion, modulation, prosody_features
-from genai.web.voice import MacSayTTS, WhisperTranscriber, decode_to_pcm
+from genai.web.emotion_llm import detect_emotion
+from genai.web.voice import MLXWhisperTranscriber, MacSayTTS, WhisperTranscriber, decode_to_pcm, split_for_tts
 from genai.llm.reasoning import has_prompt_echo_residue, has_reasoning_leak, looks_like_cli_banner, sanitize_reply
 from dna import Genome, GenomeStore, express_persona
 from tools.chat_gemma import _build_turn_context, _strict_cleanup_with_retry
@@ -99,7 +100,14 @@ class GemmaWebService:
         self.transcriber = None
         self.offline_stt = None
         input_provider = self.voice_cfg.get("input_provider")
-        if input_provider in {"local_whisper_via_upload", "macos_speech_via_upload"} and WhisperTranscriber.available():
+        stt_backend = str(self.voice_cfg.get("whisper_backend", "faster_whisper"))
+        if (input_provider in {"local_whisper_via_upload", "macos_speech_via_upload"} and stt_backend == "mlx"
+                and MLXWhisperTranscriber.available()):
+            self.offline_stt = MLXWhisperTranscriber(model_repo=str(self.voice_cfg.get("mlx_whisper_model",
+                                                                                      "mlx-community/whisper-large-v3-mlx")))
+            if self.voice_cfg.get("whisper_preload", False):
+                self.offline_stt.preload()
+        elif input_provider in {"local_whisper_via_upload", "macos_speech_via_upload"} and WhisperTranscriber.available():
             self.offline_stt = WhisperTranscriber(model_size=str(self.voice_cfg.get("whisper_model", "small")))
             if self.voice_cfg.get("whisper_preload", False):
                 self.offline_stt.preload()
@@ -130,6 +138,7 @@ class GemmaWebService:
         self.transcriptions_dir.mkdir(parents=True, exist_ok=True)
         self.tts_dir = self.run_dir / "tts"
         self.tts_dir.mkdir(parents=True, exist_ok=True)
+        self._tts_pending: dict[str, float] = {}
         self.server_meta = {
             "schema_version": "1.0",
             "started_at": iso_now(),
@@ -246,7 +255,7 @@ class GemmaWebService:
             "memory": {"embedding": self.memory_embedding or "chroma_default",
                        "collection": self.clone_memory.collection_name,
                        "vector_db": self.clone_memory.use_vector_db, "migrated": self.memory_migrated},
-            "emotion": {"enabled": self.emotion_enabled, "detector": "text_lexicon_v1+prosody_v1", "sessions": len(self.emotion_states)},
+            "emotion": {"enabled": self.emotion_enabled, "detector": str(self.emotion_cfg.get("detector", "lexicon")) + "+prosody", "sessions": len(self.emotion_states)},
             "dna": {k: v for k, v in self.dna_payload().items() if k in ("enabled", "apply_sampling", "lineage_records")}
             | {"genome_id": self.genome.genome_id, "generation": self.genome.generation},
             "vlm": self.vlm_payload(),
@@ -351,7 +360,9 @@ class GemmaWebService:
         emotion_payload = None
         mod = None
         if self.emotion_enabled:
-            observed = detect_text_emotion(user_message)
+            observed = detect_emotion(self.adapter, user_message,
+                                      mode=str(self.emotion_cfg.get("detector", "lexicon")),
+                                      threshold=float(self.emotion_cfg.get("hybrid_threshold", 0.7)))
             voice_arousal = arousal_from_prosody(voice_features) if voice_features else None
             state = self.emotion_state(session.session_id).update(observed, voice_arousal=voice_arousal)
             mod = modulation(state, base_voice=self.genome_expression.get("voice") if self.dna_enabled else None)
@@ -394,8 +405,7 @@ class GemmaWebService:
         if want_tts and self.tts is not None and cleaned_text.strip():
             voice = (mod or {}).get("tts", {"rate": 1.0, "pitch": 1.0})
             try:
-                out = self.tts.synthesize(cleaned_text, self.tts_dir, rate=voice["rate"], pitch=voice["pitch"])
-                tts_payload = {"ok": True, "url": f"/api/tts/{out['file']}", **{k: out[k] for k in ("duration_s", "wpm", "pbas", "voice", "elapsed_s")}}
+                tts_payload = self._synthesize_chunked(cleaned_text, voice)
             except Exception as exc:
                 tts_payload = {"ok": False, "error": f"{type(exc).__name__}: {exc}"}
 
@@ -469,10 +479,51 @@ class GemmaWebService:
         return {"ok": True, "url": f"/api/tts/{out['file']}", "emotion_label": mod["label"],
                 **{k: out[k] for k in ("duration_s", "wpm", "pbas", "voice", "elapsed_s")}}
 
-    def read_tts(self, name: str) -> bytes:
+    def _synthesize_chunked(self, text: str, voice: dict) -> dict:
+        """Plan 37 R2 V-latency: speak the first sentence chunk immediately; synthesize the rest in a
+        background thread. Chunk URLs are known up front; GET waits for a pending chunk."""
+        import uuid
+
+        chunks = split_for_tts(text) if self.voice_cfg.get("tts_chunking", True) else [text]
+        chunks = chunks or [text]
+        stems = [uuid.uuid4().hex for _ in chunks]
+        first = self.tts.synthesize(chunks[0], self.tts_dir, rate=voice["rate"], pitch=voice["pitch"], stem=stems[0])
+        if len(chunks) > 1:
+            for st in stems[1:]:
+                self._tts_pending[st] = time.time()
+
+            def _rest():
+                for chunk, st in zip(chunks[1:], stems[1:]):
+                    try:
+                        self.tts.synthesize(chunk, self.tts_dir, rate=voice["rate"], pitch=voice["pitch"], stem=st)
+                    except Exception as exc:  # recorded; GET will 404 after the wait
+                        logger.warning("tts chunk failed: %s", exc)
+                    finally:
+                        self._tts_pending.pop(st, None)
+
+            threading.Thread(target=_rest, daemon=True).start()
+        return {"ok": True, "url": f"/api/tts/{first['file']}", "chunked": len(chunks) > 1,
+                "chunks": [{"index": i, "url": f"/api/tts/{st}.wav", "chars": len(c)} for i, (c, st) in enumerate(zip(chunks, stems))],
+                "first_chunk_s": first["elapsed_s"], "elapsed_s": first["elapsed_s"],
+                **{k: first[k] for k in ("duration_s", "wpm", "pbas", "voice")}}
+
+    def save_mic_check(self, payload: dict) -> dict:
+        """Persist a browser mic self-check result (web/gemma_chat/mic_check.html) for the log."""
+        if not isinstance(payload, dict):
+            raise ValueError("payload must be an object")
+        out_dir = self.run_dir / "mic_checks"
+        out_dir.mkdir(parents=True, exist_ok=True)
+        path = out_dir / f"mic_check_{time.strftime('%Y%m%d-%H%M%S')}_{int(time.time() * 1000) % 1000:03d}.json"
+        save_json(path, {"saved_at": iso_now(), "kind": "REAL_BROWSER_MIC_SELF_CHECK", **payload})
+        return {"ok": True, "path": str(path)}
+
+    def read_tts(self, name: str, wait_s: float = 30.0) -> bytes:
         if not re.fullmatch(r"[0-9a-f]{32}\.wav", name or ""):
             raise FileNotFoundError(name)
         path = self.tts_dir / name
+        deadline = time.time() + wait_s
+        while not path.exists() and name[:-4] in self._tts_pending and time.time() < deadline:
+            time.sleep(0.05)
         if not path.exists():
             raise FileNotFoundError(name)
         return path.read_bytes()
