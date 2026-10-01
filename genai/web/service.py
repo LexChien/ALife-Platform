@@ -1,7 +1,9 @@
 from __future__ import annotations
 
 from pathlib import Path
+import re
 import threading
+import time
 
 from core.config import load_config
 from core.logger import iso_now, make_run_dir, save_json
@@ -15,6 +17,10 @@ from genai.web.life_engine import LiveLifeManager
 from genai.web.life_state import ASALProgressIndex
 from genai.web.session_store import ChatSession, ChatSessionStore, SESSION_SCHEMA_VERSION
 from genai.web.stt import MacOSSpeechTranscriber
+from genai.web.emotion import EmotionState, arousal_from_prosody, detect_text_emotion, modulation, prosody_features
+from genai.web.voice import MacSayTTS, WhisperTranscriber, decode_to_pcm
+from genai.llm.reasoning import has_prompt_echo_residue, has_reasoning_leak, looks_like_cli_banner, sanitize_reply
+from dna import Genome, GenomeStore, express_persona
 from tools.chat_gemma import _build_turn_context, _strict_cleanup_with_retry
 
 
@@ -64,8 +70,25 @@ class GemmaWebService:
         )
         self.clone_prompt_builder = ClonePromptBuilder()
         self.transcriber = None
-        if self.voice_cfg.get("input_provider") == "macos_speech_via_upload":
+        self.offline_stt = None
+        input_provider = self.voice_cfg.get("input_provider")
+        if input_provider in {"local_whisper_via_upload", "macos_speech_via_upload"} and WhisperTranscriber.available():
+            self.offline_stt = WhisperTranscriber(model_size=str(self.voice_cfg.get("whisper_model", "small")))
+        if input_provider == "local_whisper_via_upload" and self.offline_stt is not None:
+            self.transcriber = self.offline_stt
+        elif input_provider in {"macos_speech_via_upload", "local_whisper_via_upload"}:
             self.transcriber = MacOSSpeechTranscriber(locale=self.voice_cfg.get("recognition_lang", "zh-TW"))
+        self.tts = None
+        if self.voice_cfg.get("output_provider") == "macos_say":
+            candidate = MacSayTTS(voice=str(self.voice_cfg.get("tts_voice", "Meijia")))
+            if candidate.healthcheck()["ok"]:
+                self.tts = candidate
+        # Plan 37 G4: per-session emotion state.
+        self.emotion_cfg = self.cfg.get("emotion", {}) if isinstance(self.cfg.get("emotion"), dict) else {}
+        self.emotion_enabled = bool(self.emotion_cfg.get("enabled", True))
+        self.emotion_states: dict[str, EmotionState] = {}
+        # Plan 37 G1/N3: DNA genome inherited into the clone persona.
+        self._init_dna()
         llm_cfg = self.cfg.get("llm", {})
         self.max_tokens = llm_cfg.get("max_tokens")
         self.temperature = llm_cfg.get("temperature")
@@ -75,6 +98,8 @@ class GemmaWebService:
         self.transcriptions_dir = self.run_dir / "transcriptions"
         self.sessions_dir.mkdir(parents=True, exist_ok=True)
         self.transcriptions_dir.mkdir(parents=True, exist_ok=True)
+        self.tts_dir = self.run_dir / "tts"
+        self.tts_dir.mkdir(parents=True, exist_ok=True)
         self.server_meta = {
             "schema_version": "1.0",
             "started_at": iso_now(),
@@ -94,8 +119,53 @@ class GemmaWebService:
             "avatar": self.avatar_cfg,
             "life": self.life_payload(),
             "stt": self.transcriber.healthcheck() if self.transcriber else None,
+            "dna": self.dna_payload(),
         }
         save_json(self.run_dir / "server_meta.json", self.server_meta)
+
+    def _init_dna(self) -> None:
+        dna_cfg = self.life_cfg.get("dna", {}) if isinstance(self.life_cfg.get("dna"), dict) else {}
+        self.dna_cfg = dna_cfg
+        self.dna_enabled = bool(dna_cfg.get("enabled", True))
+        # Unconfigured => ephemeral per-run store (keeps tests/dummy configs out of the real clone lineage).
+        store = dna_cfg.get("store")
+        self.genome_store = GenomeStore(ROOT / store if store else self.run_dir / "dna_store")
+        genome = self.genome_store.current()
+        if genome is None:
+            genome = Genome.founder(theta_dim=5, substrate="clone", **dna_cfg.get("founder_traits", {}))
+            self.genome_store.put(genome)
+            self.genome_store.set_current(genome.genome_id)
+        self.genome = genome
+        self.genome_expression = express_persona(genome)
+        if self.dna_enabled and dna_cfg.get("apply_sampling", False):
+            self.temperature = self.genome_expression["temperature"]
+            self.max_tokens = self.genome_expression["max_tokens"]
+
+    def dna_payload(self) -> dict:
+        return {
+            "enabled": self.dna_enabled,
+            "genome": self.genome.to_dict(),
+            "expression": self.genome_expression,
+            "apply_sampling": bool(self.dna_cfg.get("apply_sampling", False)),
+            "store": str(self.genome_store.root),
+            "lineage_records": len(self.genome_store.lineage()),
+            "ancestry": self.genome_store.ancestry(self.genome.genome_id)[:10],
+        }
+
+    def _dna_system_text(self) -> str:
+        if not self.dna_enabled:
+            return ""
+        expr = self.genome_expression
+        lines = [f"Inherited DNA genome {expr['genome_id']} (generation {expr['generation']}): tone {expr['tone']}."]
+        lines.extend(expr.get("guidance", []))
+        return " ".join(lines)
+
+    def emotion_state(self, session_id: str) -> EmotionState:
+        state = self.emotion_states.get(session_id)
+        if state is None:
+            state = EmotionState()
+            self.emotion_states[session_id] = state
+        return state
 
     def _build_clone_persona(self) -> PersonaModel:
         persona_cfg = self.life_cfg.get("persona") if isinstance(self.life_cfg.get("persona"), dict) else {}
@@ -141,6 +211,19 @@ class GemmaWebService:
             "avatar": self.avatar_cfg,
             "life": self.life_payload(),
             "stt": self.transcriber.healthcheck() if self.transcriber else None,
+            "stt_offline": self.offline_stt.healthcheck() if self.offline_stt else {"provider": "faster_whisper", "installed": False, "ok": False},
+            "tts": self.tts.healthcheck() if self.tts else {"provider": "browser_speech_synthesis", "server_side": False},
+            "emotion": {"enabled": self.emotion_enabled, "detector": "text_lexicon_v1+prosody_v1", "sessions": len(self.emotion_states)},
+            "dna": {k: v for k, v in self.dna_payload().items() if k in ("enabled", "apply_sampling", "lineage_records")}
+            | {"genome_id": self.genome.genome_id, "generation": self.genome.generation},
+            "vlm": self.vlm_payload(),
+        }
+
+    def vlm_payload(self) -> dict:
+        vlm = getattr(self.live_life, "vlm", None) if self.live_life else None
+        return {
+            "openclip_loaded": vlm is not None,
+            "live_score_note": None if vlm is not None else "OpenCLIP unavailable: live semantic score stays -1 (not a measured score)",
         }
 
     def life_payload(self) -> dict:
@@ -191,10 +274,12 @@ class GemmaWebService:
         save_json(self.transcriptions_dir / f"{session.session_id}_latest.json", payload)
         return payload
 
-    def chat(self, session_id: str | None, message: str) -> dict:
+    def chat(self, session_id: str | None, message: str, *, voice_features: dict | None = None,
+             want_tts: bool = False, source: str = "text") -> dict:
         user_message = (message or "").strip()
         if not user_message:
             raise ValueError("message is required")
+        t_start = time.time()
 
         if self.live_life:
             self.live_life.set_state("thinking", prompt=user_message)
@@ -228,6 +313,18 @@ class GemmaWebService:
             turn_context = "\n\n".join(part for part in context_parts if part)
             request_system = "\n".join(part for part in [self.system, built.get("system")] if part)
 
+        emotion_payload = None
+        mod = None
+        if self.emotion_enabled:
+            observed = detect_text_emotion(user_message)
+            voice_arousal = arousal_from_prosody(voice_features) if voice_features else None
+            state = self.emotion_state(session.session_id).update(observed, voice_arousal=voice_arousal)
+            mod = modulation(state, base_voice=self.genome_expression.get("voice") if self.dna_enabled else None)
+            emotion_payload = {"observed": observed, "voice_features": voice_features, "voice_arousal": voice_arousal,
+                               "state": state.to_dict(), "modulation": mod}
+        extra_system = [self._dna_system_text(), mod["system_guidance"] if mod else ""]
+        request_system = "\n".join(part for part in [request_system, *extra_system] if part)
+
         request = LLMRequest(
             prompt=user_message,
             context=turn_context,
@@ -250,18 +347,41 @@ class GemmaWebService:
         
         if self.live_life:
             self.live_life.set_state("idle")
+        # Final product-path hygiene (Plan 37 G0.3 / C1).
+        cleaned_text = sanitize_reply(cleaned_text)
+        hygiene = {
+            "reasoning_leak": has_reasoning_leak(cleaned_text),
+            "cli_banner": looks_like_cli_banner(cleaned_text),
+            "prompt_echo": has_prompt_echo_residue(cleaned_text),
+        }
+        llm_s = round(time.time() - t_start, 3)
+        tts_payload = None
+        if want_tts and self.tts is not None and cleaned_text.strip():
+            voice = (mod or {}).get("tts", {"rate": 1.0, "pitch": 1.0})
+            try:
+                out = self.tts.synthesize(cleaned_text, self.tts_dir, rate=voice["rate"], pitch=voice["pitch"])
+                tts_payload = {"ok": True, "url": f"/api/tts/{out['file']}", **{k: out[k] for k in ("duration_s", "wpm", "pbas", "voice", "elapsed_s")}}
+            except Exception as exc:
+                tts_payload = {"ok": False, "error": f"{type(exc).__name__}: {exc}"}
 
         session.append("user", user_message)
         session.append("assistant", cleaned_text)
         if self.life_enabled:
             self.clone_memory.add("user", user_message)
             self.clone_memory.add("assistant", cleaned_text)
-        self._save_session(session, cleanup_meta, response.runtime, life_snapshot)
+        self._save_session(session, cleanup_meta, response.runtime, life_snapshot,
+                           extra={"emotion": emotion_payload, "dna_genome_id": self.genome.genome_id,
+                                  "hygiene": hygiene, "source": source, "tts": tts_payload})
         return {
             "ok": True,
             "schema_version": "1.0",
             "session_id": session.session_id,
             "reply": cleaned_text,
+            "emotion": emotion_payload,
+            "dna": {"genome_id": self.genome.genome_id, "generation": self.genome.generation, "tone": self.genome_expression["tone"]},
+            "hygiene": hygiene,
+            "tts": tts_payload,
+            "timings": {"llm_s": llm_s, "tts_s": tts_payload.get("elapsed_s") if tts_payload else None},
             "life": life_snapshot,
             "cleanup": cleanup_meta,
             "runtime": response.runtime,
@@ -273,8 +393,59 @@ class GemmaWebService:
             "messages": session.to_dict()["messages"],
         }
 
+    def voice_chat(self, session_id: str | None, audio_bytes: bytes, content_type: str) -> dict:
+        """Plan 37 V3: audio -> offline STT -> emotion(prosody) -> Gemma -> TTS in one round trip."""
+        t0 = time.time()
+        stt = self.offline_stt or self.transcriber
+        if stt is None:
+            raise RuntimeError("no speech-to-text provider configured")
+        session = self.store.get_or_create(session_id)
+        result = stt.transcribe_bytes(audio_bytes=audio_bytes, content_type=content_type, outdir=self.transcriptions_dir)
+        stt_s = round(time.time() - t0, 3)
+        pcm = getattr(result, "pcm", None)
+        if pcm is None:
+            try:
+                pcm = decode_to_pcm(Path(result.input_path))
+            except Exception:
+                pcm = None
+        features = prosody_features(pcm) if pcm is not None else None
+        transcript = (result.transcript or "").strip()
+        if not transcript:
+            return {"ok": False, "error": "empty_transcript", "session_id": session.session_id,
+                    "stt_provider": getattr(stt, "provider", "macos_speech"), "voice_features": features,
+                    "timings": {"stt_s": stt_s}}
+        payload = self.chat(session.session_id, transcript, voice_features=features, want_tts=True, source="voice")
+        payload["transcript"] = transcript
+        payload["stt_provider"] = getattr(stt, "provider", "macos_speech")
+        payload["timings"] = {**payload.get("timings", {}), "stt_s": stt_s, "total_s": round(time.time() - t0, 3)}
+        save_json(self.transcriptions_dir / f"{session.session_id}_voice_latest.json",
+                  {k: payload[k] for k in ("session_id", "transcript", "reply", "emotion", "tts", "timings", "stt_provider")})
+        return payload
+
+    def synthesize(self, session_id: str | None, text: str) -> dict:
+        if self.tts is None:
+            raise RuntimeError("server-side TTS not configured (browser speech synthesis is the fallback)")
+        state = self.emotion_states.get(session_id or "") or EmotionState()
+        mod = modulation(state, base_voice=self.genome_expression.get("voice") if self.dna_enabled else None)
+        out = self.tts.synthesize(text, self.tts_dir, rate=mod["tts"]["rate"], pitch=mod["tts"]["pitch"])
+        return {"ok": True, "url": f"/api/tts/{out['file']}", "emotion_label": mod["label"],
+                **{k: out[k] for k in ("duration_s", "wpm", "pbas", "voice", "elapsed_s")}}
+
+    def read_tts(self, name: str) -> bytes:
+        if not re.fullmatch(r"[0-9a-f]{32}\.wav", name or ""):
+            raise FileNotFoundError(name)
+        path = self.tts_dir / name
+        if not path.exists():
+            raise FileNotFoundError(name)
+        return path.read_bytes()
+
+    def emotion_payload(self, session_id: str | None) -> dict:
+        state = self.emotion_states.get(session_id or "")
+        return {"ok": True, "session_id": session_id, "state": state.to_dict() if state else None}
+
     def reset(self, session_id: str | None) -> dict:
         session = self.store.reset(session_id)
+        self.emotion_states.pop(session.session_id, None)
         self._save_session(session, cleanup_meta=None, runtime=None, life_snapshot=None)
         return {
             "ok": True,
@@ -294,8 +465,19 @@ class GemmaWebService:
         cleanup_meta: dict | None,
         runtime: dict | None,
         life_snapshot: dict | None,
+        extra: dict | None = None,
     ) -> None:
         payload = session.to_dict()
+        if extra:
+            payload.setdefault("turn_meta", [])
+            prior = self.sessions_dir / f"{session.session_id}.json"
+            if prior.exists():
+                try:
+                    import json as _json
+                    payload["turn_meta"] = _json.loads(prior.read_text(encoding="utf-8")).get("turn_meta", [])
+                except Exception:
+                    payload["turn_meta"] = []
+            payload["turn_meta"].append(extra)
         payload["config_path"] = self.config_path
         payload["profile"] = self.profile
         payload["cleanup"] = cleanup_meta

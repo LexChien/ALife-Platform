@@ -8,7 +8,9 @@ SESSION="${GEMMA_WEB_TMUX_SESSION:-gemma_web}"
 HOST="${GEMMA_WEB_HOST:-127.0.0.1}"
 PORT="${GEMMA_WEB_PORT:-8080}"
 CONFIG="${GEMMA_WEB_CONFIG:-configs/genai/gemma_llama_cpp.yaml}"
-PROFILE="${GEMMA_WEB_PROFILE:-cpu_smoke}"
+# macOS: Metal offload (same GGUF, same llama.cpp, ~4x faster). Override with GEMMA_WEB_PROFILE.
+if [[ "$(uname -s)" == "Darwin" ]]; then DEFAULT_PROFILE=mac_metal; else DEFAULT_PROFILE=cpu_smoke; fi
+PROFILE="${GEMMA_WEB_PROFILE:-$DEFAULT_PROFILE}"
 PY="${ROOT}/.venv/bin/python"
 LOG="${ROOT}/runs/live_engine/gemma_web.log"
 PIDFILE="${ROOT}/runs/live_engine/gemma_web.pid"

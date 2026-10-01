@@ -3,7 +3,7 @@ from __future__ import annotations
 from http import HTTPStatus
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
-from urllib.parse import unquote, urlparse
+from urllib.parse import parse_qs, unquote, urlparse
 import argparse
 import json
 import sys
@@ -64,6 +64,26 @@ class GemmaWebHandler(BaseHTTPRequestHandler):
         if path == "/api/life":
             self._send_json(self.app.life_payload())
             return
+        if path == "/api/dna":
+            self._send_json({"ok": True, **self.app.dna_payload()})
+            return
+        if path == "/api/emotion":
+            sid = (parse_qs(parsed.query).get("session_id") or [None])[0]
+            self._send_json(self.app.emotion_payload(sid))
+            return
+        if path.startswith("/api/tts/"):
+            try:
+                body = self.app.read_tts(path.removeprefix("/api/tts/"))
+            except FileNotFoundError:
+                self._send_json({"ok": False, "error": "tts_missing"}, status=HTTPStatus.NOT_FOUND)
+                return
+            self.send_response(HTTPStatus.OK)
+            self.send_header("Content-Type", "audio/wav")
+            self.send_header("Content-Length", str(len(body)))
+            self.send_header("Cache-Control", "no-store")
+            self.end_headers()
+            self.wfile.write(body)
+            return
         if path.startswith("/artifacts/asal/"):
             self._serve_life_artifact(path)
             return
@@ -76,14 +96,21 @@ class GemmaWebHandler(BaseHTTPRequestHandler):
         if self.path == "/api/transcribe":
             self._handle_transcribe()
             return
+        if self.path == "/api/voice_chat":
+            self._handle_transcribe(voice_chat=True)
+            return
         try:
             payload = self._read_json_body()
             if self.path == "/api/chat":
                 response = self.app.chat(
                     payload.get("session_id"),
                     payload.get("message", ""),
+                    want_tts=bool(payload.get("tts", False)),
                 )
                 self._send_json(response)
+                return
+            if self.path == "/api/tts":
+                self._send_json(self.app.synthesize(payload.get("session_id"), payload.get("text", "")))
                 return
             if self.path == "/api/reset":
                 response = self.app.reset(payload.get("session_id"))
@@ -108,7 +135,7 @@ class GemmaWebHandler(BaseHTTPRequestHandler):
                 status=HTTPStatus.INTERNAL_SERVER_ERROR,
             )
 
-    def _handle_transcribe(self) -> None:
+    def _handle_transcribe(self, voice_chat: bool = False) -> None:
         try:
             content_length = int(self.headers.get("Content-Length", "0"))
             if content_length <= 0:
@@ -116,7 +143,10 @@ class GemmaWebHandler(BaseHTTPRequestHandler):
             audio_bytes = self.rfile.read(content_length)
             content_type = self.headers.get("Content-Type", "application/octet-stream")
             session_id = self.headers.get("X-Session-ID")
-            response = self.app.transcribe(session_id, audio_bytes, content_type)
+            if voice_chat:
+                response = self.app.voice_chat(session_id, audio_bytes, content_type)
+            else:
+                response = self.app.transcribe(session_id, audio_bytes, content_type)
             self._send_json(response)
         except ValueError as exc:
             self._send_json(

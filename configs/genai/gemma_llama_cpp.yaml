@@ -14,8 +14,11 @@ defaults:
     n_gpu_layers: 0
     verbose: false
   voice:
-    input_provider: macos_speech_via_upload
-    output_provider: browser_speech_synthesis
+    # Plan 37 G3: offline STT (faster-whisper; falls back to macOS Speech) + on-device TTS (macOS say; browser TTS fallback)
+    input_provider: local_whisper_via_upload
+    output_provider: macos_say
+    whisper_model: small
+    tts_voice: Meijia
     recognition_lang: zh-TW
     synthesis_lang: zh-TW
     auto_submit: true
@@ -30,8 +33,22 @@ defaults:
       thinking: thinking
       speaking: speaking
       error: error
+  emotion:
+    enabled: true
   life:
     enabled: true
+    dna:
+      enabled: true
+      store: runs/dna/clone_store
+      apply_sampling: false
+      founder_traits:
+        warmth: 0.7
+        empathy: 0.75
+        curiosity: 0.5
+        verbosity: 0.35
+        formality: 0.4
+        playfulness: 0.3
+        stability: 0.8
     memory:
       retrieval_limit: 5
       vector_db: false
@@ -63,6 +80,11 @@ profiles:
   cpu_smoke:
     runtime_profile:
       device: cpu
+  mac_metal:
+    runtime_profile:
+      device: cpu
+    llm:
+      n_gpu_layers: 99
   browser_demo:
     voice:
       recognition_lang: zh-TW

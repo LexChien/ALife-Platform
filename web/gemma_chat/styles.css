@@ -444,3 +444,10 @@ button {
   margin-bottom: 15px;
   color: #fff;
 }
+
+/* Plan 37 G4: emotion-modulated avatar tint (data-emotion set from /api/chat modulation.avatar.expression) */
+.avatar-wrap[data-emotion="concerned"] { filter: saturate(0.75) hue-rotate(-12deg); }
+.avatar-wrap[data-emotion="reassuring"] { filter: saturate(0.85) brightness(0.97); }
+.avatar-wrap[data-emotion="calm"] { filter: saturate(0.7); }
+.avatar-wrap[data-emotion="smile"] { filter: saturate(1.2) brightness(1.05); }
+.avatar-wrap[data-emotion="attentive"] { filter: contrast(1.08); }

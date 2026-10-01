@@ -26,6 +26,11 @@ const lifeMilestones = document.getElementById("lifeMilestones");
 const lifePhases = document.getElementById("lifePhases");
 const lifeRuns = document.getElementById("lifeRuns");
 const lifeTasks = document.getElementById("lifeTasks");
+const emotionStatus = document.getElementById("emotionStatus");
+const dnaStatus = document.getElementById("dnaStatus");
+let serverTtsAvailable = false;
+let currentAudio = null;
+let lastVoiceModulation = null;
 const quickButtons = Array.from(document.querySelectorAll(".quick-button"));
 
 const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -163,7 +168,7 @@ function supportsServerRecording() {
 }
 
 function isServerRecordingMode() {
-  return voiceConfig.input_provider === "macos_speech_via_upload";
+  return voiceConfig.input_provider === "macos_speech_via_upload" || voiceConfig.input_provider === "local_whisper_via_upload";
 }
 
 function preferredRecordingMimeType() {
@@ -354,6 +359,86 @@ async function ensureMicrophoneAccess(promptUser = false, keepStream = false) {
   }
 }
 
+function renderEmotion(emotion, dna) {
+  if (emotion && emotion.state) {
+    const st = emotion.state;
+    if (emotionStatus) {
+      emotionStatus.textContent = `${st.label} v${Number(st.valence).toFixed(2)} a${Number(st.arousal).toFixed(2)}`;
+    }
+    if (avatarWrap && emotion.modulation && emotion.modulation.avatar) {
+      avatarWrap.dataset.emotion = emotion.modulation.avatar.expression || "neutral";
+    }
+    lastVoiceModulation = emotion.modulation ? emotion.modulation.tts : null;
+  }
+  if (dna && dnaStatus) {
+    dnaStatus.textContent = `${dna.genome_id} g${dna.generation}`;
+  }
+}
+
+function playServerAudio(url, fallbackText) {
+  try {
+    if (currentAudio) {
+      currentAudio.pause();
+    }
+    currentAudio = new Audio(url);
+    currentAudio.onplay = () => {
+      setConversationState("reply_received");
+      setSpeechState("speech_playing");
+    };
+    currentAudio.onended = () => {
+      setSpeechState(speakToggle.checked ? "speech_ready" : "speech_disabled");
+      setConversationState("ready");
+    };
+    currentAudio.onerror = () => {
+      speakText(fallbackText);
+    };
+    const playing = currentAudio.play();
+    if (playing && playing.catch) {
+      playing.catch(() => speakText(fallbackText));
+    }
+  } catch (error) {
+    speakText(fallbackText);
+  }
+}
+
+function deliverReply(payload) {
+  appendMessage("assistant", payload.reply);
+  renderLife(payload.life);
+  renderEmotion(payload.emotion, payload.dna);
+  if (sessionStatus) {
+    sessionStatus.textContent = payload.session_id;
+  }
+  if (speakToggle.checked) {
+    if (payload.tts && payload.tts.ok && payload.tts.url) {
+      playServerAudio(payload.tts.url, payload.reply);
+    } else {
+      speakText(payload.reply);
+    }
+  } else {
+    setConversationState("reply_received");
+    setConversationState("ready");
+  }
+}
+
+async function uploadRecordingForVoiceChat(blob) {
+  if (!blob || blob.size === 0) {
+    throw new Error("empty_recording");
+  }
+  const response = await fetch("/api/voice_chat", {
+    method: "POST",
+    headers: {
+      "Content-Type": blob.type || "application/octet-stream",
+      "X-Session-ID": sessionId,
+    },
+    body: blob,
+  });
+  const payload = await response.json();
+  if (!response.ok || !payload.ok) {
+    throw new Error(payload.detail || payload.error || `HTTP ${response.status}`);
+  }
+  return payload;
+}
+
 async function uploadRecordingForTranscription(blob) {
   if (!blob || blob.size === 0) {
     throw new Error("empty_recording");
@@ -496,9 +581,26 @@ async function startServerRecording() {
         setMicState("mic_error");
         return;
       }
+      const shouldAutoSubmit = Boolean(autoSubmitToggle.checked);
+      if (shouldAutoSubmit) {
+        // Plan 37 V3: one round trip — offline STT -> emotion -> Gemma -> TTS.
+        setComposerBusy(true);
+        setConversationState("awaiting_response");
+        try {
+          const voicePayload = await uploadRecordingForVoiceChat(blob);
+          cleanupRecorderStream();
+          appendMessage("user", voicePayload.transcript || "");
+          const t = voicePayload.timings || {};
+          micHint.textContent = `語音對話完成（STT ${t.stt_s ?? "-"}s / 總計 ${t.total_s ?? "-"}s）`;
+          setMicState("mic_ready");
+          deliverReply(voicePayload);
+        } finally {
+          setComposerBusy(false);
+        }
+        return;
+      }
       const payload = await uploadRecordingForTranscription(blob);
       messageInput.value = payload.transcript || "";
-      const shouldAutoSubmit = Boolean(autoSubmitToggle.checked);
       micHint.textContent = shouldAutoSubmit
         ? "本機轉寫完成，已自動送出"
         : "本機轉寫完成，等待你確認送出";
@@ -527,6 +629,10 @@ function stopServerRecording() {
 }
 
 function stopSpeechPlayback() {
+  if (currentAudio) {
+    currentAudio.pause();
+    currentAudio = null;
+  }
   if (!("speechSynthesis" in window)) {
     return;
   }
@@ -578,6 +684,10 @@ async function fetchHealth() {
     voiceConfig = { ...voiceConfig, ...(payload.voice || {}) };
     avatarConfig = { ...avatarConfig, ...(payload.avatar || {}) };
     renderLife(payload.life);
+    serverTtsAvailable = Boolean(payload.tts && payload.tts.ok);
+    if (payload.dna && dnaStatus) {
+      dnaStatus.textContent = `${payload.dna.genome_id} g${payload.dna.generation}`;
+    }
     if (serviceStatus) {
       serviceStatus.textContent = "已連線";
     }
@@ -616,23 +726,13 @@ async function sendMessage(message) {
     const response = await fetch("/api/chat", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ session_id: sessionId, message: trimmed }),
+      body: JSON.stringify({ session_id: sessionId, message: trimmed, tts: Boolean(speakToggle.checked && serverTtsAvailable) }),
     });
     const payload = await response.json();
     if (!response.ok || !payload.ok) {
       throw new Error(payload.detail || payload.error || `HTTP ${response.status}`);
     }
-    appendMessage("assistant", payload.reply);
-    renderLife(payload.life);
-    if (sessionStatus) {
-      sessionStatus.textContent = payload.session_id;
-    }
-    if (speakToggle.checked) {
-      speakText(payload.reply);
-    } else {
-      setConversationState("reply_received");
-      setConversationState("ready");
-    }
+    deliverReply(payload);
   } catch (error) {
     appendSystemMessage(`送出失敗：${error}`);
     setConversationState("failed");
@@ -651,7 +751,8 @@ function speakText(text) {
   window.speechSynthesis.cancel();
   const utterance = new SpeechSynthesisUtterance(text);
   utterance.lang = voiceConfig.synthesis_lang || "zh-TW";
-  utterance.rate = 1.0;
+  utterance.rate = lastVoiceModulation && lastVoiceModulation.rate ? lastVoiceModulation.rate : 1.0;
+  utterance.pitch = lastVoiceModulation && lastVoiceModulation.pitch ? lastVoiceModulation.pitch : 1.0;
   utterance.onstart = () => {
     setConversationState("reply_received");
     setSpeechState("speech_playing");
