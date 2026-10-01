@@ -18,7 +18,8 @@ from genai.web.life_engine import LiveLifeManager
 from genai.web.life_state import ASALProgressIndex
 from genai.web.session_store import ChatSession, ChatSessionStore, SESSION_SCHEMA_VERSION
 from genai.web.stt import MacOSSpeechTranscriber
-from genai.web.emotion import EmotionState, arousal_from_prosody, detect_text_emotion, modulation, prosody_features
+from genai.web.emotion import (EmotionState, ProsodyBaseline, arousal_from_prosody, arousal_from_prosody_calibrated,
+                               detect_text_emotion, modulation, prosody_features)
 from genai.web.emotion_llm import detect_emotion
 from genai.web.voice import MLXWhisperTranscriber, MacSayTTS, WhisperTranscriber, decode_to_pcm, split_for_tts
 from genai.llm.reasoning import has_prompt_echo_residue, has_reasoning_leak, looks_like_cli_banner, sanitize_reply
@@ -124,6 +125,7 @@ class GemmaWebService:
         self.emotion_cfg = self.cfg.get("emotion", {}) if isinstance(self.cfg.get("emotion"), dict) else {}
         self.emotion_enabled = bool(self.emotion_cfg.get("enabled", True))
         self.emotion_states: dict[str, EmotionState] = {}
+        self.prosody_baselines: dict[str, ProsodyBaseline] = {}
         llm_cfg = self.cfg.get("llm", {})
         self.max_tokens = llm_cfg.get("max_tokens")
         self.temperature = llm_cfg.get("temperature")
@@ -363,10 +365,15 @@ class GemmaWebService:
             observed = detect_emotion(self.adapter, user_message,
                                       mode=str(self.emotion_cfg.get("detector", "lexicon")),
                                       threshold=float(self.emotion_cfg.get("hybrid_threshold", 0.7)))
-            voice_arousal = arousal_from_prosody(voice_features) if voice_features else None
+            voice_arousal, voice_arousal_method = None, None
+            if voice_features:
+                base = self.prosody_baselines.setdefault(session.session_id, ProsodyBaseline())
+                cal = arousal_from_prosody_calibrated(voice_features, base)
+                voice_arousal, voice_arousal_method = cal["arousal"], cal["method"]
             state = self.emotion_state(session.session_id).update(observed, voice_arousal=voice_arousal)
             mod = modulation(state, base_voice=self.genome_expression.get("voice") if self.dna_enabled else None)
             emotion_payload = {"observed": observed, "voice_features": voice_features, "voice_arousal": voice_arousal,
+                               "voice_arousal_method": voice_arousal_method,
                                "state": state.to_dict(), "modulation": mod}
         extra_system = [self._dna_system_text(), mod["system_guidance"] if mod else ""]
         request_system = "\n".join(part for part in [request_system, *extra_system] if part)

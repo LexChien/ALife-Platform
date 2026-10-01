@@ -87,11 +87,15 @@ def prosody_features(samples, sample_rate: int = 16000) -> Dict[str, float]:
     hop = frame // 2
     rms_list, pitches = [], []
     lo, hi = int(sample_rate / 400), int(sample_rate / 70)
-    for start in range(0, len(x) - frame, hop):
+    starts = list(range(0, len(x) - frame, hop))
+    frame_rms = [float(np.sqrt(np.mean(x[s:s + frame] ** 2)) + 1e-12) for s in starts]
+    # R2: level-adaptive voicing gate. The R1 absolute gate (rms 0.01 = -40 dBFS) found no voiced frames in 11%
+    # of RAVDESS clips (quiet recordings); now relative to the utterance's own loud frames, floor -60 dBFS.
+    gate = max(0.001, 0.1 * float(np.percentile(frame_rms, 95))) if frame_rms else 0.01
+    for start, rms in zip(starts, frame_rms):
         f = x[start:start + frame]
-        rms = float(np.sqrt(np.mean(f * f)) + 1e-12)
         rms_list.append(rms)
-        if rms < 0.01:
+        if rms < gate:
             continue
         f = f - f.mean()
         ac = np.correlate(f, f, mode="full")[frame - 1:]
@@ -111,8 +115,62 @@ def prosody_features(samples, sample_rate: int = 16000) -> Dict[str, float]:
     }
 
 
+# Plan 37 R2 calibration on RAVDESS (1248 acted English clips, 24 actors; runs/plan37/arousal_calib):
+# R1 heuristic + R1 voicing gate AUC 0.734 (11% clips unvoiced); with the R2 adaptive gate 0.856;
+# per-speaker z + logistic (leave-actors-out CV) 0.936. Coefficients below = full fit on R2-gate features.
+PROSODY_KEYS = ("rms_db", "pitch_hz_mean", "pitch_hz_std", "voiced_ratio")
+CALIBRATED_COEF = {"rms_db": 3.5431, "pitch_hz_mean": -0.2273, "pitch_hz_std": 0.119, "voiced_ratio": -0.833}
+PROSODY_SD_FLOOR = {"rms_db": 2.0, "pitch_hz_mean": 10.0, "pitch_hz_std": 5.0, "voiced_ratio": 0.05}
+
+
+class ProsodyBaseline:
+    """Running per-session (per-speaker) mean/variance of prosody features (Welford)."""
+
+    def __init__(self, min_count: int = 3):
+        self.min_count = min_count
+        self.n = 0
+        self.mean = {k: 0.0 for k in PROSODY_KEYS}
+        self.m2 = {k: 0.0 for k in PROSODY_KEYS}
+
+    def ready(self) -> bool:
+        return self.n >= self.min_count
+
+    def z(self, features: Dict[str, float]) -> Dict[str, float]:
+        out = {}
+        for k in PROSODY_KEYS:
+            sd = math.sqrt(self.m2[k] / max(1, self.n - 1)) if self.n > 1 else 0.0
+            out[k] = (float(features.get(k, 0.0)) - self.mean[k]) / max(sd, PROSODY_SD_FLOOR[k])
+        return out
+
+    def add(self, features: Dict[str, float]) -> None:
+        if not features or features.get("voiced_ratio", 0) <= 0:
+            return
+        self.n += 1
+        for k in PROSODY_KEYS:
+            x = float(features.get(k, 0.0))
+            d = x - self.mean[k]
+            self.mean[k] += d / self.n
+            self.m2[k] += d * (x - self.mean[k])
+
+
+def arousal_from_prosody_calibrated(features: Dict[str, float], baseline: Optional["ProsodyBaseline"]) -> Dict[str, object]:
+    """Calibrated arousal relative to this speaker's own baseline; falls back to the raw heuristic until
+    the baseline has min_count voiced utterances. The current utterance is added to the baseline afterwards."""
+    if not features or features.get("voiced_ratio", 0) <= 0:
+        return {"arousal": 0.0, "method": "no_voice"}
+    if baseline is not None and baseline.ready():
+        z = baseline.z(features)
+        score = sum(CALIBRATED_COEF[k] * z[k] for k in PROSODY_KEYS)
+        result = {"arousal": round(math.tanh(score / 2.0), 3), "method": f"calibrated_session_z(n={baseline.n})"}
+    else:
+        result = {"arousal": arousal_from_prosody(features), "method": "raw_heuristic(baseline_warming_up)"}
+    if baseline is not None:
+        baseline.add(features)
+    return result
+
+
 def arousal_from_prosody(features: Dict[str, float]) -> float:
-    """Map loudness and pitch variability to arousal in [-1, 1] (heuristic, uncalibrated)."""
+    """Map loudness and pitch variability to arousal in [-1, 1] (R1 heuristic; RAVDESS AUC 0.856 with the R2 voicing gate)."""
     if not features or features.get("voiced_ratio", 0) <= 0:
         return 0.0
     loud = (features["rms_db"] + 30.0) / 15.0          # ~-45 dB -> -1, ~-15 dB -> +1

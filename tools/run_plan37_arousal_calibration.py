@@ -20,7 +20,7 @@ import numpy as np
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
-from genai.web.emotion import arousal_from_prosody, prosody_features  # noqa: E402
+from genai.web.emotion import ProsodyBaseline, arousal_from_prosody, arousal_from_prosody_calibrated, prosody_features  # noqa: E402
 
 HIGH = {"03", "05", "06", "08"}
 LOW = {"01", "02", "04"}
@@ -82,6 +82,18 @@ def main() -> int:
     full = LogisticRegression(max_iter=1000).fit(Z, y)
     single = {k: auc(y, Z[:, i]) for i, k in enumerate(FEATS)}
     heur_z = 0.6 * Z[:, 0] + 0.4 * Z[:, 2]
+    # Online simulation of the PRODUCT function: per actor, random utterance order, baseline from prior turns only.
+    rng = np.random.default_rng(37)
+    online_y, online_s, online_raw = [], [], []
+    for _rep in range(5):
+        for a in np.unique(actors):
+            idx = np.where(actors == a)[0]
+            rng.shuffle(idx)
+            base = ProsodyBaseline()
+            for i in idx:
+                cal = arousal_from_prosody_calibrated(rows[i], base)
+                if cal["method"].startswith("calibrated"):
+                    online_y.append(y[i]); online_s.append(cal["arousal"]); online_raw.append(heur_raw[i])
     from sklearn.metrics import accuracy_score
     report = {
         "dataset": "RAVDESS speech (Livingstone & Russo 2018, Zenodo 1188976), 24 actors, English, acted",
@@ -90,6 +102,10 @@ def main() -> int:
         "auc_heuristic_raw_r1": auc(y, heur_raw),
         "auc_heuristic_same_weights_per_speaker_z": auc(y, heur_z),
         "auc_logistic_per_speaker_z_leave_actors_out": auc(y, cv_scores),
+        "auc_product_online_session_baseline": auc(np.array(online_y), np.array(online_s)),
+        "auc_raw_heuristic_same_online_clips": auc(np.array(online_y), np.array(online_raw)),
+        "online_note": "Product arousal_from_prosody_calibrated, baseline from prior turns only (5 random orders/actor); "
+                       "coefficients were fit on all actors, so this is not fully held-out for the coefficients.",
         "acc_logistic_cv_at_0": float(accuracy_score(y, (cv_scores > 0).astype(int))),
         "auc_single_feature_z": single,
         "logistic_full_fit": {"features": FEATS, "coef": [round(float(c), 4) for c in full.coef_[0]],
