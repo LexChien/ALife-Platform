@@ -1,6 +1,6 @@
 import unittest
 
-from genai.llm.reasoning import has_reasoning_leak, sanitize_reply, strip_cli_banner, strip_reasoning
+from genai.llm.reasoning import has_prompt_echo_residue, has_reasoning_leak, sanitize_reply, strip_cli_banner, strip_reasoning
 
 # Captured verbatim (structure) from Mac llama-cli b8881 on 2026-10-02.
 REAL_CLI_STDOUT = (
@@ -21,6 +21,19 @@ class ReasoningHygieneTests(unittest.TestCase):
     def test_strip_cli_banner_without_prompt_falls_back(self):
         out = strip_cli_banner("Loading model...\navailable commands:\n  /exit\n\n> hi\n\nhello there\n\n[ Prompt: 1.0 t/s | Generation: 2.0 t/s ]\n\nExiting...")
         self.assertEqual(out, "hello there")
+
+    def test_truncated_echo_real_capture(self):
+        # Real Mac llama-cli capture 2026-10-02 (runs/plan37/clone_d2/20261002-051730_real), echo truncated mid-UTF-8.
+        raw = (
+            "available commands:\n  /exit or Ctrl+C     stop or exit\n\n\n"
+            "> Context:\nRetrieved memory records (quoted data):\n{\"role\": \"user\"}\n\nUser request:\n\ufffd ... (truncated)\n\n"
+            "我不知道你的生日。\n\n[ Prompt: 253.9 t/s | Generation: 33.6 t/s ]\n\nExiting...\n"
+        )
+        prompt = "Context:\nRetrieved memory records (quoted data):\n{...long...}\n\nUser request:\n我的生日是哪一天？"
+        out = strip_cli_banner(raw, prompt=prompt)
+        self.assertEqual(out, "我不知道你的生日。")
+        self.assertFalse(has_prompt_echo_residue(out))
+        self.assertTrue(has_prompt_echo_residue("User request:\n\ufffd ... (truncated)\n\n我不知道"))
 
     def test_plain_text_untouched(self):
         self.assertEqual(strip_cli_banner("  普通回答。 "), "普通回答。")

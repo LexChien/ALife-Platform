@@ -28,6 +28,8 @@ _CONTROL_TOKENS = re.compile(
 )
 _TIMING_LINE = re.compile(r"^\s*\[\s*Prompt:\s*[\d.]+\s*t/s.*\]\s*$", re.M)
 _BANNER_HINTS = ("Loading model...", "available commands:", "/exit or Ctrl+C")
+_TRUNCATED = " ... (truncated)"
+_ECHO_RESIDUE = (_TRUNCATED, "Retrieved memory records (quoted data)", "\nUser request:\n")
 
 
 def has_reasoning_leak(text: str) -> bool:
@@ -41,6 +43,11 @@ def looks_like_cli_banner(text: str) -> bool:
     return any(hint in (text or "") for hint in _BANNER_HINTS) or bool(_TIMING_LINE.search(text or ""))
 
 
+def has_prompt_echo_residue(text: str) -> bool:
+    t = text or ""
+    return any(marker in t for marker in _ECHO_RESIDUE) or t.lstrip().startswith(("User request:", "Context:\n"))
+
+
 def strip_cli_banner(text: str, prompt: str | None = None) -> str:
     """Return only the model answer from llama-cli conversation-mode stdout."""
     cleaned = (text or "").replace("\r\n", "\n")
@@ -52,17 +59,28 @@ def strip_cli_banner(text: str, prompt: str | None = None) -> str:
         cleaned = cleaned[: match.start()]
     cleaned = re.sub(r"\n\s*Exiting\.\.\.\s*$", "", cleaned)
     echoed = None
-    if prompt:
-        candidate = f"> {prompt.strip()}"
-        idx = cleaned.rfind(candidate)
-        if idx >= 0:
-            echoed = idx + len(candidate)
-    if echoed is None and "available commands:" in cleaned:
-        # Fallback: answer starts after the first blank line following the "> " echo.
-        idx = cleaned.find("\n> ", cleaned.find("available commands:"))
-        if idx >= 0:
-            blank = cleaned.find("\n\n", idx + 3)
-            echoed = blank if blank >= 0 else idx + 3
+    anchor = cleaned.find("available commands:")
+    echo_start = cleaned.find("\n> ", anchor if anchor >= 0 else 0)
+    if echo_start < 0 and cleaned.startswith("> "):
+        echo_start = -1  # echo at the very beginning
+    if echo_start >= -1 and (echo_start >= 0 or cleaned.startswith("> ")):
+        body_start = echo_start + 3 if echo_start >= 0 else 2
+        body = cleaned[body_start:]
+        if prompt and body.startswith(prompt.strip()):
+            # full prompt echoed verbatim
+            echoed = body_start + len(prompt.strip())
+        else:
+            # llama-cli truncates long echoes (~500 bytes, may split UTF-8) with " ... (truncated)"
+            trunc = body.find(_TRUNCATED)
+            if trunc >= 0:
+                echoed = body_start + trunc + len(_TRUNCATED)
+            elif prompt:
+                idx = cleaned.rfind(f"> {prompt.strip()}")
+                if idx >= 0:
+                    echoed = idx + 2 + len(prompt.strip())
+            if echoed is None:
+                blank = cleaned.find("\n\n", body_start)
+                echoed = blank if blank >= 0 else body_start
     if echoed is not None:
         cleaned = cleaned[echoed:]
     return cleaned.strip()
