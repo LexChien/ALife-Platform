@@ -73,6 +73,16 @@ class WhisperTranscriber:
                                        download_root=str(self.download_root))
         return self._model
 
+    def preload(self) -> None:
+        """Load the model in a background thread so the first voice turn is not slowed by model load."""
+        def _run():
+            try:
+                with self._lock:
+                    self._load()
+            except Exception as exc:  # recorded in healthcheck
+                self._error = f"{type(exc).__name__}: {exc}"
+        threading.Thread(target=_run, daemon=True).start()
+
     def healthcheck(self) -> dict:
         cached = any(self.download_root.glob(f"*whisper-{self.model_size}*")) if self.download_root.exists() else False
         return {"provider": self.provider, "model_size": self.model_size, "installed": self.available(),

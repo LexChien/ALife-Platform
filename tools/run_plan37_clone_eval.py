@@ -52,7 +52,7 @@ PHASE_B_CASES = [
 ]
 
 
-def build_cfg(mode: str, db_dir: Path) -> dict:
+def build_cfg(mode: str, db_dir: Path, seed: int = 42) -> dict:
     cfg = load_config(str(ROOT / "configs/clone/clone_quality.yaml"))
     cfg.setdefault("llm", {})
     if mode == "mock":
@@ -62,13 +62,14 @@ def build_cfg(mode: str, db_dir: Path) -> dict:
     cfg["llm"]["subprocess_timeout"] = 300
     cfg["llm"]["batch_size"] = 512
     cfg["llm"]["ubatch_size"] = 512
+    cfg["llm"]["seed"] = seed
     cfg["memory"] = {"persist_directory": str(db_dir), "require_persistence": True, "retrieval": {"limit": 5}}
     cfg["persona"]["id"] = f"plan37_clone_eval_{mode}"
     return cfg
 
 
-def run_phase(mode: str, phase: str, db_dir: Path, out_path: Path) -> None:
-    cfg = build_cfg(mode, db_dir)
+def run_phase(mode: str, phase: str, db_dir: Path, out_path: Path, seed: int = 42) -> None:
+    cfg = build_cfg(mode, db_dir, seed)
     facts = cfg["persona"].get("facts", [])
     assert not any(SECRET in f or PREFERENCE in f for f in facts), "persona facts must not contain test facts"
     cfg["inputs"] = PHASE_A_INPUTS if phase == "write" else [c["input"] for c in PHASE_B_CASES]
@@ -101,15 +102,16 @@ def main() -> int:
     ap.add_argument("--mode", choices=["real", "mock"], required=True)
     ap.add_argument("--phase", choices=["all", "write", "recall"], default="all")
     ap.add_argument("--outdir")
+    ap.add_argument("--seed", type=int, default=42)
     args = ap.parse_args()
-    outdir = Path(args.outdir) if args.outdir else ROOT / "runs/plan37/clone_d2" / f"{time.strftime('%Y%m%d-%H%M%S')}_{args.mode}"
+    outdir = Path(args.outdir) if args.outdir else ROOT / "runs/plan37/clone_d2" / f"{time.strftime('%Y%m%d-%H%M%S')}_{args.mode}_seed{args.seed}"
     outdir.mkdir(parents=True, exist_ok=True)
     db_dir = outdir / "chroma_db"
     if args.phase in ("write", "recall"):
-        run_phase(args.mode, args.phase, db_dir, outdir / f"phase_{args.phase}.json")
+        run_phase(args.mode, args.phase, db_dir, outdir / f"phase_{args.phase}.json", args.seed)
         return 0
     for phase in ("write", "recall"):  # separate OS processes => real cross-process persistence
-        subprocess.run([sys.executable, __file__, "--mode", args.mode, "--phase", phase, "--outdir", str(outdir)], check=True)
+        subprocess.run([sys.executable, __file__, "--mode", args.mode, "--phase", phase, "--outdir", str(outdir), "--seed", str(args.seed)], check=True)
     recall = json.loads((outdir / "phase_recall.json").read_text())
     write = json.loads((outdir / "phase_write.json").read_text())
     rows = []
@@ -119,7 +121,7 @@ def main() -> int:
                      "backend": row["llm"]["backend"], "driver": row["llm"]["runtime"].get("driver") if row["llm"].get("runtime") else None})
     report = {
         "label": "MOCK — not acceptance evidence" if args.mode == "mock" else "REAL_MODEL (llama.cpp Gemma GGUF)",
-        "mode": args.mode, "created_at": iso_now(), "outdir": str(outdir),
+        "mode": args.mode, "seed": args.seed, "created_at": iso_now(), "outdir": str(outdir),
         "persona_facts_contain_test_facts": any(SECRET in f or PREFERENCE in f for f in recall["persona_facts"]),
         "cross_process": True, "memory_persistent": recall["memory_persistent"],
         "secret_in_retrieved_memory": any(SECRET in m for m in rows[0]["retrieved_memories"]),

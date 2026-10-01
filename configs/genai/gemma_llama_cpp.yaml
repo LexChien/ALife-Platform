@@ -17,7 +17,9 @@ defaults:
     # Plan 37 G3: offline STT (faster-whisper; falls back to macOS Speech) + on-device TTS (macOS say; browser TTS fallback)
     input_provider: local_whisper_via_upload
     output_provider: macos_say
-    whisper_model: small
+    # medium: CER 0.036 vs small 0.145 on 18 synthetic zh_TW clips (runs/plan37/stt_bench, 2026-10-02)
+    whisper_model: medium
+    whisper_preload: true
     tts_voice: Meijia
     recognition_lang: zh-TW
     synthesis_lang: zh-TW

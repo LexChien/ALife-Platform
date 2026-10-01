@@ -75,6 +75,8 @@ class GemmaWebService:
         input_provider = self.voice_cfg.get("input_provider")
         if input_provider in {"local_whisper_via_upload", "macos_speech_via_upload"} and WhisperTranscriber.available():
             self.offline_stt = WhisperTranscriber(model_size=str(self.voice_cfg.get("whisper_model", "small")))
+            if self.voice_cfg.get("whisper_preload", False):
+                self.offline_stt.preload()
         if input_provider == "local_whisper_via_upload" and self.offline_stt is not None:
             self.transcriber = self.offline_stt
         elif input_provider in {"macos_speech_via_upload", "local_whisper_via_upload"}:
