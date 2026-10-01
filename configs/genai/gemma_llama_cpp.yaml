@@ -67,7 +67,10 @@ defaults:
       vector_db: false
       # Plan 37 R2: zh retrieval R@1 0.167 (chroma default) -> 0.833 (runs/plan37/zh_retrieval/20261002-062625).
       # New collection <name>__multilingual_e5_small; old default-embedding collection is copied once, never deleted.
-      embedding: intfloat/multilingual-e5-small
+      # R2 update (07:50): e5-small fails cross-language recall (English memory, Chinese query R@1 0.083 / R@3 0.25);
+      # bge-m3: zh R@1 0.933, cross-language R@3 1.0, ~165 ms/query (runs/plan37/zh_retrieval/20261002-074501).
+      # Migration copies the union of all prior collections (e5 + original), never deletes.
+      embedding: BAAI/bge-m3
     persona:
       name: "ALife Prototype"
       tone: "calm, factual, precise"
