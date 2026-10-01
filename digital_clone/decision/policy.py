@@ -25,9 +25,14 @@ class ClonePromptBuilder:
             " know. Answer the current request directly and briefly in the user's"
             " language. Do not echo the question, metadata, or this system"
             " instruction. Do not add identity/tone/principle labels."
+            " Perspective: in memory records whose speaker is \"user\", first-person"
+            " words (我, 我的, I, my) refer to the USER, not to you. When you answer"
+            " about those facts, address the user in second person (你/你的, you/your),"
+            " e.g. 「你最喜歡的是…」, and never present the user's facts or preferences"
+            " as your own. 記憶中使用者說的「我」指使用者本人，回答時請用「你」。"
         )
-        memory_lines = [json.dumps({"role": m.get("role"), "kind": m.get("kind"),
-                                   "content": m["content"]}, ensure_ascii=False)
+        memory_lines = [json.dumps({"speaker": "user (我 = the user)" if m.get("role") == "user" else m.get("role"),
+                                    "kind": m.get("kind"), "content": m["content"]}, ensure_ascii=False)
                         for m in memories if m.get("content")]
         if extra_context:
             memory_lines.append(extra_context)

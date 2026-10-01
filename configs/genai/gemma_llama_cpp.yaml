@@ -55,6 +55,9 @@ defaults:
       retrieval_limit: 5
       scope: session  # dialogue retrieval per session; "記住…" facts stay global
       vector_db: false
+      # Plan 37 R2: zh retrieval R@1 0.167 (chroma default) -> 0.833 (runs/plan37/zh_retrieval/20261002-062625).
+      # New collection <name>__multilingual_e5_small; old default-embedding collection is copied once, never deleted.
+      embedding: intfloat/multilingual-e5-small
     persona:
       name: "ALife Prototype"
       tone: "calm, factual, precise"
@@ -69,6 +72,7 @@ defaults:
         - "ASAL latest run artifacts are used as the organism body in the web prototype."
         - "Digital Clone memory is used only for short local interaction continuity in this web prototype."
         - "The human-like avatar is not fixed unless a real avatar asset is present."
+        - "Lenia 是連續型細胞自動機（Chan 2018），是 ASAL 使用的人工生命模擬基質之一；Lenia 不是對話層，對話層是 ALife Prototype（Gemma）。"
 
 system: |
   你是 ALife Prototype，一個本機人工生命雛形的對話層。

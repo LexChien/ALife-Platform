@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import logging
 from pathlib import Path
 import re
 import threading
@@ -22,6 +23,8 @@ from genai.web.voice import MacSayTTS, WhisperTranscriber, decode_to_pcm
 from genai.llm.reasoning import has_prompt_echo_residue, has_reasoning_leak, looks_like_cli_banner, sanitize_reply
 from dna import Genome, GenomeStore, express_persona
 from tools.chat_gemma import _build_turn_context, _strict_cleanup_with_retry
+
+logger = logging.getLogger(__name__)
 
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -64,11 +67,34 @@ class GemmaWebService:
         memory_cfg = self.life_cfg.get("memory", {}) if isinstance(self.life_cfg.get("memory"), dict) else {}
         # MemoryStore auto-enables Chroma when available; it does not take use_vector_db.
         # vector_db=true in config => require persistent Chroma (fail loud if missing).
+        # Plan 37 R2: optional multilingual embedding (zh retrieval R@1 0.167 -> 0.833 with e5-small).
+        base_collection = memory_cfg.get("collection_name", "gemma_web_life")
+        persist_dir = memory_cfg.get("persist_directory", ".chroma_db")
+        self.memory_embedding = None
+        embedding_fn = None
+        collection = base_collection
+        if memory_cfg.get("embedding"):
+            try:
+                from digital_clone.memory.embeddings import PrefixedSentenceTransformerEF, collection_suffix
+                embedding_fn = PrefixedSentenceTransformerEF(str(memory_cfg["embedding"]))
+                collection = base_collection + collection_suffix(str(memory_cfg["embedding"]))
+                self.memory_embedding = str(memory_cfg["embedding"])
+            except Exception as exc:  # fail loud in health, keep the default embedding
+                self.memory_embedding = f"unavailable: {type(exc).__name__}: {exc}"
         self.clone_memory = MemoryStore(
-            collection_name=memory_cfg.get("collection_name", "gemma_web_life"),
-            persist_directory=memory_cfg.get("persist_directory", ".chroma_db"),
+            collection_name=collection,
+            persist_directory=persist_dir,
             require_persistence=bool(memory_cfg.get("vector_db", False)),
+            embedding_function=embedding_fn,
         )
+        self.memory_migrated = 0
+        if embedding_fn is not None and self.clone_memory.use_vector_db:
+            try:
+                from digital_clone.memory.embeddings import migrate_collection
+                self.memory_migrated = migrate_collection(persist_dir, base_collection, self.clone_memory.vector_store)
+            except Exception as exc:
+                self.memory_migrated = -1
+                logger.warning("memory migration from %s failed: %s", base_collection, exc)
         self.clone_prompt_builder = ClonePromptBuilder()
         self.transcriber = None
         self.offline_stt = None
@@ -217,6 +243,9 @@ class GemmaWebService:
             "stt": self.transcriber.healthcheck() if self.transcriber else None,
             "stt_offline": self.offline_stt.healthcheck() if self.offline_stt else {"provider": "faster_whisper", "installed": False, "ok": False},
             "tts": self.tts.healthcheck() if self.tts else {"provider": "browser_speech_synthesis", "server_side": False},
+            "memory": {"embedding": self.memory_embedding or "chroma_default",
+                       "collection": self.clone_memory.collection_name,
+                       "vector_db": self.clone_memory.use_vector_db, "migrated": self.memory_migrated},
             "emotion": {"enabled": self.emotion_enabled, "detector": "text_lexicon_v1+prosody_v1", "sessions": len(self.emotion_states)},
             "dna": {k: v for k, v in self.dna_payload().items() if k in ("enabled", "apply_sampling", "lineage_records")}
             | {"genome_id": self.genome.genome_id, "generation": self.genome.generation},

@@ -25,10 +25,17 @@ class DigitalCloneEngine:
         self.persona_id = resolve_persona_id(p)
         collection_name = persona_collection_name(self.persona_id)
         memory_cfg = config.get("memory", {})
+        embedding_fn = None
+        if memory_cfg.get("embedding"):  # Plan 37 R2: multilingual zh/en embedding
+            from digital_clone.memory.embeddings import PrefixedSentenceTransformerEF, collection_suffix
+            embedding_fn = PrefixedSentenceTransformerEF(str(memory_cfg["embedding"]))
+            collection_name = collection_name + collection_suffix(str(memory_cfg["embedding"]))
+        extra = {"embedding_function": embedding_fn} if embedding_fn is not None else {}
         self.memory = MemoryStore(
             collection_name=collection_name,
             persist_directory=memory_cfg.get("persist_directory"),
             require_persistence=memory_cfg.get("require_persistence", False),
+            **extra,
         )
         self.memory.add_profile_facts(self.persona.facts)
         self.consistency = ConsistencyEvaluator()
