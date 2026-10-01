@@ -39,6 +39,23 @@ class Plan37ServiceTests(unittest.TestCase):
             svc.reset("s1")
             self.assertIsNone(svc.emotion_payload("s1")["state"])
 
+    def test_dna_and_emotion_reach_llm_system_prompt(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            svc = _service(tmp)
+            seen = []
+            original = svc.adapter.generate
+
+            def capture(request):
+                seen.append(request)
+                return original(request)
+
+            svc.adapter.generate = capture
+            svc.chat("s2", "我好擔心明天的面試，睡不著")
+            system = seen[0].system
+            self.assertIn(svc.genome.genome_id, system)
+            self.assertIn("feelings", system)       # empathy>=0.5 trait guidance from the genome
+            self.assertIn("焦慮", system)           # fear-state modulation guidance
+
     def test_dna_founder_persisted_and_reloaded(self):
         with tempfile.TemporaryDirectory() as tmp:
             a = _service(tmp)
