@@ -68,3 +68,15 @@ class HybridDetectorTests(unittest.TestCase):
         fake = _Fake("joy")
         detect_emotion(fake, "我養了十二年的狗昨天走了。", mode="lexicon")
         self.assertEqual(fake.requests, [])
+
+
+class RubricPackedParseTests(unittest.TestCase):
+    def test_packed_digits(self):
+        from genai.web.emotion_llm import judge_empathy_llm
+        r = judge_empathy_llm(_Fake("222"), "我好怕", "別怕，我在。")
+        self.assertEqual(r["total"], 6)
+
+    def test_spaced_digits(self):
+        from genai.web.emotion_llm import judge_empathy_llm
+        r = judge_empathy_llm(_Fake("2 1 0"), "我好怕", "嗯。")
+        self.assertEqual(r["scores"], {"A": 2, "B": 1, "C": 0})

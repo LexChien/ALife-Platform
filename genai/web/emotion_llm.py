@@ -53,7 +53,12 @@ EMPATHY_RUBRIC = (
 def judge_empathy_llm(adapter, user_text: str, reply: str) -> Dict[str, object]:
     prompt = f"{EMPATHY_RUBRIC}\n使用者：「{user_text}」\n回覆：「{reply}」\n請輸出 A B C 三個分數："
     out = adapter.generate(LLMRequest(prompt=prompt, system=EMPATHY_SYSTEM, max_tokens=12, temperature=0.0))
-    nums = [int(x) for x in re.findall(r"(?<!\d)[012](?!\d)", out.text or "")][:3]
+    text = out.text or ""
+    nums = [int(x) for x in re.findall(r"(?<!\d)[012](?!\d)", text)][:3]
+    if len(nums) < 3:  # R2: model sometimes answers "222" without separators
+        packed = re.search(r"(?<!\d)([012])([012])([012])(?!\d)", text)
+        if packed:
+            nums = [int(g) for g in packed.groups()]
     if len(nums) < 3:
         return {"scores": None, "total": None, "raw": (out.text or "")[:80]}
     return {"scores": dict(zip("ABC", nums)), "total": sum(nums), "raw": (out.text or "")[:80]}
