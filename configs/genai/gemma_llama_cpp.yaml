@@ -19,6 +19,11 @@ defaults:
     output_provider: macos_say
     # medium: CER 0.036 vs small 0.145 on 18 synthetic zh_TW clips (runs/plan37/stt_bench, 2026-10-02)
     whisper_model: medium
+    # Plan 37 R2: MLX (Apple GPU) large-v3 fixes the Eddy-voice clip (CER 0.333 -> 0.0, Eddy mean 0.076 -> 0.036)
+    # without a test-leaking prompt; output converted to zh-TW via OpenCC (runs/plan37/stt_bench_r2). Falls back to
+    # faster-whisper when mlx_whisper is not installed (e.g. Ubuntu).
+    whisper_backend: mlx
+    mlx_whisper_model: mlx-community/whisper-large-v3-mlx
     whisper_preload: true
     tts_voice: Meijia
     recognition_lang: zh-TW
@@ -40,7 +45,8 @@ defaults:
     # Plan 37 R2: hybrid = lexicon when confident, else real Gemma classification.
     # Public zh-TW set (n=200): lexicon 0.45, llm 0.83, hybrid 0.825 (runs/plan37/emotion_r2).
     detector: hybrid
-    hybrid_threshold: 0.7
+    # 0.8 chosen post-hoc on the same eval records (public 0.84, hard 0.81, ~90% of turns call the LLM); disclosed in log.
+    hybrid_threshold: 0.8
   life:
     enabled: true
     dna:
