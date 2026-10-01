@@ -92,8 +92,9 @@ class GemmaWebService:
         self.memory_migrated = 0
         if embedding_fn is not None and self.clone_memory.use_vector_db:
             try:
-                from digital_clone.memory.embeddings import migrate_collection
-                self.memory_migrated = migrate_collection(persist_dir, base_collection, self.clone_memory.vector_store)
+                from digital_clone.memory.embeddings import migrate_collection, migration_sources
+                sources = migration_sources(persist_dir, base_collection, collection)
+                self.memory_migrated = migrate_collection(persist_dir, sources, self.clone_memory.vector_store)
             except Exception as exc:
                 self.memory_migrated = -1
                 logger.warning("memory migration from %s failed: %s", base_collection, exc)

@@ -52,5 +52,24 @@ class MultilingualMemoryTests(unittest.TestCase):
             self.assertEqual(got[0]["content"], facts[0])  # stored text has no "passage: " prefix
 
 
+    def test_second_switch_keeps_memories_from_intermediate_collection(self):
+        from digital_clone.memory.embeddings import migrate_collection, migration_sources
+        from digital_clone.memory.store import MemoryStore
+        with tempfile.TemporaryDirectory() as td:
+            base = MemoryStore(collection_name="mem", persist_directory=td, require_persistence=True)
+            base.add("user", "我的貓叫麻糬。", kind="user_fact", memory_id="a")
+            mid = MemoryStore(collection_name="mem__first", persist_directory=td, require_persistence=True,
+                              embedding_function=self.ef)
+            self.assertEqual(migrate_collection(td, migration_sources(td, "mem", "mem__first"), mid.vector_store), 1)
+            mid.add("user", "My sister lives in Osaka.", kind="user_fact", memory_id="b")  # written after 1st switch
+            target = MemoryStore(collection_name="mem__second", persist_directory=td, require_persistence=True,
+                                 embedding_function=self.ef)
+            sources = migration_sources(td, "mem", "mem__second")
+            self.assertEqual(sources, ["mem__first", "mem"])
+            self.assertEqual(migrate_collection(td, sources, target.vector_store), 2)  # union, de-duplicated
+            self.assertEqual(target.vector_store.collection.count(), 2)
+            self.assertEqual(base.vector_store.collection.count(), 1)  # sources untouched
+
+
 if __name__ == "__main__":
     unittest.main()

@@ -73,23 +73,43 @@ def collection_suffix(model_name: str) -> str:
     return "__" + re.sub(r"[^a-z0-9]+", "_", model_name.lower().split("/")[-1]).strip("_")
 
 
-def migrate_collection(persist_directory: str, source_name: str, target_store) -> int:
-    """Copy documents+metadata+ids from an old (default-embedding) collection into target_store.
+def migrate_collection(persist_directory: str, source_name, target_store) -> int:
+    """Copy documents+metadata+ids from older collection(s) into target_store (one-time, non-destructive).
 
-    Returns number of copied items; 0 if the source does not exist or target already has data.
-    The source collection is left untouched (no deletion).
+    source_name: a collection name, or a list of names. R2: when switching embeddings again (e5 -> bge-m3) the
+    union of all listed sources is copied, de-duplicated by id (first source listed wins), so memories written
+    under an intermediate embedding are not lost. Returns copied count; 0 if target already has data.
+    Source collections are never deleted.
     """
     import chromadb
     client = chromadb.PersistentClient(path=str(persist_directory))
     names = [c if isinstance(c, str) else c.name for c in client.list_collections()]
-    if source_name not in names:
+    sources = [source_name] if isinstance(source_name, str) else list(source_name)
+    target_name = getattr(target_store.collection, "name", None)
+    sources = [n for n in sources if n in names and n != target_name]
+    if not sources or target_store.collection.count() > 0:
         return 0
-    if target_store.collection.count() > 0:
-        return 0
-    src = client.get_collection(source_name)
-    data = src.get(include=["documents", "metadatas"])
-    docs, metas, ids = data.get("documents") or [], data.get("metadatas") or [], data.get("ids") or []
+    seen, docs, metas, ids = set(), [], [], []
+    for name in sources:
+        data = client.get_collection(name).get(include=["documents", "metadatas"])
+        for doc, meta, mid in zip(data.get("documents") or [], data.get("metadatas") or [], data.get("ids") or []):
+            if mid in seen or not doc:
+                continue
+            seen.add(mid)
+            docs.append(doc)
+            metas.append(meta or {})
+            ids.append(mid)
     if not docs:
         return 0
-    target_store.add_documents(documents=list(docs), metadatas=[m or {} for m in metas], ids=list(ids))
+    target_store.add_documents(documents=docs, metadatas=metas, ids=ids)
     return len(docs)
+
+
+def migration_sources(persist_directory: str, base_collection: str, target_collection: str) -> list:
+    """Prior collections for this base: embedding-suffixed ones (largest first), then the original base."""
+    import chromadb
+    client = chromadb.PersistentClient(path=str(persist_directory))
+    cols = [c if isinstance(c, str) else c.name for c in client.list_collections()]
+    suffixed = [n for n in cols if n.startswith(base_collection + "__") and n != target_collection]
+    suffixed.sort(key=lambda n: client.get_collection(n).count(), reverse=True)
+    return suffixed + ([base_collection] if base_collection in cols else [])
