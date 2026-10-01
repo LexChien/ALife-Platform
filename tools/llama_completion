@@ -1,20 +1,26 @@
 #!/usr/bin/env bash
+# Portable llama.cpp launcher used by configs (cli_path: tools/llama_completion).
+# Prefers llama-cli (chat template + honours `-rea off`, no thought channel);
+# falls back to llama-completion, which on Gemma GGUF still emits
+# <|channel>thought even with reasoning off (see log/2026-10-02).
+# Override with LLAMA_CPP_BIN=/path/to/binary.
 set -euo pipefail
 
 ROOT_DIR="$(cd "$(dirname "$0")/.." && pwd)"
-MAC_BIN="$ROOT_DIR/third_party/llama.cpp/build-macos-fix/bin/llama-cli"
-LINUX_BIN="$ROOT_DIR/third_party/llama.cpp/build/bin/llama-completion"
+CANDIDATES=(
+  "${LLAMA_CPP_BIN:-}"
+  "$ROOT_DIR/third_party/llama.cpp/build-macos-fix/bin/llama-cli"
+  "$ROOT_DIR/third_party/llama.cpp/build/bin/llama-cli"
+  "$ROOT_DIR/third_party/llama.cpp/build-macos-fix/bin/llama-completion"
+  "$ROOT_DIR/third_party/llama.cpp/build/bin/llama-completion"
+)
 
-if [[ -x "$MAC_BIN" ]]; then
-  exec "$MAC_BIN" "$@"
-fi
+for bin in "${CANDIDATES[@]}"; do
+  if [[ -n "$bin" && -x "$bin" ]]; then
+    exec "$bin" "$@"
+  fi
+done
 
-if [[ -x "$LINUX_BIN" ]]; then
-  exec "$LINUX_BIN" "$@"
-fi
-
-echo "No usable llama-completion binary found." >&2
-echo "Checked:" >&2
-echo "  $MAC_BIN" >&2
-echo "  $LINUX_BIN" >&2
+echo "No usable llama.cpp binary found. Checked:" >&2
+printf '  %s\n' "${CANDIDATES[@]}" >&2
 exit 1

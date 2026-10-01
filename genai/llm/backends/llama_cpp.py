@@ -7,6 +7,7 @@ import subprocess
 from typing import Any
 
 from genai.llm.adapter import BaseLLMAdapter, LLMRequest, LLMResponse
+from genai.llm.reasoning import REASONING_MARKERS, strip_cli_banner, strip_reasoning
 
 try:
     from llama_cpp import Llama
@@ -156,14 +157,7 @@ class LlamaCppAdapter(BaseLLMAdapter):
         return f"{base}{suffix}"
 
     def _reasoning_markers(self) -> tuple[str, ...]:
-        return (
-            "<|channel>thought",
-            "Thinking Process:",
-            "Here's a thinking process",
-            "Analyze the Request:",
-            "Deconstruct Key Terms:",
-            "Brainstorm Core Concepts",
-        )
+        return REASONING_MARKERS
 
     def _has_reasoning_leak(self, text: str) -> bool:
         stripped = text.strip()
@@ -392,20 +386,31 @@ class LlamaCppAdapter(BaseLLMAdapter):
             proc = subprocess.run(
                 cmd,
                 capture_output=True,
-                text=True,
                 check=True,
                 timeout=self.subprocess_timeout,
             )
-            out = {"stdout": proc.stdout, "stderr": proc.stderr, "cmd": cmd}
-            text = self._clean_subprocess_output(proc.stdout)
+            stdout = self._decode_subprocess_bytes(proc.stdout)
+            stderr = self._decode_subprocess_bytes(proc.stderr)
+            out = {"stdout": stdout, "stderr": stderr, "cmd": cmd}
+            text = self._clean_subprocess_output(stdout, prompt=cli_prompt)
         else:
             raise RuntimeError(
                 "No usable llama.cpp runtime found. Install llama-cpp-python or provide a llama.cpp CLI binary."
             )
         return text, out, driver
 
-    def _clean_subprocess_output(self, text: str) -> str:
-        cleaned = text.strip()
+    @staticmethod
+    def _decode_subprocess_bytes(raw: bytes | str | None) -> str:
+        if raw is None:
+            return ""
+        if isinstance(raw, str):
+            return raw
+        return raw.decode("utf-8", errors="replace")
+
+    def _clean_subprocess_output(self, text: str, prompt: str | None = None) -> str:
+        # llama-cli (conversation mode) prints a banner, the echoed prompt and a
+        # timing line around the answer; strip them before reasoning cleanup.
+        cleaned = strip_cli_banner(text, prompt=prompt).strip()
         if "\nmodel\n" in cleaned:
             cleaned = cleaned.rsplit("\nmodel\n", 1)[-1].strip()
         if cleaned.startswith("model\n"):
@@ -424,7 +429,7 @@ class LlamaCppAdapter(BaseLLMAdapter):
             ).strip()
         cleaned = re.sub(r"^<\|channel\>[a-z_]+\n", "", cleaned).strip()
         cleaned = re.sub(r"(?:\s*\[end of text\])+\s*$", "", cleaned).strip()
-        return cleaned
+        return strip_reasoning(cleaned)
 
     def healthcheck(self) -> dict[str, object]:
         model_exists = Path(self.model_path).exists()

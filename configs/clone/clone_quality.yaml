@@ -10,7 +10,7 @@ persona:
 llm:
   model_id: gemma_bootstrap_v1
   driver: subprocess
-  cli_path: third_party/llama.cpp/build/bin/llama-completion
+  cli_path: tools/llama_completion
   context_length: 2048
   temperature: 0.0
   max_tokens: 160
