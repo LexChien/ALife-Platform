@@ -90,11 +90,12 @@ class GemmaWebService:
         self.emotion_cfg = self.cfg.get("emotion", {}) if isinstance(self.cfg.get("emotion"), dict) else {}
         self.emotion_enabled = bool(self.emotion_cfg.get("enabled", True))
         self.emotion_states: dict[str, EmotionState] = {}
-        # Plan 37 G1/N3: DNA genome inherited into the clone persona.
-        self._init_dna()
         llm_cfg = self.cfg.get("llm", {})
         self.max_tokens = llm_cfg.get("max_tokens")
         self.temperature = llm_cfg.get("temperature")
+        # Plan 37 G1/N3: DNA genome inherited into the clone persona. Must run AFTER the
+        # llm defaults above, otherwise apply_sampling is silently overwritten (R2 fix).
+        self._init_dna()
         self.profile = self.cfg.get("_active_profile")
         self.store = ChatSessionStore()
         self.sessions_dir = self.run_dir / "sessions"

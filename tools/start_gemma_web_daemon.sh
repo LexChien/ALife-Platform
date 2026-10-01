@@ -36,7 +36,7 @@ pkill -f 'apps/gemma_web.py' 2>/dev/null || true
 sleep 1
 
 : > "$LOG"
-tmux new-session -d -s "$SESSION" "cd '$ROOT' && exec '$PY' -u apps/gemma_web.py --config '$CONFIG' --profile '$PROFILE' --host '$HOST' --port '$PORT' >>'$LOG' 2>&1"
+tmux new-session -d -s "$SESSION" -e "PATH=$PATH" "cd '$ROOT' && exec '$PY' -u apps/gemma_web.py --config '$CONFIG' --profile '$PROFILE' --host '$HOST' --port '$PORT' >>'$LOG' 2>&1"
 
 ok=0
 for i in $(seq 1 60); do

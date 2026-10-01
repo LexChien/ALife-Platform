@@ -24,6 +24,21 @@ def _service(tmpdir, extra=None):
 
 
 class Plan37ServiceTests(unittest.TestCase):
+
+    def test_apply_sampling_overrides_llm_defaults(self):
+        """R2 regression: genome sampling must not be overwritten by llm.max_tokens/temperature."""
+        with tempfile.TemporaryDirectory() as tmp:
+            svc = _service(tmp)
+            base_t, base_m = svc.temperature, svc.max_tokens
+        with tempfile.TemporaryDirectory() as tmp:
+            cfg_extra = {"life": {"enabled": False, "dna": {"enabled": True, "apply_sampling": True,
+                                  "store": str(Path(tmp) / "clone_store"),
+                                  "founder_traits": {"verbosity": 0.0, "playfulness": 0.0, "curiosity": 0.0}}}}
+            svc = _service(tmp, extra=cfg_extra)
+            self.assertEqual(svc.max_tokens, svc.genome_expression["max_tokens"])
+            self.assertEqual(svc.temperature, svc.genome_expression["temperature"])
+            self.assertEqual(svc.max_tokens, 96)
+            self.assertNotEqual((svc.temperature, svc.max_tokens), (base_t, base_m))
     def test_chat_returns_emotion_dna_hygiene(self):
         with tempfile.TemporaryDirectory() as tmp:
             svc = _service(tmp)
