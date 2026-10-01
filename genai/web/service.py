@@ -25,6 +25,7 @@ from tools.chat_gemma import _build_turn_context, _strict_cleanup_with_retry
 
 
 ROOT = Path(__file__).resolve().parents[2]
+_REMEMBER_RE = re.compile(r"(記住|記得|别忘|別忘|remember|don't forget)", re.I)
 
 
 class GemmaWebService:
@@ -297,9 +298,11 @@ class GemmaWebService:
         if self.life_enabled:
             life_snapshot = self.life_index.snapshot()
             memory_cfg = self.life_cfg.get("memory", {}) if isinstance(self.life_cfg.get("memory"), dict) else {}
+            scope = session.session_id if memory_cfg.get("scope", "session") == "session" else None
             retrieved = self.clone_memory.retrieve_for_prompt(
                 user_message,
                 limit=int(memory_cfg.get("retrieval_limit", 5)),
+                scope=scope,
             )
             built = self.clone_prompt_builder.build(
                 self.clone_persona,
@@ -367,8 +370,11 @@ class GemmaWebService:
         session.append("user", user_message)
         session.append("assistant", cleaned_text)
         if self.life_enabled:
-            self.clone_memory.add("user", user_message)
-            self.clone_memory.add("assistant", cleaned_text)
+            # Explicit "remember ..." statements become global user facts; other dialogue stays session-scoped
+            # so one session's emotional context does not leak into another (Plan 37 web eval 05:33 finding).
+            kind = "user_fact" if _REMEMBER_RE.search(user_message) else "dialogue"
+            self.clone_memory.add("user", user_message, kind=kind, scope=session.session_id)
+            self.clone_memory.add("assistant", cleaned_text, scope=session.session_id)
         self._save_session(session, cleanup_meta, response.runtime, life_snapshot,
                            extra={"emotion": emotion_payload, "dna_genome_id": self.genome.genome_id,
                                   "hygiene": hygiene, "source": source, "tts": tts_payload})

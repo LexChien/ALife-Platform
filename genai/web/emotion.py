@@ -129,6 +129,8 @@ class EmotionState:
     label: str = "neutral"
     intensity: float = 0.0
     turns: int = 0
+    last_observed: str = "neutral"
+    mix: Dict[str, float] = field(default_factory=dict)
     history: List[Dict[str, object]] = field(default_factory=list)
 
     def update(self, observation: Dict[str, object], voice_arousal: Optional[float] = None, decay: float = 0.5) -> "EmotionState":
@@ -137,6 +139,13 @@ class EmotionState:
         if voice_arousal is not None:
             obs_a = 0.6 * obs_a + 0.4 * float(voice_arousal)
         conf = float(observation.get("confidence", 0.5))
+        # Decaying label mixture: distinguishes anger vs fear, which share a circumplex direction.
+        probs = observation.get("probs") or {}
+        for lab in LABELS:
+            if lab == "neutral":
+                continue
+            self.mix[lab] = round(decay * self.mix.get(lab, 0.0) + (1.0 - decay) * float(probs.get(lab, 0.0)) * (0.5 + conf), 4)
+        self.last_observed = str(observation.get("label", "neutral"))
         if observation.get("label") == "neutral" and voice_arousal is None:
             # no affect evidence this turn: decay toward neutral
             keep = 0.5 + 0.5 * decay
@@ -147,7 +156,13 @@ class EmotionState:
             self.valence = round((1 - w) * self.valence + w * obs_v, 3)
             self.arousal = round((1 - w) * self.arousal + w * obs_a, 3)
         self.intensity = round(min(1.0, math.hypot(self.valence, self.arousal)), 3)
-        self.label = self._nearest_label() if self.intensity >= 0.2 else "neutral"
+        top = max(self.mix, key=self.mix.get) if self.mix else None
+        if self.intensity < 0.2:
+            self.label = "neutral"
+        elif top and self.mix[top] > 0.05:
+            self.label = top
+        else:
+            self.label = self._nearest_label()
         self.turns += 1
         self.history.append({"turn": self.turns, "observed": observation.get("label"), "valence": self.valence,
                              "arousal": self.arousal, "label": self.label, "voice_arousal": voice_arousal})
@@ -160,7 +175,8 @@ class EmotionState:
 
     def to_dict(self) -> Dict[str, object]:
         return {"label": self.label, "valence": self.valence, "arousal": self.arousal,
-                "intensity": self.intensity, "turns": self.turns, "history": list(self.history[-5:])}
+                "intensity": self.intensity, "turns": self.turns, "last_observed": self.last_observed,
+                "mix": dict(self.mix), "history": list(self.history[-5:])}
 
 
 GUIDANCE = {
@@ -186,7 +202,11 @@ def modulation(state: EmotionState, base_voice: Optional[Dict[str, float]] = Non
         rate *= 1.06
         pitch *= 1.05
     guidance = GUIDANCE.get(label, "")
-    if guidance and state.intensity >= 0.5:
+    if guidance and state.last_observed == "neutral":
+        # Residual mood only: answer the current (neutral) request directly; at most a light check-in.
+        guidance = (f"使用者稍早情緒為 {label}，但這一句是一般問題：請直接、具體地回答目前的問題，"
+                    "不要重述或分析對方的情緒，最多在結尾輕輕關心一句。Answer the current question directly.")
+    elif guidance and state.intensity >= 0.5:
         guidance += " 情緒強度高，回覆要更短、更溫和。"
     return {
         "label": label,

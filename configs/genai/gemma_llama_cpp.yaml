@@ -51,6 +51,7 @@ defaults:
         stability: 0.8
     memory:
       retrieval_limit: 5
+      scope: session  # dialogue retrieval per session; "記住…" facts stay global
       vector_db: false
     persona:
       name: "ALife Prototype"

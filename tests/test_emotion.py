@@ -63,6 +63,19 @@ class StateTests(unittest.TestCase):
         self.assertLess(s.intensity, peak)
         self.assertEqual(s.label, "neutral")
 
+    def test_anger_not_confused_with_fear(self):
+        s = EmotionState().update(detect_text_emotion("氣死我了！客戶又臨時改需求，我整個週末都白做了！"))
+        self.assertEqual(s.label, "anger")
+        f = EmotionState().update(detect_text_emotion("我好擔心明天的面試，緊張到睡不著。"))
+        self.assertEqual(f.label, "fear")
+
+    def test_residual_mood_guidance_answers_directly(self):
+        s = EmotionState().update(detect_text_emotion("我今天真的好難過，好想哭。"))
+        s.update(detect_text_emotion("今天天氣如何？"))
+        g = modulation(s)["system_guidance"]
+        self.assertIn("直接", g)
+        self.assertNotIn("先用一兩句真誠地接住感受", g)
+
     def test_modulation_changes_voice_and_guidance(self):
         sad = EmotionState().update(detect_text_emotion("我好難過好想哭"))
         happy = EmotionState().update(detect_text_emotion("太好了我好開心"))

@@ -27,13 +27,17 @@ class MemoryStore:
             self.vector_store = None
             self.use_vector_db = False
 
-    def add(self, role, content, kind="dialogue", memory_id=None):
+    def add(self, role, content, kind="dialogue", memory_id=None, scope=None):
         memory_id = memory_id or str(uuid.uuid4())
         item = {"id": memory_id, "role": role, "content": content, "kind": kind}
+        metadata = {"role": role, "kind": kind}
+        if scope is not None:
+            item["scope"] = str(scope)
+            metadata["scope"] = str(scope)
         if self.use_vector_db:
             try:
                 self.vector_store.add_documents(
-                    documents=[content], metadatas=[{"role": role, "kind": kind}],
+                    documents=[content], metadatas=[metadata],
                     ids=[memory_id],
                 )
             except Exception as exc:
@@ -52,7 +56,7 @@ class MemoryStore:
             identity = str(uuid.uuid5(uuid.NAMESPACE_URL, f"{self.collection_name}:profile_fact:{fact}"))
             self.add("system", fact, kind="profile_fact", memory_id=identity)
 
-    def retrieve(self, query, n=3, kinds=None, roles=None):
+    def retrieve(self, query, n=3, kinds=None, roles=None, scope=None):
         if n <= 0 or kinds == [] or roles == []:
             return []
         if self.use_vector_db:
@@ -63,6 +67,8 @@ class MemoryStore:
                     filters.append({"kind": {"$in": list(kinds)}})
                 if roles is not None:
                     filters.append({"role": {"$in": list(roles)}})
+                if scope is not None:
+                    filters.append({"scope": str(scope)})
                 if filters:
                     options["where"] = filters[0] if len(filters) == 1 else {"$and": filters}
                 docs = self.vector_store.query([query], **options)
@@ -76,6 +82,8 @@ class MemoryStore:
                     if not isinstance(content, str) or not content or (kinds is not None and kind not in kinds):
                         continue
                     if roles is not None and role not in roles:
+                        continue
+                    if scope is not None and metadata.get("scope") != str(scope):
                         continue
                     identity = document.get("id")
                     key = ("id", identity) if identity is not None else ("fields", role, kind, content)
@@ -92,14 +100,20 @@ class MemoryStore:
                     raise RuntimeError("Persistent memory retrieval failed") from exc
                 logger.error("Vector retrieval failed: %s. Using current-session memory.", exc)
         filtered = [item for item in self.items if (kinds is None or item["kind"] in kinds)
-                    and (roles is None or item["role"] in roles)]
+                    and (roles is None or item["role"] in roles)
+                    and (scope is None or item.get("scope") == str(scope))]
         return filtered[-n:]
 
-    def retrieve_for_prompt(self, user_text, limit=5):
+    def retrieve_for_prompt(self, user_text, limit=5, scope=None):
+        """Profile facts and explicit user facts are global; plain dialogue can be scoped (e.g. per session)."""
         if limit <= 0:
             return []
         profile = self.retrieve(user_text, n=max(limit // 2, 1), kinds=["profile_fact"])
-        dialogue = self.retrieve(user_text, n=limit, kinds=["dialogue"], roles=["user"])
+        if scope is None:
+            dialogue = self.retrieve(user_text, n=limit, kinds=["dialogue"], roles=["user"])
+        else:
+            facts = self.retrieve(user_text, n=max(limit // 2, 1), kinds=["user_fact"], roles=["user"])
+            dialogue = facts + self.retrieve(user_text, n=limit, kinds=["dialogue"], roles=["user"], scope=scope)
         merged = []
         seen = set()
         for item in profile + dialogue:
@@ -108,7 +122,7 @@ class MemoryStore:
             key = (role, item.get("kind"), content)
             if not content or content == user_text or key in seen:
                 continue
-            if item.get("kind") == "dialogue" and role != "user":
+            if item.get("kind") in ("dialogue", "user_fact") and role != "user":
                 continue
             merged.append(item)
             seen.add(key)
