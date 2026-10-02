@@ -14,6 +14,10 @@ def isolated_config(src="configs/genai/digiclone_jarvis.yaml"):
     tmp = Path(tempfile.mkdtemp(prefix="p38_smoke_"))
     mem["persist_directory"] = str(tmp / "chroma")
     mem["collection_name"] = "plan38_smoke_life"
+    # cognition state + private journal must be isolated too (09:25: smokes had written to runs/digiclone/)
+    cog = raw["defaults"].setdefault("cognition", {})
+    cog["self_state"] = str(tmp / "self_state.json")
+    cog["thoughts"] = str(tmp / "thoughts.jsonl")
     out = tmp / "cfg.yaml"
     out.write_text(yaml.safe_dump(raw, allow_unicode=True), encoding="utf-8")
     return str(out)

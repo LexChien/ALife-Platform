@@ -67,7 +67,8 @@ FRAME = np.zeros(320, dtype=np.int16).tobytes()
 def make(mode="open", delay=0.0, wake=None):
     out = []
     svc = FakeService(delay)
-    s = VoiceSession(svc, out.append, vad=FakeVAD(), wake=wake, stt=FakeSTT(), ack=FakeAck(), barge_min_ms=100)
+    s = VoiceSession(svc, out.append, vad=FakeVAD(), wake=wake, stt=FakeSTT(), ack=FakeAck(), barge_min_ms=100,
+                     trace_path=None)  # never write test traces into runs/digiclone
     s.on_control({"type": "hello", "mode": mode})
     return s, svc, out
 

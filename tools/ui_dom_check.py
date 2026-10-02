@@ -64,7 +64,7 @@ JS = r"""
 """
 
 
-async def run(url: str, out: Path) -> dict:
+async def run(url: str, out: Path, mouth_level: float | None = None) -> dict:
     import websockets
     port = 9333
     prof = tempfile.mkdtemp(prefix="chrome_ui_check_")
@@ -72,7 +72,8 @@ async def run(url: str, out: Path) -> dict:
                              "--no-first-run", "--window-size=1400,1100", "--autoplay-policy=no-user-gesture-required",
                              "--use-fake-ui-for-media-stream", "about:blank"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     try:
-        for _ in range(50):
+        page = None
+        for _ in range(150):  # up to 30 s: Chrome start is slow when the Mac is loaded
             try:
                 targets = json.loads(urllib.request.urlopen(f"http://127.0.0.1:{port}/json").read())
                 page = next(t for t in targets if t.get("type") == "page")
@@ -95,6 +96,13 @@ async def run(url: str, out: Path) -> dict:
             await asyncio.sleep(4.0)
             res = await cmd("Runtime.evaluate", expression=JS.replace("EMOS", json.dumps(EMOTIONS)), returnByValue=True)
             result = res["result"]["value"]
+            if mouth_level is not None:  # Plan 38 J3: render an open-mouth keyframe to guard the SPEAKING frame
+                lv = await cmd("Runtime.evaluate", returnByValue=True, expression=(
+                    f"(function(){{if(!window.DigiAvatar)return {{ok:false}};window.DigiAvatar.setLevel({mouth_level});"
+                    "const m=document.getElementById('avatarMouth');return {ok:window.DigiAvatar.isReady(),k:m.dataset.k||null,"
+                    "opacity:getComputedStyle(m).opacity,src:m.getAttribute('src')};})()"))
+                result["mouth"] = lv["result"]["value"]
+                await asyncio.sleep(0.5)
             r = result.get("face_rect")
             if r:
                 shot = await cmd("Page.captureScreenshot", format="png",
@@ -112,16 +120,19 @@ def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--url", default="http://127.0.0.1:8080/")
     ap.add_argument("--out", default=str(ROOT / "runs/plan38/ui_check" / time.strftime("%Y%m%d-%H%M%S")))
+    ap.add_argument("--mouth-level", type=float, default=None, help="open the lip-sync layer (0-1) before the screenshot")
     a = ap.parse_args()
     out = Path(a.out)
     out.mkdir(parents=True, exist_ok=True)
-    result = asyncio.run(run(a.url, out))
+    result = asyncio.run(run(a.url, out, a.mouth_level))
     forbidden = {e: v["forbidden"] for e, v in result.get("emotions", {}).items() if v["forbidden"]}
     checks = {"face_present": result.get("face"), "no_forbidden_filter_on_face": not forbidden,
               "life_visual_not_in_viewport": result.get("life_visual_in_viewport") is False,
               "face_not_covered": not result.get("covering"),
               "thought_toggle_default_off": (result.get("thought_toggle") or {}).get("checked") is False
               if (result.get("thought_toggle") or {}).get("exists") else None}
+    if a.mouth_level is not None:
+        checks["mouth_keyframe_shown"] = bool((result.get("mouth") or {}).get("ok")) and (result.get("mouth") or {}).get("k") not in (None, "0")
     report = {"kind": "REAL_HEADLESS_CHROME_DOM_CHECK", "url": a.url, "checks": checks, "raw": result,
               "ok": all(v is not False for v in checks.values())}
     (out / "dom_check.json").write_text(json.dumps(report, indent=1, ensure_ascii=False))

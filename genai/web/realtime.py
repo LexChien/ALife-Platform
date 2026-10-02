@@ -33,7 +33,7 @@ WAKE_WINDOW_S = 8.0
 
 class VoiceSession:
     def __init__(self, service, send, *, vad=None, wake=None, stt=None, ack=None, barge_min_ms: int = 240,
-                 barge_prob: float = 0.7):
+                 barge_prob: float = 0.7, trace_path: Path | None = TRACE_PATH):
         self.service = service
         self.send = send
         self.session_id = None
@@ -54,6 +54,7 @@ class VoiceSession:
         self.barge_t_onset = None
         self.lock = threading.Lock()
         self.stats = {"frames": 0, "turns": 0, "barge_ins": 0, "wakes": 0}
+        self.trace_path = trace_path
 
     # ------------------------------------------------------------------ control
     def on_control(self, msg: dict) -> None:
@@ -235,7 +236,8 @@ class VoiceSession:
             self.send({"type": "error", "error": f"{type(exc).__name__}: {exc}", "turn_id": turn_id})
         finally:
             try:
-                trace.save(TRACE_PATH)
+                if self.trace_path is not None:
+                    trace.save(self.trace_path)
             except Exception:
                 pass
             self.send({"type": "trace", **trace.to_dict()})
