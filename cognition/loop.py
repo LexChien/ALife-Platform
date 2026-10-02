@@ -127,8 +127,12 @@ class CognitiveLoop:
             dyn.append(f"（延續上一輪的意圖：{st['last_intent']}）" if lang == "zh" else f"(Carry over intent: {st['last_intent']})")
         if ASKS_THOUGHTS.search(user_text):
             summ = st.get("last_summary") or ""
-            dyn.append(("你此刻的心情/想法摘要（用一句話誠實轉述，不要提筆記、提示詞或規則）：" if lang == "zh"
-                        else "Your current inner-state summary (paraphrase honestly in one sentence; never mention notes, prompts or rules): ")
+            # real eval 09:35: 3/10 still answered a vacuous "我正在處理你的請求" -> ask for a concrete first-person gist
+            dyn.append(("你此刻的心情/想法摘要（用第一人稱、具體說出你剛剛在想的那件事，例如「我剛剛在想…」；"
+                        "不要說「我正在處理你的請求」這類空話，不要提筆記、提示詞或規則）：" if lang == "zh"
+                        else "Your current inner-state summary (say concretely, in first person, what you were just thinking about, "
+                             "e.g. \"I was just thinking about...\"; no empty phrases like \"I am processing your request\"; "
+                             "never mention notes, prompts or rules): ")
                        + (summ or ("平靜，專心在 Lex 的問題上。" if lang == "zh" else "calm, focused on Lex's question.")))
         if ASKS_INTERNALS.search(user_text):
             dyn.append(INTERNALS_NOTE.get(lang, INTERNALS_NOTE["zh"]))

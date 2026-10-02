@@ -191,11 +191,21 @@ def main() -> int:
     p = sub.add_parser("recovery"); p.add_argument("--trials", type=int, default=3); p.add_argument("--port", type=int, default=8091)
     p = sub.add_parser("appearance"); p.add_argument("sets", nargs="+")
     p = sub.add_parser("leak"); p.add_argument("--turns", type=int, default=100); p.add_argument("--port", type=int, default=8091)
+    p.add_argument("--rejudge", default=None, help="saved leak report.json: re-run only the C6 judge (writes report_rejudged.json)")
     p = sub.add_parser("proactive")
     p = sub.add_parser("lipsync")
     for name in ("memory", "persona"):
         p = sub.add_parser(name); p.add_argument("extra", nargs=argparse.REMAINDER)
     a = ap.parse_args()
+    if a.cmd == "leak" and a.rejudge:
+        from cognition.eval_loop import rejudge_report
+        rep = rejudge_report(Path(a.rejudge), port=a.port)
+        out = Path(a.rejudge).with_name("report_rejudged.json")
+        out.write_text(json.dumps(rep, ensure_ascii=False, indent=1))
+        print(json.dumps({"C6_pass_rate": rep["C6_pass_rate"], "acceptance": rep["acceptance"],
+                          "c6": [(j["i"], j["judge"], j["pass"]) for j in rep["c6_detail"]]}, ensure_ascii=False))
+        print("report:", out)
+        return 0
     if a.cmd == "leak":
         from cognition.eval_loop import run_leak_eval
         rep = run_leak_eval(port=a.port, turns=a.turns)
