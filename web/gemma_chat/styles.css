@@ -479,3 +479,19 @@ button {
 .avatar-stage[data-emotion="calm"] .avatar-halo { box-shadow: 0 0 30px 4px rgba(120, 200, 255, 0.30); }
 .avatar-stage[data-emotion="smile"] .avatar-halo { box-shadow: 0 0 36px 6px rgba(255, 200, 120, 0.45); }
 .avatar-stage[data-emotion="attentive"] .avatar-halo { box-shadow: 0 0 34px 6px rgba(0, 255, 204, 0.40); }
+
+/* Plan 38 J3: lip-sync layer (identical geometry & base filter as the face; only the mouth ROI differs) */
+.avatar-mouth { z-index: 2; opacity: 0; pointer-events: none; }
+/* Plan 38 J4.4: HUD */
+.hud-panel { margin: 16px 0; padding: 14px; border: 1px solid rgba(0, 255, 204, 0.25); border-radius: 12px;
+  background: rgba(0, 20, 24, 0.55); font-size: 12px; }
+.hud-head { display: flex; justify-content: space-between; margin-bottom: 8px; }
+.hud-controls { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.hud-controls select { background: #0b0b0b; color: #cfe; border: 1px solid rgba(255,255,255,0.2); border-radius: 6px; padding: 4px; }
+#rtPtt.active { background: rgba(0, 255, 204, 0.35); }
+.hud-status, .hud-transcript { margin-top: 6px; opacity: 0.85; }
+.hud-trace { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 6px; color: #9fe; }
+.hud-mood .mood-row { display: flex; align-items: center; gap: 6px; margin: 2px 0; }
+.hud-mood .mood-row span { width: 70px; opacity: 0.7; }
+.hud-mood .mood-row i { display: block; height: 4px; background: rgba(0, 255, 204, 0.6); border-radius: 2px; }
+.hud-thoughts { margin: 6px 0 0; padding-left: 18px; max-height: 160px; overflow: auto; color: #bcd; font-style: italic; }

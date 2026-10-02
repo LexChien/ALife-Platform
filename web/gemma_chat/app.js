@@ -383,6 +383,7 @@ function playServerAudio(url, fallbackText) {
       currentAudio.pause();
     }
     currentAudio = new Audio(url);
+    if (window.DigiAvatar) window.DigiAvatar.attach(currentAudio); // Plan 38 J3 lip-sync
     currentAudio.onplay = () => {
       setConversationState("reply_received");
       setSpeechState("speech_playing");
@@ -417,6 +418,7 @@ function playServerAudioQueue(urls, fallbackText) {
       return;
     }
     const audio = new Audio(urls[index]);
+    if (window.DigiAvatar) window.DigiAvatar.attach(audio); // Plan 38 J3 lip-sync
     currentAudio = audio;
     if (index === 0) {
       audio.onplay = () => {

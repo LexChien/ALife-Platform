@@ -18,6 +18,8 @@
               <div class="noir-viewport">
                 <!-- Plan 38 J0.4: the fixed avatar is the top visual layer of the viewport; ASAL moved to LIFE CORE -->
                 <img id="avatarFace" class="avatar-face" src="/avatar.jpg" alt="DigiClone avatar" draggable="false">
+                <!-- Plan 38 J3: lip-sync layer = same geometry, offline mouth keyframes of the SAME fixed avatar (guard-checked) -->
+                <img id="avatarMouth" class="avatar-face avatar-mouth" src="/avatar.jpg" alt="" aria-hidden="true" draggable="false">
                 <div class="sunlight-bars"></div>
                 <div class="interaction-lens"></div>
               </div>
@@ -55,6 +57,29 @@
             <span class="value mono" id="dnaStatus">--</span>
           </div>
         </div>
+
+        <!-- Plan 38 J4.4: JARVIS-style HUD -->
+        <section class="hud-panel" aria-label="DigiClone HUD">
+          <div class="hud-head">
+            <span class="label">DIGICLONE HUD</span>
+            <span class="value mono" id="hudState">IDLE</span>
+          </div>
+          <div class="hud-controls">
+            <button type="button" class="mic-button" id="rtConnect">LIVE VOICE</button>
+            <select id="rtMode" aria-label="Listening mode">
+              <option value="open">OPEN MIC</option>
+              <option value="wake">WAKE WORD (Hey Jarvis / 你好管家)</option>
+              <option value="ptt">PUSH-TO-TALK</option>
+            </select>
+            <button type="button" class="mic-button" id="rtPtt" title="Hold (or hold Space) to talk">HOLD TO TALK</button>
+          </div>
+          <div class="hud-status mono" id="rtStatus">OFFLINE</div>
+          <div class="hud-transcript" id="rtTranscript"></div>
+          <div class="hud-trace mono" id="hudTrace"></div>
+          <div class="hud-mood" id="hudMood"></div>
+          <label class="toggle"><input type="checkbox" id="thoughtToggle"> THOUGHT STREAM (private)</label>
+          <ol class="hud-thoughts" id="hudThoughts" hidden></ol>
+        </section>
 
         <section class="life-panel" aria-label="Artificial life progress">
           <div class="life-panel-head">
@@ -123,5 +148,8 @@
     </template>
 
     <script src="/app.js"></script>
+    <script src="/avatar.js"></script>
+    <script src="/hud.js"></script>
+    <script src="/realtime.js"></script>
   </body>
 </html>

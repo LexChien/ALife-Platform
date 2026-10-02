@@ -150,6 +150,33 @@ def cmd_appearance(a) -> dict:
             "summary": {k: {kk: vv for kk, vv in v.items() if kk != "rows"} for k, v in rep.get("positive", {}).items()}}
 
 
+def cmd_lipsync(a) -> dict:
+    """J3.2: lip-sync metric on REAL resident Meijia TTS WAVs (browser mapping mirrored in avatar.lipsync)."""
+    import tempfile
+    from avatar.lipsync import browser_indices, envelope, keyframe_indices, read_wav, sync_metrics
+    from voice.tts_stream import ResidentTTS
+    texts = ["你好，我是你的數位分身，今天想聊些什麼？", "我理解你現在感到害怕，我們慢慢來。", "東京是日本的首都。",
+             "The capital of Japan is Tokyo.", "好的，我幫你把重點整理成三句話。", "如果你願意，可以告訴我更多細節。",
+             "現在下午三點，記得休息一下。", "Let me know if you want me to keep going."]
+    tts = ResidentTTS()
+    if not tts.start():
+        raise SystemExit("resident TTS unavailable")
+    out_dir = Path(tempfile.mkdtemp(prefix="lipsync_"))
+    rows = []
+    for i, t in enumerate(texts):
+        r = tts.synthesize(t, out_dir, stem=f"ls_{i}")
+        x, sr = read_wav(out_dir / r["file"])
+        env = envelope(x, sr)
+        rows.append({"text": t, "dur_s": round(len(x) / sr, 2), "browser": sync_metrics(env, browser_indices(env)),
+                     "p95": sync_metrics(env, keyframe_indices(env)), "levels_used": int(len(set(browser_indices(env).tolist())))})
+    import numpy as np
+    med = lambda k, f: float(np.median([r[k][f] for r in rows]))
+    return {"source": "REAL resident Meijia TTS (NSSpeechSynthesizer)", "rows": rows,
+            "browser_median_r": med("browser", "pearson_r"), "browser_median_lag_ms": med("browser", "lag_ms"),
+            "p95_median_r": med("p95", "pearson_r"), "target": "r >= 0.6, |lag| <= 80 ms",
+            "pass": med("browser", "pearson_r") >= 0.6 and abs(med("browser", "lag_ms")) <= 80}
+
+
 def cmd_delegate(a) -> dict:
     cmd = [sys.executable, str(ROOT / "tools/run_plan37_clone_eval.py"), "--mode", "real", *a.extra]
     proc = subprocess.run(cmd, capture_output=True, text=True)
@@ -165,6 +192,7 @@ def main() -> int:
     p = sub.add_parser("appearance"); p.add_argument("sets", nargs="+")
     p = sub.add_parser("leak"); p.add_argument("--turns", type=int, default=100); p.add_argument("--port", type=int, default=8091)
     p = sub.add_parser("proactive")
+    p = sub.add_parser("lipsync")
     for name in ("memory", "persona"):
         p = sub.add_parser(name); p.add_argument("extra", nargs=argparse.REMAINDER)
     a = ap.parse_args()
@@ -176,7 +204,7 @@ def main() -> int:
         rep = eval_events()
     else:
         rep = {"latency": cmd_latency, "recovery": cmd_recovery, "appearance": cmd_appearance,
-               "memory": cmd_delegate, "persona": cmd_delegate}[a.cmd](a)
+               "memory": cmd_delegate, "persona": cmd_delegate, "lipsync": cmd_lipsync}[a.cmd](a)
     out = outdir(a.cmd) / "report.json"
     rep = {"cmd": a.cmd, "argv": sys.argv[1:], "generated_at": time.strftime("%Y-%m-%dT%H:%M:%S%z"), **rep}
     out.write_text(json.dumps(rep, ensure_ascii=False, indent=1))
