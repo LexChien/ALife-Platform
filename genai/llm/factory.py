@@ -39,7 +39,12 @@ def _resolve_llm_config(cfg: dict) -> dict:
 
 
 def create_llm_adapter(cfg: dict):
+    requested = (cfg.get("llm") or {}).get("backend")
     llm_cfg = _resolve_llm_config(cfg)
+    if requested == "llama_server":
+        # Plan 38 J1.2: same GGUF/model spec, served by a resident llama-server (llama-cli kept as fallback).
+        from genai.llm.backends.llama_server import LlamaServerAdapter
+        return LlamaServerAdapter.from_config({**llm_cfg, "backend": "llama_server"})
     backend = llm_cfg.get("backend", "dummy")
     if backend == "dummy":
         return DummyLLMAdapter(

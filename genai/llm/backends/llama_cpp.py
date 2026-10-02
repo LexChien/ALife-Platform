@@ -35,6 +35,7 @@ class LlamaCppAdapter(BaseLLMAdapter):
         repack: bool = True,
         seed: int = 42,
         subprocess_timeout: int = 120,
+        reasoning_budget_flag: bool = False,
     ):
         self._model_family = model_family
         self.model_path = model_path
@@ -53,6 +54,8 @@ class LlamaCppAdapter(BaseLLMAdapter):
         self.repack = repack
         self.seed = seed
         self.subprocess_timeout = subprocess_timeout
+        # Plan 38 J1: "-rea off" is what disables Gemma 4 thinking; "--reasoning-budget 0" is an A/B-tested extra.
+        self.reasoning_budget_flag = reasoning_budget_flag
         self._llm = None
 
     @property
@@ -83,6 +86,7 @@ class LlamaCppAdapter(BaseLLMAdapter):
             repack=cfg.get("repack", True),
             seed=cfg.get("seed", 42),
             subprocess_timeout=cfg.get("subprocess_timeout", 120),
+            reasoning_budget_flag=cfg.get("reasoning_budget_flag", False),
         )
 
     def _cli_resolved_path(self) -> str | None:
@@ -374,8 +378,7 @@ class LlamaCppAdapter(BaseLLMAdapter):
                 "--jinja",
                 "-rea",
                 "off",
-                "--reasoning-budget",
-                "0",
+                *(["--reasoning-budget", "0"] if self.reasoning_budget_flag else []),
                 "-st",
                 "-p",
                 cli_prompt,
