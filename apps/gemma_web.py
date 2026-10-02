@@ -16,6 +16,9 @@ from genai.web.service import GemmaWebService
 
 
 STATIC_DIR = ROOT / "web" / "gemma_chat"
+# Plan 38: extra static scripts + private mouth keyframes rendered from the fixed avatar (guard-checked, never in git)
+STATIC_SCRIPTS = {"/hud.js", "/avatar.js", "/realtime.js", "/pcm-worklet.js"}
+MOUTH_DIR = ROOT / "runs" / "plan38" / "avatar" / "mouth"
 
 
 def _read_static_asset(name: str) -> tuple[bytes, str]:
@@ -28,6 +31,8 @@ def _read_static_asset(name: str) -> tuple[bytes, str]:
         content_type = "text/css; charset=utf-8"
     elif name.endswith(".mp4"):
         content_type = "video/mp4"
+    elif name.endswith(".jpg"):
+        content_type = "image/jpeg"
     else:
         content_type = "application/octet-stream"
     return path.read_bytes(), content_type
@@ -57,6 +62,16 @@ class GemmaWebHandler(BaseHTTPRequestHandler):
             return
         if path == "/avatar.jpg":
             self._serve_static("avatar.jpg")
+            return
+        if path in STATIC_SCRIPTS:
+            self._serve_static(path.lstrip("/"))
+            return
+        if path.startswith("/avatar/mouth/"):
+            self._serve_mouth(path.removeprefix("/avatar/mouth/"))
+            return
+        if path == "/api/thoughts":
+            n = int((parse_qs(parsed.query).get("n") or ["20"])[0])
+            self._send_json(self.app.thoughts_payload(n))
             return
         if path in {"/mic_check", "/mic_check.html"}:
             self._serve_static("mic_check.html")
@@ -188,6 +203,19 @@ class GemmaWebHandler(BaseHTTPRequestHandler):
         self.end_headers()
         self.wfile.write(body)
 
+    def _serve_mouth(self, name: str) -> None:
+        import re as _re
+        if not _re.fullmatch(r"k[0-7]\.jpg|manifest\.json", name) or not (MOUTH_DIR / name).exists():
+            self._send_json({"ok": False, "error": "not_found"}, status=HTTPStatus.NOT_FOUND)
+            return
+        body = (MOUTH_DIR / name).read_bytes()
+        self.send_response(HTTPStatus.OK)
+        self.send_header("Content-Type", "image/jpeg" if name.endswith(".jpg") else "application/json")
+        self.send_header("Content-Length", str(len(body)))
+        self.send_header("Cache-Control", "max-age=300")
+        self.end_headers()
+        self.wfile.write(body)
+
     def _serve_life_artifact(self, path: str) -> None:
         rel = unquote(path.removeprefix("/artifacts/asal/"))
         run_id, sep, asset = rel.partition("/")
@@ -240,6 +268,7 @@ def main() -> int:
     parser.add_argument("--host", default="127.0.0.1")
     parser.add_argument("--port", type=int, default=8080)
     parser.add_argument("--history-turns", type=int, default=6)
+    parser.add_argument("--ws-port", type=int, default=None, help="realtime WebSocket port (default: port+1; 0 disables)")
     args = parser.parse_args()
 
     app = GemmaWebService(
@@ -251,6 +280,15 @@ def main() -> int:
     )
     server = ThreadingHTTPServer((args.host, args.port), GemmaWebHandler)
     server.app = app
+    ws_port = args.port + 1 if args.ws_port is None else args.ws_port
+    if ws_port and app.loop is not None:
+        from genai.web.realtime import RealtimeServer
+        rt = RealtimeServer(app, host=args.host, port=ws_port)
+        rt.warm()
+        ok = rt.start()
+        app.realtime = rt
+        app.ws_port = ws_port if ok else None
+        print(f"Realtime WebSocket {'listening on ws://%s:%d/ws/session' % (args.host, ws_port) if ok else 'failed: ' + str(rt.error)}")
     print(f"Gemma web chat listening on http://{args.host}:{args.port}")
     print(f"Run artifacts: {app.run_dir}")
     try:

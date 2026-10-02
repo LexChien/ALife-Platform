@@ -1,0 +1,146 @@
+# Plan 38 DigiClone JARVIS-style assistant (resident llama-server + cognitive loop + streaming voice).
+# Same GGUF / persona memory collection as gemma_llama_cpp.yaml; llama-cli stays as automatic fallback.
+defaults:
+  runtime_profile:
+    device: auto
+    precision: fp32
+    backend: local
+  tracking:
+    enabled: false
+  llm:
+    model_id: gemma_bootstrap_v1
+    # Plan 38 J1: resident llama-server (-rea off, no --reasoning-budget; A/B runs/plan38/llm/cli_budget_ab_*.json)
+    backend: llama_server
+    server:
+      manage: true
+      port: 8091
+      ctx: 16384
+      n_parallel: 2
+      watchdog: true
+      fallback: llama_cpp
+      timeout: 120
+      # ban vocab tokens of scripts never used by Lex (round-2 stray Bengali: 3/30 -> 0/30, no latency cost)
+      ban_scripts: [BENGALI, DEVANAGARI]
+    cli_path: tools/llama_completion
+    context_length: 4096
+    temperature: 0.7
+    max_tokens: 200
+    n_gpu_layers: 0
+    verbose: false
+  voice:
+    # Plan 37 G3: offline STT (faster-whisper; falls back to macOS Speech) + on-device TTS (macOS say; browser TTS fallback)
+    input_provider: local_whisper_via_upload
+    output_provider: macos_say
+    # medium: CER 0.036 vs small 0.145 on 18 synthetic zh_TW clips (runs/plan37/stt_bench, 2026-10-02)
+    whisper_model: medium
+    # Plan 37 R2: MLX (Apple GPU) large-v3 fixes the Eddy-voice clip (CER 0.333 -> 0.0, Eddy mean 0.076 -> 0.036)
+    # without a test-leaking prompt; output converted to zh-TW via OpenCC (runs/plan37/stt_bench_r2). Falls back to
+    # faster-whisper when mlx_whisper is not installed (e.g. Ubuntu).
+    whisper_backend: mlx
+    mlx_whisper_model: mlx-community/whisper-large-v3-mlx
+    whisper_preload: true
+    # Plan 38 J2.3: streaming turn STT. turbo fast path p50 0.61 s vs large-v3 (same CER on zh synthetic set);
+    # the HTTP /api/voice upload path keeps large-v3 (round-2 decision) for accuracy.
+    stream_stt_model: mlx-community/whisper-large-v3-turbo
+    # Plan 38 J2.4: resident NSSpeechSynthesizer daemon (sample-identical to `say -v Meijia`), say fallback
+    tts_resident: true
+    ack: true
+    tts_voice: Meijia
+    recognition_lang: zh-TW
+    synthesis_lang: zh-TW
+    auto_submit: true
+    auto_speak: true
+  avatar:
+    profile: orb
+    display_name: DigiClone
+    enable_visual_state: true
+    states:
+      idle: idle
+      listening: listening
+      thinking: thinking
+      speaking: speaking
+      error: error
+  emotion:
+    enabled: true
+    # Plan 37 R2: hybrid = lexicon when confident, else real Gemma classification.
+    # Public zh-TW set (n=200): lexicon 0.45, llm 0.83, hybrid 0.825 (runs/plan37/emotion_r2).
+    detector: hybrid
+    # 0.8 chosen post-hoc on the same eval records (public 0.84, hard 0.81, ~90% of turns call the LLM); disclosed in log.
+    hybrid_threshold: 0.8
+  cognition:
+    enabled: true
+    think: true
+    # HUD thought stream is OFF by default (Lex toggles it on).
+    thought_stream_default: false
+    # voice turns: LLM emotion classifier runs in parallel with speech (saves ~0.4 s prep); text keeps blocking hybrid
+    emotion_async_for_voice: true
+    self_state: runs/digiclone/self_state.json
+    thoughts: runs/digiclone/thoughts.jsonl
+    speech_rules: >-
+      Speak like a calm, capable personal assistant (JARVIS style) for Lex: answer first, short spoken
+      sentences, no markdown or lists unless asked. Never claim you performed an action (sent, booked,
+      searched, saved, opened) unless a tool result in this conversation shows it. 請用與使用者相同的語言回答。
+  life:
+    enabled: true
+    dna:
+      enabled: true
+      store: runs/dna/clone_store
+      apply_sampling: false
+      founder_traits:
+        warmth: 0.7
+        empathy: 0.75
+        curiosity: 0.5
+        verbosity: 0.35
+        formality: 0.4
+        playfulness: 0.3
+        stability: 0.8
+    memory:
+      retrieval_limit: 5
+      scope: session  # dialogue retrieval per session; "記住…" facts stay global
+      vector_db: false
+      # Plan 37 R2: zh retrieval R@1 0.167 (chroma default) -> 0.833 (runs/plan37/zh_retrieval/20261002-062625).
+      # New collection <name>__multilingual_e5_small; old default-embedding collection is copied once, never deleted.
+      # R2 update (07:50): e5-small fails cross-language recall (English memory, Chinese query R@1 0.083 / R@3 0.25);
+      # bge-m3: zh R@1 0.933, cross-language R@3 1.0, ~165 ms/query (runs/plan37/zh_retrieval/20261002-074501).
+      # Migration copies the union of all prior collections (e5 + original), never deletes.
+      embedding: BAAI/bge-m3
+    persona:
+      name: "ALife Prototype"
+      tone: "calm, factual, precise"
+      principles:
+        - "state verified project progress from local artifacts"
+        - "separate working prototype behavior from unfinished research"
+        - "use ASAL organism artifacts as the visible artificial-life body"
+      goals:
+        - "combine ASAL progress, Digital Clone memory, Gemma inference, and browser voice"
+        - "answer status questions without pretending the humanoid avatar is complete"
+      facts:
+        - "ASAL latest run artifacts are used as the organism body in the web prototype."
+        - "Digital Clone memory is used only for short local interaction continuity in this web prototype."
+        - "The human-like avatar is not fixed unless a real avatar asset is present."
+        - "Lenia 是連續型細胞自動機（Chan 2018），是 ASAL 使用的人工生命模擬基質之一；Lenia 不是對話層，對話層是 ALife Prototype（Gemma）。"
+
+system: |
+  你是 ALife Prototype，一個本機人工生命雛形的對話層。
+  你結合 ASAL 生命體進度、Digital Clone 短期記憶、Gemma 4 推理，以及瀏覽器語音互動。
+  你必須清楚區分「已由本機 artifact 驗證」與「仍是待辦或未驗證」。
+  不要宣稱人形 avatar 已完成。
+  請使用繁體中文回答。
+prompt: "Explain the current artificial life prototype status"
+context: "Local ALife prototype baseline. Use repository progress and ASAL artifacts as grounding."
+
+profiles:
+  cpu_smoke:
+    runtime_profile:
+      device: cpu
+  mac_metal:
+    runtime_profile:
+      device: cpu
+    llm:
+      n_gpu_layers: 99
+  browser_demo:
+    voice:
+      recognition_lang: zh-TW
+      synthesis_lang: zh-TW
+      auto_submit: true
+      auto_speak: true

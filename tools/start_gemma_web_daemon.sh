@@ -7,7 +7,9 @@ cd "$ROOT"
 SESSION="${GEMMA_WEB_TMUX_SESSION:-gemma_web}"
 HOST="${GEMMA_WEB_HOST:-127.0.0.1}"
 PORT="${GEMMA_WEB_PORT:-8080}"
-CONFIG="${GEMMA_WEB_CONFIG:-configs/genai/gemma_llama_cpp.yaml}"
+# Plan 38: DigiClone JARVIS config (resident llama-server + cognitive loop + realtime WS on PORT+1).
+# Previous llama-cli config: GEMMA_WEB_CONFIG=configs/genai/gemma_llama_cpp.yaml
+CONFIG="${GEMMA_WEB_CONFIG:-configs/genai/digiclone_jarvis.yaml}"
 # macOS: Metal offload (same GGUF, same llama.cpp, ~4x faster). Override with GEMMA_WEB_PROFILE.
 if [[ "$(uname -s)" == "Darwin" ]]; then DEFAULT_PROFILE=mac_metal; else DEFAULT_PROFILE=cpu_smoke; fi
 PROFILE="${GEMMA_WEB_PROFILE:-$DEFAULT_PROFILE}"
@@ -35,11 +37,16 @@ tmux has-session -t "$SESSION" 2>/dev/null && tmux kill-session -t "$SESSION" ||
 pkill -f 'apps/gemma_web.py' 2>/dev/null || true
 sleep 1
 
+# Plan 38 J1: make sure the resident llama-server (tmux gemma_llm, :8091) is up before the web app adopts it
+if grep -q "backend: llama_server" "$CONFIG" 2>/dev/null; then
+  "$PY" -m genai.llm.server_manager ensure >/dev/null 2>&1 || echo "WARN: llama-server ensure failed (web falls back to llama-cli)" >&2
+fi
+
 : > "$LOG"
 tmux new-session -d -s "$SESSION" -e "PATH=$PATH" "cd '$ROOT' && exec '$PY' -u apps/gemma_web.py --config '$CONFIG' --profile '$PROFILE' --host '$HOST' --port '$PORT' >>'$LOG' 2>&1"
 
 ok=0
-for i in $(seq 1 60); do
+for i in $(seq 1 180); do  # Plan 38: bge-m3 + whisper + TTS + ack warm-up need up to ~40 s under load
   if curl -fsS --max-time 2 "http://127.0.0.1:${PORT}/api/health" 2>/dev/null | grep -q gemma_web; then
     ok=1
     break

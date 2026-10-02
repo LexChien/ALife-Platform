@@ -122,6 +122,12 @@ class GemmaWebService:
             candidate = MacSayTTS(voice=str(self.voice_cfg.get("tts_voice", "Meijia")))
             if candidate.healthcheck()["ok"]:
                 self.tts = candidate
+                if self.voice_cfg.get("tts_resident", False):
+                    # Plan 38 J2.4: resident synthesizer (same engine/voice; sample-identical to say), say = fallback
+                    from voice.tts_stream import ResidentTTS
+                    resident = ResidentTTS(voice=candidate.voice, fallback=candidate)
+                    if resident.start():
+                        self.tts = resident
         # Plan 37 G4: per-session emotion state.
         self.emotion_cfg = self.cfg.get("emotion", {}) if isinstance(self.cfg.get("emotion"), dict) else {}
         self.emotion_enabled = bool(self.emotion_cfg.get("enabled", True))
@@ -134,6 +140,7 @@ class GemmaWebService:
         # llm defaults above, otherwise apply_sampling is silently overwritten (R2 fix).
         self._init_dna()
         self.profile = self.cfg.get("_active_profile")
+        self._init_plan38()
         self.store = ChatSessionStore()
         self.sessions_dir = self.run_dir / "sessions"
         self.transcriptions_dir = self.run_dir / "transcriptions"
@@ -164,6 +171,61 @@ class GemmaWebService:
             "dna": self.dna_payload(),
         }
         save_json(self.run_dir / "server_meta.json", self.server_meta)
+
+    def _init_plan38(self) -> None:
+        """Plan 38: cognitive loop (llama_server backend only), avatar identity lock, streaming STT."""
+        from avatar.identity import verify_assets
+        self.avatar_lock = verify_assets()
+        self.cog_cfg = self.cfg.get("cognition", {}) if isinstance(self.cfg.get("cognition"), dict) else {}
+        self.loop = None
+        if getattr(self.adapter, "backend_name", "") == "llama_server" and self.cog_cfg.get("enabled", True):
+            from cognition.loop import CognitiveLoop
+            self.loop = CognitiveLoop(
+                self.adapter, persona_name=self.clone_persona.name,
+                think_persona=str(self.cog_cfg.get("think_persona") or self.system or ""),
+                state_path=ROOT / str(self.cog_cfg.get("self_state", "runs/digiclone/self_state.json")),
+                thoughts_path=ROOT / str(self.cog_cfg.get("thoughts", "runs/digiclone/thoughts.jsonl")),
+                think_enabled=bool(self.cog_cfg.get("think", True)), max_tokens=int(self.max_tokens or 200),
+                temperature=float(self.temperature if self.temperature is not None else 0.6))
+            self.adapter.default_slot = 1  # emotion / utility calls share the thought slot, slot 0 stays speech-only
+        self.stream_stt = None
+        self.stream_stt_error = None
+        stt_model = self.voice_cfg.get("stream_stt_model")
+        if stt_model:
+            try:
+                from voice.stt_stream import UtteranceSTT
+                if UtteranceSTT.available():
+                    self.stream_stt = UtteranceSTT(str(stt_model))
+                    if self.voice_cfg.get("whisper_preload", False):
+                        self.stream_stt.preload()
+            except Exception as exc:
+                self.stream_stt_error = f"{type(exc).__name__}: {exc}"
+
+    def plan38_payload(self) -> dict:
+        return {"cognitive_loop": self.loop is not None,
+                "self_state": self.loop.state.public() if self.loop else None,
+                "thought_stream_default": bool(self.cog_cfg.get("thought_stream_default", False)),
+                "avatar_lock": self.avatar_lock,
+                "stream_stt": {"model": getattr(self.stream_stt, "model_repo", None), "error": self.stream_stt_error},
+                "tts_resident": getattr(self.tts, "provider", None) == "macos_resident",
+                "ws_port": getattr(self, "ws_port", None),
+                "realtime": self.realtime.health() if getattr(self, "realtime", None) else None,
+                "llm_server": self.adapter.healthcheck() if self.loop is not None else None}
+
+    def thoughts_payload(self, n: int = 20) -> dict:
+        """Private thought stream for the HUD (Lex-only, local). Off by default in the UI."""
+        if self.loop is None:
+            return {"ok": True, "thoughts": [], "cognitive_loop": False}
+        path = self.loop.thoughts_path
+        rows = []
+        if path.exists():
+            import json as _json
+            for line in path.read_text(encoding="utf-8").splitlines()[-max(1, min(n, 200)):]:
+                try:
+                    rows.append(_json.loads(line))
+                except Exception:
+                    pass
+        return {"ok": True, "thoughts": rows, "self_state": self.loop.state.public()}
 
     def _init_dna(self) -> None:
         dna_cfg = self.life_cfg.get("dna", {}) if isinstance(self.life_cfg.get("dna"), dict) else {}
@@ -262,6 +324,7 @@ class GemmaWebService:
             "dna": {k: v for k, v in self.dna_payload().items() if k in ("enabled", "apply_sampling", "lineage_records")}
             | {"genome_id": self.genome.genome_id, "generation": self.genome.generation},
             "vlm": self.vlm_payload(),
+            "plan38": self.plan38_payload(),
         }
 
     def vlm_payload(self) -> dict:
@@ -324,6 +387,9 @@ class GemmaWebService:
         user_message = (message or "").strip()
         if not user_message:
             raise ValueError("message is required")
+        if self.loop is not None:
+            return self.chat_stream(session_id, user_message, voice_features=voice_features, want_tts=want_tts,
+                                    source=source)
         t_start = time.time()
 
         if self.live_life:
@@ -448,6 +514,164 @@ class GemmaWebService:
             },
             "messages": session.to_dict()["messages"],
         }
+
+    # ------------------------------------------------------------------ Plan 38 streaming turn
+    def _history_messages(self, session) -> list[dict]:
+        """Sliding window that moves in blocks of 6 messages so the cached prompt prefix stays stable (J1.4)."""
+        pairs = session.transcript_pairs()
+        window = max(6, int(self.history_turns or 12))
+        start = max(0, len(pairs) - window)
+        start -= start % 6
+        return [{"role": "user" if r == "user" else "assistant", "content": t} for r, t in pairs[start:]]
+
+    def _stable_system(self) -> str:
+        built = self.clone_prompt_builder.build(self.clone_persona, [], "")
+        cog = str(self.cog_cfg.get("speech_rules") or "")
+        return "\n".join(p for p in [self.system, built.get("system"), self._dna_system_text(), cog] if p)
+
+    def chat_stream(self, session_id: str | None, message: str, *, voice_features: dict | None = None,
+                    want_tts: bool = False, source: str = "text", emit=None, cancel=None,
+                    want_thoughts: bool = False, trace=None) -> dict:
+        """Plan 38 J1.3/J4: speak||think turn on the resident llama-server. ``emit`` receives streaming events
+        (sentence / audio / thought / emotion); the returned payload matches /api/chat."""
+        from cognition.reply_guard import filter_memories
+        from concurrent.futures import ThreadPoolExecutor
+        emit = emit or (lambda e: None)
+        user_message = (message or "").strip()
+        t0 = time.time()
+        session = self.store.get_or_create(session_id)
+        if self.live_life:
+            self.live_life.set_state("thinking", prompt=user_message)
+        memory_cfg = self.life_cfg.get("memory", {}) if isinstance(self.life_cfg.get("memory"), dict) else {}
+        scope = session.session_id if memory_cfg.get("scope", "session") == "session" else None
+
+        def _retrieve():
+            if not self.life_enabled:
+                return []
+            return self.clone_memory.retrieve_for_prompt(user_message, limit=int(memory_cfg.get("retrieval_limit", 5)), scope=scope)
+
+        detector = str(self.emotion_cfg.get("detector", "lexicon"))
+        threshold = float(self.emotion_cfg.get("hybrid_threshold", 0.7))
+        # Plan 38 J4: for voice turns the LLM emotion classifier runs in PARALLEL with speech (it cost ~0.4 s of
+        # prep per turn). A confident lexicon result still guides this turn; otherwise the hybrid result updates
+        # the emotion state in the background (HUD + next turn).
+        async_emotion = source == "voice" and detector == "hybrid" and bool(self.cog_cfg.get("emotion_async_for_voice", True))
+        deferred = {"pending": False}
+
+        def _emotion():
+            if not self.emotion_enabled:
+                return None
+            if async_emotion:
+                lex = detect_emotion(None, user_message, mode="lexicon")
+                if lex["label"] != "neutral" and float(lex["confidence"]) >= threshold:
+                    return {**lex, "source": "text_lexicon_v1 (hybrid: confident)"}
+                deferred["pending"] = True
+                return None
+            return detect_emotion(self.adapter, user_message, mode=detector, threshold=threshold)
+        with ThreadPoolExecutor(max_workers=2) as pool:
+            f_mem, f_emo = pool.submit(_retrieve), pool.submit(_emotion)
+            retrieved, observed = f_mem.result(), f_emo.result()
+        prep_s = round(time.time() - t0, 3)
+        memories, dropped_secret = filter_memories(retrieved, user_message)
+        life_snapshot = self.life_index.snapshot() if self.life_enabled else None
+        emotion_payload, mod = None, None
+        if observed is not None:
+            voice_arousal, voice_arousal_method = None, None
+            if voice_features:
+                base = self.prosody_baselines.setdefault(session.session_id, ProsodyBaseline())
+                cal = arousal_from_prosody_calibrated(voice_features, base)
+                voice_arousal, voice_arousal_method = cal["arousal"], cal["method"]
+            state = self.emotion_state(session.session_id).update(observed, voice_arousal=voice_arousal)
+            mod = modulation(state, base_voice=self.genome_expression.get("voice") if self.dna_enabled else None)
+            emotion_payload = {"observed": observed, "voice_features": voice_features, "voice_arousal": voice_arousal,
+                               "voice_arousal_method": voice_arousal_method, "state": state.to_dict(), "modulation": mod}
+            emit({"type": "emotion", "emotion": emotion_payload})
+        if deferred["pending"]:
+            sid_for_bg = session.session_id
+
+            def _bg_emotion():
+                try:
+                    obs = detect_emotion(self.adapter, user_message, mode=detector, threshold=threshold)
+                    st = self.emotion_state(sid_for_bg).update(obs)
+                    emit({"type": "emotion", "deferred": True, "emotion": {"observed": obs, "state": st.to_dict()}})
+                except Exception as exc:
+                    logger.warning("deferred emotion failed: %s", exc)
+            threading.Thread(target=_bg_emotion, daemon=True).start()
+        dyn = []
+        # ASAL life context (~395 tokens) changes only when a run finishes -> it lives in the cached system prompt;
+        # per-turn notes keep only memories + tone + language lock (prompt_n per turn 550-800 -> see log).
+        life_text = self.life_index.context_text(life_snapshot) if life_snapshot else ""
+        built = self.clone_prompt_builder.build(self.clone_persona, memories, user_message, extra_context=None)
+        if built.get("context"):
+            dyn.append("Digital Clone / ASAL memory:\n" + built["context"])
+        if mod and mod.get("system_guidance"):
+            dyn.append(mod["system_guidance"])
+        voice = (mod or {}).get("tts", {"rate": 1.0, "pitch": 1.0})
+        tts_chunks: list[dict] = []
+        tts_lock = threading.Lock()
+        tts_err: list[str] = []
+
+        def _on_event(ev):
+            if ev.get("type") == "sentence" and want_tts and self.tts is not None and not (cancel and cancel.is_set()):
+                try:
+                    out = self.tts.synthesize(ev["text"], self.tts_dir, rate=voice["rate"], pitch=voice["pitch"])
+                    item = {"index": ev["index"], "url": f"/api/tts/{out['file']}", "chars": len(ev["text"]),
+                            "duration_s": out.get("duration_s"), "synth_s": out.get("elapsed_s"), "text": ev["text"]}
+                    with tts_lock:
+                        tts_chunks.append(item)
+                    if trace is not None and ev["index"] == 0:
+                        trace.mark("first_audio_ready")
+                    emit({"type": "audio", **item})
+                except Exception as exc:
+                    tts_err.append(f"{type(exc).__name__}: {exc}")
+            if ev.get("type") == "sentence" and trace is not None and ev["index"] == 0:
+                trace.mark("first_sentence")
+            emit(ev)
+        if self.live_life:
+            self.live_life.set_state("speaking")
+        system = self._stable_system() + ("\n\n" + life_text if life_text else "")
+        res = self.loop.on_user_turn(user_message, system=system, history=self._history_messages(session),
+                                     dynamic_context="\n\n".join(dyn), memories=memories, all_memories=retrieved,
+                                     emit=_on_event, cancel=cancel, want_thoughts=want_thoughts,
+                                     history_text="\n".join(f"{m['role']}: {m['content']}" for m in self._history_messages(session)[-6:]))
+        if self.live_life:
+            self.live_life.set_state("idle")
+        reply = res["reply"]
+        hygiene = {"reasoning_leak": has_reasoning_leak(reply), "cli_banner": looks_like_cli_banner(reply),
+                   "prompt_echo": has_prompt_echo_residue(reply), "leak_guard_v2": bool(res["leaks"]),
+                   "guards": res["flags"], "memories_secret_gated": dropped_secret}
+        if not res.get("cancelled"):
+            session.append("user", user_message)
+            session.append("assistant", reply)
+            if self.life_enabled:
+                kind = "user_fact" if _REMEMBER_RE.search(user_message) else "dialogue"
+                self.clone_memory.add("user", user_message, kind=kind, scope=session.session_id)
+                self.clone_memory.add("assistant", reply, scope=session.session_id)
+        tts_chunks.sort(key=lambda c: c["index"])
+        tts_payload = None
+        if want_tts:
+            tts_payload = ({"ok": True, "url": tts_chunks[0]["url"], "chunked": len(tts_chunks) > 1, "chunks": tts_chunks,
+                            "first_chunk_s": tts_chunks[0]["synth_s"], "elapsed_s": tts_chunks[0]["synth_s"],
+                            "voice": getattr(self.tts, "voice", None), "provider": getattr(self.tts, "provider", None)}
+                           if tts_chunks else {"ok": False, "error": "; ".join(tts_err) or "no audio"})
+        timings = {"prep_s": prep_s, **res["timings"], "total_s": round(time.time() - t0, 3),
+                   "emotion_deferred": deferred["pending"]}
+        runtime = {"backend": "llama_server", "cognitive_loop": True, "thought_id": res.get("thought_id"),
+                   "thought_valid": res.get("thought_valid"), "lang": res.get("lang")}
+        self._save_session(session, None, runtime, life_snapshot,
+                           extra={"emotion": emotion_payload, "dna_genome_id": self.genome.genome_id, "hygiene": hygiene,
+                                  "source": source, "tts": tts_payload, "timings": timings, "thought_id": res.get("thought_id"),
+                                  "leaks": res["leaks"], "cancelled": res.get("cancelled")})
+        payload = {"ok": True, "schema_version": "1.0", "session_id": session.session_id, "reply": reply,
+                   "emotion": emotion_payload,
+                   "dna": {"genome_id": self.genome.genome_id, "generation": self.genome.generation, "tone": self.genome_expression["tone"]},
+                   "hygiene": hygiene, "tts": tts_payload, "timings": timings, "life": life_snapshot, "cleanup": None,
+                   "runtime": runtime, "self_state": res.get("self_state"), "cancelled": res.get("cancelled"),
+                   "session": {"message_count": session.message_count, "turn_count": session.turn_count,
+                               "reset_count": session.reset_count},
+                   "messages": session.to_dict()["messages"]}
+        emit({"type": "done", **{k: payload[k] for k in ("session_id", "reply", "hygiene", "timings", "self_state", "cancelled")}})
+        return payload
 
     def voice_chat(self, session_id: str | None, audio_bytes: bytes, content_type: str) -> dict:
         """Plan 37 V3: audio -> offline STT -> emotion(prosody) -> Gemma -> TTS in one round trip."""
