@@ -81,14 +81,27 @@
     applyClip();
   }).catch(() => {});
 
+  // Plan 40: profile 'yaying' adds her own-motion clips (idle sway / smile / glance / head tilt / speaking loop);
+  // profile 'digiclone' keeps the exact J3 mapping (smile / concerned / idle, no clip while speaking).
+  let profile = "digiclone";
+  fetch("/api/profile").then((r) => (r.ok ? r.json() : null)).then((p) => { if (p && p.active) { profile = p.active; applyClip(); } }).catch(() => {});
+
+  function pickClip(state, emotion, prof, have) {
+    const yy = prof === "yaying";
+    if (state === "speaking") return yy && have.yaying_speaking ? "yaying_speaking" : null;
+    if (emotion === "smile") return yy && have.yaying_smile ? "yaying_smile" : (have.smile ? "smile" : (have.idle ? "idle" : null));
+    if (emotion === "concerned" && have.concerned) return "concerned";
+    if (yy && (emotion === "attentive" || state === "thinking") && have.yaying_glance) return "yaying_glance";
+    if (yy && (emotion === "reassuring" || emotion === "calm" || state === "listening") && have.yaying_head_tilt) return "yaying_head_tilt";
+    if (yy && have.yaying_idle_sway) return "yaying_idle_sway";
+    return have.idle ? "idle" : null;
+  }
+
   function applyClip() {
     if (!clipEl) return;
-    let want = null;
-    if (curState !== "speaking") {
-      if (curEmotion === "smile" && clips.smile) want = "smile";
-      else if (curEmotion === "concerned" && clips.concerned) want = "concerned";
-      else if (clips.idle) want = "idle";
-    }
+    const want = pickClip(curState, curEmotion, profile, clips);
+    const wrapEl = document.getElementById("avatarWrap");
+    if (wrapEl) wrapEl.dataset.clip = want || "";
     if (want === curClip) return;
     curClip = want;
     if (!want) { clipEl.classList.remove("on"); return; }
@@ -111,5 +124,6 @@
   function setEmotion(e) { curEmotion = e || "neutral"; applyClip(); }
 
   preload();
-  window.DigiAvatar = { attach, setState, setEmotion, setLevel, isReady: () => ready, face, clips: () => ({ ...clips }), current: () => curClip };
+  window.DigiAvatar = { attach, setState, setEmotion, setLevel, pickClip,
+    setProfile: (p) => { profile = p || "digiclone"; applyClip(); }, profile: () => profile, isReady: () => ready, face, clips: () => ({ ...clips }), current: () => curClip };
 })();

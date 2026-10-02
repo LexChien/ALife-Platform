@@ -1015,3 +1015,26 @@ appendSystemMessage("Gemma 4 網頁對話已就緒。你可以打字，或按麥
 fetchHealth();
 syncAvatarState();
 messageInput.focus();
+
+// Plan 40: persona + voice profile switch (digiclone = original DigiClone/Meijia, yaying = 雅英 persona + cloned voice)
+(() => {
+  const sel = document.getElementById("profileSelect");
+  if (!sel) return;
+  const render = (p) => {
+    sel.innerHTML = "";
+    for (const [id, v] of Object.entries(p.profiles || {})) {
+      const o = document.createElement("option");
+      o.value = id; o.disabled = !v.available;
+      o.textContent = `${v.label || id} · ${v.tts_voice || ""}${v.available ? "" : " (unavailable)"}`;
+      sel.appendChild(o);
+    }
+    sel.value = p.active;
+  };
+  fetch("/api/profile").then((r) => r.json()).then(render).catch(() => { sel.hidden = true; });
+  sel.addEventListener("change", () => {
+    sel.disabled = true;
+    fetch("/api/profile", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ profile: sel.value }) })
+      .then((r) => r.json()).then((p) => { if (p.active) { render(p); if (window.DigiAvatar && window.DigiAvatar.setProfile) window.DigiAvatar.setProfile(p.active); } })
+      .catch((e) => console.warn("profile switch failed", e)).finally(() => { sel.disabled = false; });
+  });
+})();

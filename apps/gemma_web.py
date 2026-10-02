@@ -88,6 +88,9 @@ class GemmaWebHandler(BaseHTTPRequestHandler):
         if path == "/api/dna":
             self._send_json({"ok": True, **self.app.dna_payload()})
             return
+        if path == "/api/profile":  # Plan 40: active persona/voice profile + available ones
+            self._send_json(self.app.profile_payload())
+            return
         if path == "/api/emotion":
             sid = (parse_qs(parsed.query).get("session_id") or [None])[0]
             self._send_json(self.app.emotion_payload(sid))
@@ -135,6 +138,17 @@ class GemmaWebHandler(BaseHTTPRequestHandler):
                 return
             if self.path == "/api/tts":
                 self._send_json(self.app.synthesize(payload.get("session_id"), payload.get("text", "")))
+                return
+            if self.path == "/api/profile":  # Plan 40: {"profile": "yaying"|"digiclone", "voice": optional}
+                try:
+                    if payload.get("profile"):
+                        self._send_json(self.app.apply_profile(str(payload["profile"]), voice=payload.get("voice")))
+                    elif payload.get("voice"):
+                        self._send_json({"ok": True, "tts": self.app.set_voice(str(payload["voice"])), **self.app.profile_payload()})
+                    else:
+                        raise ValueError("need 'profile' or 'voice'")
+                except (KeyError, ValueError) as exc:
+                    raise ValueError(str(exc)) from exc
                 return
             if self.path == "/api/reset":
                 response = self.app.reset(payload.get("session_id"))

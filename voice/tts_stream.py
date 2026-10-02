@@ -159,12 +159,22 @@ class AckCache:
         self._i = 0
 
     def warm(self) -> dict:
+        # Plan 40: a non-default voice gets its own file names (no browser-cache mix-up after a voice switch)
+        tag = "" if getattr(self.tts, "provider", "") in ("macos_resident", "macos_say", "") else \
+            "_" + __import__("hashlib").sha1(str(getattr(self.tts, "voice", "")).encode()).hexdigest()[:8]
+        files: dict[str, list[str]] = {}
         for lang, phrases in ACKS.items():
-            self.files[lang] = []
+            files[lang] = []
             for k, p in enumerate(phrases):
-                out = self.tts.synthesize(p, self.outdir, stem=f"ack_{lang}_{k}")
-                self.files[lang].append(out["file"])
+                out = self.tts.synthesize(p, self.outdir, stem=f"ack{tag}_{lang}_{k}")
+                files[lang].append(out["file"])
+        self.files = files
         return self.files
+
+    def retarget(self, tts) -> dict:
+        """Plan 40: re-render the acknowledgements in the newly selected voice (same object, sessions keep it)."""
+        self.tts = tts
+        return self.warm()
 
     def pick(self, lang: str) -> str | None:
         files = self.files.get(lang) or self.files.get("zh")

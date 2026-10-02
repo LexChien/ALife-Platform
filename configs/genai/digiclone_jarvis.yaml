@@ -50,6 +50,26 @@ defaults:
     synthesis_lang: zh-TW
     auto_submit: true
     auto_speak: true
+  # Plan 40: switchable persona + voice profiles. 'digiclone' = everything above, unchanged (always available).
+  # 'yaying' = 雅英 persona/speech style from a PRIVATE machine-local file (derived from her transcripts, never
+  # committed) + her cloned voice. Missing private files -> profile listed unavailable, digiclone stays active.
+  # Switch: web UI profile selector, POST /api/profile {"profile": "yaying"|"digiclone"}, or env GEMMA_WEB_CLONE_PROFILE.
+  clone_profiles:
+    default: digiclone
+    profiles:
+      yaying:
+        label: 雅英
+        persona_file: runs/yaying_clone/persona_yaying.yaml
+        tts_voice: 雅英
+  voices:
+    雅英:
+      provider: clone_tts
+      engine: f5
+      python: ~/yaying_cache/venv_f5/bin/python
+      device: mps
+      nfe: 16
+      ref_wav: runs/yaying_clone/tts_ref/ref.wav
+      ref_text_file: runs/yaying_clone/tts_ref/ref.txt
   avatar:
     profile: orb
     display_name: DigiClone

@@ -151,6 +151,7 @@ class GemmaWebService:
         self._init_dna()
         self.profile = self.cfg.get("_active_profile")
         self._init_plan38()
+        self._init_clone_profiles()
         self.store = ChatSessionStore()
         self.sessions_dir = self.run_dir / "sessions"
         self.transcriptions_dir = self.run_dir / "transcriptions"
@@ -210,6 +211,69 @@ class GemmaWebService:
                         self.stream_stt.preload()
             except Exception as exc:
                 self.stream_stt_error = f"{type(exc).__name__}: {exc}"
+
+    # ------------------------------------------------------------------ Plan 40: switchable persona + voice
+    def _init_clone_profiles(self) -> None:
+        """Plan 40: profiles (persona/speech style/TTS voice). Base 'digiclone' = the unchanged original config."""
+        from genai.web.clone_profiles import CloneProfiles
+        self.clone_profiles = CloneProfiles(self.cfg)
+        base_voice = self.clone_profiles.base["tts_voice"]
+        self.tts_voices = {base_voice: self.tts} if self.tts is not None else {}
+        self.profile_error = None
+        active = self.clone_profiles.active
+        self.clone_profiles.active = "digiclone"
+        if active != "digiclone":
+            try:
+                self.apply_profile(active)
+            except Exception as exc:  # base profile stays active, service keeps working
+                self.profile_error = f"{type(exc).__name__}: {exc}"
+                logger.warning("clone profile %s failed: %s", active, exc)
+
+    def _voice(self, name: str):
+        if name in self.tts_voices:
+            return self.tts_voices[name]
+        spec = self.clone_profiles.voice_spec(name)
+        if spec is None:
+            raise KeyError(f"unknown voice {name!r}")
+        from genai.web.clone_profiles import build_voice
+        base = self.tts_voices.get(self.clone_profiles.base["tts_voice"])
+        tts = build_voice(spec, fallback=base, name=name)
+        if not tts.start():
+            raise RuntimeError(f"voice {name} failed to start: {tts.start_error}")
+        self.tts_voices[name] = tts
+        return tts
+
+    def set_voice(self, name: str) -> dict:
+        tts = self._voice(name)
+        self.tts = tts
+        self.voice_cfg["tts_voice"] = name
+        rt = getattr(self, "realtime", None)
+        if rt is not None and getattr(rt, "ack", None) is not None:
+            try:
+                rt.ack.retarget(tts)
+            except Exception as exc:
+                logger.warning("ack retarget failed: %s", exc)
+        return tts.healthcheck()
+
+    def apply_profile(self, pid: str, voice: str | None = None) -> dict:
+        prof = self.clone_profiles.get(pid) if pid in self.clone_profiles.profiles else None
+        if prof is None or not prof.get("available"):
+            self.clone_profiles.switch(pid)  # raises a precise error
+        want_voice = voice or prof.get("tts_voice")
+        tts_health = self.set_voice(want_voice) if want_voice else None
+        self.clone_profiles.switch(pid)
+        p = prof.get("persona") or {}
+        self.life_cfg["persona"] = p
+        self.clone_persona = self._build_clone_persona()
+        self.system = prof.get("system")
+        if isinstance(getattr(self, "cog_cfg", None), dict):
+            self.cog_cfg["speech_rules"] = prof.get("speech_rules")
+        return {"ok": True, **self.profile_payload(), "tts": tts_health}
+
+    def profile_payload(self) -> dict:
+        return {**self.clone_profiles.public(), "tts_voice": getattr(self.tts, "voice", None),
+                "tts_provider": getattr(self.tts, "provider", None), "persona_name": self.clone_persona.name,
+                "error": getattr(self, "profile_error", None)}
 
     def plan38_payload(self) -> dict:
         return {"cognitive_loop": self.loop is not None,
@@ -327,6 +391,7 @@ class GemmaWebService:
             "stt": self.transcriber.healthcheck() if self.transcriber else None,
             "stt_offline": self.offline_stt.healthcheck() if self.offline_stt else {"provider": "faster_whisper", "installed": False, "ok": False},
             "tts": self.tts.healthcheck() if self.tts else {"provider": "browser_speech_synthesis", "server_side": False},
+            "clone_profile": self.profile_payload() if getattr(self, "clone_profiles", None) else None,
             "memory": {"embedding": self.memory_embedding or "chroma_default", "embedding_device": getattr(self, "memory_embedding_device", None),
                        "collection": self.clone_memory.collection_name,
                        "vector_db": self.clone_memory.use_vector_db, "migrated": self.memory_migrated},

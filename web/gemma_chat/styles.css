@@ -499,3 +499,7 @@ button {
 .avatar-clip { z-index: 2; opacity: 0; transition: opacity 150ms linear; pointer-events: none; animation: none; }
 .avatar-clip.on { opacity: 1; }
 .avatar-mouth { z-index: 3; }
+
+/* Plan 40: the yaying speaking loop already carries real lip motion -> hide the still-image mouth warp under it */
+.avatar-wrap[data-clip="yaying_speaking"] .avatar-mouth { display: none; }
+.profile-select { margin-left: 6px; }
