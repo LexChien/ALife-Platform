@@ -14,10 +14,15 @@ CONFIG="${GEMMA_WEB_CONFIG:-configs/genai/digiclone_jarvis.yaml}"
 if [[ "$(uname -s)" == "Darwin" ]]; then DEFAULT_PROFILE=mac_metal; else DEFAULT_PROFILE=cpu_smoke; fi
 PROFILE="${GEMMA_WEB_PROFILE:-$DEFAULT_PROFILE}"
 PY="${ROOT}/.venv/bin/python"
-LOG="${ROOT}/runs/live_engine/gemma_web.log"
+# 2026-10-03: one log per start (never truncated) + exit record (code/signal/time/tail) in gemma_web_exits.log.
+# runs/live_engine/gemma_web.log is a symlink to the current start's log (same path as before for readers).
+LOGDIR="${ROOT}/runs/live_engine/gemma_web_logs"
+STAMP="$(date +%Y%m%d-%H%M%S)"
+LOG="${LOGDIR}/gemma_web_${STAMP}.log"
+EXITS="${ROOT}/runs/live_engine/gemma_web_exits.log"
 PIDFILE="${ROOT}/runs/live_engine/gemma_web.pid"
 
-mkdir -p runs/live_engine
+mkdir -p runs/live_engine "$LOGDIR"
 
 if curl -fsS --max-time 2 "http://${HOST}:${PORT}/api/health" 2>/dev/null | grep -q gemma_web; then
   echo "already_up host=${HOST} port=${PORT}"
@@ -43,7 +48,10 @@ if grep -q "backend: llama_server" "$CONFIG" 2>/dev/null; then
 fi
 
 : > "$LOG"
-tmux new-session -d -s "$SESSION" -e "PATH=$PATH" "cd '$ROOT' && exec '$PY' -u apps/gemma_web.py --config '$CONFIG' --profile '$PROFILE' --host '$HOST' --port '$PORT' >>'$LOG' 2>&1"
+[[ -L runs/live_engine/gemma_web.log || ! -e runs/live_engine/gemma_web.log ]] || mv runs/live_engine/gemma_web.log "${LOGDIR}/gemma_web_before_${STAMP}.log"
+ln -sfn "gemma_web_logs/gemma_web_${STAMP}.log" runs/live_engine/gemma_web.log
+# No exec: the wrapper shell records how the app ended (rc>128 => killed by signal rc-128, e.g. 137 = SIGKILL).
+tmux new-session -d -s "$SESSION" -e "PATH=$PATH" "cd '$ROOT' && '$PY' -u apps/gemma_web.py --config '$CONFIG' --profile '$PROFILE' --host '$HOST' --port '$PORT' >>'$LOG' 2>&1; rc=\$?; { echo \"\$(date '+%F %T %z') start=${STAMP} exit rc=\$rc signal=\$(( rc > 128 ? rc - 128 : 0 )) log=${LOG#${ROOT}/}\"; tail -5 '$LOG' | sed 's/^/    | /'; } >> '$EXITS'"
 
 ok=0
 for i in $(seq 1 180); do  # Plan 38: bge-m3 + whisper + TTS + ack warm-up need up to ~40 s under load
