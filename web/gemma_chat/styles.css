@@ -55,20 +55,48 @@ body {
   position: relative;
 }
 
-/* User should place avatar.jpg in web/gemma_chat/ */
-.noir-image-back {
+/* The fixed avatar (web/gemma_chat/avatar.jpg, private). Plan 38: same base look as before (contrast/brightness only);
+   NO hue-rotate / saturate / sepia / invert may ever apply to this layer or its ancestors. */
+.avatar-face {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: block;
   width: 100%;
   height: 100%;
-  background: url('/avatar.jpg') no-repeat center;
-  background-size: cover;
+  object-fit: cover;
   filter: contrast(1.1) brightness(0.85);
   animation: breathing 8s ease-in-out infinite;
+  user-select: none;
+}
+
+.avatar-stage { position: relative; width: 320px; margin: 0 auto 40px; }
+.avatar-stage .avatar-wrap { margin: 0 auto; }
+.avatar-halo {
+  position: absolute;
+  inset: -8px;
+  border-radius: 18px;
+  pointer-events: none;
+  z-index: 0;
+  box-shadow: 0 0 28px 2px rgba(120, 200, 255, 0.10);
+  transition: box-shadow 0.6s ease;
+}
+
+/* ASAL organism now lives in the LIFE CORE sidebar (Plan 38 J0.4) instead of covering the face */
+.life-visual-box {
+  position: relative;
+  width: 100%;
+  height: 120px;
+  margin: 8px 0 12px;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #030303;
+  border: 1px solid var(--border);
 }
 
 .life-visual {
   position: absolute;
   inset: 0;
-  z-index: 1;
   width: 100%;
   height: 100%;
   object-fit: contain;
@@ -78,7 +106,6 @@ body {
 .life-fallback {
   position: absolute;
   inset: 0;
-  z-index: 1;
   display: grid;
   place-items: center;
   color: rgba(255,255,255,0.26);
@@ -334,6 +361,7 @@ button {
     padding: 24px;
   }
 
+  .avatar-stage { width: min(320px, 82vw); }
   .avatar-wrap {
     width: min(320px, 82vw);
     height: min(400px, 96vw);
@@ -445,9 +473,9 @@ button {
   color: #fff;
 }
 
-/* Plan 37 G4: emotion-modulated avatar tint (data-emotion set from /api/chat modulation.avatar.expression) */
-.avatar-wrap[data-emotion="concerned"] { filter: saturate(0.75) hue-rotate(-12deg); }
-.avatar-wrap[data-emotion="reassuring"] { filter: saturate(0.85) brightness(0.97); }
-.avatar-wrap[data-emotion="calm"] { filter: saturate(0.7); }
-.avatar-wrap[data-emotion="smile"] { filter: saturate(1.2) brightness(1.05); }
-.avatar-wrap[data-emotion="attentive"] { filter: contrast(1.08); }
+/* Plan 37 G4 -> Plan 38 J0.3: emotion is shown as a HALO colour around the frame, never as a filter on the face. */
+.avatar-stage[data-emotion="concerned"] .avatar-halo { box-shadow: 0 0 34px 6px rgba(120, 150, 255, 0.45); }
+.avatar-stage[data-emotion="reassuring"] .avatar-halo { box-shadow: 0 0 34px 6px rgba(140, 220, 200, 0.40); }
+.avatar-stage[data-emotion="calm"] .avatar-halo { box-shadow: 0 0 30px 4px rgba(120, 200, 255, 0.30); }
+.avatar-stage[data-emotion="smile"] .avatar-halo { box-shadow: 0 0 36px 6px rgba(255, 200, 120, 0.45); }
+.avatar-stage[data-emotion="attentive"] .avatar-halo { box-shadow: 0 0 34px 6px rgba(0, 255, 204, 0.40); }

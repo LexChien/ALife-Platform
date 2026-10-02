@@ -12,6 +12,7 @@ const sessionStatus = document.getElementById("sessionStatus");
 const avatarStatus = document.getElementById("avatarStatus");
 const micHint = document.getElementById("micHint");
 const avatarWrap = document.getElementById("avatarWrap");
+const avatarStage = document.getElementById("avatarStage");
 const messageTemplate = document.getElementById("messageTemplate");
 const userVideo = document.getElementById("userVideo");
 const userVideoWrap = document.getElementById("userVideoWrap");
@@ -365,8 +366,9 @@ function renderEmotion(emotion, dna) {
     if (emotionStatus) {
       emotionStatus.textContent = `${st.label} v${Number(st.valence).toFixed(2)} a${Number(st.arousal).toFixed(2)}`;
     }
-    if (avatarWrap && emotion.modulation && emotion.modulation.avatar) {
-      avatarWrap.dataset.emotion = emotion.modulation.avatar.expression || "neutral";
+    if (avatarStage && emotion.modulation && emotion.modulation.avatar) {
+      // Plan 38 J0.3: colour the halo, never the face.
+      avatarStage.dataset.emotion = emotion.modulation.avatar.expression || "neutral";
     }
     lastVoiceModulation = emotion.modulation ? emotion.modulation.tts : null;
   }

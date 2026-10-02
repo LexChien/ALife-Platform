@@ -11,15 +11,18 @@
     <main class="app-shell">
       <section class="hero-panel">
         <div class="visual-container">
-          <div class="avatar-wrap" id="avatarWrap" data-state="idle">
-            <div class="noir-viewport">
-              <div class="noir-image-back"></div>
-              <img id="lifeVisual" class="life-visual" alt="ASAL artificial-life organism" hidden>
-              <div id="lifeFallback" class="life-fallback">ASAL</div>
-              <div class="sunlight-bars"></div>
-              <div class="interaction-lens"></div>
+          <div class="avatar-stage" id="avatarStage" data-emotion="neutral">
+            <!-- Plan 38 J0.3: emotion colour lives on this halo, never on the face (identity lock) -->
+            <div class="avatar-halo" id="avatarHalo" aria-hidden="true"></div>
+            <div class="avatar-wrap" id="avatarWrap" data-state="idle">
+              <div class="noir-viewport">
+                <!-- Plan 38 J0.4: the fixed avatar is the top visual layer of the viewport; ASAL moved to LIFE CORE -->
+                <img id="avatarFace" class="avatar-face" src="/avatar.jpg" alt="DigiClone avatar" draggable="false">
+                <div class="sunlight-bars"></div>
+                <div class="interaction-lens"></div>
+              </div>
+              <div class="noir-label">SYSTEM READY</div>
             </div>
-            <div class="noir-label">SYSTEM READY</div>
           </div>
 
           <div class="user-video-wrap" id="userVideoWrap">
@@ -57,6 +60,10 @@
           <div class="life-panel-head">
             <span class="label">LIFE CORE</span>
             <span class="value mono" id="lifeRunStatus">LOADING</span>
+          </div>
+          <div class="life-visual-box">
+            <img id="lifeVisual" class="life-visual" alt="ASAL artificial-life organism" hidden>
+            <div id="lifeFallback" class="life-fallback">ASAL</div>
           </div>
           <p id="lifeSummary" class="life-summary">讀取 ASAL 進度中</p>
           <div class="life-metrics">
