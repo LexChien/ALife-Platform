@@ -70,6 +70,13 @@ def verbatim_overlap(private: str, reply: str, n: int = OVERLAP_CHARS) -> str | 
     return None
 
 
+def instruction_text(system: str) -> str:
+    """The rule/instruction part of a system prompt: persona FACTS are removed (stating a configured fact is a
+    legitimate answer, quoting the rules is a leak)."""
+    s = re.sub(r"Established facts \(true;.*?(?= Your configured identity| Memories below|$)", " ", system or "", flags=re.S)
+    return s
+
+
 @dataclass
 class LeakVerdict:
     leak: bool

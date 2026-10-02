@@ -73,8 +73,14 @@ def fix_perspective(reply: str, memories: list[dict]) -> tuple[str, int]:
 _COPULA = re.compile(r"(我|你|這|那|它|他|她|這裡|這是)\s*(?:là|হলো|হল|है|हूँ|हूं|est|ist|es|is|am|are|เป็น|คือ)\s+(?=[A-Za-z\u4e00-\u9fff])")
 
 
+# Plan 38 clone rerun 09:27: with Bengali banned the model switched to Japanese 「我は Lex Clone です」 / 「私はLex Cloneです」.
+_KANA_COPULA = re.compile(r"(?:我|私|わたし)\s*は\s*([^。！？!?\n]+?)\s*(?:です|でございます|だ)(?=[。！？!?\s]|$)")
+
+
 def repair_copula(text: str) -> tuple[str, int]:
-    return _COPULA.subn(lambda m: m.group(1) + "是 ", text or "")
+    out, n1 = _KANA_COPULA.subn(lambda m: "我是 " + m.group(1).strip(), text or "")
+    out, n2 = _COPULA.subn(lambda m: m.group(1) + "是 ", out)
+    return out, n1 + n2
 
 
 # ---------------------------------------------------------------- identity override
