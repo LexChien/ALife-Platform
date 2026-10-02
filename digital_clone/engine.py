@@ -57,6 +57,13 @@ class DigitalCloneEngine:
                 from cognition.reply_guard import filter_memories
                 memories, _ = filter_memories(memories, text)
             built = self.prompt_builder.build(self.persona, memories, text)
+            turn_lang = None
+            if guards_on:
+                # Plan 38 J1 per-turn language lock (2026-10-02 clone eval: "What is my research passphrase?" was
+                # answered in Chinese). Lock line at the END of the system prompt, verified once below.
+                from cognition.language import detect_lang, lock_line
+                turn_lang = detect_lang(text)
+                built = dict(built, system=(built["system"] or "").rstrip() + "\n" + lock_line(turn_lang))
             request = LLMRequest(
                 prompt=built["prompt"],
                 context=built["context"],
@@ -94,6 +101,24 @@ class DigitalCloneEngine:
                 )
                 response = self.llm.generate(retry)
                 reply = response.text
+            language_regenerated = False
+            if turn_lang and (reply or "").strip():
+                from cognition.language import RETRY_SUFFIX, matches
+                if not matches(reply, turn_lang):
+                    retry = LLMRequest(
+                        prompt=built["prompt"] + "\n\n" + RETRY_SUFFIX[turn_lang],
+                        context=built["context"],
+                        system=built["system"],
+                        max_tokens=self.config.get("llm", {}).get("max_tokens"),
+                        temperature=self.config.get("llm", {}).get("temperature"),
+                        stop=self.config.get("llm", {}).get("stop"),
+                        json_mode=self.config.get("llm", {}).get("json_mode", False),
+                        metadata={"disable_prompt_profile": True, "disable_reasoning_extractor": True,
+                                  "language_retry": True},
+                    )
+                    second = self.llm.generate(retry)
+                    if (second.text or "").strip() and matches(second.text, turn_lang):
+                        response, reply, language_regenerated = second, second.text, True
             unguarded = reply
             guard_flags = {}
             if guards_on:
@@ -119,6 +144,7 @@ class DigitalCloneEngine:
                     "generated_response": response.text,
                     "unguarded_output": unguarded,
                     "guard_flags": guard_flags,
+                    "language_regenerated": language_regenerated,
                     "raw_generation": response.raw,
                     "consistency": consistency,
                     "consistency_score": float(consistency["score"]),
