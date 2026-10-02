@@ -115,4 +115,5 @@ def build_voice(spec: dict, fallback=None, root: Path = ROOT, name: str = ""):
         ref_text = tf.read_text(encoding="utf-8").strip()
     return CloneTTS(voice=name or spec.get("label", "clone"), engine=spec.get("engine", "f5"), python=spec["python"],
                     ref_wav=str(_resolve(spec["ref_wav"], root)), ref_text=ref_text, device=spec.get("device", "mps"),
-                    nfe=int(spec.get("nfe", 16)), fallback=fallback, extra_args=spec.get("extra_args"))
+                    nfe=int(spec.get("nfe", 16)), fallback=fallback, extra_args=spec.get("extra_args"),
+                    ready_timeout=float(spec.get("ready_timeout", 240)))

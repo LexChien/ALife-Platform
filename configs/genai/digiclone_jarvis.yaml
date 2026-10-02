@@ -68,6 +68,8 @@ defaults:
       python: ~/yaying_cache/venv_f5/bin/python
       device: mps
       nfe: 16
+      # measured F5 cold start ~314 s under GPU contention (2026-10-03) -> allow 600 s before falling back
+      ready_timeout: 600
       ref_wav: runs/yaying_clone/tts_ref/ref.wav
       ref_text_file: runs/yaying_clone/tts_ref/ref.txt
   avatar:

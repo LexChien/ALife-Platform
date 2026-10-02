@@ -72,8 +72,14 @@ def score(path, text=None, lang="zh"):
     sig, bak, ovr = dnsmos(y)
     r = {"ecapa": e1, "wavlm": e2, "utmos": u, "dnsmos_sig": sig, "dnsmos_bak": bak, "dnsmos_ovr": ovr}
     if text is not None:
-        hyp = mlx_whisper.transcribe(str(ROOT / path), path_or_hf_repo="mlx-community/whisper-large-v3-mlx", language=lang,
-                                     condition_on_previous_text=False)["text"]
+        for attempt in range(4):  # Metal "Command buffer execution failed" under heavy GPU load -> retry
+            try:
+                hyp = mlx_whisper.transcribe(str(ROOT / path), path_or_hf_repo="mlx-community/whisper-large-v3-mlx", language=lang,
+                                             condition_on_previous_text=False)["text"]
+                break
+            except RuntimeError as exc:
+                if attempt == 3: raise
+                print("whisper retry", attempt, exc, flush=True); __import__("time").sleep(10)
         r["hyp"] = cc.convert(hyp).strip()
         r["cer" if lang == "zh" else "wer"] = (jiwer.cer(norm_zh(text), norm_zh(hyp)) if lang == "zh" else jiwer.wer(norm_en(text), norm_en(hyp)))
     return r
