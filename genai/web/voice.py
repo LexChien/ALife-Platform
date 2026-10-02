@@ -17,6 +17,11 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Optional
 
+# 2026-10-03: ONE process-wide lock for every MLX (Apple GPU) call. Two MLX Whisper models warming up concurrently in
+# different threads (upload large-v3 preload thread + streaming turbo preload on the main thread) aborted gemma_web
+# with libc++abi 'There is no Stream(cpu, 0) in current thread' (start 07:41 log). Serialising MLX use fixes the race.
+MLX_LOCK = threading.RLock()
+
 ROOT = Path(__file__).resolve().parents[2]
 
 
@@ -149,6 +154,10 @@ class MLXWhisperTranscriber(WhisperTranscriber):
     def _run(self, pcm):
         import mlx_whisper
 
+        with MLX_LOCK:
+            return self._run_locked(mlx_whisper, pcm)
+
+    def _run_locked(self, mlx_whisper, pcm):
         out = mlx_whisper.transcribe(pcm, path_or_hf_repo=self.model_repo, language=self.language,
                                      initial_prompt=self.initial_prompt)
         self._loaded = True

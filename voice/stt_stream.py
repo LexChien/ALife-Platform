@@ -51,6 +51,11 @@ class UtteranceSTT:
         return self._m
 
     def transcribe(self, pcm16k: np.ndarray, initial_prompt: str | None = None, languages=("zh", "en")) -> dict:
+        from genai.web.voice import MLX_LOCK  # serialise all MLX use across threads (see genai/web/voice.py)
+        with MLX_LOCK:
+            return self._transcribe_locked(pcm16k, initial_prompt, languages)
+
+    def _transcribe_locked(self, pcm16k, initial_prompt=None, languages=("zh", "en")) -> dict:
         """Single encoder pass: encode once, detect language over ``languages`` only (Lex speaks zh/en), decode from
         the same features. mlx_whisper.transcribe() with language=None encodes twice (~2x slower, measured in J2)."""
         import mlx.core as mx
