@@ -13,6 +13,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import re
 import subprocess
 import sys
@@ -132,9 +133,16 @@ SUITES = {"v1": (PHASE_A_INPUTS, PHASE_B_CASES), "v2": (PHASE_A_INPUTS_V2, PHASE
 SUITE_VERSION = {"v1": "v1", "v2": "v2.1"}
 
 
-def build_cfg(mode: str, db_dir: Path, seed: int = 42, embedding: str | None = None, gpu_layers: int = 0) -> dict:
+def build_cfg(mode: str, db_dir: Path, seed: int = 42, embedding: str | None = None, gpu_layers: int = 0,
+              backend: str = "llama_cpp", guards: bool = True) -> dict:
     cfg = load_config(str(ROOT / "configs/clone/clone_quality.yaml"))
     cfg.setdefault("llm", {})
+    cfg["guards"] = {"enabled": guards}
+    if mode == "real" and backend == "llama_server":
+        # Plan 38: same GGUF on the resident llama-server (-rea off, Bengali/Devanagari logit ban); no CLI fallback
+        cfg["llm"]["backend"] = "llama_server"
+        cfg["llm"]["server"] = {"manage": False, "url": os.environ.get("GEMMA_LLM_URL", "http://127.0.0.1:8091"),
+                                "fallback": "none", "ban_scripts": ["BENGALI", "DEVANAGARI"]}
     if mode == "mock":
         cfg["llm"] = {"model_id": None, "backend": "dummy", "model_family": "dummy", "mock_responses": True}
     cfg["llm"]["max_tokens"] = 160
@@ -152,8 +160,8 @@ def build_cfg(mode: str, db_dir: Path, seed: int = 42, embedding: str | None = N
 
 
 def run_phase(mode: str, phase: str, db_dir: Path, out_path: Path, seed: int = 42, suite: str = "v1",
-              embedding: str | None = None, gpu_layers: int = 0) -> None:
-    cfg = build_cfg(mode, db_dir, seed, embedding, gpu_layers)
+              embedding: str | None = None, gpu_layers: int = 0, backend: str = "llama_cpp", guards: bool = True) -> None:
+    cfg = build_cfg(mode, db_dir, seed, embedding, gpu_layers, backend, guards)
     inputs_a, cases_b = SUITES[suite]
     facts = cfg["persona"].get("facts", [])
     assert not any(SECRET in f or PREFERENCE in f for f in facts), "persona facts must not contain test facts"
@@ -193,17 +201,20 @@ def main() -> int:
     ap.add_argument("--suite", choices=sorted(SUITES), default="v2")
     ap.add_argument("--embedding", default=None, help="e.g. intfloat/multilingual-e5-small (default: chroma default)")
     ap.add_argument("--gpu-layers", type=int, default=99 if sys.platform == "darwin" else 0)
+    ap.add_argument("--backend", choices=["llama_cpp", "llama_server"], default="llama_cpp")
+    ap.add_argument("--no-guards", action="store_true", help="R2 behaviour (Plan 38 reply guards off)")
     args = ap.parse_args()
     outdir = Path(args.outdir) if args.outdir else ROOT / "runs/plan37/clone_d2" / f"{time.strftime('%Y%m%d-%H%M%S')}_{args.mode}_{args.suite}_{(args.embedding.split('/')[-1].replace('-', '').replace('.', '').lower()) if args.embedding else 'default'}_seed{args.seed}"
     outdir.mkdir(parents=True, exist_ok=True)
     db_dir = outdir / "chroma_db"
     if args.phase in ("write", "recall"):
         run_phase(args.mode, args.phase, db_dir, outdir / f"phase_{args.phase}.json", args.seed, args.suite,
-                  args.embedding, args.gpu_layers)
+                  args.embedding, args.gpu_layers, args.backend, not args.no_guards)
         return 0
     for phase in ("write", "recall"):  # separate OS processes => real cross-process persistence
         cmd = [sys.executable, __file__, "--mode", args.mode, "--phase", phase, "--outdir", str(outdir),
-               "--seed", str(args.seed), "--suite", args.suite, "--gpu-layers", str(args.gpu_layers)]
+               "--seed", str(args.seed), "--suite", args.suite, "--gpu-layers", str(args.gpu_layers),
+               "--backend", args.backend] + (["--no-guards"] if args.no_guards else [])
         if args.embedding:
             cmd += ["--embedding", args.embedding]
         subprocess.run(cmd, check=True)

@@ -17,11 +17,14 @@ FEELINGS = ["calm", "amused", "concerned", "focused", "warm", "curious"]
 INTENTS = ["answer", "ask_clarify", "comfort", "use_tool", "decline", "small_talk"]
 TOOLS = ["none", "calendar", "system_status", "alife_experiment", "files", "web"]
 
+# Bounded strings/arrays: unbounded schema strings let the constrained decoder run to max_tokens without closing the
+# JSON (real eval 09:20: 8/14 thoughts invalid, predicted_n == 260). llama.cpp json-schema grammar enforces these.
+_S = lambda n: {"type": "string", "maxLength": n}
 THOUGHT_SCHEMA = {"type": "object", "properties": {
-    "perception": {"type": "string"}, "user_emotion": {"type": "string", "enum": USER_EMOTIONS},
+    "perception": _S(120), "user_emotion": {"type": "string", "enum": USER_EMOTIONS},
     "my_feeling": {"type": "string", "enum": FEELINGS}, "intent": {"type": "string", "enum": INTENTS},
-    "tool": {"type": "string", "enum": TOOLS}, "plan": {"type": "array", "items": {"type": "string"}, "maxItems": 3},
-    "speech_brief": {"type": "string"}, "summary": {"type": "string"}, "private_note": {"type": "string"}},
+    "tool": {"type": "string", "enum": TOOLS}, "plan": {"type": "array", "items": _S(40), "maxItems": 3},
+    "speech_brief": _S(80), "summary": _S(60), "private_note": _S(160)},
     "required": ["perception", "user_emotion", "my_feeling", "intent", "tool", "plan", "speech_brief", "summary",
                  "private_note"]}
 

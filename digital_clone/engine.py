@@ -49,6 +49,13 @@ class DigitalCloneEngine:
                 text,
                 limit=self.config.get("memory", {}).get("retrieval", {}).get("limit", 5),
             )
+            # Plan 38 J0.5: relevance gate -- secret-bearing memories only reach the prompt when the user asks for
+            # a secret (R2 defect: the fear reply surfaced the codeword).
+            guards_on = bool(self.config.get("guards", {}).get("enabled", True))
+            all_memories = list(memories)
+            if guards_on:
+                from cognition.reply_guard import filter_memories
+                memories, _ = filter_memories(memories, text)
             built = self.prompt_builder.build(self.persona, memories, text)
             request = LLMRequest(
                 prompt=built["prompt"],
@@ -87,6 +94,15 @@ class DigitalCloneEngine:
                 )
                 response = self.llm.generate(retry)
                 reply = response.text
+            unguarded = reply
+            guard_flags = {}
+            if guards_on:
+                # Plan 38 J0.5: deterministic reply guards (identity override/RAGEBOT, perspective 我的->你的, copula +
+                # foreign script, unasked secret, fabricated tool actions). No tools exist here -> tool_calls=[].
+                from cognition.language import detect_lang
+                from cognition.reply_guard import guard_reply
+                reply, guard_flags = guard_reply(reply, user_text=text, persona_name=self.persona.name, memories=memories,
+                                                 all_memories=all_memories, tool_calls=[], lang=detect_lang(text))
             consistency = self.consistency.score(
                 self.persona,
                 reply,
@@ -101,6 +117,8 @@ class DigitalCloneEngine:
                     "input": text,
                     "output": reply,
                     "generated_response": response.text,
+                    "unguarded_output": unguarded,
+                    "guard_flags": guard_flags,
                     "raw_generation": response.raw,
                     "consistency": consistency,
                     "consistency_score": float(consistency["score"]),
