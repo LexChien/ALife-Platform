@@ -12,7 +12,7 @@ from dataclasses import dataclass, field
 
 @dataclass
 class TurnTaking:
-    barge_min_ms: int = 240
+    barge_min_ms: int = 200
     state: str = "idle"
     speaking_since: float | None = None
     barge_cand: float | None = None
@@ -29,7 +29,8 @@ class TurnTaking:
     def on_speech_start(self, now: float | None = None) -> str | None:
         now = now or time.time()
         if self.state == "speaking":
-            self.barge_cand = now
+            if self.barge_cand is None:  # keep an earlier frame-level candidate (realtime.py)
+                self.barge_cand = now
             return None
         if self.state in ("idle", "listening"):
             self._set("listening", "vad_start")

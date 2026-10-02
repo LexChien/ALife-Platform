@@ -104,6 +104,8 @@ defaults:
       # bge-m3: zh R@1 0.933, cross-language R@3 1.0, ~165 ms/query (runs/plan37/zh_retrieval/20261002-074501).
       # Migration copies the union of all prior collections (e5 + original), never deletes.
       embedding: BAAI/bge-m3
+      # Plan 38 J2 (2026-10-02): auto = MPS on the Mac (retrieval 0.075 s vs 0.287 s CPU), CPU elsewhere.
+      embedding_device: auto
     persona:
       name: "ALife Prototype"
       tone: "calm, factual, precise"

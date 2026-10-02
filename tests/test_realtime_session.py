@@ -173,6 +173,56 @@ class TestVoiceSession(unittest.TestCase):
         self.assertEqual(svc.calls, [])
 
 
+class ProbVAD(FakeVAD):
+    """Frame probabilities only (no endpointer speech_start yet) -- the early barge-in clock."""
+    def __init__(self):
+        super().__init__()
+        self.ep = SimpleNamespace(in_speech=False, neg=0.35)
+        self.probs = []
+
+    def push(self, pcm):
+        self.n += len(pcm)
+        self.last_prob = self.probs.pop(0) if self.probs else 0.02
+        return []
+
+
+class TestEarlyBargeIn(unittest.TestCase):
+    def _speaking(self):
+        out = []
+        s = VoiceSession(FakeService(2.0), out.append, vad=ProbVAD(), wake=None, stt=FakeSTT(), ack=FakeAck(),
+                         trace_path=None)
+        s.on_control({"type": "hello", "mode": "open"})
+        s.on_control({"type": "text", "text": "講個長故事"})
+        t0 = time.time()
+        while s.tt.state != "speaking" and time.time() - t0 < 2:
+            time.sleep(0.01)
+        return s, out
+
+    def test_sustained_speech_stops_within_300ms_without_endpointer_start(self):
+        s, out = self._speaking()
+        self.assertEqual(s.tt.barge_min_ms, 200)
+        t0 = time.time()
+        while not [e for e in out if e["type"] == "stop"] and time.time() - t0 < 1.0:
+            s.vad.probs = [0.95]
+            s.on_audio(FRAME)
+            time.sleep(0.02)
+        stops = [e for e in out if e["type"] == "stop"]
+        self.assertEqual(len(stops), 1)
+        self.assertLessEqual(stops[0]["detect_ms"], 300)
+        self.assertGreaterEqual(stops[0]["detect_ms"], 200)
+        wait_turn(s)
+
+    def test_short_blip_does_not_barge(self):
+        s, out = self._speaking()
+        for p in [0.95, 0.95, 0.95, 0.02, 0.02, 0.95, 0.02]:  # ~60 ms blips separated by silence
+            s.vad.probs = [p]
+            s.on_audio(FRAME)
+            time.sleep(0.02)
+        self.assertFalse([e for e in out if e["type"] == "stop"])
+        self.assertEqual(s.tt.state, "speaking")
+        wait_turn(s)
+
+
 class TestWakeModels(unittest.TestCase):
     def test_wake_detector_loads_or_reports(self):
         from voice.wake import WakeDetector, OWW_DIR

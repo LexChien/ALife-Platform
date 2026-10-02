@@ -78,7 +78,17 @@ class GemmaWebService:
         if memory_cfg.get("embedding"):
             try:
                 from digital_clone.memory.embeddings import PrefixedSentenceTransformerEF, collection_suffix
-                embedding_fn = PrefixedSentenceTransformerEF(str(memory_cfg["embedding"]))
+                # Plan 38 J2: query embedding sits on the voice critical path (prep 0.42 s median in the real WS E2E,
+                # 2026-10-02 10:03). bge-m3 on MPS: 0.075 s vs 0.287 s CPU per retrieval under load; same collection.
+                dev = str(memory_cfg.get("embedding_device", "cpu"))
+                if dev == "auto":
+                    try:
+                        import torch
+                        dev = "mps" if torch.backends.mps.is_available() else "cpu"
+                    except Exception:
+                        dev = "cpu"
+                embedding_fn = PrefixedSentenceTransformerEF(str(memory_cfg["embedding"]), device=dev)
+                self.memory_embedding_device = dev
                 collection = base_collection + collection_suffix(str(memory_cfg["embedding"]))
                 self.memory_embedding = str(memory_cfg["embedding"])
             except Exception as exc:  # fail loud in health, keep the default embedding
@@ -317,7 +327,7 @@ class GemmaWebService:
             "stt": self.transcriber.healthcheck() if self.transcriber else None,
             "stt_offline": self.offline_stt.healthcheck() if self.offline_stt else {"provider": "faster_whisper", "installed": False, "ok": False},
             "tts": self.tts.healthcheck() if self.tts else {"provider": "browser_speech_synthesis", "server_side": False},
-            "memory": {"embedding": self.memory_embedding or "chroma_default",
+            "memory": {"embedding": self.memory_embedding or "chroma_default", "embedding_device": getattr(self, "memory_embedding_device", None),
                        "collection": self.clone_memory.collection_name,
                        "vector_db": self.clone_memory.use_vector_db, "migrated": self.memory_migrated},
             "emotion": {"enabled": self.emotion_enabled, "detector": str(self.emotion_cfg.get("detector", "lexicon")) + "+prosody", "sessions": len(self.emotion_states)},
@@ -568,8 +578,18 @@ class GemmaWebService:
                 deferred["pending"] = True
                 return None
             return detect_emotion(self.adapter, user_message, mode=detector, threshold=threshold)
+        prep_parts = {"prep_pre_s": round(time.time() - t0, 3)}
+
+        def _timed(name, fn):
+            def run():
+                t = time.time()
+                try:
+                    return fn()
+                finally:
+                    prep_parts[name] = round(time.time() - t, 3)
+            return run
         with ThreadPoolExecutor(max_workers=2) as pool:
-            f_mem, f_emo = pool.submit(_retrieve), pool.submit(_emotion)
+            f_mem, f_emo = pool.submit(_timed("prep_retrieve_s", _retrieve)), pool.submit(_timed("prep_emotion_s", _emotion))
             retrieved, observed = f_mem.result(), f_emo.result()
         prep_s = round(time.time() - t0, 3)
         memories, dropped_secret = filter_memories(retrieved, user_message)
@@ -654,7 +674,7 @@ class GemmaWebService:
                             "first_chunk_s": tts_chunks[0]["synth_s"], "elapsed_s": tts_chunks[0]["synth_s"],
                             "voice": getattr(self.tts, "voice", None), "provider": getattr(self.tts, "provider", None)}
                            if tts_chunks else {"ok": False, "error": "; ".join(tts_err) or "no audio"})
-        timings = {"prep_s": prep_s, **res["timings"], "total_s": round(time.time() - t0, 3),
+        timings = {"prep_s": prep_s, **prep_parts, **res["timings"], "total_s": round(time.time() - t0, 3),
                    "emotion_deferred": deferred["pending"]}
         runtime = {"backend": "llama_server", "cognitive_loop": True, "thought_id": res.get("thought_id"),
                    "thought_valid": res.get("thought_valid"), "lang": res.get("lang")}

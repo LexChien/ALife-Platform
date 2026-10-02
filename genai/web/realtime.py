@@ -32,7 +32,7 @@ WAKE_WINDOW_S = 8.0
 
 
 class VoiceSession:
-    def __init__(self, service, send, *, vad=None, wake=None, stt=None, ack=None, barge_min_ms: int = 240,
+    def __init__(self, service, send, *, vad=None, wake=None, stt=None, ack=None, barge_min_ms: int = 200,
                  barge_prob: float = 0.7, trace_path: Path | None = TRACE_PATH):
         self.service = service
         self.send = send
@@ -132,7 +132,7 @@ class VoiceSession:
             if ev.kind == "speech_start":
                 self.utt_start = ev.start_t
                 self.tt.on_speech_start(time.time())
-                if self.tt.state == "speaking":
+                if self.tt.state == "speaking" and self.barge_t_onset is None:
                     self.barge_t_onset = time.time() - max(0.0, ev.t - ev.start_t - 0.2)
                 self.send({"type": "vad", "event": "speech_start", "t": round(ev.t, 3)})
             elif ev.kind == "speech_end":
@@ -143,9 +143,21 @@ class VoiceSession:
                 elif act == "endpoint":
                     self.tt.on_turn_done()
                 self.utt_start = None
-        if self.vad.ep.in_speech and self.tt.state == "speaking" and prob >= self.barge_prob:
-            if self.tt.on_speech_continue(time.time()) == "barge_in":
-                self._barge("vad")
+        # Barge-in clock starts at the FIRST high-probability frame, not at the endpointer's confirmed speech_start
+        # (which itself waits min_speech 160 ms). Real WS E2E 2026-10-02 10:03: stop 424-567 ms from onset with the old
+        # rule (160 + 240 ms); spec J2.5 = sustained speech >= 200 ms and stop <= 300 ms.
+        if self.tt.state == "speaking":
+            now = time.time()
+            if prob >= self.barge_prob:
+                if self.tt.barge_cand is None:
+                    self.tt.barge_cand = now - 0.032  # the 32 ms VAD window that produced this probability
+                    if self.barge_t_onset is None:
+                        self.barge_t_onset = self.tt.barge_cand
+                elif self.tt.on_speech_continue(now) == "barge_in":
+                    self._barge("vad")
+            elif prob < getattr(self.vad.ep, "neg", 0.35) and not self.vad.ep.in_speech:
+                self.tt.barge_cand = None  # a blip (cough, click, echo spike) shorter than barge_min_ms
+                self.barge_t_onset = None
         if self.stats["frames"] % 500 == 0:
             self.vad.trim(30.0)
 
