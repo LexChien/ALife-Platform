@@ -35,9 +35,10 @@ def say_tts(voice, text, out):
 def main():
     ap = argparse.ArgumentParser(); ap.add_argument("--cands", default="meijia,sandy,f5,cosyvoice2")
     ap.add_argument("--out", default="runs/yaying_clone/tts_bench"); ap.add_argument("--ref", default="runs/yaying_clone/tts_ref/ref.wav")
+    ap.add_argument("--limit-zh", type=int, default=0); ap.add_argument("--no-en", action="store_true"); ap.add_argument("--timeout", type=float, default=90.0)
     a = ap.parse_args(); out = ROOT / a.out
     ref_text = (ROOT / a.ref).with_suffix(".txt").read_text(encoding="utf-8").strip()
-    items = [("zh", i, t) for i, t in enumerate(ZH)] + [("en", i, t) for i, t in enumerate(EN)]
+    items = [("zh", i, t) for i, t in enumerate(ZH[: a.limit_zh or None])] + ([] if a.no_en else [("en", i, t) for i, t in enumerate(EN)])
     allres = json.loads((out / "bench.json").read_text()) if (out / "bench.json").exists() else {}
     for cand in a.cands.split(","):
         d = out / cand; d.mkdir(parents=True, exist_ok=True); rows = []; info = {}
@@ -57,7 +58,7 @@ def main():
             if not ok:
                 info["error"] = eng.start_error; allres[cand] = {"info": info, "rows": []}; print(cand, info); continue
             def fn(text, p, eng=eng):
-                r = eng.synthesize(text, d, stem=p.stem)
+                r = eng.synthesize(text, d, stem=p.stem, timeout=a.timeout)
                 if r.get("provider") != "clone_tts": raise RuntimeError(r.get("clone_error"))
                 return r["elapsed_s"]
         for lang, i, text in items:

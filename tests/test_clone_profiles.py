@@ -135,5 +135,16 @@ console.log(JSON.stringify([
                                                   "yaying_glance", "yaying_head_tilt", "yaying_speaking", "idle", None])
 
 
+class ClipWhitelistTest(unittest.TestCase):
+    def test_plan40_clip_names_whitelisted_and_traversal_blocked(self):
+        import re
+        src = (ROOT / "apps/gemma_web.py").read_text(encoding="utf-8")
+        pat = re.search(r're\.fullmatch\(r"(\(\?:idle[^"]+)"', src).group(1)
+        for ok in ("idle.mp4", "yaying_smile.mp4", "yaying_speaking.mp4", "manifest.json"):
+            self.assertTrue(re.fullmatch(pat, ok), ok)
+        for bad in ("../avatar.jpg", "yaying_x.mp4", "yaying_smile.mp4/../../a", "raw.mp4"):
+            self.assertFalse(re.fullmatch(pat, bad), bad)
+
+
 if __name__ == "__main__":
     unittest.main()

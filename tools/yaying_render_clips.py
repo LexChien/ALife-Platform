@@ -25,9 +25,10 @@ EXP = ["--driving-option", "expression-friendly"]
 # name -> (sources, window seconds, criterion, LivePortrait region, multiplier ladder)
 SPECS = {
     "yaying_smile": (["motion"], 3.0, "smile_rise", "exp", [0.8, 0.6, 0.45]),
-    "yaying_glance": (["motion"], 3.0, "gaze_swing", "all", [0.7, 0.5, 0.35]),
+    # 07:45 measured: glance with region "all" drifted (ArcFace min 0.43 @0.7, 0.27 @0.5) -> eyes/expression only
+    "yaying_glance": (["motion"], 3.0, "gaze_swing", "exp", [0.8, 0.6, 0.45]),
     "yaying_head_tilt": (["motion"], 3.0, "roll_range", "pose", [0.8, 0.6, 0.4]),
-    "yaying_idle_sway": (["motion"], 4.0, "calm_sway", "all", [0.6, 0.45, 0.3]),
+    "yaying_idle_sway": (["motion"], 4.0, "calm_sway", "pose", [0.5, 0.35, 0.25]),
     "yaying_speaking": (["voice"], 4.0, "jaw_var", "lip", [1.0, 0.8, 0.6]),
 }
 

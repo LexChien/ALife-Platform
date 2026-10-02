@@ -15,6 +15,7 @@ import numpy as np, librosa, torch
 ROOT = Path(__file__).resolve().parents[1]
 ap = argparse.ArgumentParser(); ap.add_argument("--bench", default="runs/yaying_clone/tts_bench")
 ap.add_argument("--dataset", default="runs/yaying_clone/dataset.json"); ap.add_argument("--ref-info", default="runs/yaying_clone/tts_ref/ref.json")
+ap.add_argument("--out", default="eval.json"); ap.add_argument("--cands", default="")
 A = ap.parse_args(); B = ROOT / A.bench
 bench = json.loads((B / "bench.json").read_text()); ds = json.loads((ROOT / A.dataset).read_text())
 ref_info = json.loads((ROOT / A.ref_info).read_text())
@@ -78,7 +79,7 @@ def score(path, text=None, lang="zh"):
     return r
 
 
-H = [score(s["wav"]) for s in held]
+H = [score(str(ROOT / "runs/yaying_clone" / s["wav"])) for s in held]  # dataset wav paths are relative to runs/yaying_clone
 c1 = np.mean([h["ecapa"] for h in H], 0); c1 /= np.linalg.norm(c1); c2 = np.mean([h["wavlm"] for h in H], 0); c2 /= np.linalg.norm(c2)
 # ceiling: leave-one-out similarity of each held-out real clip to the centroid of the others
 loo1 = [float(H[i]["ecapa"] @ (lambda c: c / np.linalg.norm(c))(np.sum([h["ecapa"] for j, h in enumerate(H) if j != i], 0))) for i in range(len(H))]
@@ -88,6 +89,7 @@ report = {"held_out": {"n": len(H), "dur_s": round(sum(s["dur"] for s in held), 
                        "dnsmos_ovr_mean": round(float(np.mean([h["dnsmos_ovr"] for h in H])), 3)}, "candidates": {}}
 print("REAL", report["held_out"], flush=True)
 for cand, res in bench.items():
+    if A.cands and cand not in A.cands.split(","): continue
     rows = []
     for r in res["rows"]:
         if "error" in r: rows.append(r); continue
@@ -103,8 +105,8 @@ for cand, res in bench.items():
         "sim_ecapa_zh": m("sim_ecapa", zh), "sim_wavlm_zh": m("sim_wavlm", zh), "sim_ecapa_en": m("sim_ecapa", en),
         "cer_zh": m("cer", zh), "wer_en": m("wer", en), "utmos": m("utmos", ok), "dnsmos_ovr": m("dnsmos_ovr", ok),
         "latency_p50_s": p("latency_s", zh, 50), "latency_p90_s": p("latency_s", zh, 90), "rtf_mean": m("rtf", ok), "rows": rows}
-(B / "eval.json").write_text(json.dumps(report, ensure_ascii=False, indent=1))
+(B / A.out).write_text(json.dumps(report, ensure_ascii=False, indent=1))
 print("\n| cand | sim ECAPA zh | sim WavLM zh | CER zh | WER en | UTMOS | DNSMOS ovr | latency p50 | RTF |")
 for c, v in report["candidates"].items():
     print(f"| {c} | {v['sim_ecapa_zh']} | {v['sim_wavlm_zh']} | {v['cer_zh']} | {v['wer_en']} | {v['utmos']} | {v['dnsmos_ovr']} | {v['latency_p50_s']} | {v['rtf_mean']} |")
-print("WROTE", B / "eval.json")
+print("WROTE", B / A.out)

@@ -224,7 +224,7 @@ class GemmaWebHandler(BaseHTTPRequestHandler):
         """Plan 38 J3.1: guard-passed LivePortrait clips of the fixed avatar (web/gemma_chat/clips, private)."""
         import re as _re
         clip_dir = STATIC_DIR / "clips"
-        if not _re.fullmatch(r"(?:idle|smile|concerned|talking)\.mp4|manifest\.json", name) or not (clip_dir / name).exists():
+        if not _re.fullmatch(r"(?:idle|smile|concerned|talking|yaying_(?:smile|glance|head_tilt|idle_sway|speaking))\.mp4|manifest\.json", name) or not (clip_dir / name).exists():
             self._send_json({"ok": False, "error": "not_found"}, status=HTTPStatus.NOT_FOUND)
             return
         body = (clip_dir / name).read_bytes()
