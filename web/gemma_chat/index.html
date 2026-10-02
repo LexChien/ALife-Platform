@@ -18,6 +18,8 @@
               <div class="noir-viewport">
                 <!-- Plan 38 J0.4: the fixed avatar is the top visual layer of the viewport; ASAL moved to LIFE CORE -->
                 <img id="avatarFace" class="avatar-face" src="/avatar.jpg" alt="DigiClone avatar" draggable="false">
+                <!-- Plan 38 J3.1/J3.3: guard-passed LivePortrait clip of the SAME avatar (idle/smile/concerned), 150 ms crossfade -->
+                <video id="avatarClip" class="avatar-face avatar-clip" muted loop playsinline preload="auto" aria-hidden="true" data-face-overlay="identity-guarded"></video>
                 <!-- Plan 38 J3: lip-sync layer = same geometry, offline mouth keyframes of the SAME fixed avatar (guard-checked) -->
                 <img id="avatarMouth" class="avatar-face avatar-mouth" src="/avatar.jpg" alt="" aria-hidden="true" draggable="false" data-face-overlay="identity-guarded">
                 <div class="sunlight-bars"></div>

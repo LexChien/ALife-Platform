@@ -60,6 +60,8 @@
       case "thought": if (hud) hud.addThought(ev.thought || ev); break;
       case "emotion":
         if (hud && ev.emotion && ev.emotion.state) hud.showMood(ev.emotion.state);
+        if (window.DigiAvatar && ev.emotion && ev.emotion.modulation && ev.emotion.modulation.avatar)
+          window.DigiAvatar.setEmotion(ev.emotion.modulation.avatar.expression);
         break;
       case "stop": stopAll(ev.why, ev.detect_ms); break;
       case "done":

@@ -66,6 +66,9 @@ class GemmaWebHandler(BaseHTTPRequestHandler):
         if path in STATIC_SCRIPTS:
             self._serve_static(path.lstrip("/"))
             return
+        if path.startswith("/avatar/clips/"):
+            self._serve_clip(path.removeprefix("/avatar/clips/"))
+            return
         if path.startswith("/avatar/mouth/"):
             self._serve_mouth(path.removeprefix("/avatar/mouth/"))
             return
@@ -200,6 +203,21 @@ class GemmaWebHandler(BaseHTTPRequestHandler):
         self.send_header("Content-Type", content_type)
         self.send_header("Content-Length", str(len(body)))
         self.send_header("Cache-Control", "no-store")
+        self.end_headers()
+        self.wfile.write(body)
+
+    def _serve_clip(self, name: str) -> None:
+        """Plan 38 J3.1: guard-passed LivePortrait clips of the fixed avatar (web/gemma_chat/clips, private)."""
+        import re as _re
+        clip_dir = STATIC_DIR / "clips"
+        if not _re.fullmatch(r"(?:idle|smile|concerned|talking)\.mp4|manifest\.json", name) or not (clip_dir / name).exists():
+            self._send_json({"ok": False, "error": "not_found"}, status=HTTPStatus.NOT_FOUND)
+            return
+        body = (clip_dir / name).read_bytes()
+        self.send_response(HTTPStatus.OK)
+        self.send_header("Content-Type", "video/mp4" if name.endswith(".mp4") else "application/json")
+        self.send_header("Content-Length", str(len(body)))
+        self.send_header("Cache-Control", "max-age=300")
         self.end_headers()
         self.wfile.write(body)
 

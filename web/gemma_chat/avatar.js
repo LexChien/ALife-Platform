@@ -73,11 +73,43 @@
     }
   }
 
+  // ---- J3.3 expression clips (only clips whose identity guard PASSed are in the manifest as installed)
+  const clipEl = document.getElementById("avatarClip");
+  let clips = {}, curState = "idle", curEmotion = "neutral", curClip = null;
+  fetch("/avatar/clips/manifest.json").then((r) => (r.ok ? r.json() : { clips: {} })).then((m) => {
+    for (const [name, c] of Object.entries(m.clips || {})) if (c && c.guard_pass && c.installed) clips[name] = `/avatar/clips/${name}.mp4`;
+    applyClip();
+  }).catch(() => {});
+
+  function applyClip() {
+    if (!clipEl) return;
+    let want = null;
+    if (curState !== "speaking") {
+      if (curEmotion === "smile" && clips.smile) want = "smile";
+      else if (curEmotion === "concerned" && clips.concerned) want = "concerned";
+      else if (clips.idle) want = "idle";
+    }
+    if (want === curClip) return;
+    curClip = want;
+    if (!want) { clipEl.classList.remove("on"); return; }
+    clipEl.classList.remove("on");
+    setTimeout(() => {
+      clipEl.src = clips[want];
+      const p = clipEl.play();
+      const show = () => clipEl.classList.add("on");
+      if (p && p.then) p.then(show).catch(() => {}); else show();
+    }, 150);
+  }
+
   function setState(state) {
     const wrap = document.getElementById("avatarWrap");
     if (wrap) wrap.dataset.state = state;
+    curState = state || "idle";
+    applyClip();
   }
 
+  function setEmotion(e) { curEmotion = e || "neutral"; applyClip(); }
+
   preload();
-  window.DigiAvatar = { attach, setState, setLevel, isReady: () => ready, face };
+  window.DigiAvatar = { attach, setState, setEmotion, setLevel, isReady: () => ready, face, clips: () => ({ ...clips }), current: () => curClip };
 })();

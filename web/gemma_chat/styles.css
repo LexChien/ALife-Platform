@@ -495,3 +495,7 @@ button {
 .hud-mood .mood-row span { width: 70px; opacity: 0.7; }
 .hud-mood .mood-row i { display: block; height: 4px; background: rgba(0, 255, 204, 0.6); border-radius: 2px; }
 .hud-thoughts { margin: 6px 0 0; padding-left: 18px; max-height: 160px; overflow: auto; color: #bcd; font-style: italic; }
+/* Plan 38 J3.3: expression clip layer (crossfade 150 ms; hidden while speaking -> still face + mouth keyframes) */
+.avatar-clip { z-index: 2; opacity: 0; transition: opacity 150ms linear; pointer-events: none; animation: none; }
+.avatar-clip.on { opacity: 1; }
+.avatar-mouth { z-index: 3; }

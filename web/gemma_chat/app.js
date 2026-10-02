@@ -369,6 +369,7 @@ function renderEmotion(emotion, dna) {
     if (avatarStage && emotion.modulation && emotion.modulation.avatar) {
       // Plan 38 J0.3: colour the halo, never the face.
       avatarStage.dataset.emotion = emotion.modulation.avatar.expression || "neutral";
+      if (window.DigiAvatar) window.DigiAvatar.setEmotion(avatarStage.dataset.emotion);
     }
     lastVoiceModulation = emotion.modulation ? emotion.modulation.tts : null;
   }
