@@ -39,6 +39,10 @@ class NCA:
         self.state[:, 3:, self.h//2, self.w//2] = 1.0 
         self.clamped = False
 
+    # Live/inference stepping only (no caller backpropagates through step). Without no_grad every step's state kept the
+    # whole autograd graph of all previous steps alive (update_net params require grad) -> unbounded memory growth;
+    # gemma_web's live engine reached ~350 GB compressed in ~35 min and macOS killed it ("low swap"), 2026-10-03.
+    @torch.no_grad()
     def step(self, substeps=1):
         for _ in range(substeps):
             pre_energy = torch.sum(self.state**2).item()
