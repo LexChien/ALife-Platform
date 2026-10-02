@@ -23,9 +23,11 @@ CLIP_DIR = ROOT / "web/gemma_chat/clips"
 WORK = ROOT / "runs/plan38/avatar/clips"
 # name -> (driving template, LivePortrait extra args). idle = eyes only (blink/gaze, no head/mouth motion).
 SPECS = {
+    # mp4 drivers only: laugh.pkl/aggrieved.pkl lack c_eyes_lst / c_d_eyes_lst required by this LivePortrait
+    # build (KeyError 2026-10-02). Idle d0.mp4 already verified. Short expression-friendly clips below.
     "idle": ("d0.mp4", ["--animation_region", "eyes"]),
-    "smile": ("laugh.pkl", ["--animation_region", "exp", "--driving_multiplier", "0.6"]),
-    "concerned": ("aggrieved.pkl", ["--animation_region", "exp", "--driving_multiplier", "0.6"]),
+    "smile": ("d19.mp4", ["--animation_region", "exp", "--driving_multiplier", "0.6", "--driving-option", "expression-friendly"]),
+    "concerned": ("d20.mp4", ["--animation_region", "exp", "--driving_multiplier", "0.55", "--driving-option", "expression-friendly"]),
 }
 
 
