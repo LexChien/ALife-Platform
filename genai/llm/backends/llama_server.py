@@ -25,6 +25,10 @@ class LlamaServerAdapter(BaseLLMAdapter):
     def __init__(self, *, url: str = "http://127.0.0.1:8091", model_family: str = "gemma", max_tokens: int = 256,
                  temperature: float = 0.7, timeout: float = 120.0, manager=None, fallback=None, seed: int | None = None,
                  lineage: dict | None = None):
+        # Plan 38: non-speech generate() calls (emotion classifier, ...) default to the thought slot so they
+        # never evict the speech slot's cached prompt prefix (smoke: cache_n 4 -> see log).
+        self.default_slot = None
+        self.logit_bias = None  # Plan 38: [[token_id, false], ...] from genai.llm.script_ban
         self.url = url.rstrip("/")
         self._model_family = model_family
         self.default_max_tokens = max_tokens
@@ -65,14 +69,24 @@ class LlamaServerAdapter(BaseLLMAdapter):
         if server.get("fallback", "llama_cpp") == "llama_cpp" and cfg.get("model_path"):
             from genai.llm.backends.llama_cpp import LlamaCppAdapter
             fallback = LlamaCppAdapter.from_config({**cfg, "backend": "llama_cpp"})
-        return cls(url=url, model_family=cfg.get("model_family", "gemma"), max_tokens=cfg.get("max_tokens", 256),
-                   temperature=cfg.get("temperature", 0.7), timeout=float(server.get("timeout", 120)), manager=manager,
-                   fallback=fallback, seed=cfg.get("seed"), lineage=cfg.get("lineage"))
+        ad = cls(url=url, model_family=cfg.get("model_family", "gemma"), max_tokens=cfg.get("max_tokens", 256),
+                 temperature=cfg.get("temperature", 0.7), timeout=float(server.get("timeout", 120)), manager=manager,
+                 fallback=fallback, seed=cfg.get("seed"), lineage=cfg.get("lineage"))
+        scripts = server.get("ban_scripts")
+        if scripts and cfg.get("model_path"):
+            try:
+                from genai.llm.script_ban import load_ban_ids
+                ad.logit_bias = [[i, False] for i in load_ban_ids(cfg["model_path"], tuple(scripts))]
+            except Exception as exc:  # hygiene guard still strips foreign script
+                ad.ban_error = f"{type(exc).__name__}: {exc}"
+        return ad
 
     # ------------------------------------------------------------------ low level
     def _body(self, messages, *, max_tokens, temperature, json_schema, slot, stream, stop, extra):
         body: dict[str, Any] = {"messages": messages, "max_tokens": int(max_tokens), "temperature": float(temperature),
                                 "stream": stream, "cache_prompt": True}
+        if self.logit_bias:
+            body["logit_bias"] = self.logit_bias
         if json_schema:
             body["response_format"] = {"type": "json_schema", "json_schema": {"schema": json_schema}}
         if slot is not None:
@@ -162,7 +176,7 @@ class LlamaServerAdapter(BaseLLMAdapter):
         try:
             out = self.chat(messages, max_tokens=request.max_tokens, temperature=request.temperature,
                             json_schema=(request.metadata or {}).get("json_schema"),
-                            slot=(request.metadata or {}).get("slot"), stop=request.stop)
+                            slot=(request.metadata or {}).get("slot", self.default_slot), stop=request.stop)
         except LlamaServerError as exc:
             if self.fallback is None:
                 raise
@@ -181,7 +195,8 @@ class LlamaServerAdapter(BaseLLMAdapter):
         except Exception as exc:
             status = f"down: {type(exc).__name__}"
         out = {"backend": self.backend_name, "url": self.url, "ok": status == "ok", "status": status,
-               "model_family": self.model_family, "fallback": getattr(self.fallback, "backend_name", None)}
+               "model_family": self.model_family, "fallback": getattr(self.fallback, "backend_name", None),
+               "banned_tokens": len(self.logit_bias or []), "ban_error": getattr(self, "ban_error", None)}
         if self.manager is not None:
             h = self.manager.health()
             out["manager"] = {k: h.get(k) for k in ("pid", "launcher", "adopted", "restarts", "last_event")}

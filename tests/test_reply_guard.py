@@ -38,7 +38,10 @@ class ReplyGuardTest(unittest.TestCase):
         self.assertEqual(foreign_scripts("我是 ALife Prototype。"), [])
         self.assertEqual(foreign_scripts("こんにちは", context="日本語で: こんにちは"), [])
         out, flags = guard_reply("我 হলো ALife Prototype。", user_text="你是誰？", persona_name="ALife Prototype")
-        self.assertNotIn("হলো", out)
+        self.assertEqual(out, "我是 ALife Prototype。")  # Plan 38: copula repaired, not just stripped
+        self.assertEqual(flags["copula_repaired"], 1)
+        out, flags = guard_reply("今天天氣很好 এবং 很適合散步。", user_text="今天天氣如何？", persona_name="ALife Prototype")
+        self.assertNotIn("এবং", out)
         self.assertEqual(flags["foreign_script"], ["bengali"])
 
     def test_unasked_secret(self):

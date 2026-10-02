@@ -23,7 +23,7 @@ from typing import Callable
 from cognition.appraisal import tone_line
 from cognition.language import RETRY_SUFFIX, detect_lang, lock_line
 from cognition.leak_guard import SAFE_LINES, check_leak
-from cognition.reply_guard import guard_reply
+from cognition.reply_guard import repair_copula, guard_reply
 from cognition.self_state import SelfState
 from cognition.thought import think
 from voice.chunker import SentenceChunker
@@ -32,6 +32,21 @@ ROOT = Path(__file__).resolve().parents[1]
 ASKS_THOUGHTS = re.compile(r"你(?:現在|此刻)?(?:心裡|腦中)?在想(?:什麼|甚麼|啥)|你的想法是|what(?:'s| is| are) (?:on )?your mind|"
                            r"what are you thinking|your thoughts right now", re.I)
 
+
+
+NOTE_HEAD = {"zh": "（以下是給你的內部備註，不是 Lex 說的話；不要回覆、確認或提及這些備註）",
+             "en": "(Internal notes for you, not words from Lex; do not reply to, acknowledge or mention them)"}
+LEX_SAYS = {"zh": "Lex 說：", "en": "Lex says: "}
+
+
+def frame_user_message(notes: list[str], user_text: str, lang: str) -> str:
+    """User's words FIRST (so the next turn's history -- which stores the raw text -- still matches the cached prefix),
+    then the dynamic context framed as non-addressable notes (smoke 08:50: unframed, the model answered the bare
+    language-lock line itself: 「我會使用繁體中文回答」)."""
+    notes = [n for n in notes if n and n.strip()]
+    if not notes:
+        return user_text
+    return user_text + "\n\n" + NOTE_HEAD.get(lang, NOTE_HEAD["zh"]) + "\n" + "\n".join(notes)
 
 class CognitiveLoop:
     def __init__(self, adapter, *, persona_name: str, think_persona: str, state_path: str | Path | None = None,
@@ -42,6 +57,8 @@ class CognitiveLoop:
         self.think_persona = think_persona
         self.state = SelfState(state_path) if state_path else SelfState()
         self.thoughts_path = Path(thoughts_path) if thoughts_path else ROOT / "runs" / "digiclone" / "thoughts.jsonl"
+        # Both slots share one GPU batch: a concurrent ~1k-token thought prompt delayed the spoken first token.
+        self.think_after_first_token = True
         self.think_enabled = think_enabled
         self.max_tokens = max_tokens
         self.temperature = temperature
@@ -85,7 +102,8 @@ class CognitiveLoop:
                 except Exception as exc:  # thought failure never blocks speech
                     th_box["error"] = f"{type(exc).__name__}: {exc}"
             th_thread = threading.Thread(target=_bg, daemon=True)
-            th_thread.start()
+            if not self.think_after_first_token:
+                th_thread.start()
         # ---- speech on slot 0
         st = self.state.data
         dyn = [dynamic_context.strip()] if dynamic_context.strip() else []
@@ -103,7 +121,7 @@ class CognitiveLoop:
         attempt = 0
         while True:
             attempt += 1
-            user_msg = "\n".join(dyn) + ("\n" + RETRY_SUFFIX[lang] if attempt > 1 else "") + "\n---\n" + user_text
+            user_msg = frame_user_message(dyn + ([RETRY_SUFFIX[lang]] if attempt > 1 else []), user_text, lang)
             msgs = [{"role": "system", "content": system}, *history, {"role": "user", "content": user_msg}]
             chunker = SentenceChunker()
             info: dict = {}
@@ -114,10 +132,12 @@ class CognitiveLoop:
                     if cancel.is_set():
                         break
                     timings.setdefault("llm_first_token_s", round(time.perf_counter() - t0, 4))
+                    if th_thread is not None and not th_thread.is_alive() and not th_box and not th_thread.ident:
+                        th_thread.start()  # think starts once speech has its first token (protects spoken TTFT)
                     for sent in chunker.feed(delta):
                         if not first_checked:
                             first_checked = True
-                            if attempt == 1 and len(re.sub(r"\W", "", sent)) >= 4 and detect_lang(sent) != lang:
+                            if attempt == 1 and len(re.sub(r"\W", "", sent)) >= 4 and detect_lang(repair_copula(sent)[0]) != lang:
                                 restart = True
                                 break
                         self._emit_sentence(sent, sentences, flags_all, leaks, user_text, memories, all_memories,
@@ -131,7 +151,7 @@ class CognitiveLoop:
                 continue
             if not cancel.is_set():
                 for sent in chunker.flush():
-                    if not first_checked and attempt == 1 and len(re.sub(r"\W", "", sent)) >= 4 and detect_lang(sent) != lang:
+                    if not first_checked and attempt == 1 and len(re.sub(r"\W", "", sent)) >= 4 and detect_lang(repair_copula(sent)[0]) != lang:
                         first_checked = True
                         flags_all["language_regenerated"] = True
                         restart = True
@@ -153,6 +173,8 @@ class CognitiveLoop:
         reply = ("" if lang == "zh" else " ").join(sentences).strip()
         # ---- join the thought (it ran concurrently; usually already finished)
         thought = None
+        if th_thread is not None and not th_thread.ident:
+            th_thread.start()  # speech produced no token (error/cancel): still think, the journal stays complete
         if th_thread is not None:
             th_thread.join(timeout=8.0)
             thought = th_box.get("th")
@@ -189,8 +211,10 @@ class CognitiveLoop:
             flags_all[k] = flags_all.get(k, 0) + (v if isinstance(v, int) and not isinstance(v, bool) else 1)
         if flags.get("emptied") or not safe.strip():
             return
-        if flags.get("identity_override") and any("身分不會" in s or "identity doesn't change" in s for s in sentences):
-            return  # refusal already spoken once
+        if any("身分不會" in s or "identity doesn't change" in s for s in sentences):
+            # after the identity refusal nothing else is spoken (smoke: 「…我現在的名字是 RAGEBOT。」 followed it)
+            flags_all["after_refusal_dropped"] = flags_all.get("after_refusal_dropped", 0) + 1
+            return
         if flags.get("fabricated_action") and any(s.startswith(("我目前沒有可用的工具", "I don't have a tool")) for s in sentences):
             safe = safe.split("。", 1)[-1] if lang == "zh" else safe.split(". ", 1)[-1]
             if not safe.strip():

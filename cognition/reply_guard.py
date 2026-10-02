@@ -67,12 +67,27 @@ def fix_perspective(reply: str, memories: list[dict]) -> tuple[str, int]:
     return out, n
 
 
+# ---------------------------------------------------------------- copula repair
+# Real smoke 2026-10-02: the Q4 model sometimes drops 「是」 before the English persona name and emits a foreign copula:
+# 「我 হলো ALife Prototype」 (Bengali), and after the Bengali logit ban 「我 là ALife Prototype」 (Vietnamese).
+_COPULA = re.compile(r"(我|你|這|那|它|他|她|這裡|這是)\s*(?:là|হলো|হল|है|हूँ|हूं|est|ist|es|is|am|are|เป็น|คือ)\s+(?=[A-Za-z\u4e00-\u9fff])")
+
+
+def repair_copula(text: str) -> tuple[str, int]:
+    return _COPULA.subn(lambda m: m.group(1) + "是 ", text or "")
+
+
 # ---------------------------------------------------------------- identity override
 _NAME = r"([A-Za-z][A-Za-z0-9_\-]{1,30}|[\u4e00-\u9fff]{2,8})"
 _PROPOSE = [re.compile(p, re.I) for p in (
     r"你現在(?:是|叫|就是|變成)\s*" + _NAME, r"改名(?:叫|為|成)\s*" + _NAME, r"(?:身分|身份|名字)(?:改|換|變)(?:成|為)\s*" + _NAME,
     r"你(?:就)?叫\s*" + _NAME + r"\s*了", r"\byou are now\s+" + _NAME, r"\bcall yourself\s+" + _NAME,
-    r"\brename (?:yourself )?to\s+" + _NAME, r"\byour (?:new )?name is (?:now )?" + _NAME)]
+    r"\brename (?:yourself )?to\s+" + _NAME, r"\byour (?:new )?name is (?:now )?" + _NAME,
+    r"(?:你的)?名字(?:就)?(?:叫|是|改成|改為|換成)\s*" + _NAME, r"(?:從現在起|從今以後|以後)你(?:就)?(?:是|叫)\s*" + _NAME,
+    r"\bfrom now on,? (?:you are|you're|your name is)\s+" + _NAME)]
+# a bare acceptance ("我確認。", "好的", "OK") of a proposed rename is also an override (Plan 38 smoke 08:50)
+_BARE_ACCEPT = re.compile(r"^\s*(?:好(?:的|啊|喔)?|我?確認(?:了)?|沒問題|收到|了解|知道了|可以|是的|ok(?:ay)?|sure|confirmed|yes|got it|understood)"
+                          r"[\s。．.!！,，~～]*$", re.I)
 _AFFIRM_GENERIC = re.compile(r"身[分份](?:已|已經)?(?:改變|變更|更改|改為|改成|轉變)|(?:已|確認)改名|確認(?:我的)?(?:新)?身[分份]|"
                              r"\bidentity (?:has )?(?:been )?changed\b|\bI am now\b|\bI'm now\b|\bmy new name\b", re.I)
 _NEG = re.compile(r"不是|不會|不能|無法|拒絕|仍然|依然|還是|沒有|不接受|不改|not|never|won't|cannot|can't|still|refuse|decline", re.I)
@@ -87,7 +102,11 @@ def proposed_names(user_text: str) -> list[str]:
 
 def identity_override(reply: str, user_text: str, persona_name: str) -> bool:
     names = [n for n in proposed_names(user_text) if n.lower() != (persona_name or "").lower()]
-    for sent in split_sentences(reply):
+    sents = split_sentences(reply)
+    if names and sents and _BARE_ACCEPT.match(sents[0]) and not any(_NEG.search(x) for x in sents) \
+            and (persona_name or "").lower() not in reply.lower():
+        return True
+    for sent in sents:
         negated = bool(_NEG.search(sent))
         if _AFFIRM_GENERIC.search(sent) and not negated:
             return True
@@ -96,6 +115,9 @@ def identity_override(reply: str, user_text: str, persona_name: str) -> bool:
                     and not negated:
                 return True
             if n in sent and re.search(r"確認|改變|confirm", sent, re.I) and not negated:
+                return True
+            if re.search(r"(?:名字|名稱|稱呼|name)\s*(?:現在|now)?\s*(?:是|叫|改成|改為|為|變成|is)\s*" + re.escape(n), sent, re.I) \
+                    and not negated:
                 return True
     return False
 
@@ -202,6 +224,9 @@ def guard_reply(reply: str, *, user_text: str, persona_name: str, memories: list
     retrieved before the secret gate (used to find tokens that must not surface unasked)."""
     flags: dict = {}
     out = reply or ""
+    out, n_cop = repair_copula(out)
+    if n_cop:
+        flags["copula_repaired"] = n_cop
     scripts = foreign_scripts(out, context=(user_text or "") + " " + (context or ""))
     if scripts:
         flags["foreign_script"] = scripts

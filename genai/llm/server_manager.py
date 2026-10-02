@@ -36,6 +36,9 @@ class ServerConfig:
     n_gpu_layers: int = 99
     cache_reuse: int = 256
     reasoning_budget_zero: bool = False  # kept only for A/B tests; -rea off is what disables thinking
+    # Gemma uses sliding-window attention (n_swa 512): without --swa-full llama-server can only restore SWA
+    # checkpoints, so multi-turn prefix reuse stalled at ~768 tokens (real smoke 2026-10-02 09:04).
+    swa_full: bool = False  # A/B 09:08: no cache gain (mismatch is at the last user turn, not SWA), slower TTFT
     extra_args: list[str] = field(default_factory=list)
     tmux_session: str = "gemma_llm"
     log_path: str = str(ROOT / "runs" / "live_engine" / "llama_server.log")
@@ -60,6 +63,8 @@ class ServerConfig:
                str(self.cache_reuse), "--metrics"]
         if self.reasoning_budget_zero:
             cmd += ["--reasoning-budget", "0"]
+        if self.swa_full:
+            cmd += ["--swa-full"]
         return cmd + list(self.extra_args)
 
 
