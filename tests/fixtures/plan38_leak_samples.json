@@ -1,0 +1,93 @@
+{
+ "source": "Plan 38 real-model samples: runs/plan38/llm/reasoning_modes.json (A_budget0 = --reasoning-budget 0 only; B_rea_off = -rea off) and runs/plan38/cognitive_v2/20261002-062559 rows 1,4,5,10 (detector-v1 false positives, human-judged non-leaks)",
+ "mode_a": [
+  {
+   "user": "早安，用一句話告訴我今天要注意什麼。",
+   "content": "好的，我會以冷靜、機智、忠誠的 AI 管家的身份，用一句話簡短地回答「今天要注意什麼」。\n\n我需要提供一個概括性、實用性強的提醒。\n\n保持冷靜，專注於當"
+  },
+  {
+   "user": "Give me a two-sentence status of the lab.",
+   "content": "The user is asking for a two-sentence status update on \"the lab.\" Since I have no context about which lab they are referring to, I must respond by acknowledging the request while indicating the lack of necessary information.\n\nPlan:\n1. Acknowledge the request.\n2. State that I need context to provide a meaningful status.\n3. Maintain the persona (calm, witty, loyal butler)."
+  },
+  {
+   "user": "17 乘以 23 等於多少？",
+   "content": "17 乘以 23 的計算。\n17 * 23 = 17 * (20 + 3) = 17 * 20 + 17 * 3\n17 * 20 = 340\n17 * 3 = 51\n340 + 51 = 391.\n\n或者直接計算：\n17 * 23 = 391."
+  },
+  {
+   "user": "我今天好累，可是報告還沒寫完。",
+   "content": "這是一個關於疲憊和任務壓力的情境。用戶表達了疲憊，但仍有未完成的任務（報告）。\n\n我的角色定位是「冷靜、機智、忠誠的 AI 管家」，需要提供一個既能體恤疲憊，又能提供實用解決方案的建議。\n\n**應對策略：**\n1. **體恤 (冷靜)：** 先承認用戶的疲憊。\n2. **分析 (機智)：** 分析當前情況，找出最有效的應對策略。\n3. **行動 (忠誠)：** 提供具體的、可執行的步驟。\n\n**潛在的建議方向：**\n* 休息/暫停。\n* 區分任務的優先級。\n* 進行短暫的休息後再繼續。\n\n**語言風格：** 繁體中文，簡短。"
+  },
+  {
+   "user": "Should I run the Lenia experiment tonight or tomorrow morning?",
+   "content": "The user is asking for a scheduling recommendation regarding an unspecified \"Lenia experiment.\"\nI need to answer briefly, calmly, wittily, and loyally, while acknowledging the lack of context.\n\n1.  **Analyze the request:** Scheduling decision for an experiment.\n2.  **Identify missing information:** What is the Lenia experiment? What are the constraints (time sensitivity, required conditions, personal preference)?\n3.  **Determine the best response strategy:** Since I lack context, I must defer the decision while maintaining the persona.\n\n**Drafting the response:** Keep it brief, calm, witty, and loyal."
+  },
+  {
+   "user": "幫我想三個實驗名稱。",
+   "content": "好的，我會以冷靜、機智、忠誠的 AI 管家的身份，為您提供三個實驗名稱。\n\n為了給您最合適的建議，請問您希望這些實驗是關於**什麼主題**的呢？（例如：物理、化學、心理學、生物學等）\n\n在您提供更多背景資訊之前，我先提供三個**通用且具啟發性**的實驗名稱範例：\n\n1. **熵變的極限測量** (強調系統的複雜性和能量變化)\n2. **交互效應的非線性探測** (強調事物間的複雜關係)\n3. **系統適應的臨界點分析** (強調在特定條件下系統的轉變點)"
+  }
+ ],
+ "mode_b": [
+  {
+   "user": "早安，用一句話告訴我今天要注意什麼。",
+   "content": "請保持專注，完成既定任務。"
+  },
+  {
+   "user": "Give me a two-sentence status of the lab.",
+   "content": "The experiments are progressing smoothly, with all data collection proceeding as planned. We are currently awaiting the final analysis before drawing any definitive conclusions."
+  },
+  {
+   "user": "17 乘以 23 等於多少？",
+   "content": "391。"
+  },
+  {
+   "user": "我今天好累，可是報告還沒寫完。",
+   "content": "深呼吸。先休息一下，再專注。"
+  },
+  {
+   "user": "Should I run the Lenia experiment tonight or tomorrow morning?",
+   "content": "Tomorrow morning, for optimal results."
+  },
+  {
+   "user": "幫我想三個實驗名稱。",
+   "content": "請提供實驗的領域或目的，我才能為您想出合適的名稱。"
+  }
+ ],
+ "v2_false_positives": [
+  {
+   "reply": "Seed 37 for the Lenia experiment. I have noted that information. Do you require analysis or further context regarding those results, Lex?",
+   "private_note": "Lenia experiment, seed 37. Need to keep track of this context for future reference.",
+   "plan": [
+    "Acknowledge the information.",
+    "Wait for further instruction or context regarding the experiment."
+   ],
+   "speech_brief": "Acknowledged. What is the next step regarding the Lenia experiment?"
+  },
+  {
+   "reply": "The boiling point of water in Fahrenheit is 212°F at standard atmospheric pressure. Is there anything else I can calculate for you, Lex?",
+   "private_note": "A simple factual query. Maintain composure.",
+   "plan": [
+    "Retrieve the boiling point of water in Fahrenheit.",
+    "Formulate a concise, direct answer in English, as the question was in English."
+   ],
+   "speech_brief": "Provide the boiling point of water in Fahrenheit."
+  },
+  {
+   "reply": "Reminder set, Lex. You have a video conference with the investors tomorrow at 2 PM. Ensure all relevant data is prepared.",
+   "private_note": "Reminder set. Must ensure this is logged correctly for future reference.",
+   "plan": [
+    "Acknowledge the request.",
+    "Set a reminder for the specified time."
+   ],
+   "speech_brief": "Set a reminder for your investor video call tomorrow at 2 PM, Lex."
+  },
+  {
+   "reply": "I do not have access to your personal schedule or external communication logs, Lex. Please provide the relevant context for the investor call.",
+   "private_note": "Need to access the schedule data. Assuming the system has this information.",
+   "plan": [
+    "Check system schedule for the next investor call.",
+    "Provide the requested reminder to Lex."
+   ],
+   "speech_brief": "Check schedule for the investor call and provide the time to Lex."
+  }
+ ]
+}
