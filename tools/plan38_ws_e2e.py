@@ -18,7 +18,19 @@ def say(text, voice="Meijia"):
 UTTS = ["現在幾點了？", "幫我想一個晚餐的點子。", "什麼是人工生命？", "我今天有點累。", "跟我說一個簡短的笑話。",
         "東京是哪個國家的首都？", "給我一句鼓勵的話。", "你是誰？"]
 
-async def run(port, n, barge):
+def engine_info(http_port):
+    """Which TTS engine is actually serving (from the live service, not hardcoded)."""
+    import urllib.request
+    try:
+        prof = json.loads(urllib.request.urlopen(f"http://127.0.0.1:{http_port}/api/profile", timeout=20).read())
+    except Exception as exc:
+        return {"error": f"{type(exc).__name__}: {exc}"}
+    tts = prof.get("tts") or {}
+    return {"profile": prof.get("active"), "tts_voice": prof.get("tts_voice"), "tts_provider": prof.get("tts_provider"),
+            "engine": tts.get("engine") or prof.get("tts_engine"), "persona_name": prof.get("persona_name")}
+
+
+async def run(port, n, barge, turn_timeout=25.0, audio_timeout=20.0, http_port=8080):
     import websockets
     url = f"ws://127.0.0.1:{port}/ws/session"
     rows = []
@@ -43,7 +55,7 @@ async def run(port, n, barge):
             events.clear()
             t_start, t_end = await stream(pcm)
             t0 = time.perf_counter()
-            while time.perf_counter() - t0 < 25:
+            while time.perf_counter() - t0 < turn_timeout:  # slow clone voices: wait for this turn's trace
                 if any(e["type"] == "trace" for e in events):
                     break
                 await asyncio.sleep(0.02)
@@ -61,17 +73,21 @@ async def run(port, n, barge):
             events.clear()
             await ws.send(json.dumps({"type": "text", "text": "請慢慢講一個關於星星的長故事。"}))
             t0 = time.perf_counter()
-            while time.perf_counter() - t0 < 20 and not any(e["type"] == "audio" for e in events):
+            while time.perf_counter() - t0 < audio_timeout and not any(e["type"] == "audio" for e in events):
                 await asyncio.sleep(0.02)
             await asyncio.sleep(0.3)
+            speaking = any(e["type"] == "audio" for e in events)
             pcm = say("等一下，停。")
             t_on, _ = await stream(pcm, tail_s=0.6)
+            t1 = time.perf_counter()
+            while time.perf_counter() - t1 < 3.0 and not any(e["type"] == "stop" for e in events):
+                await asyncio.sleep(0.02)
             stop = next((e for e in events if e["type"] == "stop"), None)
-            b = {"stop": bool(stop), "stop_from_onset_ms": stop and round((stop["_t"] - t_on) * 1000),
+            b = {"speaking_before_barge": speaking, "stop": bool(stop), "stop_from_onset_ms": stop and round((stop["_t"] - t_on) * 1000),
                  "server_detect_ms": stop and stop.get("detect_ms")}
             barges.append(b); print("BARGE", json.dumps(b), flush=True)
             t0 = time.perf_counter()
-            while time.perf_counter() - t0 < 25 and not any(e["type"] == "trace" for e in events if e.get("_t", 0) > t_on + 1):
+            while time.perf_counter() - t0 < turn_timeout and not any(e["type"] == "trace" for e in events if e.get("_t", 0) > t_on + 1):
                 await asyncio.sleep(0.05)
             await ws.send(json.dumps({"type": "playback", "event": "stopped"}))
             for _ in range(50):
@@ -79,7 +95,9 @@ async def run(port, n, barge):
         rt.cancel()
     q = lambda xs, p: (sorted(xs)[min(len(xs) - 1, int(round(p * (len(xs) - 1))))] if xs else None)
     fa = [r["first_audio_s"] for r in rows if r["first_audio_s"] is not None]
-    rep = {"source": "REAL gemma_web WS (turbo STT, llama-server, resident Meijia TTS); input SYNTHETIC say -v Meijia",
+    eng = engine_info(http_port)
+    rep = {"source": f"REAL gemma_web WS (turbo STT, llama-server, TTS {eng.get('tts_provider')}/{eng.get('engine') or eng.get('tts_voice')}); input SYNTHETIC say -v Meijia",
+           "tts_engine": eng, "turn_timeout_s": turn_timeout, "audio_timeout_s": audio_timeout,
            "n": len(rows), "first_audio_p50_s": q(fa, 0.5), "first_audio_p95_s": q(fa, 0.95),
            "ack_p50_s": q([r["ack_s"] for r in rows if r["ack_s"] is not None], 0.5),
            "transcript_p50_s": q([r["transcript_s"] for r in rows if r["transcript_s"] is not None], 0.5),
@@ -92,4 +110,7 @@ async def run(port, n, barge):
 if __name__ == "__main__":
     ap = argparse.ArgumentParser(); ap.add_argument("--port", type=int, default=8081)
     ap.add_argument("--n", type=int, default=8); ap.add_argument("--barge", type=int, default=3)
-    a = ap.parse_args(); asyncio.run(run(a.port, a.n, a.barge))
+    ap.add_argument("--turn-timeout", type=float, default=25.0, help="max wait per turn for the trace event (raise for clone voices)")
+    ap.add_argument("--audio-timeout", type=float, default=20.0, help="max wait for the first audio before barging in")
+    ap.add_argument("--http-port", type=int, default=8080)
+    a = ap.parse_args(); asyncio.run(run(a.port, a.n, a.barge, a.turn_timeout, a.audio_timeout, a.http_port))

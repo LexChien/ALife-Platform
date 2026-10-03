@@ -272,7 +272,8 @@ class GemmaWebService:
 
     def profile_payload(self) -> dict:
         return {**self.clone_profiles.public(), "tts_voice": getattr(self.tts, "voice", None),
-                "tts_provider": getattr(self.tts, "provider", None), "persona_name": self.clone_persona.name,
+                "tts_provider": getattr(self.tts, "provider", None),
+                "tts_engine": getattr(self.tts, "engine", None), "persona_name": self.clone_persona.name,
                 "error": getattr(self, "profile_error", None)}
 
     def plan38_payload(self) -> dict:
@@ -699,7 +700,8 @@ class GemmaWebService:
         def _on_event(ev):
             if ev.get("type") == "sentence" and want_tts and self.tts is not None and not (cancel and cancel.is_set()):
                 try:
-                    out = self.tts.synthesize(ev["text"], self.tts_dir, rate=voice["rate"], pitch=voice["pitch"])
+                    ikw = {"index": ev["index"]} if getattr(self.tts, "indexed", False) else {}
+                    out = self.tts.synthesize(ev["text"], self.tts_dir, rate=voice["rate"], pitch=voice["pitch"], **ikw)
                     item = {"index": ev["index"], "url": f"/api/tts/{out['file']}", "chars": len(ev["text"]),
                             "duration_s": out.get("duration_s"), "synth_s": out.get("elapsed_s"), "text": ev["text"]}
                     with tts_lock:
@@ -804,15 +806,16 @@ class GemmaWebService:
         chunks = split_for_tts(text) if self.voice_cfg.get("tts_chunking", True) else [text]
         chunks = chunks or [text]
         stems = [uuid.uuid4().hex for _ in chunks]
-        first = self.tts.synthesize(chunks[0], self.tts_dir, rate=voice["rate"], pitch=voice["pitch"], stem=stems[0])
+        idx = (lambda i: {"index": i}) if getattr(self.tts, "indexed", False) else (lambda i: {})
+        first = self.tts.synthesize(chunks[0], self.tts_dir, rate=voice["rate"], pitch=voice["pitch"], stem=stems[0], **idx(0))
         if len(chunks) > 1:
             for st in stems[1:]:
                 self._tts_pending[st] = time.time()
 
             def _rest():
-                for chunk, st in zip(chunks[1:], stems[1:]):
+                for i, (chunk, st) in enumerate(zip(chunks[1:], stems[1:]), start=1):
                     try:
-                        self.tts.synthesize(chunk, self.tts_dir, rate=voice["rate"], pitch=voice["pitch"], stem=st)
+                        self.tts.synthesize(chunk, self.tts_dir, rate=voice["rate"], pitch=voice["pitch"], stem=st, **idx(i))
                     except Exception as exc:  # recorded; GET will 404 after the wait
                         logger.warning("tts chunk failed: %s", exc)
                     finally:

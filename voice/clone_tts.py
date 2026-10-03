@@ -158,3 +158,43 @@ class CloneTTS:
         return {"file": wav.name, "path": str(wav), "duration_s": round(duration, 3), "wpm": None, "pbas": None,
                 "speed": speed, "voice": self.voice, "engine": self.engine, "elapsed_s": round(time.time() - t0, 3),
                 "worker_synth_s": msg.get("synth_s"), "pitch_best_effort": True, "provider": self.provider}
+
+
+class HybridTTS:
+    """Plan 40 phase 2 fallback route: a fast resident voice speaks chunk 0 (first clause) so first audio stays within the
+    J2 budget, the clone voice speaks every later chunk. Services pass ``index`` (chunk number in the turn) when
+    ``indexed`` is True; calls without an index (acks, /api/tts) use the clone."""
+    provider = "hybrid_clone"
+    indexed = True
+
+    def __init__(self, fast, clone, voice: str = "", fast_max_index: int = 0):
+        self.fast, self.clone, self.voice = fast, clone, voice or getattr(clone, "voice", "clone")
+        self.fast_max_index = fast_max_index
+        self.engine = f"hybrid:{getattr(fast, 'voice', 'fast')}+{getattr(clone, 'engine', 'clone')}"
+        self.fallback = fast
+
+    def start(self) -> bool:
+        return self.clone.start()
+
+    @property
+    def start_error(self):
+        return getattr(self.clone, "start_error", None)
+
+    def close(self):
+        self.clone.close()
+
+    def healthcheck(self) -> dict:
+        c = self.clone.healthcheck()
+        return {**c, "provider": self.provider, "engine": self.engine, "fast_voice": getattr(self.fast, "voice", None),
+                "fast_max_index": self.fast_max_index, "ok": bool(c.get("ok"))}
+
+    speakable = staticmethod(CloneTTS.speakable)
+
+    def synthesize(self, text: str, outdir: Path, rate: float = 1.0, pitch: float = 1.0, stem: str | None = None,
+                   index: int | None = None, **kw) -> dict:
+        if index is not None and index <= self.fast_max_index:
+            out = self.fast.synthesize(text, outdir, rate=rate, pitch=pitch, stem=stem)
+            return {**out, "hybrid_part": "fast", "provider": self.provider, "engine": self.engine}
+        out = self.clone.synthesize(text, outdir, rate=rate, pitch=pitch, stem=stem, **kw)
+        return {**out, "hybrid_part": "clone", "engine": self.engine, "clone_provider": out.get("provider"),
+                "provider": self.provider}

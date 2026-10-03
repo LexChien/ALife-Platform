@@ -113,7 +113,13 @@ def build_voice(spec: dict, fallback=None, root: Path = ROOT, name: str = ""):
     tf = _resolve(spec.get("ref_text_file"), root)
     if not ref_text and tf is not None and tf.exists():
         ref_text = tf.read_text(encoding="utf-8").strip()
-    return CloneTTS(voice=name or spec.get("label", "clone"), engine=spec.get("engine", "f5"), python=spec["python"],
-                    ref_wav=str(_resolve(spec["ref_wav"], root)), ref_text=ref_text, device=spec.get("device", "mps"),
-                    nfe=int(spec.get("nfe", 16)), fallback=fallback, extra_args=spec.get("extra_args"),
-                    ready_timeout=float(spec.get("ready_timeout", 240)))
+    extra = list(spec.get("extra_args") or [])
+    ref_wav = str(_resolve(spec["ref_wav"], root))
+    clone = CloneTTS(voice=name or spec.get("label", "clone"), engine=spec.get("engine", "f5"), python=spec["python"],
+                     ref_wav=ref_wav, ref_text=ref_text, device=spec.get("device", "mps"),
+                     nfe=int(spec.get("nfe", 16)), fallback=fallback, extra_args=extra,
+                     ready_timeout=float(spec.get("ready_timeout", 240)))
+    if spec.get("hybrid_fast") and fallback is not None:  # fast resident voice speaks chunk 0, the clone the rest
+        from voice.clone_tts import HybridTTS
+        return HybridTTS(fallback, clone, voice=clone.voice, fast_max_index=int(spec.get("hybrid_fast_max_index", 0)))
+    return clone

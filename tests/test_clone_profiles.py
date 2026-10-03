@@ -146,5 +146,44 @@ class ClipWhitelistTest(unittest.TestCase):
             self.assertFalse(re.fullmatch(pat, bad), bad)
 
 
+
+class _FakeTTS:
+    def __init__(self, voice, engine="fake"):
+        self.voice, self.engine, self.calls, self.provider = voice, engine, [], "fake"
+
+    def start(self):
+        return True
+
+    def close(self):
+        pass
+
+    def healthcheck(self):
+        return {"ok": True, "voice": self.voice}
+
+    def synthesize(self, text, outdir, rate=1.0, pitch=1.0, stem=None, **kw):
+        self.calls.append(text)
+        return {"file": f"{stem}.wav", "voice": self.voice, "provider": self.provider, "elapsed_s": 0.0}
+
+
+class HybridTTSTests(unittest.TestCase):
+    def test_chunk0_fast_rest_clone(self):
+        from voice.clone_tts import HybridTTS
+        fast, clone = _FakeTTS("Meijia"), _FakeTTS("雅英", engine="f5mlx")
+        h = HybridTTS(fast, clone)
+        self.assertTrue(h.indexed)
+        self.assertEqual(h.synthesize("你好，", "/tmp", stem="a", index=0)["hybrid_part"], "fast")
+        self.assertEqual(h.synthesize("今天想聊什麼？", "/tmp", stem="b", index=1)["hybrid_part"], "clone")
+        self.assertEqual(h.synthesize("嗯。", "/tmp", stem="c")["hybrid_part"], "clone")  # acks / no index -> clone
+        self.assertEqual(fast.calls, ["你好，"]); self.assertEqual(clone.calls, ["今天想聊什麼？", "嗯。"])
+        self.assertEqual(h.engine, "hybrid:Meijia+f5mlx")
+
+    def test_build_voice_hybrid_flag(self):
+        from voice.clone_tts import HybridTTS
+        spec = {"provider": "clone_tts", "engine": "f5mlx", "python": "/nonexistent/python", "ref_wav": "/tmp/x.wav",
+                "ref_text": "大家好", "hybrid_fast": True}
+        self.assertIsInstance(build_voice(spec, fallback=_FakeTTS("Meijia"), name="雅英"), HybridTTS)
+        self.assertIsInstance(build_voice({**spec, "hybrid_fast": False}, fallback=_FakeTTS("Meijia"), name="雅英"), CloneTTS)
+
+
 if __name__ == "__main__":
     unittest.main()

@@ -16,6 +16,7 @@ ROOT = Path(__file__).resolve().parents[1]
 ap = argparse.ArgumentParser(); ap.add_argument("--bench", default="runs/yaying_clone/tts_bench")
 ap.add_argument("--dataset", default="runs/yaying_clone/dataset.json"); ap.add_argument("--ref-info", default="runs/yaying_clone/tts_ref/ref.json")
 ap.add_argument("--out", default="eval.json"); ap.add_argument("--cands", default="")
+ap.add_argument("--merge", action="store_true", help="keep other candidates already in --out")
 A = ap.parse_args(); B = ROOT / A.bench
 bench = json.loads((B / "bench.json").read_text()); ds = json.loads((ROOT / A.dataset).read_text())
 ref_info = json.loads((ROOT / A.ref_info).read_text())
@@ -110,9 +111,14 @@ for cand, res in bench.items():
     report["candidates"][cand] = {"info": res["info"], "n_ok": len(ok), "n_err": len(rows) - len(ok),
         "sim_ecapa_zh": m("sim_ecapa", zh), "sim_wavlm_zh": m("sim_wavlm", zh), "sim_ecapa_en": m("sim_ecapa", en),
         "cer_zh": m("cer", zh), "wer_en": m("wer", en), "utmos": m("utmos", ok), "dnsmos_ovr": m("dnsmos_ovr", ok),
-        "latency_p50_s": p("latency_s", zh, 50), "latency_p90_s": p("latency_s", zh, 90), "rtf_mean": m("rtf", ok), "rows": rows}
+        "latency_p50_s": p("latency_s", zh, 50),
+        "first_audio_p50_s": p("first_audio_s", [r for r in zh if "first_audio_s" in r], 50),
+        "first_audio_p90_s": p("first_audio_s", [r for r in zh if "first_audio_s" in r], 90),
+        "gap_p50_s": p("gap_s", [r for r in zh if "gap_s" in r], 50), "latency_p90_s": p("latency_s", zh, 90), "rtf_mean": m("rtf", ok), "rows": rows}
+if A.merge and (B / A.out).exists():
+    old = json.loads((B / A.out).read_text()); report["candidates"] = {**old.get("candidates", {}), **report["candidates"]}
 (B / A.out).write_text(json.dumps(report, ensure_ascii=False, indent=1))
-print("\n| cand | sim ECAPA zh | sim WavLM zh | CER zh | WER en | UTMOS | DNSMOS ovr | latency p50 | RTF |")
+print("\n| cand | sim ECAPA zh | sim WavLM zh | CER zh | WER en | UTMOS | DNSMOS ovr | first audio p50 | sentence latency p50 | RTF |")
 for c, v in report["candidates"].items():
-    print(f"| {c} | {v['sim_ecapa_zh']} | {v['sim_wavlm_zh']} | {v['cer_zh']} | {v['wer_en']} | {v['utmos']} | {v['dnsmos_ovr']} | {v['latency_p50_s']} | {v['rtf_mean']} |")
+    print(f"| {c} | {v['sim_ecapa_zh']} | {v['sim_wavlm_zh']} | {v['cer_zh']} | {v['wer_en']} | {v['utmos']} | {v['dnsmos_ovr']} | {v['first_audio_p50_s']} | {v['latency_p50_s']} | {v['rtf_mean']} |")
 print("WROTE", B / A.out)
