@@ -32,12 +32,15 @@ CLONES = {"f5": ("f5", "~/yaying_cache/venv_f5/bin/python", 16, "mps"),
           "f5mlx_nfe6_s2": ("f5mlx", "~/yaying_cache/venv_f5mlx/bin/python", 6, "mlx", "runs/yaying_clone/tts_ref/ref_s2.wav"),
           "f5mlx_nfe6_s5": ("f5mlx", "~/yaying_cache/venv_f5mlx/bin/python", 6, "mlx", "runs/yaying_clone/tts_ref/ref_s5.wav"),
           "f5q_nfe8_s5": ("f5", "~/yaying_cache/venv_f5/bin/python", 8, "mps", "runs/yaying_clone/tts_ref/ref_s5.wav"),
-          "gsv": ("gsv", "~/yaying_cache/venv_gsv/bin/python", 0, "mps")}
+          "gsv": ("gsv", "~/yaying_cache/venv_gsv/bin/python", 0, "mps", "runs/yaying_clone/tts_ref/ref_s5.wav"),
+          "gsv_zs": ("gsv", "~/yaying_cache/venv_gsv/bin/python", 0, "mps", "runs/yaying_clone/tts_ref/ref_s5.wav",
+                     ["--gsv-gpt", "GPT_SoVITS/pretrained_models/gsv-v2final-pretrained/s1bert25hz-5kh-longer-epoch=12-step=369668.ckpt",
+                      "--gsv-sovits", "GPT_SoVITS/pretrained_models/gsv-v2final-pretrained/s2G2333k.pth"])}
 
 
 def clone_spec(name, default_ref):
     c = CLONES[name]; ref = ROOT / (c[4] if len(c) > 4 else default_ref)
-    return c[0], c[1], c[2], c[3], ref, ref.with_suffix(".txt").read_text(encoding="utf-8").strip()
+    return c[0], c[1], c[2], c[3], ref, ref.with_suffix(".txt").read_text(encoding="utf-8").strip(), (c[5] if len(c) > 5 else [])
 
 
 def first_chunk(text):
@@ -48,19 +51,27 @@ def first_chunk(text):
     return text
 
 
+def _read_wav(p):
+    import numpy as np
+    with wave.open(str(p)) as w:
+        sr, ch, sw = w.getframerate(), w.getnchannels(), w.getsampwidth(); raw = w.readframes(w.getnframes())
+    y = np.frombuffer(raw, dtype=np.int16 if sw == 2 else np.int32).astype(np.float32) / (32768.0 if sw == 2 else 2147483648.0)
+    return (y.reshape(-1, ch).mean(1) if ch > 1 else y), sr
+
+
 def concat_xfade(a_path, b_path, out, xfade_s=0.03):
-    import numpy as np, soundfile as sf, librosa
-    a, sa = sf.read(a_path, dtype="float32"); b, sb = sf.read(b_path, dtype="float32")
-    if a.ndim > 1: a = a.mean(1)
-    if b.ndim > 1: b = b.mean(1)
-    if sa != sb: a = librosa.resample(a, orig_sr=sa, target_sr=sb)
-    n = int(xfade_s * sb); n = min(n, len(a), len(b))
+    """fast head + clone rest, 30 ms linear cross-fade; numpy-only (runs in the gemma_web venv)."""
+    import numpy as np
+    a, sa = _read_wav(a_path); b, sb = _read_wav(b_path)
+    if sa != sb:  # linear-interp resample of the head to the clone rate
+        a = np.interp(np.arange(int(len(a) * sb / sa)) * (sa / sb), np.arange(len(a)), a).astype(np.float32)
+    n = min(int(xfade_s * sb), len(a), len(b))
     if n > 0:
-        r = np.linspace(0, 1, n, dtype=np.float32); mid = a[-n:] * (1 - r) + b[:n] * r
-        y = np.concatenate([a[:-n], mid, b[n:]])
+        r = np.linspace(0, 1, n, dtype=np.float32); y = np.concatenate([a[:-n], a[-n:] * (1 - r) + b[:n] * r, b[n:]])
     else:
         y = np.concatenate([a, b])
-    sf.write(out, y, sb, subtype="PCM_16")
+    with wave.open(str(out), "wb") as w:
+        w.setnchannels(1); w.setsampwidth(2); w.setframerate(sb); w.writeframes((np.clip(y, -1, 1) * 32767).astype(np.int16).tobytes())
 
 
 def wav_dur(p):
@@ -101,8 +112,8 @@ def main():
             from genai.web.voice import MacSayTTS
             from voice.clone_tts import CloneTTS
             fast = ResidentTTS(voice=fast_name.capitalize(), fallback=MacSayTTS(voice=fast_name.capitalize())); fast.start()
-            eng_c, py, nfe, dev, rw, rt = clone_spec(clone_name, a.ref)
-            clone = CloneTTS(voice="雅英", engine=eng_c, python=py, ref_wav=str(rw), ref_text=rt, device=dev, nfe=nfe, ready_timeout=900)
+            eng_c, py, nfe, dev, rw, rt, xa = clone_spec(clone_name, a.ref)
+            clone = CloneTTS(voice="雅英", engine=eng_c, python=py, ref_wav=str(rw), ref_text=rt, device=dev, nfe=nfe, ready_timeout=900, extra_args=xa)
             t = time.time(); ok = clone.start(); info["cold_start_s"] = round(time.time() - t, 2); info["ready"] = clone.ready_info
             if not ok:
                 info["error"] = clone.start_error; allres[cand] = {"info": info, "rows": []}; print(cand, info); continue
@@ -126,9 +137,9 @@ def main():
                 return time.time() - t0
         else:
             from voice.clone_tts import CloneTTS
-            eng_c, py, nfe, dev, rw, rt = clone_spec(cand, a.ref)
+            eng_c, py, nfe, dev, rw, rt, xa = clone_spec(cand, a.ref)
             eng = CloneTTS(voice="雅英", engine=eng_c, python=py, ref_wav=str(rw), ref_text=rt,
-                           device=dev, nfe=nfe, ready_timeout=900)
+                           device=dev, nfe=nfe, ready_timeout=900, extra_args=xa)
             t = time.time(); ok = eng.start(); info["cold_start_s"] = round(time.time() - t, 2); info["ready"] = eng.ready_info
             info.update({"engine": eng_c, "nfe": nfe, "device": dev, "ref": str(rw.relative_to(ROOT))})
             if not ok:

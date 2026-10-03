@@ -64,6 +64,12 @@ elif A.engine == "f5mlx":
     synth("你好。", 1.0)
 elif A.engine == "gsv":
     # GPT-SoVITS v2 fine-tuned on the clean 雅英 dataset (weights private, machine-local)
+    import glob
+    if not A.gsv_gpt:  # newest fine-tuned weights (private, machine-local)
+        A.gsv_gpt = max(glob.glob(os.path.join(A.gsv_root, "GPT_weights_v2", "*.ckpt")), key=os.path.getmtime)
+    if not A.gsv_sovits:
+        A.gsv_sovits = max(glob.glob(os.path.join(A.gsv_root, "SoVITS_weights_v2", "*.pth")), key=os.path.getmtime)
+    A.ref = os.path.abspath(A.ref)
     os.chdir(A.gsv_root); sys.path.insert(0, A.gsv_root); sys.path.insert(0, os.path.join(A.gsv_root, "GPT_SoVITS"))
     from GPT_SoVITS.TTS_infer_pack.TTS import TTS, TTS_Config
     cfg = TTS_Config({"custom": {"device": A.device, "is_half": False, "version": "v2",
@@ -96,7 +102,7 @@ else:
             parts.append(j["tts_speech"].squeeze(0).cpu().numpy())
         return np.concatenate(parts).astype(np.float32), eng.sample_rate, time.time() - t, first
     synth("你好。", 1.0)
-out_stream.write(json.dumps({"ready": True, "engine": A.engine, "load_s": round(time.time() - t0, 2), "device": A.device}) + "\n")
+out_stream.write(json.dumps({"ready": True, "engine": A.engine, **({"gsv_gpt": os.path.basename(A.gsv_gpt), "gsv_sovits": os.path.basename(A.gsv_sovits)} if A.engine == "gsv" else {}), "load_s": round(time.time() - t0, 2), "device": A.device}) + "\n")
 out_stream.flush()
 for line in sys.stdin:
     try:
