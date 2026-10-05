@@ -21,7 +21,8 @@ import cv2
 ROOT = Path(__file__).resolve().parents[1]
 MT = Path.home() / "yaying_cache" / "MuseTalk"
 sys.path.insert(0, str(MT))
-FPS = 24
+import os
+FPS = int(os.environ.get("YY_FPS", "24"))  # v6 candidates are 25 fps
 MOUTH = list(range(52, 72))
 MASK_SCALE = 1.0
 
