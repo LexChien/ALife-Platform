@@ -86,6 +86,7 @@ def main():
     ap.add_argument("--seed", type=int, default=43); ap.add_argument("--sample", default="768,768")
     ap.add_argument("--dtype", default="float16"); ap.add_argument("--vae-dev", default="mps")
     ap.add_argument("--line-ends", default="5.584,11.39"); ap.add_argument("--max-windows", type=int, default=0)
+    ap.add_argument("--resume", action="store_true", help="reuse existing win*.npy in the _win dir and generate only the missing windows")
     ap.add_argument("--anchors", default="", help="comma list of n_windows+1 ORIGINAL frames: window k = anchor k -> anchor k+1 (no chaining drift)")
     a = ap.parse_args()
     out = Path(a.out).resolve(); wd = out.parent / (out.stem + "_win"); wd.mkdir(parents=True, exist_ok=True)
@@ -102,7 +103,7 @@ def main():
             w["image"], w["end"] = an[k], an[k + 1]
     for k, w in enumerate(wins):
         w["prompt"] = BASE + CUES[w["cue"]]; w["seed"] = a.seed + k
-    spec = {"audio": aud, "image": img, "windows": wins}
+    spec = {"audio": aud, "image": img, "windows": wins, "resume": bool(a.resume)}
     sp = wd / "spec.json"; json.dump(spec, open(sp, "w"), indent=1, ensure_ascii=False)
     print(f"[emv3w] {dur:.3f}s -> {n_total} frames, {len(wins)} windows of <= {a.win}", flush=True)
     os.chdir(EM); sys.path.insert(0, str(EM)); patches(a.vae_dev)
