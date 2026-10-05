@@ -71,5 +71,60 @@ class MultilingualMemoryTests(unittest.TestCase):
             self.assertEqual(base.vector_store.collection.count(), 1)  # sources untouched
 
 
+
+class ConcurrentEncodeLockTests(unittest.TestCase):
+    """Fake model: concurrent _encode must never overlap (MPS race guard). No real model/MPS."""
+
+    def test_encode_is_serialised(self):
+        import threading
+        import time
+        import numpy as np
+        from digital_clone.memory import embeddings as emb
+
+        class FakeModel:
+            def __init__(self):
+                self.concurrent = 0
+                self.max_concurrent = 0
+                self._lock = threading.Lock()
+
+            def encode(self, texts, **kwargs):
+                with self._lock:
+                    self.concurrent += 1
+                    self.max_concurrent = max(self.max_concurrent, self.concurrent)
+                time.sleep(0.04)
+                with self._lock:
+                    self.concurrent -= 1
+                return np.zeros((len(texts), 4), dtype=np.float32)
+
+        fake = FakeModel()
+        key = ("__test_fake_model__", "cpu")
+        with emb._CACHE_LOCK:
+            emb._MODEL_CACHE[key] = fake
+        try:
+            ef = emb.PrefixedSentenceTransformerEF.__new__(emb.PrefixedSentenceTransformerEF)
+            ef.model_name = key[0]
+            ef.device = key[1]
+            ef.doc_prefix = ""
+            ef.query_prefix = ""
+            ef._model = fake
+            errors = []
+
+            def worker():
+                try:
+                    ef._encode(["hello world"])
+                except Exception as exc:  # pragma: no cover
+                    errors.append(exc)
+
+            threads = [threading.Thread(target=worker) for _ in range(6)]
+            for t in threads:
+                t.start()
+            for t in threads:
+                t.join(timeout=5)
+            self.assertEqual(errors, [])
+            self.assertEqual(fake.max_concurrent, 1)
+        finally:
+            with emb._CACHE_LOCK:
+                emb._MODEL_CACHE.pop(key, None)
+
 if __name__ == "__main__":
     unittest.main()

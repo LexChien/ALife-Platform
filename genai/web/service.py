@@ -118,6 +118,11 @@ class GemmaWebService:
             self.offline_stt = MLXWhisperTranscriber(model_repo=str(self.voice_cfg.get("mlx_whisper_model",
                                                                                       "mlx-community/whisper-large-v3-mlx")))
             if self.voice_cfg.get("whisper_preload", False):
+                try:
+                    from genai.web.mlx_worker import warm_mel_filters
+                    warm_mel_filters(128)  # evaluate on worker before any parallel preload
+                except Exception as exc:
+                    logger.warning("mlx mel_filters warm failed: %s", exc)
                 self.offline_stt.preload()
         elif input_provider in {"local_whisper_via_upload", "macos_speech_via_upload"} and WhisperTranscriber.available():
             self.offline_stt = WhisperTranscriber(model_size=str(self.voice_cfg.get("whisper_model", "small")))
@@ -208,6 +213,7 @@ class GemmaWebService:
                 if UtteranceSTT.available():
                     self.stream_stt = UtteranceSTT(str(stt_model))
                     if self.voice_cfg.get("whisper_preload", False):
+                        # Runs on the dedicated MLX worker (queued after upload large-v3 preload if racing).
                         self.stream_stt.preload()
             except Exception as exc:
                 self.stream_stt_error = f"{type(exc).__name__}: {exc}"
@@ -247,13 +253,19 @@ class GemmaWebService:
         tts = self._voice(name)
         self.tts = tts
         self.voice_cfg["tts_voice"] = name
+        ack_status = None
         rt = getattr(self, "realtime", None)
         if rt is not None and getattr(rt, "ack", None) is not None:
             try:
-                rt.ack.retarget(tts)
+                # 2026-10-05: background retarget so HTTP returns fast (was ~90 s sync → BrokenPipe)
+                ack_status = rt.ack.retarget(tts, background=True)
             except Exception as exc:
                 logger.warning("ack retarget failed: %s", exc)
-        return tts.healthcheck()
+                ack_status = {"status": f"error:{type(exc).__name__}: {exc}"}
+        health = tts.healthcheck()
+        if ack_status is not None:
+            health = {**health, "ack": ack_status}
+        return health
 
     def apply_profile(self, pid: str, voice: str | None = None) -> dict:
         prof = self.clone_profiles.get(pid) if pid in self.clone_profiles.profiles else None
@@ -271,10 +283,14 @@ class GemmaWebService:
         return {"ok": True, **self.profile_payload(), "tts": tts_health}
 
     def profile_payload(self) -> dict:
+        ack = None
+        rt = getattr(self, "realtime", None)
+        if rt is not None and getattr(rt, "ack", None) is not None and hasattr(rt.ack, "status_payload"):
+            ack = rt.ack.status_payload()
         return {**self.clone_profiles.public(), "tts_voice": getattr(self.tts, "voice", None),
                 "tts_provider": getattr(self.tts, "provider", None),
                 "tts_engine": getattr(self.tts, "engine", None), "persona_name": self.clone_persona.name,
-                "error": getattr(self, "profile_error", None)}
+                "error": getattr(self, "profile_error", None), "ack": ack}
 
     def plan38_payload(self) -> dict:
         return {"cognitive_loop": self.loop is not None,

@@ -157,6 +157,9 @@ class AckCache:
         self.outdir = Path(outdir)
         self.files: dict[str, list[str]] = {}
         self._i = 0
+        self.status = "cold"  # cold | ready | regenerating | error:<msg>
+        self._retarget_lock = threading.Lock()
+        self._retarget_thread: threading.Thread | None = None
 
     def warm(self) -> dict:
         # Plan 40: a non-default voice gets its own file names (no browser-cache mix-up after a voice switch)
@@ -169,12 +172,33 @@ class AckCache:
                 out = self.tts.synthesize(p, self.outdir, stem=f"ack{tag}_{lang}_{k}")
                 files[lang].append(out["file"])
         self.files = files
+        self.status = "ready"
         return self.files
 
-    def retarget(self, tts) -> dict:
-        """Plan 40: re-render the acknowledgements in the newly selected voice (same object, sessions keep it)."""
+    def retarget(self, tts, background: bool = True) -> dict:
+        """Plan 40 / 2026-10-05: switch TTS immediately; optionally re-render acks in a background thread.
+
+        Synchronous retarget (~90 s for clone voices) previously blocked the HTTP thread → BrokenPipe.
+        Default ``background=True`` returns at once; old ack files stay available until new ones swap in
+        (client may also get None from pick() if cold). TTS itself serialises via the voice's own lock.
+        """
         self.tts = tts
-        return self.warm()
+        if not background:
+            return self.warm()
+
+        def _go():
+            with self._retarget_lock:
+                self.status = "regenerating"
+                try:
+                    self.warm()
+                except Exception as exc:  # keep old files; surface status
+                    self.status = f"error:{type(exc).__name__}: {exc}"
+
+        t = threading.Thread(target=_go, name="ack-retarget", daemon=True)
+        self._retarget_thread = t
+        t.start()
+        return {"status": self.status, "background": True,
+                "files": {k: len(v) for k, v in self.files.items()}}
 
     def pick(self, lang: str) -> str | None:
         files = self.files.get(lang) or self.files.get("zh")
@@ -182,3 +206,6 @@ class AckCache:
             return None
         self._i += 1
         return files[self._i % len(files)]
+
+    def status_payload(self) -> dict:
+        return {"status": self.status, "counts": {k: len(v) for k, v in self.files.items()}}

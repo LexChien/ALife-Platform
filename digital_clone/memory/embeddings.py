@@ -8,12 +8,17 @@ E5 models expect "query: " / "passage: " prefixes; Chroma calls embed_query() fo
 """
 from __future__ import annotations
 
+import threading
 from typing import Any, Dict, List
 
 DEFAULT_MULTILINGUAL_MODEL = "intfloat/multilingual-e5-small"
 # Chroma re-instantiates the EF via build_from_config() on collection operations; cache the
 # loaded SentenceTransformer per (model, device) so that is cheap (R2: 28 reloads in 30 adds).
 _MODEL_CACHE: Dict[tuple, Any] = {}
+# 2026-10-05: torch MPS MetalShaderLibrary is not multi-thread safe (gemma_web SIGSEGV when two
+# voice_chat turns encoded with shared bge-m3 concurrently). Serialise every encode on the shared model.
+_ENCODE_LOCK = threading.RLock()
+_CACHE_LOCK = threading.Lock()
 
 try:
     from chromadb import Documents, EmbeddingFunction, Embeddings
@@ -33,14 +38,17 @@ class PrefixedSentenceTransformerEF(EmbeddingFunction):  # type: ignore[misc]
         self.doc_prefix = doc_prefix if doc_prefix is not None else ("passage: " if is_e5 else "")
         self.query_prefix = query_prefix if query_prefix is not None else ("query: " if is_e5 else "")
         key = (model_name, device)
-        if key not in _MODEL_CACHE:
-            from sentence_transformers import SentenceTransformer
-            _MODEL_CACHE[key] = SentenceTransformer(model_name, device=device)
-        self._model = _MODEL_CACHE[key]
+        with _CACHE_LOCK:
+            if key not in _MODEL_CACHE:
+                from sentence_transformers import SentenceTransformer
+                _MODEL_CACHE[key] = SentenceTransformer(model_name, device=device)
+            self._model = _MODEL_CACHE[key]
 
     def _encode(self, texts: List[str]) -> Embeddings:
-        vecs = self._model.encode(list(texts), normalize_embeddings=True, convert_to_numpy=True)
-        return [v.astype("float32") for v in vecs]
+        # Hold the encode lock for the whole MPS forward; concurrent HTTP/pool threads must queue.
+        with _ENCODE_LOCK:
+            vecs = self._model.encode(list(texts), normalize_embeddings=True, convert_to_numpy=True)
+            return [v.astype("float32") for v in vecs]
 
     def __call__(self, input: Documents) -> Embeddings:  # documents
         return self._encode([self.doc_prefix + t for t in input])

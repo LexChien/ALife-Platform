@@ -5,6 +5,7 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from urllib.parse import parse_qs, unquote, urlparse
 import argparse
+import faulthandler
 import json
 import sys
 
@@ -292,6 +293,18 @@ class GemmaWebHandler(BaseHTTPRequestHandler):
 
 
 def main() -> int:
+    # 2026-10-05: dump all-thread Python stacks on native crashes (SIGSEGV had no traceback before).
+    # faulthandler supports one FD; use stderr so the daemon/tmux log captures dumps. Also append a
+    # pointer into runs/live_engine/gemma_web_faulthandler.log for operators.
+    faulthandler.enable(all_threads=True)
+    try:
+        fault_path = ROOT / "runs" / "live_engine" / "gemma_web_faulthandler.log"
+        fault_path.parent.mkdir(parents=True, exist_ok=True)
+        with open(fault_path, "a", encoding="utf-8") as fh:
+            fh.write("faulthandler enabled on stderr (daemon log captures dumps)" + "\n")
+    except Exception as _fh_exc:  # never block startup
+        print(f"faulthandler pointer file failed: {_fh_exc}", file=sys.stderr)
+
     parser = argparse.ArgumentParser(
         description="Run a local Gemma web chat UI with text input and browser microphone support."
     )

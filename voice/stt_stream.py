@@ -38,7 +38,9 @@ class UtteranceSTT:
         return self._cc or None
 
     def preload(self) -> float:
+        from genai.web.mlx_worker import warm_mel_filters
         t0 = time.time()
+        warm_mel_filters(128)  # sequential with upload STT via the same worker queue
         self.transcribe(np.zeros(16000, dtype=np.float32))
         self.loaded = True
         return round(time.time() - t0, 3)
@@ -51,9 +53,9 @@ class UtteranceSTT:
         return self._m
 
     def transcribe(self, pcm16k: np.ndarray, initial_prompt: str | None = None, languages=("zh", "en")) -> dict:
-        from genai.web.voice import MLX_LOCK  # serialise all MLX use across threads (see genai/web/voice.py)
-        with MLX_LOCK:
-            return self._transcribe_locked(pcm16k, initial_prompt, languages)
+        from genai.web.mlx_worker import mlx_call, warm_mel_filters
+        warm_mel_filters(128)
+        return mlx_call(self._transcribe_locked, pcm16k, initial_prompt, languages)
 
     def _transcribe_locked(self, pcm16k, initial_prompt=None, languages=("zh", "en")) -> dict:
         """Single encoder pass: encode once, detect language over ``languages`` only (Lex speaks zh/en), decode from
@@ -86,6 +88,8 @@ class UtteranceSTT:
         cc = self._opencc()
         if cc and lang == "zh":
             text = cc.convert(text)
+        from genai.web.voice import collapse_repeated_ngrams
+        text = collapse_repeated_ngrams(text)
         return {"text": text, "language": lang, "stt_s": round(time.time() - t0, 3), "model": self.model_repo,
                 "audio_s": round(len(x) / 16000, 3), "no_speech_prob": round(float(res.no_speech_prob), 3),
                 "lang_prob": round(float(probs[lang]), 3) if probs else None}

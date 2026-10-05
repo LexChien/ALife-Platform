@@ -20,6 +20,8 @@ from typing import Optional
 # 2026-10-03: ONE process-wide lock for every MLX (Apple GPU) call. Two MLX Whisper models warming up concurrently in
 # different threads (upload large-v3 preload thread + streaming turbo preload on the main thread) aborted gemma_web
 # with libc++abi 'There is no Stream(cpu, 0) in current thread' (start 07:41 log). Serialising MLX use fixes the race.
+# 2026-10-05: preferred path is genai.web.mlx_worker (single owner thread). MLX_LOCK remains for any leftover direct
+# callers and for nested re-entry; mlx_worker.call is what voice/stt_stream use now.
 MLX_LOCK = threading.RLock()
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -128,6 +130,42 @@ def to_traditional(text: str) -> str:
     return _OPENCC.convert(text)
 
 
+def collapse_repeated_ngrams(text: str, max_chars: int = 4000, ngram: int = 12, min_repeats: int = 3) -> str:
+    """Post-filter Whisper repetition hallucinations (same phrase looped dozens of times on long audio).
+
+    Collapses a contiguous run of the same n-gram (character-level, works for zh and en) down to one copy when it
+    repeats ``min_repeats`` or more times. Also hard-caps absurd output length. Pure string; no MLX/torch.
+    """
+    if not text:
+        return text
+    s = text.strip()
+    if len(s) > max_chars:
+        s = s[:max_chars].rstrip() + "…"
+    if len(s) < ngram * min_repeats:
+        return s
+    # Greedy scan: when s[i:i+n] repeats immediately >= min_repeats times, keep one copy.
+    out: list[str] = []
+    i = 0
+    n = ngram
+    while i < len(s):
+        unit = s[i:i + n]
+        if len(unit) < n:
+            out.append(s[i:])
+            break
+        repeats = 1
+        j = i + n
+        while j + n <= len(s) and s[j:j + n] == unit:
+            repeats += 1
+            j += n
+        if repeats >= min_repeats:
+            out.append(unit)
+            i = j
+        else:
+            out.append(s[i])
+            i += 1
+    return "".join(out)
+
+
 class MLXWhisperTranscriber(WhisperTranscriber):
     """Whisper on the Apple GPU via mlx-whisper (Plan 37 R2). Same interface as WhisperTranscriber.
 
@@ -153,13 +191,24 @@ class MLXWhisperTranscriber(WhisperTranscriber):
 
     def _run(self, pcm):
         import mlx_whisper
+        from genai.web.mlx_worker import mlx_call, warm_mel_filters
 
-        with MLX_LOCK:
-            return self._run_locked(mlx_whisper, pcm)
+        # Ensure mel_filters is materialised on the worker before any transcribe.
+        warm_mel_filters(128)
+        return mlx_call(self._run_locked, mlx_whisper, pcm)
 
     def _run_locked(self, mlx_whisper, pcm):
-        out = mlx_whisper.transcribe(pcm, path_or_hf_repo=self.model_repo, language=self.language,
-                                     initial_prompt=self.initial_prompt)
+        # Anti-repetition for long uploads (2026-10-05: 138 s hallucination). kwargs verified against
+        # mlx-whisper 0.4.3 / mlx 0.32.3 transcribe() signature.
+        out = mlx_whisper.transcribe(
+            pcm,
+            path_or_hf_repo=self.model_repo,
+            language=self.language,
+            initial_prompt=self.initial_prompt,
+            condition_on_previous_text=False,
+            compression_ratio_threshold=2.4,
+            no_speech_threshold=0.6,
+        )
         self._loaded = True
         return out
 
@@ -167,6 +216,8 @@ class MLXWhisperTranscriber(WhisperTranscriber):
         def _go():
             try:
                 import numpy as np
+                from genai.web.mlx_worker import warm_mel_filters
+                warm_mel_filters(128)
                 with self._lock:
                     self._run(np.zeros(16000, dtype=np.float32))
             except Exception as exc:
@@ -191,7 +242,7 @@ class MLXWhisperTranscriber(WhisperTranscriber):
         t0 = time.time()
         with self._lock:
             out = self._run(pcm)
-        text = to_traditional((out.get("text") or "").strip())
+        text = collapse_repeated_ngrams(to_traditional((out.get("text") or "").strip()))
         (outdir / f"{stem}.txt").write_text(text, encoding="utf-8")
         return WhisperResult(transcript=text, input_path=raw_path, normalized_path=raw_path,
                              language=out.get("language"), elapsed_s=round(time.time() - t0, 3), pcm=pcm)
