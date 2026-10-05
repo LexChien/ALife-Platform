@@ -130,36 +130,129 @@ def to_traditional(text: str) -> str:
     return _OPENCC.convert(text)
 
 
-def collapse_repeated_ngrams(text: str, max_chars: int = 4000, ngram: int = 12, min_repeats: int = 3) -> str:
+_SEP_CHARS = frozenset(" \t\n\r\u3000，。、！？,.!?;；：")
+
+
+def collapse_repeated_ngrams(
+    text: str,
+    max_chars: int = 4000,
+    ngram: int = 12,
+    min_repeats: int = 3,
+    *,
+    min_period: int = 4,
+    max_period: int = 64,
+) -> str:
     """Post-filter Whisper repetition hallucinations (same phrase looped dozens of times on long audio).
 
-    Collapses a contiguous run of the same n-gram (character-level, works for zh and en) down to one copy when it
-    repeats ``min_repeats`` or more times. Also hard-caps absurd output length. Pure string; no MLX/torch.
+    Detects contiguous character-level repetition of ANY period ``p`` in
+    ``[min_period, max_period]`` (default 4..64; works for zh and en). At each
+    position picks the period with the longest repeated run; among equal
+    coverage prefers the smallest period (collapses nested loops). Runs with
+    ``repeats >= min_repeats`` collapse to one copy. Trailing whitespace /
+    punctuation variations between repeats are tolerated via core comparison
+    (rstrip of separators). Hard-caps output to ``max_chars``.
+
+    ``ngram`` is kept for backward-compatible call sites and is ignored; period
+    detection uses ``min_period``/``max_period``. Pure string; no MLX/torch.
     """
+    del ngram  # backward-compat alias; period range replaces fixed n-gram
     if not text:
         return text
     s = text.strip()
     if len(s) > max_chars:
         s = s[:max_chars].rstrip() + "…"
-    if len(s) < ngram * min_repeats:
+    if len(s) < min_period * min_repeats:
         return s
-    # Greedy scan: when s[i:i+n] repeats immediately >= min_repeats times, keep one copy.
+
+    def _core(chunk: str) -> str:
+        return chunk.rstrip("".join(_SEP_CHARS))
+
+    def _count_run(start: int, period: int) -> tuple[int, int, str]:
+        """Return (repeats, end_index, unit_to_emit) for an exact/sep-tolerant run."""
+        unit = s[start:start + period]
+        if len(unit) < period:
+            return 1, start + 1, unit
+        unit_core = _core(unit)
+        if not unit_core:
+            return 1, start + 1, unit
+        repeats = 1
+        j = start + period
+        # Exact fixed-width repeats first (common Whisper case).
+        while j + period <= len(s) and s[j:j + period] == unit:
+            repeats += 1
+            j += period
+        # text.strip() may remove the final unit's trailing space/punct; absorb a
+        # remainder that is exactly unit_core + optional trailing separators.
+        if j < len(s) and unit_core:
+            rest = s[j:]
+            if rest == unit_core or (rest.startswith(unit_core) and _core(rest) == unit_core):
+                repeats += 1
+                j = len(s)
+        if repeats >= min_repeats:
+            return repeats, j, unit
+        # Separator-tolerant only when the first unit had trailing seps
+        # (otherwise equal-width exact matching already covered copies).
+        if len(unit) == len(unit_core):
+            return repeats, start + period, unit
+        repeats = 1
+        j = start + period
+        while j < len(s):
+            if not s.startswith(unit_core, j):
+                break
+            k = j + len(unit_core)
+            # Require at least one trailing sep when the first unit had one,
+            # otherwise allow bare core abutting the next content only at EOS.
+            had_sep = len(unit) > len(unit_core)
+            if had_sep:
+                if k >= len(s):
+                    repeats += 1
+                    j = k
+                    break
+                if s[k] not in _SEP_CHARS:
+                    break
+                while k < len(s) and s[k] in _SEP_CHARS:
+                    k += 1
+            elif k < len(s) and s[k] not in _SEP_CHARS and _core(s[k:k + period]) != unit_core:
+                # No separator and not another bare copy — stop.
+                # (Bare exact copies already handled above when widths match.)
+                break
+            repeats += 1
+            j = k
+        return repeats, j, unit
+
     out: list[str] = []
     i = 0
-    n = ngram
-    while i < len(s):
-        unit = s[i:i + n]
-        if len(unit) < n:
-            out.append(s[i:])
-            break
-        repeats = 1
-        j = i + n
-        while j + n <= len(s) and s[j:j + n] == unit:
-            repeats += 1
-            j += n
-        if repeats >= min_repeats:
-            out.append(unit)
-            i = j
+    n = len(s)
+    while i < n:
+        best_coverage = 0
+        best_period = 0
+        best_end = i
+        best_unit = ""
+        # Allow last copy to be shorter than `period` (sep-tolerant / missing
+        # trailing whitespace). Bound only by remaining length.
+        max_p = min(max_period, n - i)
+        for p in range(min_period, max_p + 1):
+            # Quick reject: without trailing seps, first two windows must match
+            # for an exact run to ever reach min_repeats.
+            unit_peek = s[i:i + p]
+            if len(unit_peek) < p:
+                break
+            if i + 2 * p <= n and s[i + p:i + 2 * p] != unit_peek:
+                if len(unit_peek) == len(_core(unit_peek)):
+                    continue
+            repeats, end, unit = _count_run(i, p)
+            if repeats < min_repeats:
+                continue
+            coverage = end - i  # actual span covered (handles sep-variant lengths)
+            # Longest coverage wins; tie-break to smallest period (nested loops).
+            if coverage > best_coverage or (coverage == best_coverage and (best_period == 0 or p < best_period)):
+                best_coverage = coverage
+                best_period = p
+                best_end = end
+                best_unit = unit
+        if best_period > 0:
+            out.append(best_unit)
+            i = best_end
         else:
             out.append(s[i])
             i += 1

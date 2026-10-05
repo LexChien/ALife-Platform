@@ -13,7 +13,7 @@ Every subcommand writes <out>/<name>.json (machine-readable) and <out>/<name>.lo
               ack status transitions until ready; always ends on the profile that was active at start.
   transcribe  One long (<=90 s) varied zh-TW utterance -> /api/transcribe; wall time, transcript length, max
               repeated n-gram run.
-  ngram       Unit-level collapse_repeated_ngrams check on a synthetic hallucination string.
+  ngram       Unit-level collapse_repeated_ngrams check (any period 4..64) on synthetic loops.
   endpoints   HTTP codes for /, /api/health, /avatar.jpg, /generated_video-3.mp4, /mic_check; PID; tmux session.
 
 Usage: .venv/bin/python tools/test_gemma_web_concurrency.py stress --out runs/tests/<dir> --rounds 2,3,4,4,3
@@ -505,17 +505,21 @@ def cmd_ngram(a) -> int:
         "normal_unchanged": collapse_repeated_ngrams(LONG_TEXT) == LONG_TEXT.strip(),
         "huge_capped": r["huge_50k"]["out_len"] <= 4001,
     }
-    # Period sweep with the production defaults (ngram=12, min_repeats=3): which loop lengths actually collapse?
+    # Period sweep with production defaults (min_period=4..max_period=64): all periods should collapse.
     sweep = {}
-    base_chars = "甲乙丙丁戊己庚辛壬癸子丑寅卯辰巳午未申酉戌亥天地玄黃宇宙洪荒日月盈昃"
-    for period in range(4, 33):
+    base_chars = ("甲乙丙丁戊己庚辛壬癸子丑寅卯辰巳午未申酉戌亥天地玄黃宇宙洪荒日月盈昃"
+                  "春秋冬夏往來寒暑秋收冬藏閏餘成歲律呂調陽")
+    for period in range(4, 65):
         unit = base_chars[:period]
         s = "開頭說明。" + unit * 30 + "結尾。"
         out = collapse_repeated_ngrams(s)
-        sweep[period] = {"in_len": len(s), "out_len": len(out), "collapsed": len(out) < 0.5 * len(s)}
+        sweep[period] = {"in_len": len(s), "out_len": len(out), "collapsed": len(out) < 0.5 * len(s),
+                         "out_equals_one": out == "開頭說明。" + unit + "結尾。"}
     collapsed = [p for p, v in sweep.items() if v["collapsed"]]
-    o.log(f"period sweep (defaults ngram=12,min_repeats=3; unit*30): collapsed periods={collapsed}; "
-          f"not collapsed={[p for p, v in sweep.items() if not v['collapsed']]}")
+    not_collapsed = [p for p, v in sweep.items() if not v["collapsed"]]
+    o.log(f"period sweep (min_period=4..max_period=64; unit*30): collapsed periods={collapsed}; "
+          f"not collapsed={not_collapsed}")
+    checks["period_sweep_all_collapsed"] = len(not_collapsed) == 0 and len(collapsed) == 61
     ok = all(checks.values())
     o.log(f"SUMMARY checks={checks} pass={ok}")
     o.save({"test": "ngram", "end": now_iso(), "meta": meta(), "rows": rows, "checks": checks,
