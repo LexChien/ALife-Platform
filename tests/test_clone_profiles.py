@@ -112,8 +112,29 @@ class CloneProfilesTest(unittest.TestCase):
         ack.warm()
         self.assertEqual(ack.files["zh"][0], "ack_zh_0.wav")  # J2 names unchanged for the default voice
         clone = FakeTTS("雅英", "clone_tts")
-        ack.retarget(clone)
+        ack.retarget(clone, background=False)  # sync path for deterministic rename assert
         self.assertTrue(ack.files["zh"][0].startswith("ack_") and ack.files["zh"][0] != "ack_zh_0.wav")
+        self.assertTrue(clone.calls)
+
+    def test_ack_retarget_background_returns_fast(self):
+        import time
+        meijia = FakeTTS("Meijia", "macos_resident")
+        ack = AckCache(meijia, self.tmp)
+        ack.warm()
+        old = ack.files["zh"][0]
+        clone = FakeTTS("雅英", "clone_tts")
+        t0 = time.time()
+        out = ack.retarget(clone, background=True)
+        elapsed = time.time() - t0
+        self.assertLess(elapsed, 0.5)
+        self.assertTrue(out.get("background"))
+        # Background warm with FakeTTS is near-instant; wait until status settles to ready.
+        deadline = time.time() + 2.0
+        while time.time() < deadline and ack.status == "regenerating":
+            time.sleep(0.01)
+        self.assertEqual(ack.status, "ready")
+        self.assertNotEqual(ack.files["zh"][0], old)
+        self.assertTrue(ack.files["zh"][0].startswith("ack_"))
         self.assertTrue(clone.calls)
 
     @unittest.skipUnless(shutil.which("node"), "node not installed")
