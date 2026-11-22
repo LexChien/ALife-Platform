@@ -57,6 +57,23 @@ def m4_lineages(out: Path, batch: int = 1024, generations: int = 12, seed: int =
             mb = MinBatchGPU(mp, lengths, dx=min_dx, dt=min_dt, seed=seed * 1000 + gen)
             prof = mb.run(window, burn)
             res = mb.results(prof)
+            # Root-cause fix (2026-11-23, run attempt 1): in a 220 s window a few cells (~0.5%) had not
+            # established the pole-to-pole oscillation (no trough, abnormal period); the argmin fallback
+            # then put the site at a pole and the kept 3% minicell died. Real Min oscillates through the
+            # whole cycle, so the short window is our artefact: re-simulate only those cells with a
+            # longer window (new seed), up to 3 times, and record how many retries each cell needed.
+            retries = np.zeros(batch, dtype=int)
+            for attempt in range(3):
+                bad = np.where(res["readout_fallback"] | ~np.isfinite(res["period_s"]))[0]
+                if bad.size == 0:
+                    break
+                mb2 = MinBatchGPU(mp, lengths[bad], dx=min_dx, dt=min_dt, seed=seed * 1000 + gen + 7919 * (attempt + 1))
+                prof2 = mb2.run(2.0 * window, burn)
+                r2 = mb2.results(prof2)
+                for key in ("site_fraction", "site_argmin", "readout_fallback", "period_s",
+                            "mind_conservation", "mine_conservation"):
+                    res[key][bad] = r2[key]
+                retries[bad] += 1
             torch.cuda.synchronize() if cb.dev.type == "cuda" else None
             min_wall += time.perf_counter() - tm
             frac = torch.as_tensor(res["site_fraction"], device=cb.dev, dtype=torch.float32).clamp(0.02, 0.98)
@@ -71,6 +88,7 @@ def m4_lineages(out: Path, batch: int = 1024, generations: int = 12, seed: int =
                 _jl(fh, {"gen": gen, "slot": i, "was_ready": bool(was_ready[i]), "length_um": float(lengths[i]), "site_fraction": float(fr[i]),
                          "volume_left_fraction": float(fr[i]), "kept_left": bool(kl[i]),
                          "site_argmin": float(res["site_argmin"][i]), "readout_fallback": bool(res["readout_fallback"][i]),
+                         "min_retries": int(retries[i]),
                          "doubling_s": float(d["doubling_s"][i]), "min_period_s": float(res["period_s"][i]),
                          "mind_conservation": float(res["mind_conservation"][i]),
                          "mine_conservation": float(res["mine_conservation"][i]),
