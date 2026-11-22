@@ -131,3 +131,43 @@ class TestReport(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class TestBalancedLineage(unittest.TestCase):
+    """2026-11-23 (Grok Bot ALife Project - Andreeva): regression for the adenylate pool that was
+    halved at every division and never re-made, which slowed lineages every generation
+    (superseded run runs/cell_sim/20261123_0215: M4 gen 0/1/2 = 6420/9240/11760 s)."""
+
+    def test_salvage_restores_pool_per_lipid(self):
+        from cell import metabolism
+        from cell.genome_map import build_gene_table
+        from cell.params import load_params
+        from cell.state import founder_lipids, initial_state
+        p = load_params(); g = build_gene_table(p)
+        st = initial_state(p, g, seed=0)
+        st.lipids *= 2.0
+        added = metabolism.salvage_adenylate(p, st)
+        self.assertAlmostEqual(added, p["adenylate_pool"], delta=1.0)
+        self.assertAlmostEqual((st.atp + st.adp) / st.lipids, p["adenylate_pool"] / founder_lipids(p), places=6)
+
+    def test_lineage_doubling_is_stationary(self):
+        import numpy as np
+        from cell import division, heredity
+        from cell.genome_map import build_gene_table
+        from cell.params import load_params
+        from cell.state import initial_state
+        p = load_params(); g = build_gene_table(p)
+        rng = np.random.default_rng(3); st = initial_state(p, g, seed=3)
+        dbl, fold, pool = [], [], []
+        for _ in range(5):
+            pb, poolb = st.protein.sum(), st.atp + st.adp
+            ok, d, clos = heredity.grow_until_division(p, g, st, rng, max_time_s=40000)
+            self.assertTrue(ok)
+            self.assertLessEqual(clos, 0.01)
+            dbl.append(d); fold.append(st.protein.sum() / pb); pool.append((st.atp + st.adp) / poolb)
+            st, _ = division.divide(st, rng)
+        for d in dbl:                      # C0862 simulated band, every generation
+            self.assertTrue(88 * 60 <= d <= 112 * 60, dbl)
+        self.assertTrue(1.75 <= float(np.median(fold)) <= 2.25, fold)   # C0862 protein fold per cycle
+        for x in pool:
+            self.assertAlmostEqual(x, 2.0, delta=0.05)

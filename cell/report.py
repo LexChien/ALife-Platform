@@ -66,11 +66,22 @@ def gate_m4(run: Path) -> Dict[str, Any]:
         "doubling_median_s": _r(np.median(dbl)) if dbl.size else None,
         "deterministic_validation": val,
     }
+    # balanced growth across generations (added 2026-11-23, Grok Bot ALife Project - Andreeva):
+    # every generation's median doubling must stay in the C0862 simulated band 88-112 min
+    by_gen: Dict[int, list] = {}
+    for d in divs:
+        if d["was_ready"] and math.isfinite(d["doubling_s"]):
+            by_gen.setdefault(int(d["gen"]), []).append(d["doubling_s"])
+    gen_med = {g: float(np.median(v)) for g, v in sorted(by_gen.items())}
+    out["doubling_median_by_generation_s"] = {str(g): _r(v, 1) for g, v in gen_med.items()}
+    out["gate_doubling_every_generation_88_112_min"] = "PASS" if gen_med and all(
+        88 * 60 <= v <= 112 * 60 for v in gen_med.values()) else "FAIL"
     out["gate_generations"] = "PASS" if ok_gens >= 10 else "FAIL"
     out["gate_volume_deviation_p95_le_10pct"] = "PASS" if out["volume_deviation_p95"] <= 0.10 else "FAIL"
     out["gate_site_within_centre_10pct_p95"] = "PASS" if out["site_offset_p95_of_length"] <= 0.10 else "FAIL"
     out["status"] = "PASS" if all(out[k] == "PASS" for k in ("gate_generations", "gate_volume_deviation_p95_le_10pct",
-                                                               "gate_site_within_centre_10pct_p95")) else "FAIL"
+                                                               "gate_site_within_centre_10pct_p95",
+                                                               "gate_doubling_every_generation_88_112_min")) else "FAIL"
     # Plan 45 P2 / P3 from the same records
     out["p2_self_made_lipid_fraction_final"] = _r(gens[-1]["self_made_lipid_fraction_mean"]) if gens else None
     sav = np.array([d["sa_v_at_division_um_inv"] for d in divs])
@@ -99,6 +110,25 @@ def gate_m5(run: Path) -> Dict[str, Any]:
     v["gate_depth_ge_3"] = "PASS" if v["max_depth_generations"] >= 3 else "FAIL"
     v["gate_partition_conserved"] = "PASS" if v["max_partition_conservation_error"] <= 1e-6 else "FAIL"
     v["gate_mutation_rate_within_10pct"] = "PASS" if (v["mutation_rate_rel_error"] is not None and v["mutation_rate_rel_error"] <= 0.10) else "FAIL"
+    # balanced growth (added 2026-11-23): protein fold per cycle (C0862: most proteins 1.75-2.25x)
+    # and median doubling per generation inside the C0862 band 88-112 min
+    by_uid = {r["cell_uid"]: r for r in recs}
+    folds, by_gen = [], {}
+    for r in recs:
+        if r.get("divided") and math.isfinite(r.get("doubling_s", float("nan"))):
+            by_gen.setdefault(int(r["generation"]), []).append(r["doubling_s"])
+        par = by_uid.get(r["parent_uid"]) if r["parent_uid"] else None
+        if r.get("partition") and par and par.get("partition"):
+            birth = par["partition"]["d" + str(int(r["cell_uid"].rsplit(".", 1)[1]) + 1)]["protein"]
+            if birth:
+                folds.append(r["partition"]["parent"]["protein"] / birth)
+    gen_med = {g: float(np.median(x)) for g, x in sorted(by_gen.items())}
+    v["doubling_median_by_generation_s"] = {str(g): _r(x, 1) for g, x in gen_med.items()}
+    v["protein_fold_per_cycle_median"] = _r(np.median(folds)) if folds else None
+    v["protein_fold_per_cycle_p5_p95"] = [_r(np.percentile(folds, 5)), _r(np.percentile(folds, 95))] if folds else None
+    v["gate_protein_fold_1p75_2p25"] = "PASS" if folds and 1.75 <= np.median(folds) <= 2.25 else "FAIL"
+    v["gate_doubling_every_generation_88_112_min"] = "PASS" if gen_med and all(
+        88 * 60 <= x <= 112 * 60 for x in gen_med.values()) else "FAIL"
     v["status"] = "PASS" if all(v[k] == "PASS" for k in v if k.startswith("gate_")) else "FAIL"
     return v
 
