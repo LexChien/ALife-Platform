@@ -138,7 +138,8 @@ class CellBatch:
         self.dead.copy_(t.maximum(self.dead, (self.low_atp_steps >= self.death_steps).float()))
         # readiness for division
         area = self.lipids * p["area_per_lipid_nm2"] / 2.0
-        ready = (area >= 2.0 * self.birth_area) & (self.repl >= p["genome_bp"]) & (self.frozen < 0.5) \
+        # adder rule (cell/division.py adder_area_nm2): divide after adding the founder area
+        ready = (area >= self.birth_area + self.area0) & (self.repl >= p["genome_bp"]) & (self.frozen < 0.5) \
             & (self.dead < 0.5)
         self.ready_t.copy_(t.where(ready, self.t.expand_as(self.ready_t), self.ready_t))
         self.frozen.copy_(t.maximum(self.frozen, ready.float()))

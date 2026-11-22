@@ -110,7 +110,7 @@ def run_batch(batch: int = 64, config: Optional[RunConfig] = None, params: Optio
 
         t += dt
         area = lipids * params["area_per_lipid_nm2"] / 2.0
-        done = torch.isnan(divided_at) & (area >= 2.0 * birth_area) & (replicated >= params["genome_bp"])
+        done = torch.isnan(divided_at) & (area >= birth_area + area0)   # adder (cell/division.py) & (replicated >= params["genome_bp"])
         if bool(done.any()):
             divided_at = torch.where(done, torch.full_like(divided_at, t), divided_at)
         if not bool(torch.isnan(divided_at).any()):
