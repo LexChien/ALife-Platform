@@ -171,3 +171,20 @@ class TestBalancedLineage(unittest.TestCase):
         self.assertTrue(1.75 <= float(np.median(fold)) <= 2.25, fold)   # C0862 protein fold per cycle
         for x in pool:
             self.assertAlmostEqual(x, 2.0, delta=0.05)
+
+    def test_adder_restores_cell_size(self):
+        """2026-11-23: size ratchet regression (old 2x-own-birth rule drifted at dt=10 s)."""
+        import numpy as np
+        from cell import division, heredity
+        from cell.genome_map import build_gene_table
+        from cell.params import load_params
+        from cell.state import initial_state
+        p = load_params(); g = build_gene_table(p)
+        rng = np.random.default_rng(5); st = initial_state(p, g, seed=5)
+        a0 = st.surface_area_nm2(p)
+        st.lipids *= 1.4; st.atp *= 1.4; st.adp *= 1.4      # an oversized newborn
+        for _ in range(6):
+            ok, _d, _c = heredity.grow_until_division(p, g, st, rng, max_time_s=40000)
+            self.assertTrue(ok)
+            st, _ = division.divide(st, rng)
+        self.assertAlmostEqual(st.surface_area_nm2(p) / a0, 1.0, delta=0.03)   # 1.4 -> 1 + 0.4/64
