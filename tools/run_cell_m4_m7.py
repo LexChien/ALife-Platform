@@ -41,6 +41,7 @@ class Progress:
             self.state = json.loads(f.read_text())
 
     def stage(self, name: str, frac: float, note: str) -> None:
+        name = name.lower()   # experiments report "M4"/"M6"/"P7"; the table keys are lower-case (fixed 2026-11-23)
         self.state["stages"][name] = {"frac": round(frac, 4), "note": note, "updated": now()}
         self.state["current"] = name
         self.write()
