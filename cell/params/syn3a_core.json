@@ -1,0 +1,195 @@
+{
+  "meta": {
+    "name": "syn3a_core",
+    "plan": "docs/PLAN/44_ARTIFICIAL_CELL_SIMULATION_PLAN.md",
+    "reference_organism": "JCVI-syn3A",
+    "created": "2026-11-22",
+    "note_zh": "每個參數都帶 source；source 以 CATALOG id + DOI 標示，非文獻值一律標 ESTIMATE-UNMEASURED 或 ASSUMED-TEXTBOOK/DERIVED。",
+    "note_en": "Every parameter carries a source. Non-literature values are tagged ESTIMATE-UNMEASURED or ASSUMED-TEXTBOOK/DERIVED."
+  },
+  "constants": {
+    "genome_bp": {
+      "value": 543379,
+      "unit": "bp",
+      "source": "C0715 10.7554/elife.36842 'chromosome of a 543,379 bp genome in a 400 nm spherical cell'"
+    },
+    "n_genes_full": {
+      "value": 493,
+      "unit": "genes",
+      "source": "C0862 10.1016/j.cell.2021.12.025 'transcribe all 493 genes'"
+    },
+    "n_mrna_genes_full": {
+      "value": 452,
+      "unit": "genes",
+      "source": "C0862 'degrade all 452 mRNA, and translate all 452 mRNA into proteins'"
+    },
+    "n_trna": {
+      "value": 29,
+      "unit": "species",
+      "source": "C0862 'and mRNAs, 29 tRNAs, 503 ribosomes'"
+    },
+    "n_ribosomes": {
+      "value": 503,
+      "unit": "ribosomes",
+      "source": "C0862 'the 503 ribosomes observed in cryo-ET'"
+    },
+    "ribosome_active_fraction": {
+      "value": 0.45,
+      "unit": "1",
+      "source": "C0862 'on average, 220 of the 503 ribosomes, roughly 45% of ribosomes, are active'"
+    },
+    "cell_radius_nm": {
+      "value": 200.0,
+      "unit": "nm",
+      "source": "C0715 '400 nm spherical cell' (diameter) -> radius 200 nm"
+    },
+    "doubling_time_experimental_s": {
+      "value": 6300.0,
+      "unit": "s",
+      "source": "C0715/C0862 'JCVI-syn3A has a doubling time of 105 min'"
+    },
+    "doubling_time_model_mean_s": {
+      "value": 5820.0,
+      "unit": "s",
+      "source": "C0862 'average doubling time of 97 min'"
+    },
+    "doubling_time_model_min_s": {
+      "value": 5280.0,
+      "unit": "s",
+      "source": "C0862 'anywhere from 88 to 112 min'"
+    },
+    "doubling_time_model_max_s": {
+      "value": 6720.0,
+      "unit": "s",
+      "source": "C0862 'anywhere from 88 to 112 min'"
+    },
+    "tx_elongation_nt_per_s": {
+      "value": 25.0,
+      "unit": "nt/s",
+      "source": "C5382 10.3389/fmolb.2019.00130 'of 25 nt/s are used for kcat'"
+    },
+    "tl_elongation_aa_per_s": {
+      "value": 2.0,
+      "unit": "aa/s",
+      "source": "C5382 'with an elongation rate of 2 aa/sec'"
+    },
+    "mrna_half_life_s": {
+      "value": 240.0,
+      "unit": "s",
+      "source": "C5382 'A messenger halflife of 4 min is used for all mRNA degradation'"
+    },
+    "atp_per_bp_replication": {
+      "value": 1.0,
+      "unit": "ATP/bp",
+      "source": "C0862 'DNA replication uses 1 ATP as an energy molecule per bp'"
+    },
+    "atp_fraction_precursor_transport": {
+      "value": 0.09,
+      "unit": "1",
+      "source": "C0715 'only spend 9% of its produced ATP on precursor transport and processing'"
+    },
+    "surface_area_contribution_ratio": {
+      "value": 0.55,
+      "unit": "1",
+      "source": "C0862 'maintain a rough 55% to 45% surface area contribution ratio'"
+    },
+    "atp_per_glucose_glycolysis": {
+      "value": 2.0,
+      "unit": "ATP/glucose",
+      "source": "ASSUMED-TEXTBOOK net glycolysis yield; C0862 states syn3A 'depends almost entirely on glycolysis for formation of ATP'"
+    },
+    "atp_per_nt_transcription": {
+      "value": 2.0,
+      "unit": "ATP/nt",
+      "source": "ASSUMED-TEXTBOOK (NTP polymerisation ~2 high-energy phosphates per nt)"
+    },
+    "atp_per_aa_translation": {
+      "value": 4.0,
+      "unit": "ATP/aa",
+      "source": "ASSUMED-TEXTBOOK (2 ATP charging + 2 GTP elongation per peptide bond)"
+    },
+    "atp_per_lipid": {
+      "value": 4.0,
+      "unit": "ATP/lipid",
+      "source": "ESTIMATE-UNMEASURED"
+    },
+    "area_per_lipid_nm2": {
+      "value": 0.5,
+      "unit": "nm^2",
+      "source": "ESTIMATE-UNMEASURED (typical bilayer lipid cross-section)"
+    },
+    "adenylate_pool": {
+      "value": 1500000.0,
+      "unit": "molecules",
+      "source": "ESTIMATE-UNMEASURED (ATP+ADP total held constant)"
+    },
+    "atp_initial_fraction": {
+      "value": 0.8,
+      "unit": "1",
+      "source": "ESTIMATE-UNMEASURED"
+    },
+    "k_glucose_per_transporter_per_s": {
+      "value": 60.0,
+      "unit": "glucose/s/enzyme",
+      "source": "ESTIMATE-UNMEASURED (set so ATP supply exceeds demand; verified by the gate M2 shortfall check)"
+    },
+    "maintenance_atp_per_s": {
+      "value": 30000.0,
+      "unit": "ATP/s",
+      "source": "ESTIMATE-UNMEASURED"
+    },
+    "k_lipid_per_enzyme_per_s": {
+      "value": 0.06070201741865929,
+      "unit": "lipid/s/enzyme",
+      "source": "CALIBRATED-TO-C0715-DOUBLING-TIME (geometric bisection so the median doubling time = 105 min; tools/run_cell_sim.py calibrate, Jetson 2026-11-22). Not an independent prediction."
+    },
+    "k_replication_bp_per_s": {
+      "value": 100.0,
+      "unit": "bp/s",
+      "source": "ESTIMATE-UNMEASURED (replisome rate; syn3A value not in the local library)"
+    },
+    "atp_km": {
+      "value": 200000.0,
+      "unit": "molecules",
+      "source": "ESTIMATE-UNMEASURED (Michaelis constant on ATP for biosynthesis)"
+    },
+    "n_core_genes": {
+      "value": 60,
+      "unit": "genes",
+      "source": "Plan 44 D4 decision: core subset of 50-100 genes"
+    },
+    "mean_gene_length_bp": {
+      "value": 1102.0,
+      "unit": "bp",
+      "source": "DERIVED 543379 bp / 493 genes (C0715, C0862)"
+    },
+    "protein_per_mrna_class_fraction": {
+      "value": 0.333,
+      "unit": "1",
+      "source": "DERIVED gene class split 20/20/10/10 of 60 core genes"
+    },
+    "communication_step_s": {
+      "value": 1.0,
+      "unit": "s",
+      "source": "C0862 'we used a communication time step of 1 s'"
+    }
+  },
+  "gene_classes": {
+    "ribosomal": {
+      "count": 20,
+      "source": "Plan 44 D4 ASSUMED split"
+    },
+    "metabolic": {
+      "count": 20,
+      "source": "Plan 44 D4 ASSUMED split"
+    },
+    "replication": {
+      "count": 10,
+      "source": "Plan 44 D4 ASSUMED split"
+    },
+    "membrane": {
+      "count": 10,
+      "source": "Plan 44 D4 ASSUMED split"
+    }
+  }
+}
