@@ -7,7 +7,7 @@ import numpy as np
 
 from .genome_map import GeneTable
 from .params import Params
-from .state import CellState
+from .state import CellState, founder_lipids
 
 
 def atp_saturation(params: Params, atp: float) -> float:
@@ -53,6 +53,7 @@ def step(params: Params, genes: GeneTable, state: CellState, dt: float,
     state.adp = pool_before - new_atp
     pool_after = state.atp + state.adp
     closure_error = abs(pool_after - pool_before) / pool_before if pool_before else 0.0
+    salvaged = salvage_adenylate(params, state)
     return {
         "atp_produced": produced,
         "atp_consumed": consumed,
@@ -60,4 +61,31 @@ def step(params: Params, genes: GeneTable, state: CellState, dt: float,
         "atp_shortfall": shortfall,
         "atp": state.atp,
         "closure_error": closure_error,
+        "adenylate_salvaged": salvaged,
     }
+
+
+def adenylate_target(params: Params, lipids: float) -> float:
+    """ATP+ADP a cell of this size should hold: the founder pool per membrane lipid."""
+    return params["adenylate_pool"] * lipids / founder_lipids(params)
+
+
+def salvage_adenylate(params: Params, state: CellState) -> float:
+    """Nucleotide salvage keeps the adenylate pool in step with cell size (added 2026-11-23).
+
+    ZH：syn3A 沒有從頭合成核苷酸，只靠回收途徑（C0715）；C0862 的全細胞模擬中 ATP 在整個週期持續
+    增加。舊版 ATP+ADP 總量固定，分裂時減半卻不再補，於是每代減半、譜系越來越慢。這裡把每個
+    膜脂質對應的腺苷酸量維持在創始細胞的比例（以 ADP 形式補入，回收的 ATP 成本 ASSUMED 為 0）。
+    是一個明確記帳的流入項，所以閉合誤差仍只量 ATP 帳本身。
+    EN: syn3A has no de novo nucleotide synthesis, only salvage (C0715); in C0862's whole-cell runs
+    ATP keeps rising across the cycle. The old version held ATP+ADP fixed, so it halved at every
+    division and was never re-made, and lineages slowed every generation. Here the adenylate amount
+    per membrane lipid is kept at the founder ratio (added as ADP; salvage ATP cost ASSUMED 0). It is
+    an explicitly booked influx, so the closure error still measures the ATP ledger alone.
+    Author: Grok Bot ALife Project - Andreeva, 2026-11-23.
+    """
+    deficit = adenylate_target(params, state.lipids) - (state.atp + state.adp)
+    if deficit > 0.0:
+        state.adp += deficit
+        return deficit
+    return 0.0

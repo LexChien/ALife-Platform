@@ -121,7 +121,7 @@
     "adenylate_pool": {
       "value": 1500000.0,
       "unit": "molecules",
-      "source": "ESTIMATE-UNMEASURED (ATP+ADP total held constant)"
+      "source": "ESTIMATE-UNMEASURED (founder ATP+ADP; from 2026-11-23 kept proportional to membrane lipids by nucleotide salvage, C0715 salvage-only nucleotide metabolism; salvage ATP cost ASSUMED 0)"
     },
     "atp_initial_fraction": {
       "value": 0.8,
@@ -139,9 +139,9 @@
       "source": "ESTIMATE-UNMEASURED"
     },
     "k_lipid_per_enzyme_per_s": {
-      "value": 0.06070201741865929,
+      "value": 0.12579845308208876,
       "unit": "lipid/s/enzyme",
-      "source": "CALIBRATED-TO-C0715-DOUBLING-TIME (geometric bisection so the median doubling time = 105 min; tools/run_cell_sim.py calibrate, Jetson 2026-11-22). Not an independent prediction."
+      "source": "CALIBRATED-TO-C0715-DOUBLING-TIME (geometric bisection so the median doubling time = 105 min; recalibrated 2026-11-23 by Grok Bot ALife Project - Andreeva after the balanced-growth founder and adenylate-salvage fix: 6294 s at this value, bracket 0.08-0.4; previous value 0.0607 was for the old 503-per-gene founder). Not an independent prediction."
     },
     "k_replication_bp_per_s": {
       "value": 100.0,

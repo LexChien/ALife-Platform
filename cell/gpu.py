@@ -15,7 +15,7 @@ import numpy as np
 from .genome_map import GeneTable, build_gene_table
 from .params import Params, load_params
 from .driver import RunConfig, apply_overrides
-from .state import sphere_area_nm2
+from .state import balanced_protein, founder_lipids, sphere_area_nm2
 
 
 def cuda_report() -> Dict[str, Any]:
@@ -57,7 +57,8 @@ def run_batch(batch: int = 64, config: Optional[RunConfig] = None, params: Optio
     ribosomes = params["n_ribosomes"] * params["ribosome_active_fraction"]
 
     mrna = torch.poisson(k_tx / k_deg, generator=g)
-    protein = torch.full((batch, len(genes)), params["n_ribosomes"], device=dev, dtype=dtype)
+    protein = torch.tensor(balanced_protein(params, genes), device=dev, dtype=dtype).unsqueeze(0).repeat(batch, 1)
+    pool_per_lipid = params["adenylate_pool"] / founder_lipids(params)   # salvage target (cell/metabolism.py)
     pool = params["adenylate_pool"]
     atp = torch.full((batch,), pool * params["atp_initial_fraction"], device=dev, dtype=dtype)
     adp = pool - atp
@@ -105,6 +106,7 @@ def run_batch(batch: int = 64, config: Optional[RunConfig] = None, params: Optio
         adp = pool_before - atp
         closure = ((atp + adp) - pool_before).abs() / pool_before
         max_closure = max(max_closure, float(closure.max().item()))
+        adp = adp + torch.clamp(pool_per_lipid * lipids - (atp + adp), min=0.0)   # nucleotide salvage
 
         t += dt
         area = lipids * params["area_per_lipid_nm2"] / 2.0

@@ -20,7 +20,7 @@ import numpy as np
 from .dna_link import SCALE_RANGE, THETA_KEYS
 from .genome_map import GeneTable
 from .params import Params
-from .state import sphere_area_nm2
+from .state import balanced_protein, founder_lipids, sphere_area_nm2
 
 
 def theta_to_scale(theta):
@@ -62,7 +62,8 @@ class CellBatch:
         t.manual_seed(seed)
         # state
         self.mrna = t.poisson((self.k_tx / self.k_deg).contiguous(), generator=self.gen)
-        self.protein = t.full((batch, G), params["n_ribosomes"], device=dev, dtype=f32)
+        self.protein = t.tensor(balanced_protein(params, genes), device=dev, dtype=f32).unsqueeze(0).repeat(batch, 1)
+        self.pool_per_lipid = params["adenylate_pool"] / founder_lipids(params)   # salvage target
         pool = params["adenylate_pool"]
         self.atp = t.full((batch,), pool * params["atp_initial_fraction"], device=dev, dtype=f32)
         self.adp = pool - self.atp
@@ -82,6 +83,7 @@ class CellBatch:
         self.dead = t.zeros(batch, device=dev)
         self.max_closure = t.zeros((), device=dev)
         self.shortfall = t.zeros(batch, device=dev)
+        self.salvaged = t.zeros(batch, device=dev)
         self.generation = t.zeros(batch, device=dev)
         # death criterion (Plan 45 E2): ATP < frac * initial for n consecutive steps
         self.death_frac = t.full((batch,), params["death_atp_fraction"], device=dev)
@@ -124,6 +126,10 @@ class CellBatch:
         self.adp.copy_(pool_before - new_atp)
         closure = ((self.atp + self.adp) - pool_before).abs() / pool_before
         self.max_closure.copy_(t.maximum(self.max_closure, closure.max()))
+        # nucleotide salvage (cell/metabolism.py salvage_adenylate): booked influx, outside the closure
+        deficit = t.clamp(self.pool_per_lipid * self.lipids - (self.atp + self.adp), min=0.0)
+        self.adp.add_(deficit)
+        self.salvaged.add_(deficit)
         self.t.add_(dt)
         # death bookkeeping (absorbing state)
         low = (self.atp < self.death_frac * self.atp0).float()
@@ -162,7 +168,7 @@ class CellBatch:
             self._block()
 
     _STATE = ("mrna", "protein", "atp", "adp", "lipids", "repl", "t", "ready_t", "frozen",
-              "low_atp_steps", "dead", "max_closure", "shortfall", "post_death_max_atp")
+              "low_atp_steps", "dead", "max_closure", "shortfall", "post_death_max_atp", "salvaged")
 
     def _snapshot(self):
         return {k: getattr(self, k).clone() for k in self._STATE}
