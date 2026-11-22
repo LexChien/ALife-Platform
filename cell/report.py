@@ -58,6 +58,8 @@ def gate_m4(run: Path) -> Dict[str, Any]:
         "fraction_sites_within_centre_10pct": _r((centre <= 0.10).mean()),
         "raw_argmin_readout_volume_deviation_p95": _r(np.percentile(np.abs(2.0 * np.array([d["site_argmin"] for d in divs]) - 1.0), 95)) if "site_argmin" in divs[0] else None,
         "readout_fallbacks": int(sum(1 for d in divs if d.get("readout_fallback"))),
+        "cells_needing_min_retry": int(sum(1 for d in divs if d.get("min_retries", 0) > 0)),
+        "min_retries_total": int(sum(d.get("min_retries", 0) for d in divs)),
         "min_period_median_s": _r(np.median(periods)) if periods.size else None,
         "min_period_p10_p90_s": [_r(np.percentile(periods, 10)), _r(np.percentile(periods, 90))] if periods.size else None,
         "mind_conservation_min_max": [_r(min(d["mind_conservation"] for d in divs)), _r(max(d["mind_conservation"] for d in divs))],
