@@ -19,7 +19,13 @@ def glycolytic_production(params: Params, genes: GeneTable, state: CellState) ->
     """ATP molecules per second from glycolysis (syn3A is glycolysis-dominated, C0862)."""
     metabolic = float(state.protein[genes.class_mask("metabolic")].sum())
     glucose_per_s = params["k_glucose_per_transporter_per_s"] * metabolic
-    return glucose_per_s * params["atp_per_glucose_glycolysis"]
+    # Glycolysis must invest ATP before it pays back (priming); with no ATP it cannot restart
+    # (ASSUMED-TEXTBOOK mechanism, Km ESTIMATE-UNMEASURED). `glucose` in state.extra is the
+    # external availability (1 = fed, 0 = starved), used by Plan 45 P7/P8.
+    km_p = params["glycolysis_atp_priming_km"]
+    prime = state.atp / (km_p + state.atp) if state.atp > 0 else 0.0
+    glucose = float(state.extra.get("glucose", 1.0))
+    return glucose_per_s * params["atp_per_glucose_glycolysis"] * prime * glucose
 
 
 def step(params: Params, genes: GeneTable, state: CellState, dt: float,

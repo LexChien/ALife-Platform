@@ -30,8 +30,11 @@ class Params:
                       if any(t in str(v["source"]) for t in UNSOURCED_TAGS))
 
     def assumed_keys(self) -> list:
+        # A value tagged both ESTIMATE-UNMEASURED and ASSUMED counts as unmeasured only
+        # (the more conservative class), so the three classes never overlap.
+        unsourced = set(self.unsourced_keys())
         return sorted(k for k, v in self.constants.items()
-                      if any(t in str(v["source"]) for t in ASSUMED_TAGS))
+                      if k not in unsourced and any(t in str(v["source"]) for t in ASSUMED_TAGS))
 
     def literature_keys(self) -> list:
         bad = set(self.unsourced_keys()) | set(self.assumed_keys())

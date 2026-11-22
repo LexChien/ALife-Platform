@@ -96,7 +96,8 @@ def run_batch(batch: int = 64, config: Optional[RunConfig] = None, params: Optio
         atp_rep = bp * params["atp_per_bp_replication"]
 
         metabolic = (protein * mask_metabolic).sum(dim=1)
-        produced = metabolic * params["k_glucose_per_transporter_per_s"] * params["atp_per_glucose_glycolysis"] * dt
+        prime = atp / (params["glycolysis_atp_priming_km"] + atp)
+        produced = metabolic * params["k_glucose_per_transporter_per_s"] * params["atp_per_glucose_glycolysis"] * prime * dt
         consumed = atp_tx + atp_tl + atp_lip + atp_rep + params["maintenance_atp_per_s"] * dt
         pool_before = atp + adp
         atp = torch.clamp(atp + produced - consumed, min=0.0)

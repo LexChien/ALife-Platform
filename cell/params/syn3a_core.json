@@ -172,6 +172,106 @@
       "value": 1.0,
       "unit": "s",
       "source": "C0862 'we used a communication time step of 1 s'"
+    },
+    "glycolysis_atp_priming_km": {
+      "value": 2000.0,
+      "unit": "molecules",
+      "source": "ESTIMATE-UNMEASURED (mechanism ASSUMED-TEXTBOOK: glycolysis invests ATP at hexokinase/PFK before paying back, so ATP production needs ATP > 0; added 2026-11-23 for Plan 45 P8)"
+    },
+    "death_atp_fraction": {
+      "value": 0.05,
+      "unit": "1",
+      "source": "ASSUMED Plan 45 E2 decision: dead when ATP < 5% of initial for N consecutive steps; sensitivity 1/5/10% measured in P8"
+    },
+    "death_consecutive_steps": {
+      "value": 60.0,
+      "unit": "steps",
+      "source": "ASSUMED Plan 45 E2 decision: 60 consecutive 1 s steps; sensitivity 30/60/120 measured in P8"
+    },
+    "rod_radius_um": {
+      "value": 0.5,
+      "unit": "um",
+      "source": "Huang, Meir & Wingreen 2003 PNAS 10.1073/pnas.2135445100 'The cell radius is R = 0.5 um' (E. coli value; syn3A has no Min system: used for a Min-reconstituted artificial cell as in C6322 Godino 2019)"
+    },
+    "rod_birth_length_um": {
+      "value": 2.0,
+      "unit": "um",
+      "source": "ASSUMED (newborn rod length so that the Min field has its length scale; Huang 2003 simulates L = 4 um cells; the cell model's membrane-area growth is mapped onto this rod)"
+    },
+    "min_D_um2_s": {
+      "value": 2.5,
+      "unit": "um^2/s",
+      "source": "Huang, Meir & Wingreen 2003 PNAS 10.1073/pnas.2135445100 'DD = DE = 2.5 um2/sec' (E. coli value; syn3A has no Min system: used for a Min-reconstituted artificial cell as in C6322 Godino 2019)"
+    },
+    "min_sigma_exch_s": {
+      "value": 1.0,
+      "unit": "1/s",
+      "source": "Huang, Meir & Wingreen 2003 PNAS 10.1073/pnas.2135445100 'sigma_D ADP->ATP = 1/sec' (E. coli value; syn3A has no Min system: used for a Min-reconstituted artificial cell as in C6322 Godino 2019)"
+    },
+    "min_sigma_D_um_s": {
+      "value": 0.025,
+      "unit": "um/s",
+      "source": "Huang, Meir & Wingreen 2003 PNAS 10.1073/pnas.2135445100 'sigma_D = 0.025 um/sec' (E. coli value; syn3A has no Min system: used for a Min-reconstituted artificial cell as in C6322 Godino 2019)"
+    },
+    "min_sigma_dD_um3_s": {
+      "value": 0.0015,
+      "unit": "um^3/s",
+      "source": "Huang, Meir & Wingreen 2003 PNAS 10.1073/pnas.2135445100 'sigma_dD = 0.0015 um3/sec' (E. coli value; syn3A has no Min system: used for a Min-reconstituted artificial cell as in C6322 Godino 2019)"
+    },
+    "min_sigma_de_s": {
+      "value": 0.7,
+      "unit": "1/s",
+      "source": "Huang, Meir & Wingreen 2003 PNAS 10.1073/pnas.2135445100 'sigma_de = 0.7/sec' (E. coli value; syn3A has no Min system: used for a Min-reconstituted artificial cell as in C6322 Godino 2019)"
+    },
+    "min_sigma_E_um3_s": {
+      "value": 0.093,
+      "unit": "um^3/s",
+      "source": "Huang, Meir & Wingreen 2003 PNAS 10.1073/pnas.2135445100 'sigma_E = 0.093 um3/sec' (E. coli value; syn3A has no Min system: used for a Min-reconstituted artificial cell as in C6322 Godino 2019)"
+    },
+    "min_mind_per_um": {
+      "value": 1000.0,
+      "unit": "1/um",
+      "source": "Huang, Meir & Wingreen 2003 PNAS 10.1073/pnas.2135445100 'total concentrations of MinD and MinE are 1,000/um and 350/um' (E. coli value; syn3A has no Min system: used for a Min-reconstituted artificial cell as in C6322 Godino 2019)"
+    },
+    "min_mine_per_um": {
+      "value": 350.0,
+      "unit": "1/um",
+      "source": "Huang, Meir & Wingreen 2003 PNAS 10.1073/pnas.2135445100 'total concentrations of MinD and MinE are 1,000/um and 350/um' (E. coli value; syn3A has no Min system: used for a Min-reconstituted artificial cell as in C6322 Godino 2019)"
+    },
+    "min_window_s": {
+      "value": 220.0,
+      "unit": "s",
+      "source": "ASSUMED numerical: Min simulated for 220 s at the division length (about 5 periods of the cited ~40 s)"
+    },
+    "min_burnin_s": {
+      "value": 60.0,
+      "unit": "s",
+      "source": "ASSUMED numerical: first 60 s discarded before time-averaging MinD"
+    },
+    "mutation_rate_per_locus": {
+      "value": 0.005,
+      "unit": "1/division/locus",
+      "source": "ASSUMED (M5/M6 genome theta mutation probability per daughter per locus)"
+    },
+    "mutation_sigma": {
+      "value": 0.05,
+      "unit": "theta units",
+      "source": "ASSUMED (Gaussian step of a theta mutation, theta in [0,1])"
+    },
+    "evolution_dt_s": {
+      "value": 10.0,
+      "unit": "s",
+      "source": "ASSUMED compute step for M6 (cited communication step is 1 s, C0862); validated against dt = 1 s in m6_dt_validation.jsonl"
+    },
+    "weakened_class_tx_multiplier": {
+      "value": 0.5,
+      "unit": "1",
+      "source": "ASSUMED Plan 44 M6 control: transcription of the essential lipid-synthesis (membrane) gene class halved"
+    },
+    "m5_mutation_rate_per_locus": {
+      "value": 0.05,
+      "unit": "1/division/locus",
+      "source": "ASSUMED (M5 lineage trees only: high enough that the measured rate has about 2% statistical error, so the 10% L-A4 check is meaningful)"
     }
   },
   "gene_classes": {
